@@ -38,74 +38,74 @@ class Index extends Component {
     estadosciviles:[],
     regimen:[],
     startDate: moment(),
-    "nombres": "Carlos",
-    "primer_apellido": "Pérez",
-    "segundo_apellido": "López",
+    "nombres": "",
+    "primer_apellido": "",
+    "segundo_apellido": "",
     "nacionalidad": [],
     "nacionalidades": [{
-      "valor": "México",
-      "codigo": "MX"
+      "valor": "",
+      "codigo": ""
     }],
     "pais_nacimiento_valor":"",
     "pais_nacimiento": {
-      "valor": "México",
-      "codigo": "MX"
+      "valor": "",
+      "codigo": ""
     },
     "entidad_federativa_nacimiento": {
-      "nom_ent": "México",
-      "cve_ent": "15"
+      "nom_ent": "",
+      "cve_ent": ""
     },
-    "curp": "BEML920313HMCLNS09",
-    "rfc": "GOAP780710RH7",
-    "fecha_nacimiento": "31/07/1980",
-    "numero_identificacion_oficial": "a1b2c3d4",
+    "curp": "",
+    "rfc": "",
+    "fecha_nacimiento": "",
+    "numero_identificacion_oficial": "",
     "correo_electronico": {
-      "personal": "jperez@ejemplo.com.mx",
-      "laboral": "jperez@ejemplo.com.mx"
+      "personal": "",
+      "laboral": ""
     },
     "telefono": {
-      "personal": "+525510203040",
-      "celular": "+525510203040"
+      "personal": "",
+      "celular": ""
     },
 
 
     "estado_civil": {
-      "codigo": "CAS",
-      "valor": "Casado (a)"
+      "codigo": "",
+      "valor": ""
     },
 
     "dom_pais": {
-      "valor": "México",
-      "codigo": "MX"
+      "valor": "",
+      "codigo": ""
     },
     "dom_entidad_federativa": {
-      "nom_ent": "México",
-      "cve_ent": "15"
+      "nom_ent": "",
+      "cve_ent": ""
     },
     "dom_municipio": {
-      "nom_mun": "Ecatepec de Morelos",
-      "cve_mun": "033"
+      "nom_mun": "",
+      "cve_mun": ""
     },
     "dom_localidad": {
-      "nom_loc": "Ecatepec de Morelos",
-      "cve_loc": "0001"
+      "nom_loc": "",
+      "cve_loc": ""
     },
-    "dom_cp": "55018",
+    "dom_cp": "",
     "dom_vialidad": {
-      "codigo":"CALLE",
-      "valor":"CALLE",
-      "tipo_vial": "CALLE",
-      "nom_vial": "El Rosal"
+      "codigo":"",
+      "valor":"",
+      "tipo_vial": "",
+      "nom_vial": ""
     },
-    "dom_numExt": "24",
-    "dom_numInt": "48",
+    "dom_numExt": "",
+    "dom_numInt": "",
 
 
     "regimen_matrimonial": {
-      "codigo": "SBI",
-      "valor": "Separación de bienes"
+      "codigo": "",
+      "valor": ""
     },
-    "fecha_declaracion": "31/07/1980"
+    "fecha_declaracion": ""
   };
 
   handleClick = () => event => {
