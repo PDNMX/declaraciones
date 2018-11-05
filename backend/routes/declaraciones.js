@@ -17,7 +17,7 @@ router.post("/", function(req, res, next) {
   )
     .then(client => {
       let db = client.db(dbmongo.dbname);
-      let collection = db.collection("datagen");
+      let collection = db.collection("s1");
       console.log(req.body);
 
       // collection.find(req.query).toArray(function(err, result) {
