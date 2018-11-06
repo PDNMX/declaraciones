@@ -3,10 +3,6 @@ import routes from './routes/index';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import P404 from './components/P404';
 
-// import 'font-awesome/css/font-awesome.min.css';
-// import 'bootstrap-css-only/css/bootstrap.min.css';
-// import 'mdbreact/dist/css/mdb.css';
-
 const p404 = () => {
     return <P404/>
 };
