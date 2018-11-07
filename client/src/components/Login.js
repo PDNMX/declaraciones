@@ -90,7 +90,7 @@ class Login extends Component {
               <Card>
                 <CardTitle className="text-center">
                   <br/>
-                  <img src="/images/logo_pdn.png" className="img-fluid" alt="PDN" />
+                  <img src="./images/logo_pdn.png" className="img-fluid" alt="PDN" />
                 </CardTitle>
                 <CardBody>
                 <div id="messages" className={this.state.type}>{this.state.message}</div>

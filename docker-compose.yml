@@ -23,3 +23,8 @@ services:
       - backend
     depends_on:
       - backend
+
+networks:
+  default:
+    external:
+      name: ${MONGO_CONTAINER_NETWORK}
