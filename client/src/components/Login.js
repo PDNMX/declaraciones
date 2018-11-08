@@ -12,6 +12,8 @@ import Button from "@material-ui/core/Button";
 
 var loggedIn = sessionStorage.getItem("logged");
 
+console.log(process.env.API);
+
 const divstyle = {
   marginTop: "150px"
 };
@@ -24,7 +26,8 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
+    // width: 200,
+    width : '100%'
   },
   dense: {
     marginTop: 19
@@ -37,7 +40,7 @@ const styles = theme => ({
   },
   title: {
     fontSize: 14
-  }
+  },
 });
 
 class Login extends Component {
@@ -73,7 +76,7 @@ class Login extends Component {
       clave: this.state.clave
     };
     var info;
-    // console.log(payload);
+    console.log(apiBaseUrl);
 
     axios
       .post(apiBaseUrl + "login", payload)
@@ -124,15 +127,16 @@ class Login extends Component {
 
     if (!loggedIn) {
       return (
-        <Grid style={divstyle}>
-          <Grid item xs={4} />
+        <Grid style={divstyle} container spacing={24}>
+          <Grid item xs={4}></Grid>
           <Grid item xs={4}>
-            <Card>
-              <CardContent>
+            <Card className={classes.card}>
+              <CardContent style={{ textAlign: 'center' }} >
+              <form autocomplete="off">
                 <Grid item xs={12}>
                   <br />
                   <img
-                    src="/images/logo_pdn.png"
+                    src="./images/logo_pdn.png"
                     className="img-fluid"
                     alt="PDN"
                   />
@@ -142,7 +146,7 @@ class Login extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    id="standard-name"
+                    id="usuario"
                     label="Usuario"
                     className={classes.textField}
                     value={this.state.usuario}
@@ -152,17 +156,20 @@ class Login extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    id="standard-name"
+                    id="clave"
                     label="Contraseña"
+                    type="password"
                     className={classes.textField}
                     value={this.state.clave}
                     onChange={this.handleChange("clave")}
                     margin="normal"
                   />
                 </Grid>
+                </form>
                 <Grid item xs={12}>
-                  <div className="text-center">
-                    <Button onClick={event => this.handleClick(event)}>
+                <br/>
+                  <div>
+                    <Button variant="contained" onClick={event => this.handleClick(event)}>
                       Ingresar
                     </Button>
                   </div>
