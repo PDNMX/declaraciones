@@ -33,6 +33,7 @@ import moment from 'moment';
 const styles = {
   card: {
     minWidth: 275,
+    marginTop:10
   },
   title: {
     fontSize: 18,

@@ -9,8 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
-var loggedIn = sessionStorage.getItem("logged");
+import Mensaje from "./Mensaje";
 
 console.log(process.env.API);
 
@@ -27,7 +26,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     // width: 200,
-    width : '100%'
+    width: "100%"
   },
   dense: {
     marginTop: 19
@@ -40,8 +39,10 @@ const styles = theme => ({
   },
   title: {
     fontSize: 14
-  },
+  }
 });
+
+var loggedIn = sessionStorage.getItem("logged");
 
 class Login extends Component {
   constructor(props) {
@@ -51,7 +52,8 @@ class Login extends Component {
       usuario: "",
       clave: "",
       message: "",
-      type: ""
+      type: "",
+      mensaje: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -75,45 +77,43 @@ class Login extends Component {
       usuario: this.state.usuario,
       clave: this.state.clave
     };
-    var info;
-    console.log(apiBaseUrl);
+    var mensaje;
 
     axios
       .post(apiBaseUrl + "login", payload)
       .then(function(response) {
-        // console.log(response);
         switch (response.data.code) {
           case 200:
-            info = {
+            mensaje = {
               message: "inicio correcto.",
               type: "alert alert-success text-center"
             };
-            self.setState(info);
+            self.setState(mensaje);
             sessionStorage.setItem("logged", true);
             window.location.reload();
             break;
           case 204:
-            info = {
+            mensaje = {
               message: "El usuario y/o contrasena son incorrectos.",
               type: "alert alert-danger text-center"
             };
-            self.setState(info);
+            self.setState(mensaje);
             sessionStorage.setItem("logged", false);
             break;
           case 205:
-            info = {
+            mensaje = {
               message: "El usuario y/o contrasena son incorrectos.",
               type: "alert alert-danger text-center"
             };
-            self.setState(info);
+            self.setState(mensaje);
             sessionStorage.setItem("logged", false);
             break;
           default:
-            info = {
+            mensaje = {
               message: "hubo un error en la consulta",
               type: "alert alert-danger text-center"
             };
-            self.setState(info);
+            self.setState(mensaje);
             sessionStorage.setItem("logged", false);
         }
       })
@@ -124,52 +124,56 @@ class Login extends Component {
 
   render() {
     const { classes } = this.props;
-
     if (!loggedIn) {
       return (
         <Grid style={divstyle} container spacing={24}>
-          <Grid item xs={4}></Grid>
+          <Grid item xs={4} />
           <Grid item xs={4}>
             <Card className={classes.card}>
-              <CardContent style={{ textAlign: 'center' }} >
-              <form autocomplete="off">
-                <Grid item xs={12}>
-                  <br />
-                  <img
-                    src="./images/logo_pdn.png"
-                    className="img-fluid"
-                    alt="PDN"
-                  />
-                  <div id="messages" className={this.state.type}>
-                    {this.state.message}
-                  </div>
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    id="usuario"
-                    label="Usuario"
-                    className={classes.textField}
-                    value={this.state.usuario}
-                    onChange={this.handleChange("usuario")}
-                    margin="normal"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    id="clave"
-                    label="Contraseña"
-                    type="password"
-                    className={classes.textField}
-                    value={this.state.clave}
-                    onChange={this.handleChange("clave")}
-                    margin="normal"
-                  />
-                </Grid>
+              <CardContent style={{ textAlign: "center" }}>
+                <form autoComplete="off">
+                  <Grid item xs={12}>
+                    <br />
+                    <img
+                      src="./images/logo_pdn.png"
+                      className="img-fluid"
+                      alt="PDN"
+                    />
+                  </Grid>
+                  <Grid item xs={12} style={{ marginTop: "10px" }}>
+                    {this.state.mensaje.mensaje && (
+                      <Mensaje mensaje={this.state.mensaje} />
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="usuario"
+                      label="Usuario"
+                      className={classes.textField}
+                      value={this.state.usuario}
+                      onChange={this.handleChange("usuario")}
+                      margin="normal"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="clave"
+                      label="Contraseña"
+                      type="password"
+                      className={classes.textField}
+                      value={this.state.clave}
+                      onChange={this.handleChange("clave")}
+                      margin="normal"
+                    />
+                  </Grid>
                 </form>
                 <Grid item xs={12}>
-                <br/>
+                  <br />
                   <div>
-                    <Button variant="contained" onClick={event => this.handleClick(event)}>
+                    <Button
+                      variant="contained"
+                      onClick={event => this.handleClick(event)}
+                    >
                       Ingresar
                     </Button>
                   </div>
@@ -182,7 +186,7 @@ class Login extends Component {
         </Grid>
       );
     } else {
-      return <Redirect to="/" />;
+      return <Redirect to="/datosgenerales" />;
     }
   }
 }

@@ -29,7 +29,7 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Declaracion
           </Typography>
-          { !loggedIn &&
+          { loggedIn &&
             <Button component={Link} to="/logout" color="inherit">Logout</Button>
           }
         </Toolbar>

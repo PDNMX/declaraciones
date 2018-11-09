@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 
+sessionStorage.setItem("logged", false);
 sessionStorage.clear();
 
-class Home extends Component {
+class Logout extends Component {
   render() {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   }
 }
 
-export default Home;
+export default Logout;
