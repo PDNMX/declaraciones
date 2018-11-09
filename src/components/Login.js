@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Mensaje from "./Mensaje";
 
-console.log(process.env.API);
+// console.log(process.env.API);
 
 const divstyle = {
   marginTop: "150px"
@@ -116,6 +116,7 @@ class Login extends Component {
             self.setState(mensaje:mensaje);
             sessionStorage.setItem("logged", false);
         }
+        console.log(self.state);
       })
       .catch(function(error) {
         console.log(error);
@@ -123,7 +124,7 @@ class Login extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props; 
     if (!loggedIn) {
       return (
         <Grid style={divstyle} container spacing={24}>

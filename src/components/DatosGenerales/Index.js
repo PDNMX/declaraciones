@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import Menu from "../Menu";
 import Formulario from "./Formulario";
+import DatosCurriculares from "./DatosCurriculares";
 
 const styles = theme => ({
   root: {
@@ -404,19 +405,25 @@ class Index extends Component {
           </Grid>
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              <Formulario
-                data={this.state}
-                handleChange={this.handleChange}
-                handleChangeEntidades={this.handleChangeEntidades}
-                handleChangeFecha={this.handleChangeFecha}
-                handleChangeEdoCivil={this.handleChangeEdoCivil}
-                handleChangeRegimen={this.handleChangeRegimen}
-                handleChangeDirPais={this.handleChangeDirPais}
-                handleChangeMunicipios={this.handleChangeMunicipios}
-                handleChangeLocalidades={this.handleChangeLocalidades}
-                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-                handleClick={this.handleClick}
+              {/*
+                <Formulario
+                  data={this.state}
+                  handleChange={this.handleChange}
+                  handleChangeEntidades={this.handleChangeEntidades}
+                  handleChangeFecha={this.handleChangeFecha}
+                  handleChangeEdoCivil={this.handleChangeEdoCivil}
+                  handleChangeRegimen={this.handleChangeRegimen}
+                  handleChangeDirPais={this.handleChangeDirPais}
+                  handleChangeMunicipios={this.handleChangeMunicipios}
+                  handleChangeLocalidades={this.handleChangeLocalidades}
+                  handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                  handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                  handleClick={this.handleClick}
+                />
+                */}
+              <DatosCurriculares
+              data={this.state}
+              handleChange={this.handleChange}
               />
             </Grid>
           </Grid>
