@@ -48,6 +48,8 @@ const styles = {
   },
 };
 
+
+// estilos para los select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -84,7 +86,7 @@ function SimpleCard(props) {
         </Typography>
         <Grid container spacing={24}>
             {/*Información General*/}
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Nombre(s)"
@@ -95,7 +97,7 @@ function SimpleCard(props) {
 
                 />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Apellido uno"
@@ -105,7 +107,7 @@ function SimpleCard(props) {
                     margin="normal"
                 />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Apellido dos"
@@ -116,7 +118,7 @@ function SimpleCard(props) {
                 />
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="CURP"
@@ -128,7 +130,7 @@ function SimpleCard(props) {
             </Grid>
 
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="RFC"
@@ -139,7 +141,7 @@ function SimpleCard(props) {
                 />
             </Grid>
 
-            <Grid item xs={3} >
+            <Grid item xs={2} >
               <FormControl className={classes.select} >
                 <InputLabel htmlFor="pais_nacimiento">País de Nacimiento</InputLabel>
                 <Select
@@ -158,7 +160,7 @@ function SimpleCard(props) {
             </Grid>
             {/*Información General*/}
 
-            <Grid item xs={3} >
+            <Grid item xs={2} >
               <FormControl className={classes.select} >
                 <InputLabel htmlFor="entidad_federativa_nacimiento">Entidad federativa de nacimiento</InputLabel>
                 <Select
@@ -177,7 +179,7 @@ function SimpleCard(props) {
               </FormControl>
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="select-multiple-checkbox">Nacionalidades</InputLabel>
               <Select
@@ -198,7 +200,7 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <TextField
                 id="fecha_nacimiento"
                 label="Fecha de nacimiento"
@@ -214,7 +216,7 @@ function SimpleCard(props) {
             </Grid>
 
             {/*
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Fecha de nacimiento"
@@ -225,7 +227,7 @@ function SimpleCard(props) {
                 />
             </Grid>
             */}
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Numero identificacion oficial"
@@ -238,7 +240,7 @@ function SimpleCard(props) {
 
 
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Correo electrónico personal"
@@ -248,7 +250,7 @@ function SimpleCard(props) {
                     margin="normal"
                 />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Correo electrónico laboral"
@@ -258,7 +260,7 @@ function SimpleCard(props) {
                     margin="normal"
                 />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Teléfono personal"
@@ -268,7 +270,7 @@ function SimpleCard(props) {
                     margin="normal"
                 />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
                 <TextField
                     id="standard-name"
                     label="Teléfono celular"
@@ -278,7 +280,7 @@ function SimpleCard(props) {
                     margin="normal"
                 />
             </Grid>
-            <Grid item xs={3} >
+            <Grid item xs={2} >
               <FormControl className={classes.select} >
                 <InputLabel htmlFor="estado_civil">Estado civil</InputLabel>
                 <Select
@@ -297,7 +299,7 @@ function SimpleCard(props) {
               </FormControl>
             </Grid>
 
-            <Grid item xs={3} >
+            <Grid item xs={2} >
               <FormControl className={classes.select} >
                 <InputLabel htmlFor="regimen_matrimonial">Régimen matrimonial</InputLabel>
                 <Select
@@ -326,7 +328,7 @@ function SimpleCard(props) {
           Domicilio
         </Typography>
         <Grid container spacing={24}>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <FormControl className={classes.select} >
             <InputLabel htmlFor="dom_pais">País</InputLabel>
             <Select
@@ -343,7 +345,7 @@ function SimpleCard(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <FormControl className={classes.select} >
             <InputLabel htmlFor="dom_entidad_federativa">Entidad federativa</InputLabel>
             <Select
@@ -361,7 +363,7 @@ function SimpleCard(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <FormControl className={classes.select} >
             <InputLabel htmlFor="dom_municipio">Municipio</InputLabel>
             <Select
@@ -379,7 +381,7 @@ function SimpleCard(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <FormControl className={classes.select} >
             <InputLabel htmlFor="dom_localidad">Localidad</InputLabel>
             <Select
@@ -397,7 +399,7 @@ function SimpleCard(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
             <TextField
                 id="standard-name"
                 label="Código postal"
@@ -407,7 +409,7 @@ function SimpleCard(props) {
                 margin="normal"
             />
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <FormControl className={classes.select} >
             <InputLabel htmlFor="dom_vialidad">Tipo de vía</InputLabel>
             <Select
@@ -425,7 +427,7 @@ function SimpleCard(props) {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
             <TextField
                 id="standard-name"
                 label="Nombre de la vía"
@@ -435,7 +437,7 @@ function SimpleCard(props) {
                 margin="normal"
             />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
             <TextField
                 id="standard-name"
                 label="Número exterior"
@@ -445,7 +447,7 @@ function SimpleCard(props) {
                 margin="normal"
             />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
             <TextField
                 id="standard-name"
                 label="Número interior"

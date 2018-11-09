@@ -13,6 +13,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Menu from "../Menu";
 import Formulario from "./Formulario";
 import DatosCurriculares from "./DatosCurriculares";
+import EncargoActual from "./EncargoActual";
+import ExperienciaLaboral from "./ExperienciaLaboral";
 
 const styles = theme => ({
   root: {
@@ -139,6 +141,35 @@ class Index extends Component {
     }
   };
 
+  handleClickDatosCurriculares = () => event => {
+    this.state.datos_curriculares.grados_academicos.push({
+      grado_obtenido: "Licenciatura",
+      institucion_educativa: "La Universidad Nacionalista México",
+      lugar_institucion_educativa: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad: {
+          nom_ent: "México",
+          cve_ent: "15"
+        }
+      },
+      carrera: "Ing. en Sistemas Computacionales",
+      estatus: {
+        codigo: "CURS",
+        valor: "Cursando"
+      },
+      ano_conclusion: "2005",
+      documento_obtenido: {
+        codigo: "BOL",
+        valor: "Boleta"
+      },
+      cedula_profesional: "2094884"
+    });
+    this.setState(this.state);
+    console.log("hi");
+  };
 
   handleClick = () => event => {
     var data = {
@@ -421,9 +452,45 @@ class Index extends Component {
                   handleClick={this.handleClick}
                 />
                 */}
+              {/*
               <DatosCurriculares
-              data={this.state}
-              handleChange={this.handleChange}
+                data={this.state}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChange={this.handleChange}
+                handleClickDatosCurriculares={this.handleClickDatosCurriculares}
+              />
+              */}
+              {/*
+              <EncargoActual
+                data={this.state}
+                handleClickDatosCurriculares={this.handleClickDatosCurriculares}
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+              */}
+              <ExperienciaLaboral
+                data={this.state}
+                handleClickDatosCurriculares={this.handleClickDatosCurriculares}
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
               />
             </Grid>
           </Grid>
