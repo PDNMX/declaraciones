@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router";
 
 sessionStorage.setItem("logged", false);
-sessionStorage.clear();
+// sessionStorage.clear();
 
 class Logout extends Component {
   render() {

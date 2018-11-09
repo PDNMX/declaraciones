@@ -51,7 +51,7 @@ class Login extends Component {
     this.state = {
       usuario: "",
       clave: "",
-      message: "",
+      mensaje: "",
       type: "",
       mensaje: []
     };
@@ -85,35 +85,35 @@ class Login extends Component {
         switch (response.data.code) {
           case 200:
             mensaje = {
-              message: "inicio correcto.",
+              mensaje: "inicio correcto.",
               type: "alert alert-success text-center"
             };
-            self.setState(mensaje);
+            self.setState(mensaje:mensaje);
             sessionStorage.setItem("logged", true);
             window.location.reload();
             break;
           case 204:
             mensaje = {
-              message: "El usuario y/o contrasena son incorrectos.",
+              mensaje: "El usuario y/o contrasena son incorrectos.",
               type: "alert alert-danger text-center"
             };
-            self.setState(mensaje);
+            self.setState(mensaje:mensaje);
             sessionStorage.setItem("logged", false);
             break;
           case 205:
             mensaje = {
-              message: "El usuario y/o contrasena son incorrectos.",
+              mensaje: "El usuario y/o contrasena son incorrectos.",
               type: "alert alert-danger text-center"
             };
-            self.setState(mensaje);
+            self.setState(mensaje:mensaje);
             sessionStorage.setItem("logged", false);
             break;
           default:
             mensaje = {
-              message: "hubo un error en la consulta",
+              mensaje: "hubo un error en la consulta",
               type: "alert alert-danger text-center"
             };
-            self.setState(mensaje);
+            self.setState(mensaje:mensaje);
             sessionStorage.setItem("logged", false);
         }
       })
