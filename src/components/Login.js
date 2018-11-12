@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 
 import axios from "axios";
-import config from "../config.json";
 import { Redirect } from "react-router";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -71,7 +70,8 @@ class Login extends Component {
   };
 
   handleClick(event) {
-    var apiBaseUrl = config.apiHost + "users/";
+    process.env.APP_API = process.env.APP_API || 'https://localhost/captura/api/';
+    var apiBaseUrl = process.env.APP_API + "users/";
     var self = this;
     var payload = {
       usuario: this.state.usuario,

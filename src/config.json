@@ -1,4 +1,3 @@
 {
-  "apiHost":"http://localhost:3000/",
-  "apiHost2":"http://demospdn.host/demo1/captura/api/"
+  "apiHost":"https://demospdn.host/demo1/captura/api/"
 }

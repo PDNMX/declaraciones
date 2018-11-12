@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import config from "../../config.json";
 import { Redirect } from "react-router";
 
 //Grid
@@ -15,6 +14,8 @@ import Formulario from "./Formulario";
 import DatosCurriculares from "./DatosCurriculares";
 import EncargoActual from "./EncargoActual";
 import ExperienciaLaboral from "./ExperienciaLaboral";
+
+var apiHost = process.env.APP_API || 'https://localhost/captura/api/';
 
 const styles = theme => ({
   root: {
@@ -201,7 +202,8 @@ class Index extends Component {
     };
     console.log(data);
 
-    var apiBaseUrl = config.apiHost;
+    var apiBaseUrl = apiHost;
+    // var apiHost = process.env.APP_API || 'https://localhost/captura/api/';
     var self = this;
     var info;
 
@@ -322,7 +324,7 @@ class Index extends Component {
       x => x.cve_ent === event.target.value
     );
 
-    fetch(config.apiHost + "municipios?cve_ent=" + event.target.value)
+    fetch(apiHost + "municipios?cve_ent=" + event.target.value)
       .then(res => res.json())
       .then(municipios => this.setState({ municipios: municipios }));
 
@@ -340,7 +342,7 @@ class Index extends Component {
     );
 
     fetch(
-      config.apiHost +
+      apiHost +
         "localidades?cve_ent=" +
         this.state.dom_entidad_federativa.cve_ent +
         "&cve_mun=" +
@@ -380,28 +382,28 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    fetch(config.apiHost + "ciudades")
+    fetch(apiHost + "ciudades")
       .then(res => res.json())
       .then(ciudades => this.setState({ ciudades: ciudades }));
 
-    fetch(config.apiHost + "entidades")
+    fetch(apiHost + "entidades")
       .then(res => res.json())
       .then(entidades => this.setState({ entidades: entidades }));
 
-    fetch(config.apiHost + "estadosciviles")
+    fetch(apiHost + "estadosciviles")
       .then(res => res.json())
       .then(estadosciviles =>
         this.setState({ estadosciviles: estadosciviles })
       );
 
-    fetch(config.apiHost + "regimenmatrimonial")
+    fetch(apiHost + "regimenmatrimonial")
       .then(res => res.json())
       .then(regimenmatrimonial =>
         this.setState({ regimen: regimenmatrimonial })
       );
 
     fetch(
-      config.apiHost +
+      apiHost +
         "municipios?cve_ent=" +
         this.state.dom_entidad_federativa.cve_ent
     )
@@ -409,7 +411,7 @@ class Index extends Component {
       .then(municipios => this.setState({ municipios: municipios }));
 
     fetch(
-      config.apiHost +
+      apiHost +
         "localidades?cve_ent=" +
         this.state.dom_entidad_federativa.cve_ent +
         "&cve_mun=" +
@@ -418,7 +420,7 @@ class Index extends Component {
       .then(res => res.json())
       .then(localidades => this.setState({ localidades: localidades }));
 
-    fetch(config.apiHost + "tipovialidad")
+    fetch(apiHost + "tipovialidad")
       .then(res => res.json())
       .then(tipovialidad => this.setState({ tipovialidad: tipovialidad }));
   }
