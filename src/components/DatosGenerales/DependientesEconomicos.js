@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import Tabla from "./TablaExperienciaLaboral";
+import Tabla from "./TablaDependientesEconomicos";
 
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -71,7 +71,7 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    handleClickExperienciaLaborar,
+    handleClickDependientesEconomicos,
     handleChange,
     handleChangeEntidades,
     handleChangeEdoCivil,
@@ -89,12 +89,12 @@ function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Experiencia Laboral
+          Dependientes Economicos
         </Typography>
         <Grid container spacing={24}>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Ambito</InputLabel>
+              <InputLabel htmlFor="estado_civil">Tipo de Relación</InputLabel>
               <Select
                 value={data.estado_civil.codigo}
                 onChange={handleChangeEdoCivil("estado_civil")}
@@ -111,66 +111,110 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Nivel de Gobierno</InputLabel>
-              <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
-                inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
-                }}
-              >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Poder Juridico</InputLabel>
-              <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
-                inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
-                }}
-              >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={4}>
             <TextField
               id="grado"
-              label="Nombre de la Institución"
+              label="Nombre Completo"
               className={classes.textField}
               value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="estado_civil">Nacionalidades</InputLabel>
+              <Select
+                value={data.estado_civil.codigo}
+                onChange={handleChangeEdoCivil("estado_civil")}
+                inputProps={{
+                  name: "estado_civil",
+                  id: "estado_civil"
+                }}
+              >
+                {data.estadosciviles.map(estadocivil => (
+                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
+                    {estadocivil.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="CURP"
+              className={classes.textField}
+              value={data.grado_obtenido}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <TextField
               id="grado"
-              label="Unidad administrativa"
+              label="RFC"
               className={classes.textField}
               value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
               margin="normal"
             />
           </Grid>
-
+          <Grid item xs={2}>
+            <TextField
+              label="Fecha de nacimiento"
+              className={classes.textField}
+              value={data.grado_obtenido}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              label="Numero de identificacion Nacional"
+              className={classes.textField}
+              value={data.grado_obtenido}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.contratado_honorarios}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="Habita el domicilio del declarante"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              label="Medio de contacto"
+              className={classes.textField}
+              value={data.grado_obtenido}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.contratado_honorarios}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="Ingresos propios"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <TextField
+              label="Ocupación/Profesión"
+              className={classes.textField}
+              value={data.grado_obtenido}
+              margin="normal"
+            />
+          </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
@@ -190,57 +234,65 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={2}>
-            <TextField
-              id="grado"
-              label="Jerarquia"
-              className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={2}>
-            <TextField
-              id="grado"
-              label="Cargo/Puesto"
-              className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={2}>
-            <TextField
-              id="grado"
-              label="Fecha de ingreso"
-              className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={2}>
-            <TextField
-              id="grado"
-              label="Fecha de salida"
-              className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={12}>
             <br />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={data.contratado_honorarios}
-                  value="contratado_honorarios"
+                  value="Habita el domicilio del declarante"
                   color="primary"
                 />
               }
-              label="Funciones"
+              label="¿Es proveedor o contratista de gobierno?"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.contratado_honorarios}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="¿Tiene el familiar o dependiente intereses en el mismo sector/industria al que pertenece el empleo oficial del Declarante?"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.contratado_honorarios}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="¿Desarrolla el familiar o dependiente actividades de cabildeo en el mismo sector/industria al que pertenece el empleo oficial del Declarante?"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.contratado_honorarios}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="¿El familiar o dependiente es beneficiario directo de un programa público (apoyo, subsidio, transferencia)?"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Observaciones/Comentarios"
+              className={classes.textField}
+              value={data.grado_obtenido}
+              margin="normal"
+              multiline={true}
             />
           </Grid>
 
@@ -405,14 +457,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickExperienciaLaborar()}
+              onClick={handleClickDependientesEconomicos()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.experiencia_laboral} />
+          <Tabla data={data.datos_dependientes_economicos} />
         </Grid>
       </CardContent>
     </Card>

@@ -71,56 +71,56 @@ class Login extends Component {
   };
 
   handleClick(event) {
-    var apiBaseUrl = config.apiHost + "users/";
-    var self = this;
-    var payload = {
-      usuario: this.state.usuario,
-      clave: this.state.clave
-    };
-    var mensaje;
-
-    axios
-      .post(apiBaseUrl + "login", payload)
-      .then(function(response) {
-        switch (response.data.code) {
-          case 200:
-            mensaje = {
-              mensaje: "inicio correcto.",
-              type: "alert alert-success text-center"
-            };
-            self.setState((mensaje: mensaje));
-            sessionStorage.setItem("logged", true);
-            window.location.reload();
-            break;
-          case 204:
-            mensaje = {
-              mensaje: "El usuario y/o contrasena son incorrectos.",
-              type: "alert alert-danger text-center"
-            };
-            self.setState((mensaje: mensaje));
-            sessionStorage.setItem("logged", false);
-            break;
-          case 205:
-            mensaje = {
-              mensaje: "El usuario y/o contrasena son incorrectos.",
-              type: "alert alert-danger text-center"
-            };
-            self.setState((mensaje: mensaje));
-            sessionStorage.setItem("logged", false);
-            break;
-          default:
-            mensaje = {
-              mensaje: "hubo un error en la consulta",
-              type: "alert alert-danger text-center"
-            };
-            self.setState((mensaje: mensaje));
-            sessionStorage.setItem("logged", false);
-        }
-        console.log(self.state);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // var apiBaseUrl = config.apiHost + "users/";
+    // var self = this;
+    // var payload = {
+    //   usuario: this.state.usuario,
+    //   clave: this.state.clave
+    // };
+    // var mensaje;
+    //
+    // axios
+    //   .post(apiBaseUrl + "login", payload)
+    //   .then(function(response) {
+    //     switch (response.data.code) {
+    //       case 200:
+    //         mensaje = {
+    //           mensaje: "inicio correcto.",
+    //           type: "alert alert-success text-center"
+    //         };
+    //         self.setState((mensaje: mensaje));
+    //         sessionStorage.setItem("logged", true);
+    //         window.location.reload();
+    //         break;
+    //       case 204:
+    //         mensaje = {
+    //           mensaje: "El usuario y/o contrasena son incorrectos.",
+    //           type: "alert alert-danger text-center"
+    //         };
+    //         self.setState((mensaje: mensaje));
+    //         sessionStorage.setItem("logged", false);
+    //         break;
+    //       case 205:
+    //         mensaje = {
+    //           mensaje: "El usuario y/o contrasena son incorrectos.",
+    //           type: "alert alert-danger text-center"
+    //         };
+    //         self.setState((mensaje: mensaje));
+    //         sessionStorage.setItem("logged", false);
+    //         break;
+    //       default:
+    //         mensaje = {
+    //           mensaje: "hubo un error en la consulta",
+    //           type: "alert alert-danger text-center"
+    //         };
+    //         self.setState((mensaje: mensaje));
+    //         sessionStorage.setItem("logged", false);
+    //     }
+    //     console.log(self.state);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
 
   render() {

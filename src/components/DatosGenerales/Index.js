@@ -15,6 +15,21 @@ import Formulario from "./Formulario";
 import DatosCurriculares from "./DatosCurriculares";
 import EncargoActual from "./EncargoActual";
 import ExperienciaLaboral from "./ExperienciaLaboral";
+import DependientesEconomicos from "./DependientesEconomicos";
+import EmpresasSociedadesAsociaciones from "./EmpresasSociedadesAsociaciones";
+import Membresias from "./Membresias";
+import ApoyosPublicos from "./ApoyosPublicos";
+import RepresentacionActiva from "./RepresentacionActiva";
+import RepresentacionPasiva from "./RepresentacionPasiva";
+import SociosComerciales from "./SociosComerciales";
+import ClientesPrincipales from "./ClientesPrincipales";
+import OtrasPartesRelacionadas from "./OtrasPartesRelacionadas";
+import BeneficiosGratuitos from "./BeneficiosGratuitos";
+import SalariosPublicos from "./SalariosPublicos";
+import SalariosEmpleos from "./SalariosEmpleos";
+import ActividadProfesional from "./ActividadProfesional";
+
+console.log(process.env.PUBLIC_URL);
 
 const styles = theme => ({
   root: {
@@ -138,7 +153,468 @@ class Index extends Component {
           cedula_profesional: "2094884"
         }
       ]
-    }
+    },
+    experiencia_laboral: [
+      {
+        ambito: {
+          codigo: "Pub",
+          valor: "Público"
+        },
+        nivel_gobierno: {
+          codigo: "EST",
+          valor: "Estatal"
+        },
+        poder_ente: {
+          codigo: "JUD",
+          valor: "Judicial"
+        },
+        nombre_institucion: "Instituto Federal de Telecomunicaciones",
+        unidad_administrativa: "Unidad de Política Regulatoria",
+        direccion: {
+          pais: {
+            valor: "México",
+            codigo: "MX"
+          },
+          entidad_federativa: {
+            nom_ent: "México",
+            cve_ent: "15"
+          },
+          municipio: {
+            nom_mun: "Ecatepec de Morelos",
+            cve_mun: "033"
+          },
+          cp: "55018",
+          localidad: {
+            nom_loc: "Ecatepec de Morelos",
+            cve_loc: "0001"
+          },
+          vialidad: {
+            tipo_vial: "CALLE",
+            nom_vial: "El Rosal"
+          },
+          numExt: "24",
+          numInt: "48"
+        },
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        jerarquia_rango: "string",
+        cargo_puesto: "Jefe de Departamento",
+        fecha_ingreso: "31/07/1980",
+        fecha_salida: "31/07/1980",
+        funciones_principales: [
+          {
+            codigo: "ABI",
+            valor: "Administración de bienes"
+          }
+        ]
+      }
+    ],
+    datos_dependientes_economicos: [
+      {
+        nombres: "Carlos",
+        primer_apellido: "Pérez",
+        segundo_apellido: "López",
+        tipo_relacion: {
+          codigo: "CONY",
+          valor: "Cónyuge"
+        },
+        nacionalidad: [
+          {
+            valor: "México",
+            codigo: "MX"
+          }
+        ],
+        curp: "BEML920313HMCLNS09",
+        rfc: "GOAP780710RH7",
+        fecha_nacimiento: "31/07/1980",
+        numero_identificacion_nacional: "ABCD1234",
+        habita_domicilio_declarante: true,
+        domicilio: {
+          pais: {
+            valor: "México",
+            codigo: "MX"
+          },
+          entidad_federativa: {
+            nom_ent: "México",
+            cve_ent: "15"
+          },
+          municipio: {
+            nom_mun: "Ecatepec de Morelos",
+            cve_mun: "033"
+          },
+          cp: "55018",
+          localidad: {
+            nom_loc: "Ecatepec de Morelos",
+            cve_loc: "0001"
+          },
+          vialidad: {
+            tipo_vial: "CALLE",
+            nom_vial: "El Rosal"
+          },
+          numExt: "24",
+          numInt: "48"
+        },
+        medio_contacto: "usuario@correo.com",
+        ingresos_propios: true,
+        ocupacion_profesion: "Administrador de empresas",
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        proveedor_contratista_gobierno: true,
+        tiene_intereses_mismo_sector_declarante: true,
+        desarrolla_cabildeo_sector_declarante: true,
+        beneficiario_programa_publico: [
+          {
+            nombre_programa: "Prospera",
+            institucion_otorga_apoyo: "XE-IPN Canal 11",
+            tipo_apoyo: "Servicio",
+            valor_apoyo: 4000
+          }
+        ],
+        observaciones: "Esto es una observación"
+      }
+    ],
+    empresas_sociedades_asociaciones: [
+      {
+        id: 123,
+        nombre_empresa_sociedad_asociacion: "DataIQ",
+        pais_registro: {
+          valor: "México",
+          codigo: "MX"
+        },
+        fecha_constitucion: "31/07/1980",
+        numero_registro: "ABC123",
+        rfc: "GOAP780710RH7",
+        domicilio: {
+          pais: {
+            valor: "México",
+            codigo: "MX"
+          },
+          entidad_federativa: {
+            nom_ent: "México",
+            cve_ent: "15"
+          },
+          municipio: {
+            nom_mun: "Ecatepec de Morelos",
+            cve_mun: "033"
+          },
+          cp: "55018",
+          localidad: {
+            nom_loc: "Ecatepec de Morelos",
+            cve_loc: "0001"
+          },
+          vialidad: {
+            tipo_vial: "CALLE",
+            nom_vial: "El Rosal"
+          },
+          numExt: "24",
+          numInt: "48"
+        },
+        rol: "Dueño",
+        actividad_economica: true,
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        porcentaje_participacion: 70
+      }
+    ],
+    membresias: [
+      {
+        id: 123,
+        tipo_institucion: {
+          codigo: "ASC",
+          valor: "Asociaciones civiles"
+        },
+        nombre_institucion: "Asociacion A.C",
+        naturaleza_membresia: {
+          codigo: "ASC",
+          valor: "Asociaciones civiles"
+        },
+        domicilio: {
+          pais: {
+            valor: "México",
+            codigo: "MX"
+          },
+          entidad_federativa: {
+            nom_ent: "México",
+            cve_ent: "15"
+          },
+          municipio: {
+            nom_mun: "Ecatepec de Morelos",
+            cve_mun: "033"
+          },
+          cp: "55018",
+          localidad: {
+            nom_loc: "Ecatepec de Morelos",
+            cve_loc: "0001"
+          },
+          vialidad: {
+            tipo_vial: "CALLE",
+            nom_vial: "El Rosal"
+          },
+          numExt: "24",
+          numInt: "48"
+        },
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        puesto_rol: "Titular",
+        fecha_inicio: "2010-07-26",
+        pagado: true,
+        observaciones: "Esto es una observación"
+      }
+    ],
+    apoyos_beneficios_publicos: [
+      {
+        id: 123,
+        es_beneficiario: true,
+        programa:
+          "Programa de Estímulos Económicos a Deportistas del Distrito Federal",
+        institucion_otorgante: "Instituto del Deporte del Distrito Federal ",
+        nivel_orden_gobierno: {
+          codigo: "EST",
+          valor: "Estatal"
+        },
+        tipo_apoyo: "Servicio",
+        valor_anual_apoyo: 7500,
+        observaciones: "Esto es una observación"
+      }
+    ],
+    representacion_activa: [
+      {
+        id: 123,
+        tipo_representacion: {
+          codigo: "APOD",
+          valor: "Apoderado"
+        },
+        nacionalidades: [
+          {
+            valor: "México",
+            codigo: "MX"
+          }
+        ],
+        nombre_parte_representada: "Cecilia Gómez Urrutia",
+        curp_parte: "BEML920313HMCLNS09",
+        rfc_parte: "GOAP780710RH7",
+        fecha_nacimiento_parte: "2010-07-26",
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        fecha_inicio: "2010-07-26",
+        pagado: true,
+        observaciones: "Esto es una observación"
+      }
+    ],
+    representacion_pasiva: [
+      {
+        id: 123,
+        tipo_representacion: {
+          codigo: "APOD",
+          valor: "Apoderado"
+        },
+        nombre: "Augusto Fernández Castro",
+        fecha_inicio_representacion: "2010-07-26",
+        nacionalidades: [
+          {
+            valor: "México",
+            codigo: "MX"
+          }
+        ],
+        curp: "BEML920313HMCLNS09",
+        rfc: "GOAP780710RH7",
+        fecha_nacimiento: "2010-07-26",
+        tiene_intereses: true,
+        ocupacion_profesion: "Contador",
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        observaciones: "Esto es una observación"
+      }
+    ],
+    socios_comerciales: [
+      {
+        id: 123,
+        nombre_actividad: "Actividad",
+        tipo_vinculo: "Socio",
+        antiguedad_vinculo: 20,
+        rfc_entidad: "GOAP780710RH7",
+        nombre: "Armando Rodríguez Saes",
+        curp: "BEML920313HMCLNS09",
+        rfc: "GOAP780710RH7",
+        lugar_nacimiento: {
+          pais: {
+            valor: "México",
+            codigo: "MX"
+          },
+          entidad: {
+            nom_ent: "México",
+            cve_ent: "15"
+          }
+        },
+        fecha_nacimiento: "2010-07-26",
+        porcentaje_participacion: 70,
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        observaciones: "Esto es una observación"
+      }
+    ],
+    clientes_principales: [
+      {
+        id: 123,
+        nombre_negocio: "Nombre negocio",
+        numero_Registro: "HTC896DSFA",
+        dueno_encargado: "Salvador Hernández Torres",
+        nombre: "AMEX.S.A.",
+        rfc: "GOAP780710RH7",
+        domicilio: {
+          pais: {
+            valor: "México",
+            codigo: "MX"
+          },
+          entidad_federativa: {
+            nom_ent: "México",
+            cve_ent: "15"
+          },
+          municipio: {
+            nom_mun: "Ecatepec de Morelos",
+            cve_mun: "033"
+          },
+          cp: "55018",
+          localidad: {
+            nom_loc: "Ecatepec de Morelos",
+            cve_loc: "0001"
+          },
+          vialidad: {
+            tipo_vial: "CALLE",
+            nom_vial: "El Rosal"
+          },
+          numExt: "24",
+          numInt: "48"
+        },
+        sector_industria: {
+          codigo: "SFS",
+          valor: "Servicios de salud y asistencia social"
+        },
+        porcentaje_participacion: 70,
+        observaciones: "Esto es una observación"
+      }
+    ],
+    "otras_partes": [{
+      "id": 123,
+      "tipo_relacion": "Garantes de Préstamos Recibidos",
+      "nombre_denominacion_parte": "Sergio Rodríguez",
+      "fecha_inicio_relacion": "2010-07-26",
+      "nacionalidades": [{
+        "valor": "México",
+        "codigo": "MX"
+      }],
+      "curp": "BEML920313HMCLNS09",
+      "rfc": "GOAP780710RH7",
+      "fecha_nacimiento": "2010-07-26",
+      "ocupacion": "Administrador de empresas",
+      "tiene_interes": true,
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "observaciones": "Esto es una observación"
+    }],
+    "beneficios_gratuitos": [{
+        "id": 123,
+        "tipo_beneficio": "Tarjetas o monederos electrónicos",
+        "origen_beneficio": "Prestación laboral",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "valor_beneficio": 1256,
+        "observaciones": "Esto es una observación"
+      }],
+      "sueldos_salarios_publicos": [{
+              "id": 123,
+              "ente_publico": {
+                "valor": "Secretaría de Gobernación",
+                "codigo": "SEGOB"
+              },
+              "rfc": "GOAP780710RH7",
+              "ingreso_bruto_anual": {
+                "valor": 10000,
+                "moneda": {
+                  "codigo": "MXN",
+                  "moneda": "Peso mexicano"
+                },
+                "unidad_temporal": {
+                  "codigo": "MESS",
+                  "valor": "Meses"
+                },
+                "duracion_frecuencia": 10,
+                "fecha_transaccion": "2010-07-26"
+              },
+              "observaciones": "Esto es una observación"
+            }],
+            "sueldos_salarios_otros_empleos": [{
+        "id": 123,
+        "nombre_denominacion_razon_social": "Max Power Inc.",
+        "rfc": "GOAP780710RH7",
+        "curp": "BEML920313HMCLNS09",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "tipo_actividad_servicio": {
+          "codigo": "SPU",
+          "valor": "Sector público"
+        },
+        "descripcion_actividad_servicio": "Servicio profesional de TI",
+        "domicilio_persona_paga": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "ingreso_bruto_anual": {
+          "valor": 10000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          },
+          "unidad_temporal": {
+            "codigo": "MESS",
+            "valor": "Meses"
+          },
+          "duracion_frecuencia": 10,
+          "fecha_transaccion": "2010-07-26"
+        },
+        "observaciones": "Esto es una observación"
+      }],
   };
 
   handleClickDatosCurriculares = () => event => {
@@ -168,7 +644,527 @@ class Index extends Component {
       cedula_profesional: "2094884"
     });
     this.setState(this.state);
-    console.log("hi");
+    // console.log("hi");
+  };
+
+  handleClickExperienciaLaborar = () => event => {
+    this.state.experiencia_laboral.push({
+      ambito: {
+        codigo: "Pub",
+        valor: "Público"
+      },
+      nivel_gobierno: {
+        codigo: "EST",
+        valor: "Estatal"
+      },
+      poder_ente: {
+        codigo: "JUD",
+        valor: "Judicial"
+      },
+      nombre_institucion: "Instituto Federal de Telecomunicaciones",
+      unidad_administrativa: "Unidad de Política Regulatoria",
+      direccion: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad_federativa: {
+          nom_ent: "México",
+          cve_ent: "15"
+        },
+        municipio: {
+          nom_mun: "Ecatepec de Morelos",
+          cve_mun: "033"
+        },
+        cp: "55018",
+        localidad: {
+          nom_loc: "Ecatepec de Morelos",
+          cve_loc: "0001"
+        },
+        vialidad: {
+          tipo_vial: "CALLE",
+          nom_vial: "El Rosal"
+        },
+        numExt: "24",
+        numInt: "48"
+      },
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      jerarquia_rango: "string",
+      cargo_puesto: "Jefe de Departamento",
+      fecha_ingreso: "31/07/1980",
+      fecha_salida: "31/07/1980",
+      funciones_principales: [
+        {
+          codigo: "ABI",
+          valor: "Administración de bienes"
+        }
+      ]
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickDependientesEconomicos = () => event => {
+    this.state.datos_dependientes_economicos.push({
+      nombres: "Carlos",
+      primer_apellido: "Pérez",
+      segundo_apellido: "López",
+      tipo_relacion: {
+        codigo: "CONY",
+        valor: "Cónyuge"
+      },
+      nacionalidad: [
+        {
+          valor: "México",
+          codigo: "MX"
+        }
+      ],
+      curp: "BEML920313HMCLNS09",
+      rfc: "GOAP780710RH7",
+      fecha_nacimiento: "31/07/1980",
+      numero_identificacion_nacional: "ABCD1234",
+      habita_domicilio_declarante: true,
+      domicilio: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad_federativa: {
+          nom_ent: "México",
+          cve_ent: "15"
+        },
+        municipio: {
+          nom_mun: "Ecatepec de Morelos",
+          cve_mun: "033"
+        },
+        cp: "55018",
+        localidad: {
+          nom_loc: "Ecatepec de Morelos",
+          cve_loc: "0001"
+        },
+        vialidad: {
+          tipo_vial: "CALLE",
+          nom_vial: "El Rosal"
+        },
+        numExt: "24",
+        numInt: "48"
+      },
+      medio_contacto: "usuario@correo.com",
+      ingresos_propios: true,
+      ocupacion_profesion: "Administrador de empresas",
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      proveedor_contratista_gobierno: true,
+      tiene_intereses_mismo_sector_declarante: true,
+      desarrolla_cabildeo_sector_declarante: true,
+      beneficiario_programa_publico: [
+        {
+          nombre_programa: "Prospera",
+          institucion_otorga_apoyo: "XE-IPN Canal 11",
+          tipo_apoyo: "Servicio",
+          valor_apoyo: 4000
+        }
+      ],
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickEmpresasSociedadesAsociaciones = () => event => {
+    this.state.empresas_sociedades_asociaciones.push({
+      id: 123,
+      nombre_empresa_sociedad_asociacion: "DataIQ",
+      pais_registro: {
+        valor: "México",
+        codigo: "MX"
+      },
+      fecha_constitucion: "31/07/1980",
+      numero_registro: "ABC123",
+      rfc: "GOAP780710RH7",
+      domicilio: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad_federativa: {
+          nom_ent: "México",
+          cve_ent: "15"
+        },
+        municipio: {
+          nom_mun: "Ecatepec de Morelos",
+          cve_mun: "033"
+        },
+        cp: "55018",
+        localidad: {
+          nom_loc: "Ecatepec de Morelos",
+          cve_loc: "0001"
+        },
+        vialidad: {
+          tipo_vial: "CALLE",
+          nom_vial: "El Rosal"
+        },
+        numExt: "24",
+        numInt: "48"
+      },
+      rol: "Dueño",
+      actividad_economica: true,
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      porcentaje_participacion: 70
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickMembresias = () => event => {
+    this.state.membresias.push({
+      id: 123,
+      tipo_institucion: {
+        codigo: "ASC",
+        valor: "Asociaciones civiles"
+      },
+      nombre_institucion: "Asociacion A.C",
+      naturaleza_membresia: {
+        codigo: "ASC",
+        valor: "Asociaciones civiles"
+      },
+      domicilio: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad_federativa: {
+          nom_ent: "México",
+          cve_ent: "15"
+        },
+        municipio: {
+          nom_mun: "Ecatepec de Morelos",
+          cve_mun: "033"
+        },
+        cp: "55018",
+        localidad: {
+          nom_loc: "Ecatepec de Morelos",
+          cve_loc: "0001"
+        },
+        vialidad: {
+          tipo_vial: "CALLE",
+          nom_vial: "El Rosal"
+        },
+        numExt: "24",
+        numInt: "48"
+      },
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      puesto_rol: "Titular",
+      fecha_inicio: "2010-07-26",
+      pagado: true,
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickApoyosPublicos = () => event => {
+    this.state.apoyos_beneficios_publicos.push({
+      id: 123,
+      es_beneficiario: true,
+      programa:
+        "Programa de Estímulos Económicos a Deportistas del Distrito Federal",
+      institucion_otorgante: "Instituto del Deporte del Distrito Federal ",
+      nivel_orden_gobierno: {
+        codigo: "EST",
+        valor: "Estatal"
+      },
+      tipo_apoyo: "Servicio",
+      valor_anual_apoyo: 7500,
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickRepresentacionActiva = () => event => {
+    this.state.representacion_activa.push({
+      id: 123,
+      tipo_representacion: {
+        codigo: "APOD",
+        valor: "Apoderado"
+      },
+      nacionalidades: [
+        {
+          valor: "México",
+          codigo: "MX"
+        }
+      ],
+      nombre_parte_representada: "Cecilia Gómez Urrutia",
+      curp_parte: "BEML920313HMCLNS09",
+      rfc_parte: "GOAP780710RH7",
+      fecha_nacimiento_parte: "2010-07-26",
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      fecha_inicio: "2010-07-26",
+      pagado: true,
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickRepresentacionPasiva = () => event => {
+    this.state.representacion_pasiva.push({
+      id: 123,
+      tipo_representacion: {
+        codigo: "APOD",
+        valor: "Apoderado"
+      },
+      nombre: "Augusto Fernández Castro",
+      fecha_inicio_representacion: "2010-07-26",
+      nacionalidades: [
+        {
+          valor: "México",
+          codigo: "MX"
+        }
+      ],
+      curp: "BEML920313HMCLNS09",
+      rfc: "GOAP780710RH7",
+      fecha_nacimiento: "2010-07-26",
+      tiene_intereses: true,
+      ocupacion_profesion: "Contador",
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickSociosComerciales = () => event => {
+    this.state.socios_comerciales.push({
+      id: 123,
+      nombre_negocio: "Nombre negocio",
+      numero_Registro: "HTC896DSFA",
+      dueno_encargado: "Salvador Hernández Torres",
+      nombre: "AMEX.S.A.",
+      rfc: "GOAP780710RH7",
+      domicilio: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad_federativa: {
+          nom_ent: "México",
+          cve_ent: "15"
+        },
+        municipio: {
+          nom_mun: "Ecatepec de Morelos",
+          cve_mun: "033"
+        },
+        cp: "55018",
+        localidad: {
+          nom_loc: "Ecatepec de Morelos",
+          cve_loc: "0001"
+        },
+        vialidad: {
+          tipo_vial: "CALLE",
+          nom_vial: "El Rosal"
+        },
+        numExt: "24",
+        numInt: "48"
+      },
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      porcentaje_participacion: 70,
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickClientesPrincipales = () => event => {
+    this.state.clientes_principales.push({
+      id: 123,
+      nombre_negocio: "Nombre negocio",
+      numero_Registro: "HTC896DSFA",
+      dueno_encargado: "Salvador Hernández Torres",
+      nombre: "AMEX.S.A.",
+      rfc: "GOAP780710RH7",
+      domicilio: {
+        pais: {
+          valor: "México",
+          codigo: "MX"
+        },
+        entidad_federativa: {
+          nom_ent: "México",
+          cve_ent: "15"
+        },
+        municipio: {
+          nom_mun: "Ecatepec de Morelos",
+          cve_mun: "033"
+        },
+        cp: "55018",
+        localidad: {
+          nom_loc: "Ecatepec de Morelos",
+          cve_loc: "0001"
+        },
+        vialidad: {
+          tipo_vial: "CALLE",
+          nom_vial: "El Rosal"
+        },
+        numExt: "24",
+        numInt: "48"
+      },
+      sector_industria: {
+        codigo: "SFS",
+        valor: "Servicios de salud y asistencia social"
+      },
+      porcentaje_participacion: 70,
+      observaciones: "Esto es una observación"
+    });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickOtrasPartesRelacionadas = () => event => {
+    this.state.otras_partes.push({
+        "id": 123,
+        "tipo_relacion": "Garantes de Préstamos Recibidos",
+        "nombre_denominacion_parte": "Sergio Rodríguez",
+        "fecha_inicio_relacion": "2010-07-26",
+        "nacionalidades": [{
+          "valor": "México",
+          "codigo": "MX"
+        }],
+        "curp": "BEML920313HMCLNS09",
+        "rfc": "GOAP780710RH7",
+        "fecha_nacimiento": "2010-07-26",
+        "ocupacion": "Administrador de empresas",
+        "tiene_interes": true,
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickBeneficiosGratuitos = () => event => {
+    this.state.beneficios_gratuitos.push({
+        "id": 123,
+        "tipo_beneficio": "Tarjetas o monederos electrónicos",
+        "origen_beneficio": "Prestación laboral",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "valor_beneficio": 1256,
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickSalariosPublicos = () => event => {
+    this.state.sueldos_salarios_publicos.push({
+        "id": 123,
+        "ente_publico": {
+          "valor": "Secretaría de Gobernación",
+          "codigo": "SEGOB"
+        },
+        "rfc": "GOAP780710RH7",
+        "ingreso_bruto_anual": {
+          "valor": 10000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          },
+          "unidad_temporal": {
+            "codigo": "MESS",
+            "valor": "Meses"
+          },
+          "duracion_frecuencia": 10,
+          "fecha_transaccion": "2010-07-26"
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickSalariosEmpleos = () => event => {
+    this.state.sueldos_salarios_otros_empleos.push({
+        "id": 123,
+        "nombre_denominacion_razon_social": "Max Power Inc.",
+        "rfc": "GOAP780710RH7",
+        "curp": "BEML920313HMCLNS09",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "tipo_actividad_servicio": {
+          "codigo": "SPU",
+          "valor": "Sector público"
+        },
+        "descripcion_actividad_servicio": "Servicio profesional de TI",
+        "domicilio_persona_paga": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "ingreso_bruto_anual": {
+          "valor": 10000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          },
+          "unidad_temporal": {
+            "codigo": "MESS",
+            "valor": "Meses"
+          },
+          "duracion_frecuencia": 10,
+          "fecha_transaccion": "2010-07-26"
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
   };
 
   handleClick = () => event => {
@@ -199,7 +1195,7 @@ class Index extends Component {
       regimen_matrimonial: this.state.regimen_matrimonial,
       fecha_declaracion: moment().format("YYYY-MM-DD")
     };
-    console.log(data);
+    // console.log(data);
 
     var apiBaseUrl = config.apiHost;
     var self = this;
@@ -477,9 +1473,12 @@ class Index extends Component {
                 handleClick={this.handleClick}
               />
               */}
+              {/*
               <ExperienciaLaboral
                 data={this.state}
-                handleClickDatosCurriculares={this.handleClickDatosCurriculares}
+                handleClickExperienciaLaborar={
+                  this.handleClickExperienciaLaborar
+                }
                 handleChange={this.handleChange}
                 handleChangeEntidades={this.handleChangeEntidades}
                 handleChangeFecha={this.handleChangeFecha}
@@ -492,6 +1491,254 @@ class Index extends Component {
                 handleChangeNombreVialidad={this.handleChangeNombreVialidad}
                 handleClick={this.handleClick}
               />
+              */}
+              {/*
+              <DependientesEconomicos
+                data={this.state}
+                handleClickDependientesEconomicos={
+                  this.handleClickDependientesEconomicos
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+              */}
+              {/*
+              <EmpresasSociedadesAsociaciones
+                data={this.state}
+                handleClickEmpresasSociedadesAsociaciones={
+                  this.handleClickEmpresasSociedadesAsociaciones
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+              */}
+              {/*
+              <Membresias
+                data={this.state}
+                handleClickMembresias={this.handleClickMembresias}
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+              {/*
+              <ApoyosPublicos
+                data={this.state}
+                handleClickApoyosPublicos={this.handleClickApoyosPublicos}
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+              {/*
+              <RepresentacionActiva
+                data={this.state}
+                handleClickRepresentacionActiva={
+                  this.handleClickRepresentacionActiva
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+              {/*
+              <RepresentacionPasiva
+                data={this.state}
+                handleClickRepresentacionPasiva={
+                  this.handleClickRepresentacionPasiva
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+            </Grid>
+*/}
+              {/*
+              <SociosComerciales
+                data={this.state}
+                handleClickSociosComerciales={
+                  this.handleClickSociosComerciales
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+{/*
+              <ClientesPrincipales
+                data={this.state}
+                handleClickClientesPrincipales={
+                  this.handleClickClientesPrincipales
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+{/*
+              <OtrasPartesRelacionadas
+                data={this.state}
+                handleClickOtrasPartesRelacionadas={
+                  this.handleClickOtrasPartesRelacionadas
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+{/*
+              <BeneficiosGratuitos
+                data={this.state}
+                handleClickBeneficiosGratuitos={
+                  this.handleClickBeneficiosGratuitos
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+{/*
+              <SalariosPublicos
+                data={this.state}
+                handleClickSalariosPublicos={
+                  this.handleClickSalariosPublicos
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+{/*
+
+              <SalariosEmpleos
+                data={this.state}
+                handleClickSalariosEmpleos={
+                  this.handleClickSalariosEmpleos
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+*/}
+
+
+              <ActividadProfesional
+                data={this.state}
+                handleClickSalariosEmpleos={
+                  this.handleClickSalariosEmpleos
+                }
+                handleChange={this.handleChange}
+                handleChangeEntidades={this.handleChangeEntidades}
+                handleChangeFecha={this.handleChangeFecha}
+                handleChangeEdoCivil={this.handleChangeEdoCivil}
+                handleChangeRegimen={this.handleChangeRegimen}
+                handleChangeDirPais={this.handleChangeDirPais}
+                handleChangeMunicipios={this.handleChangeMunicipios}
+                handleChangeLocalidades={this.handleChangeLocalidades}
+                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+                handleClick={this.handleClick}
+              />
+
+
             </Grid>
           </Grid>
         </div>
