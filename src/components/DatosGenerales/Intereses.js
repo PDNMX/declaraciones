@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import Tabla from "./TablaActividadProfesional";
+import Tabla from "./TablaIntereses";
 
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -71,7 +71,7 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    handleClickActividadProfesional,
+    handleClickIntereses,
     handleChange,
     handleChangeEntidades,
     handleChangeEdoCivil,
@@ -89,7 +89,7 @@ function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Actividad profesional
+          Intereses
         </Typography>
         <Grid container spacing={24}>
           <Grid item xs={3}>
@@ -160,7 +160,7 @@ function SimpleCard(props) {
           <Grid item xs={3}>
             <TextField
               id="grado"
-              label="Descripción de la actividad"
+              label="Descripción del tipo de inversión"
               className={classes.textField}
               value={data.grado_obtenido}
               margin="normal"
@@ -403,14 +403,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickActividadProfesional()}
+              onClick={handleClickIntereses()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.actividad_profesional} />
+          <Tabla data={data.intereses} />
         </Grid>
       </CardContent>
     </Card>

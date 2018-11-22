@@ -47,7 +47,7 @@ function CustomizedTable(props) {
             <CustomTableCell>CURP</CustomTableCell>
             <CustomTableCell>Sector/Industria</CustomTableCell>
             <CustomTableCell>Tipo de actividad</CustomTableCell>
-            <CustomTableCell>Descripción de la actividad</CustomTableCell>
+            <CustomTableCell>Descripción del tipo de inversión</CustomTableCell>
             <CustomTableCell>Domicilio</CustomTableCell>
             <CustomTableCell>Ingreso bruto anual</CustomTableCell>
             <CustomTableCell>Moneda</CustomTableCell>
@@ -68,7 +68,7 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
                 <CustomTableCell>{item.tipo_actividad_servicio.valor}</CustomTableCell>
                 <CustomTableCell>{item.descripcion_actividad_servicio}</CustomTableCell>
-                <CustomTableCell>{item.domicilio_persona_paga.pais.valor}</CustomTableCell>
+                <CustomTableCell>{item.domicilio.pais.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.moneda.moneda}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.unidad_temporal.valor}</CustomTableCell>

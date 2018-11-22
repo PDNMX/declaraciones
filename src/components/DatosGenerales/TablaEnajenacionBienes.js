@@ -45,9 +45,10 @@ function CustomizedTable(props) {
             <CustomTableCell>Nombre, denominación o razón social</CustomTableCell>
             <CustomTableCell>RFC</CustomTableCell>
             <CustomTableCell>CURP</CustomTableCell>
+            <CustomTableCell>Tipo de bien</CustomTableCell>
             <CustomTableCell>Sector/Industria</CustomTableCell>
             <CustomTableCell>Tipo de actividad</CustomTableCell>
-            <CustomTableCell>Descripción de la actividad</CustomTableCell>
+            <CustomTableCell>Descripción del bien</CustomTableCell>
             <CustomTableCell>Domicilio</CustomTableCell>
             <CustomTableCell>Ingreso bruto anual</CustomTableCell>
             <CustomTableCell>Moneda</CustomTableCell>
@@ -62,13 +63,14 @@ function CustomizedTable(props) {
           {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
-                <CustomTableCell>{index}-{item.nombre_denominacion_razon_social}</CustomTableCell>
+                <CustomTableCell>{index}-{item.nombre_denominacion}</CustomTableCell>
                 <CustomTableCell>{item.rfc}</CustomTableCell>
                 <CustomTableCell>{item.curp}</CustomTableCell>
+                <CustomTableCell>{item.tipo_bien}</CustomTableCell>
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
                 <CustomTableCell>{item.tipo_actividad_servicio.valor}</CustomTableCell>
-                <CustomTableCell>{item.descripcion_actividad_servicio}</CustomTableCell>
-                <CustomTableCell>{item.domicilio_persona_paga.pais.valor}</CustomTableCell>
+                <CustomTableCell>{item.descripcion_bien}</CustomTableCell>
+                <CustomTableCell>{item.domicilio_bien_enajenado.pais.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.moneda.moneda}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.unidad_temporal.valor}</CustomTableCell>

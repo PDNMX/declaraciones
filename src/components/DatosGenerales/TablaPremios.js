@@ -47,7 +47,7 @@ function CustomizedTable(props) {
             <CustomTableCell>CURP</CustomTableCell>
             <CustomTableCell>Sector/Industria</CustomTableCell>
             <CustomTableCell>Tipo de actividad</CustomTableCell>
-            <CustomTableCell>Descripción de la actividad</CustomTableCell>
+            <CustomTableCell>Descripción del tipo de premio</CustomTableCell>
             <CustomTableCell>Domicilio</CustomTableCell>
             <CustomTableCell>Ingreso bruto anual</CustomTableCell>
             <CustomTableCell>Moneda</CustomTableCell>
@@ -62,13 +62,13 @@ function CustomizedTable(props) {
           {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
-                <CustomTableCell>{index}-{item.nombre_denominacion_razon_social}</CustomTableCell>
+                <CustomTableCell>{index}-{item.nombre_denominacion}</CustomTableCell>
                 <CustomTableCell>{item.rfc}</CustomTableCell>
                 <CustomTableCell>{item.curp}</CustomTableCell>
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
                 <CustomTableCell>{item.tipo_actividad_servicio.valor}</CustomTableCell>
-                <CustomTableCell>{item.descripcion_actividad_servicio}</CustomTableCell>
-                <CustomTableCell>{item.domicilio_persona_paga.pais.valor}</CustomTableCell>
+                <CustomTableCell>{item.descripcion_premio}</CustomTableCell>
+                <CustomTableCell>{item.domicilio.pais.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.moneda.moneda}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.unidad_temporal.valor}</CustomTableCell>

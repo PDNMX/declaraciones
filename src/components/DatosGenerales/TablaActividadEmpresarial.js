@@ -68,7 +68,7 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
                 <CustomTableCell>{item.tipo_actividad_servicio.valor}</CustomTableCell>
                 <CustomTableCell>{item.descripcion_actividad_servicio}</CustomTableCell>
-                <CustomTableCell>{item.domicilio_persona_paga.pais.valor}</CustomTableCell>
+                <CustomTableCell>{item.domicilio_actividad_empresarial.pais.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.valor}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.moneda.moneda}</CustomTableCell>
                 <CustomTableCell>{item.ingreso_bruto_anual.unidad_temporal.valor}</CustomTableCell>
