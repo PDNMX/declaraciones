@@ -36,6 +36,16 @@ import Premios from "./Premios";
 import EnajenacionBienes from "./EnajenacionBienes";
 import OtrosIngresos from "./OtrosIngresos";
 import BienesInmuebles from "./BienesInmuebles";
+import BienesMueblesRegistrables from "./BienesMueblesRegistrables";
+import BienesMueblesNoRegistrables from "./BienesMueblesNoRegistrables";
+import Inversiones from "./Inversiones";
+import EfectivoMetales from "./EfectivoMetales";
+import Fideicomisos from "./Fideicomisos";
+import BienesIntangibles from "./BienesIntangibles";
+import CuentasCobrar from "./CuentasCobrar";
+import PropietarioTercero from "./PropietarioTercero";
+import Deudas from "./Deudas";
+import OtrasObligaciones from "./OtrasObligaciones";
 
 console.log(process.env.PUBLIC_URL);
 
@@ -1065,6 +1075,681 @@ class Index extends Component {
         "fecha_transaccion": "2010-07-26"
       },
       "observaciones": "Esto es una observación"
+    }],
+    "bienes_inmuebles": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_bien": {
+        "codigo": "VEH",
+        "valor": "Vehículo"
+      },
+      "superficie_terreno": 300,
+      "superficie_construccion": 100,
+      "titular": {
+        "codigo": "DECL",
+        "valor": "Declarante"
+      },
+      "porcentaje_propiedad": 70,
+      "nombre_copropietario": {
+        "nombres": "Carlos",
+        "primer_apellido": "Pérez",
+        "segundo_apellido": "string"
+      },
+      "identificacion_bien": {
+        "numero_escritura_publica": 202020,
+        "numero_registro_publico": 404040,
+        "folio_real": "jsjs74747",
+        "fecha_contrato": "2010-07-26"
+      },
+      "domicilio_bien": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad_federativa": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        },
+        "municipio": {
+          "nom_mun": "Ecatepec de Morelos",
+          "cve_mun": "033"
+        },
+        "cp": "55018",
+        "localidad": {
+          "nom_loc": "Ecatepec de Morelos",
+          "cve_loc": "0001"
+        },
+        "vialidad": {
+          "tipo_vial": "CALLE",
+          "nom_vial": "El Rosal"
+        },
+        "numExt": "24",
+        "numInt": "48"
+      },
+      "forma_adquisicion": {
+        "codigo": "CES",
+        "valor": "Cesión"
+      },
+      "nombre_denominacion_quien_adquirio": "Monster Inc.",
+      "rfc_quien_adquirio": "GOAP780710RH7",
+      "curp_quien_adquirio": "BEML920313HMCLNS09",
+      "relacion_persona_adquirio": {
+        "codigo": "CONY",
+        "valor": "Cónyuge"
+      },
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "fecha_adquisicion": "2010-07-26",
+      "precio_adquisicion": {
+        "valor": 4000,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        }
+      },
+      "valor_catastral": 800,
+      "observaciones": "Esto es una observación"
+    }],
+    "bienes_muebles_registrables": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_bien_mueble": {
+        "codigo": "VEH",
+        "valor": "Vehículo"
+      },
+      "marca": "NISSAN",
+      "submarca": "RS-122234",
+      "modelo": 2018,
+      "numero_serie": "6545243-4334",
+      "lugar_registro": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        }
+      },
+      "titular_bien": {
+        "codigo": "DECL",
+        "valor": "Declarante"
+      },
+      "porcentaje_propiedad": 70,
+      "nombres_copropietarios": [
+        "Monstr Inc."
+      ],
+      "numero_registro_vehicular": 455000,
+      "forma_adquisicion": {
+        "codigo": "CES",
+        "valor": "Cesión"
+      },
+      "nombre_denominacion_adquirio": "Monstr Inc.",
+      "rfc_quien_adquirio": "GOAP780710RH7",
+      "relacion_persona_quien_adquirio": {
+        "codigo": "CONY",
+        "valor": "Cónyuge"
+      },
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "fecha_adquisicion": "2010-07-26",
+      "precio_adquisicion": {
+        "valor": 4000,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        }
+      },
+      "observaciones": "Esto es una observación"
+    }],
+    "bienes_muebles_no_registrables": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_bien": {
+        "codigo": "VEH",
+        "valor": "Vehículo"
+      },
+      "descripcion": "Con descripción",
+      "titular_bien": {
+        "codigo": "DECL",
+        "valor": "Declarante"
+      },
+      "porcentaje_propiedad": 70,
+      "nombres_copropietarios": [
+        "Monstr Inc."
+      ],
+      "forma_adquisicion": {
+        "codigo": "CES",
+        "valor": "Cesión"
+      },
+      "nombre_denominacion_adquirio": "Tesl Mtr Inc.",
+      "relacion_quien_adquirio": {
+        "codigo": "CONY",
+        "valor": "Cónyuge"
+      },
+      "fecha_adquisicion": "2010-07-26",
+      "precio_adquisicion": {
+        "valor": 4000,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        }
+      },
+      "observaciones": "Esto es una observación"
+    }],
+    "inversiones_cuentas_valores": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_inversion": {
+        "codigo": "VALS",
+        "valor": "Valores"
+      },
+      "tipo_especifico_inversion": {
+        "codigo": "VALRS",
+        "valor": "Valores"
+      },
+      "numero_cuenta": "GFHRTY788778",
+      "nacional_extranjero": {
+        "valor": "México",
+        "codigo": "MX"
+      },
+      "nombre_institucion": "Bank Inkc",
+      "rfc_institucion": "GOAP780710RH7",
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "domicilio_institucion": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad_federativa": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        },
+        "municipio": {
+          "nom_mun": "Ecatepec de Morelos",
+          "cve_mun": "033"
+        },
+        "cp": "55018",
+        "localidad": {
+          "nom_loc": "Ecatepec de Morelos",
+          "cve_loc": "0001"
+        },
+        "vialidad": {
+          "tipo_vial": "CALLE",
+          "nom_vial": "El Rosal"
+        },
+        "numExt": "24",
+        "numInt": "48"
+      },
+      "forma_adquisicion": {
+        "codigo": "CES",
+        "valor": "Cesión"
+      },
+      "fecha_inicio": "2010-07-26",
+      "monto_original": 80000,
+      "tipo_moneda": {
+        "codigo": "MXN",
+        "moneda": "Peso mexicano"
+      },
+      "tasa_interes": 10,
+      "saldo_anual": 5000,
+      "plazo": 6,
+      "unidad_medida_plazo": {
+        "codigo": "MESS",
+        "valor": "Meses"
+      },
+      "titular_bien": {
+        "codigo": "DECL",
+        "valor": "Declarante"
+      },
+      "porcentaje_inversion": 70,
+      "observaciones": "Esto es una observación"
+    }],
+    "efectivo_metales": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_moneda": {
+        "codigo": "MXN",
+        "moneda": "Peso mexicano"
+      },
+      "monto": 78555,
+      "tipo_metal": {
+        "codigo": "ORO",
+        "valor": "Oro"
+      },
+      "unidades": 100,
+      "forma_adquisicion": {
+        "codigo": "CES",
+        "valor": "Cesión"
+      },
+      "observaciones_comentarios": "Esto es una observación"
+    }],
+    "fideicomisos": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "identificador_fideicomiso": "93232",
+      "tipo_fideicomiso": {
+        "codigo": "GARNT",
+        "valor": "Garantía"
+      },
+      "objetivo": "Objetivo del fideicomiso",
+      "numero_registro": "788544abc",
+      "fecha_creacion": "2010-07-26",
+      "vigencia": "2010-07-26",
+      "residencia": {
+        "valor": "México",
+        "codigo": "MX"
+      },
+      "valor": 78555555,
+      "moneda": {
+        "codigo": "MXN",
+        "moneda": "Peso mexicano"
+      },
+      "porcentaje_propiedad_derechos_fiduciarios": 70,
+      "ingreso_monetario_obtenido": 56666,
+      "institucion_fiduciaria": "Banco de México",
+      "fideicomitente": {
+        "nombre": "Banco Robmen1",
+        "rfc": "GOAP780710RH7",
+        "curp": "BEML920313HMCLNS09",
+        "domicilio": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "fecha_constitucion": "2010-07-26"
+      },
+      "fideicomisario": {
+        "nombre": "Banco Robmen1",
+        "rfc": "GOAP780710RH7",
+        "curp": "BEML920313HMCLNS09",
+        "domicilio": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "fecha_constitucion": "2010-07-26"
+      },
+      "fiduciario": {
+        "nombre": "Banco Robmen1",
+        "rfc": "GOAP780710RH7",
+        "curp": "BEML920313HMCLNS09",
+        "domicilio": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "fecha_constitucion": "2010-07-26"
+      },
+      "observaciones": "Esto es una observación"
+    }],
+    "bienes_intangibles": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "propietario_registrado": "Sergio Perez",
+      "descripcion": "Aquí va una descripción",
+      "ente_publico_encargado": {
+        "nombres": "Carlos",
+        "primer_apellido": "Pérez",
+        "segundo_apellido": "López"
+      },
+      "numero_registro": 754444,
+      "fecha_registro": "2010-07-26",
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "precio_adquisicion": {
+        "valor": 4000,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        }
+      },
+      "forma_adquisicion": {
+        "codigo": "CES",
+        "valor": "Cesión"
+      },
+      "fecha_vencimiento": "2010-07-26",
+      "porcentaje_copropiedad": 70,
+      "precio_total_copropiedad": {
+        "valor": 4000,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        }
+      },
+      "nombre_copropietario": "Vien Inc,",
+      "porcentaje_propiedad_copropietario": 70,
+      "observaciones": "Esto es una observación"
+    }],
+    "cuentas_por_cobrar": [{
+      "id": 123,
+      "nombre_prestatario": "Max Power Tier",
+      "numero_registro": "488755avvv",
+      "domicilio_prestatarios": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad_federativa": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        },
+        "municipio": {
+          "nom_mun": "Ecatepec de Morelos",
+          "cve_mun": "033"
+        },
+        "cp": "55018",
+        "localidad": {
+          "nom_loc": "Ecatepec de Morelos",
+          "cve_loc": "0001"
+        },
+        "vialidad": {
+          "tipo_vial": "CALLE",
+          "nom_vial": "El Rosal"
+        },
+        "numExt": "24",
+        "numInt": "48"
+      },
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "fecha_prestamo": "2010-07-26",
+      "monto_original_prestamo": 488844,
+      "tasa_interes": 10.01,
+      "saldo_pendiente": 4555,
+      "fecha_vencimiento": "2010-07-26",
+      "porcentaje_copropiedad": 70,
+      "nombre_copropietario": "Max Power Bansky",
+      "observaciones": "Esto es una observación"
+    }],
+    "uso_especie_propiedad_tercero": [{
+      "id": 123,
+      "tipo_bien": {
+        "codigo": "VEH",
+        "valor": "Vehículo"
+      },
+      "valor_mercado": {
+        "valor": 4000,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        }
+      },
+      "nombre_tercero_propietario": "Bansky Von Trier",
+      "rfc_tercero_propietario": "GOAP780710RH7",
+      "curp_tercero_propietario": "BEML920313HMCLNS09",
+      "relacion_persona": {
+        "codigo": "CONY",
+        "valor": "Cónyuge"
+      },
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "fecha_inicio": "2010-07-26",
+      "domicilio_persona": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad_federativa": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        },
+        "municipio": {
+          "nom_mun": "Ecatepec de Morelos",
+          "cve_mun": "033"
+        },
+        "cp": "55018",
+        "localidad": {
+          "nom_loc": "Ecatepec de Morelos",
+          "cve_loc": "0001"
+        },
+        "vialidad": {
+          "tipo_vial": "CALLE",
+          "nom_vial": "El Rosal"
+        },
+        "numExt": "24",
+        "numInt": "48"
+      },
+      "observaciones": "Esto es una observación"
+    }],
+    "deudas": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_acreedor": {
+        "codigo": "INSTF",
+        "valor": "Institución Financiera"
+      },
+      "tipo_adeudo": {
+        "codigo": "CVH",
+        "valor": "Compra de vehículo"
+      },
+      "identificador_deuda": "CONT12354",
+      "nacional_extranjero": {
+        "valor": "México",
+        "codigo": "MX"
+      },
+      "nombre_acreedor": "PNBKSRIBAS S.A. DE C.V",
+      "rfc_acreedor": "GOAP780710RH7",
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "domicilio_acreedor": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad_federativa": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        },
+        "municipio": {
+          "nom_mun": "Ecatepec de Morelos",
+          "cve_mun": "033"
+        },
+        "cp": "55018",
+        "localidad": {
+          "nom_loc": "Ecatepec de Morelos",
+          "cve_loc": "0001"
+        },
+        "vialidad": {
+          "tipo_vial": "CALLE",
+          "nom_vial": "El Rosal"
+        },
+        "numExt": "24",
+        "numInt": "48"
+      },
+      "fecha_adeudo": "2010-07-26",
+      "monto_original": 277900,
+      "tipo_moneda": {
+        "codigo": "MXN",
+        "moneda": "Peso mexicano"
+      },
+      "tasa_interes": 12,
+      "saldo_pendiente": 28000,
+      "montos_abonados": [
+        28000
+      ],
+      "plazo_adeudo": 24,
+      "unidad_medida_adeudo": {
+        "codigo": "MESS",
+        "valor": "Meses"
+      },
+      "titularidad_deuda": {
+        "codigo": "DECL",
+        "valor": "Declarante"
+      },
+      "porcentaje_adeudo_titular": 70,
+      "garantia": true,
+      "nombre_garante": "Bansky Von Tier",
+      "observaciones": "Esto es una observación"
+    }],
+    "otras_obligaciones": [{
+      "id": 123,
+      "tipo_operacion": {
+        "codigo": "INCP",
+        "valor": "Incorporación"
+      },
+      "tipo_acreedor": {
+        "codigo": "INSTF",
+        "valor": "Institución Financiera"
+      },
+      "tipo_obligacion": "Ejemplo",
+      "identificador_obligacion": "FONAET8945",
+      "nacional_extranjero": {
+        "valor": "México",
+        "codigo": "MX"
+      },
+      "nombre_acreedor": "Bansky Hola Adios",
+      "rfc_acreedor": "GOAP780710RH7",
+      "sector_industria": {
+        "codigo": "SFS",
+        "valor": "Servicios de salud y asistencia social"
+      },
+      "domicilio_acreedor": {
+        "pais": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "entidad_federativa": {
+          "nom_ent": "México",
+          "cve_ent": "15"
+        },
+        "municipio": {
+          "nom_mun": "Ecatepec de Morelos",
+          "cve_mun": "033"
+        },
+        "cp": "55018",
+        "localidad": {
+          "nom_loc": "Ecatepec de Morelos",
+          "cve_loc": "0001"
+        },
+        "vialidad": {
+          "tipo_vial": "CALLE",
+          "nom_vial": "El Rosal"
+        },
+        "numExt": "24",
+        "numInt": "48"
+      },
+      "fecha_obligacion": "2010-07-26",
+      "monto_original": 300000,
+      "tipo_moneda": {
+        "codigo": "MXN",
+        "moneda": "Peso mexicano"
+      },
+      "tasa_interes": 12,
+      "saldo_pendiente": 297000,
+      "montos_abonados": [
+        28000
+      ],
+      "plazo_obligacion": 360,
+      "unidad_medida_plazo": {
+        "codigo": "MESS",
+        "valor": "Meses"
+      },
+      "titularidad_obligacion": {
+        "codigo": "DECL",
+        "valor": "Declarante"
+      },
+      "porcentaje_obligacion_titular": 70,
+      "garantia": true,
+      "observaciones": "Esto es una observación"
     }]
   };
 
@@ -2093,6 +2778,736 @@ class Index extends Component {
     // console.log("hi");
   };
 
+  handleClickBienesInmuebles = () => event => {
+    this.state.bienes_inmuebles.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_bien": {
+          "codigo": "VEH",
+          "valor": "Vehículo"
+        },
+        "superficie_terreno": 300,
+        "superficie_construccion": 100,
+        "titular": {
+          "codigo": "DECL",
+          "valor": "Declarante"
+        },
+        "porcentaje_propiedad": 70,
+        "nombre_copropietario": {
+          "nombres": "Carlos",
+          "primer_apellido": "Pérez",
+          "segundo_apellido": "string"
+        },
+        "identificacion_bien": {
+          "numero_escritura_publica": 202020,
+          "numero_registro_publico": 404040,
+          "folio_real": "jsjs74747",
+          "fecha_contrato": "2010-07-26"
+        },
+        "domicilio_bien": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "forma_adquisicion": {
+          "codigo": "CES",
+          "valor": "Cesión"
+        },
+        "nombre_denominacion_quien_adquirio": "Monster Inc.",
+        "rfc_quien_adquirio": "GOAP780710RH7",
+        "curp_quien_adquirio": "BEML920313HMCLNS09",
+        "relacion_persona_adquirio": {
+          "codigo": "CONY",
+          "valor": "Cónyuge"
+        },
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "fecha_adquisicion": "2010-07-26",
+        "precio_adquisicion": {
+          "valor": 4000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          }
+        },
+        "valor_catastral": 800,
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickBienesMueblesRegistrables = () => event => {
+    this.state.bienes_muebles_registrables.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_bien_mueble": {
+          "codigo": "VEH",
+          "valor": "Vehículo"
+        },
+        "marca": "NISSAN",
+        "submarca": "RS-122234",
+        "modelo": 2018,
+        "numero_serie": "6545243-4334",
+        "lugar_registro": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          }
+        },
+        "titular_bien": {
+          "codigo": "DECL",
+          "valor": "Declarante"
+        },
+        "porcentaje_propiedad": 70,
+        "nombres_copropietarios": [
+          "Monstr Inc."
+        ],
+        "numero_registro_vehicular": 455000,
+        "forma_adquisicion": {
+          "codigo": "CES",
+          "valor": "Cesión"
+        },
+        "nombre_denominacion_adquirio": "Monstr Inc.",
+        "rfc_quien_adquirio": "GOAP780710RH7",
+        "relacion_persona_quien_adquirio": {
+          "codigo": "CONY",
+          "valor": "Cónyuge"
+        },
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "fecha_adquisicion": "2010-07-26",
+        "precio_adquisicion": {
+          "valor": 4000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          }
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickBienesMueblesNoRegistrables = () => event => {
+    this.state.bienes_muebles_no_registrables.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_bien": {
+          "codigo": "VEH",
+          "valor": "Vehículo"
+        },
+        "descripcion": "Con descripción",
+        "titular_bien": {
+          "codigo": "DECL",
+          "valor": "Declarante"
+        },
+        "porcentaje_propiedad": 70,
+        "nombres_copropietarios": [
+          "Monstr Inc."
+        ],
+        "forma_adquisicion": {
+          "codigo": "CES",
+          "valor": "Cesión"
+        },
+        "nombre_denominacion_adquirio": "Tesl Mtr Inc.",
+        "relacion_quien_adquirio": {
+          "codigo": "CONY",
+          "valor": "Cónyuge"
+        },
+        "fecha_adquisicion": "2010-07-26",
+        "precio_adquisicion": {
+          "valor": 4000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          }
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickInversiones = () => event => {
+    this.state.inversiones_cuentas_valores.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_inversion": {
+          "codigo": "VALS",
+          "valor": "Valores"
+        },
+        "tipo_especifico_inversion": {
+          "codigo": "VALRS",
+          "valor": "Valores"
+        },
+        "numero_cuenta": "GFHRTY788778",
+        "nacional_extranjero": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "nombre_institucion": "Bank Inkc",
+        "rfc_institucion": "GOAP780710RH7",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "domicilio_institucion": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "forma_adquisicion": {
+          "codigo": "CES",
+          "valor": "Cesión"
+        },
+        "fecha_inicio": "2010-07-26",
+        "monto_original": 80000,
+        "tipo_moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        },
+        "tasa_interes": 10,
+        "saldo_anual": 5000,
+        "plazo": 6,
+        "unidad_medida_plazo": {
+          "codigo": "MESS",
+          "valor": "Meses"
+        },
+        "titular_bien": {
+          "codigo": "DECL",
+          "valor": "Declarante"
+        },
+        "porcentaje_inversion": 70,
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickEfectivoMetales = () => event => {
+    this.state.efectivo_metales.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        },
+        "monto": 78555,
+        "tipo_metal": {
+          "codigo": "ORO",
+          "valor": "Oro"
+        },
+        "unidades": 100,
+        "forma_adquisicion": {
+          "codigo": "CES",
+          "valor": "Cesión"
+        },
+        "observaciones_comentarios": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickFideicomisos = () => event => {
+    this.state.fideicomisos.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "identificador_fideicomiso": "93232",
+        "tipo_fideicomiso": {
+          "codigo": "GARNT",
+          "valor": "Garantía"
+        },
+        "objetivo": "Objetivo del fideicomiso",
+        "numero_registro": "788544abc",
+        "fecha_creacion": "2010-07-26",
+        "vigencia": "2010-07-26",
+        "residencia": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "valor": 78555555,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        },
+        "porcentaje_propiedad_derechos_fiduciarios": 70,
+        "ingreso_monetario_obtenido": 56666,
+        "institucion_fiduciaria": "Banco de México",
+        "fideicomitente": {
+          "nombre": "Banco Robmen1",
+          "rfc": "GOAP780710RH7",
+          "curp": "BEML920313HMCLNS09",
+          "domicilio": {
+            "pais": {
+              "valor": "México",
+              "codigo": "MX"
+            },
+            "entidad_federativa": {
+              "nom_ent": "México",
+              "cve_ent": "15"
+            },
+            "municipio": {
+              "nom_mun": "Ecatepec de Morelos",
+              "cve_mun": "033"
+            },
+            "cp": "55018",
+            "localidad": {
+              "nom_loc": "Ecatepec de Morelos",
+              "cve_loc": "0001"
+            },
+            "vialidad": {
+              "tipo_vial": "CALLE",
+              "nom_vial": "El Rosal"
+            },
+            "numExt": "24",
+            "numInt": "48"
+          },
+          "fecha_constitucion": "2010-07-26"
+        },
+        "fideicomisario": {
+          "nombre": "Banco Robmen1",
+          "rfc": "GOAP780710RH7",
+          "curp": "BEML920313HMCLNS09",
+          "domicilio": {
+            "pais": {
+              "valor": "México",
+              "codigo": "MX"
+            },
+            "entidad_federativa": {
+              "nom_ent": "México",
+              "cve_ent": "15"
+            },
+            "municipio": {
+              "nom_mun": "Ecatepec de Morelos",
+              "cve_mun": "033"
+            },
+            "cp": "55018",
+            "localidad": {
+              "nom_loc": "Ecatepec de Morelos",
+              "cve_loc": "0001"
+            },
+            "vialidad": {
+              "tipo_vial": "CALLE",
+              "nom_vial": "El Rosal"
+            },
+            "numExt": "24",
+            "numInt": "48"
+          },
+          "fecha_constitucion": "2010-07-26"
+        },
+        "fiduciario": {
+          "nombre": "Banco Robmen1",
+          "rfc": "GOAP780710RH7",
+          "curp": "BEML920313HMCLNS09",
+          "domicilio": {
+            "pais": {
+              "valor": "México",
+              "codigo": "MX"
+            },
+            "entidad_federativa": {
+              "nom_ent": "México",
+              "cve_ent": "15"
+            },
+            "municipio": {
+              "nom_mun": "Ecatepec de Morelos",
+              "cve_mun": "033"
+            },
+            "cp": "55018",
+            "localidad": {
+              "nom_loc": "Ecatepec de Morelos",
+              "cve_loc": "0001"
+            },
+            "vialidad": {
+              "tipo_vial": "CALLE",
+              "nom_vial": "El Rosal"
+            },
+            "numExt": "24",
+            "numInt": "48"
+          },
+          "fecha_constitucion": "2010-07-26"
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickBienesIntangibles = () => event => {
+    this.state.bienes_intangibles.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "propietario_registrado": "Sergio Perez",
+        "descripcion": "Aquí va una descripción",
+        "ente_publico_encargado": {
+          "nombres": "Carlos",
+          "primer_apellido": "Pérez",
+          "segundo_apellido": "López"
+        },
+        "numero_registro": 754444,
+        "fecha_registro": "2010-07-26",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "precio_adquisicion": {
+          "valor": 4000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          }
+        },
+        "forma_adquisicion": {
+          "codigo": "CES",
+          "valor": "Cesión"
+        },
+        "fecha_vencimiento": "2010-07-26",
+        "porcentaje_copropiedad": 70,
+        "precio_total_copropiedad": {
+          "valor": 4000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          }
+        },
+        "nombre_copropietario": "Vien Inc,",
+        "porcentaje_propiedad_copropietario": 70,
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickCuentasCobrar = () => event => {
+    this.state.cuentas_por_cobrar.push({
+        "id": 123,
+        "nombre_prestatario": "Max Power Tier",
+        "numero_registro": "488755avvv",
+        "domicilio_prestatarios": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "fecha_prestamo": "2010-07-26",
+        "monto_original_prestamo": 488844,
+        "tasa_interes": 10.01,
+        "saldo_pendiente": 4555,
+        "fecha_vencimiento": "2010-07-26",
+        "porcentaje_copropiedad": 70,
+        "nombre_copropietario": "Max Power Bansky",
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickPropietarioTercero = () => event => {
+    this.state.uso_especie_propiedad_tercero.push({
+        "id": 123,
+        "tipo_bien": {
+          "codigo": "VEH",
+          "valor": "Vehículo"
+        },
+        "valor_mercado": {
+          "valor": 4000,
+          "moneda": {
+            "codigo": "MXN",
+            "moneda": "Peso mexicano"
+          }
+        },
+        "nombre_tercero_propietario": "Bansky Von Trier",
+        "rfc_tercero_propietario": "GOAP780710RH7",
+        "curp_tercero_propietario": "BEML920313HMCLNS09",
+        "relacion_persona": {
+          "codigo": "CONY",
+          "valor": "Cónyuge"
+        },
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "fecha_inicio": "2010-07-26",
+        "domicilio_persona": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickDeudas = () => event => {
+    this.state.deudas.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_acreedor": {
+          "codigo": "INSTF",
+          "valor": "Institución Financiera"
+        },
+        "tipo_adeudo": {
+          "codigo": "CVH",
+          "valor": "Compra de vehículo"
+        },
+        "identificador_deuda": "CONT12354",
+        "nacional_extranjero": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "nombre_acreedor": "PNBKSRIBAS S.A. DE C.V",
+        "rfc_acreedor": "GOAP780710RH7",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "domicilio_acreedor": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "fecha_adeudo": "2010-07-26",
+        "monto_original": 277900,
+        "tipo_moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        },
+        "tasa_interes": 12,
+        "saldo_pendiente": 28000,
+        "montos_abonados": [
+          28000
+        ],
+        "plazo_adeudo": 24,
+        "unidad_medida_adeudo": {
+          "codigo": "MESS",
+          "valor": "Meses"
+        },
+        "titularidad_deuda": {
+          "codigo": "DECL",
+          "valor": "Declarante"
+        },
+        "porcentaje_adeudo_titular": 70,
+        "garantia": true,
+        "nombre_garante": "Bansky Von Tier",
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
+  handleClickOtrasObligaciones = () => event => {
+    this.state.otras_obligaciones.push({
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "INCP",
+          "valor": "Incorporación"
+        },
+        "tipo_acreedor": {
+          "codigo": "INSTF",
+          "valor": "Institución Financiera"
+        },
+        "tipo_obligacion": "Ejemplo",
+        "identificador_obligacion": "FONAET8945",
+        "nacional_extranjero": {
+          "valor": "México",
+          "codigo": "MX"
+        },
+        "nombre_acreedor": "Bansky Hola Adios",
+        "rfc_acreedor": "GOAP780710RH7",
+        "sector_industria": {
+          "codigo": "SFS",
+          "valor": "Servicios de salud y asistencia social"
+        },
+        "domicilio_acreedor": {
+          "pais": {
+            "valor": "México",
+            "codigo": "MX"
+          },
+          "entidad_federativa": {
+            "nom_ent": "México",
+            "cve_ent": "15"
+          },
+          "municipio": {
+            "nom_mun": "Ecatepec de Morelos",
+            "cve_mun": "033"
+          },
+          "cp": "55018",
+          "localidad": {
+            "nom_loc": "Ecatepec de Morelos",
+            "cve_loc": "0001"
+          },
+          "vialidad": {
+            "tipo_vial": "CALLE",
+            "nom_vial": "El Rosal"
+          },
+          "numExt": "24",
+          "numInt": "48"
+        },
+        "fecha_obligacion": "2010-07-26",
+        "monto_original": 300000,
+        "tipo_moneda": {
+          "codigo": "MXN",
+          "moneda": "Peso mexicano"
+        },
+        "tasa_interes": 12,
+        "saldo_pendiente": 297000,
+        "montos_abonados": [
+          28000
+        ],
+        "plazo_obligacion": 360,
+        "unidad_medida_plazo": {
+          "codigo": "MESS",
+          "valor": "Meses"
+        },
+        "titularidad_obligacion": {
+          "codigo": "DECL",
+          "valor": "Declarante"
+        },
+        "porcentaje_obligacion_titular": 70,
+        "garantia": true,
+        "observaciones": "Esto es una observación"
+      });
+    this.setState(this.state);
+    // console.log("hi");
+  };
+
 
   handleClick = () => event => {
     var data = {
@@ -2747,12 +4162,179 @@ class Index extends Component {
             handleClick={this.handleClick}
           />
 
+          <BienesInmuebles
+            data={this.state}
+            handleClickBienesInmuebles={this.handleClickBienesInmuebles}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+          <BienesMueblesRegistrables
+            data={this.state}
+            handleClickBienesMueblesRegistrables={this.handleClickBienesMueblesRegistrables}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+
+
+          <BienesMueblesNoRegistrables
+            data={this.state}
+            handleClickBienesMueblesNoRegistrables={this.handleClickBienesMueblesNoRegistrables}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+
+          <Inversiones
+            data={this.state}
+            handleClickInversiones={this.handleClickInversiones}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+
+          <EfectivoMetales
+            data={this.state}
+            handleClickEfectivoMetales={this.handleClickEfectivoMetales}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+          <Fideicomisos
+            data={this.state}
+            handleClickFideicomisos={this.handleClickFideicomisos}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+          <BienesIntangibles
+            data={this.state}
+            handleClickBienesIntangibles={this.handleClickBienesIntangibles}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+
+          <CuentasCobrar
+            data={this.state}
+            handleClickCuentasCobrar={this.handleClickCuentasCobrar}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+
+
+          <PropietarioTercero
+            data={this.state}
+            handleClickPropietarioTercero={this.handleClickPropietarioTercero}
+            handleChange={this.handleChange}
+            handleChangeEntidades={this.handleChangeEntidades}
+            handleChangeFecha={this.handleChangeFecha}
+            handleChangeEdoCivil={this.handleChangeEdoCivil}
+            handleChangeRegimen={this.handleChangeRegimen}
+            handleChangeDirPais={this.handleChangeDirPais}
+            handleChangeMunicipios={this.handleChangeMunicipios}
+            handleChangeLocalidades={this.handleChangeLocalidades}
+            handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+            handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+            handleClick={this.handleClick}
+          />
+        </Grid>
+
+        <Deudas
+          data={this.state}
+          handleClickDeudas={this.handleClickDeudas}
+          handleChange={this.handleChange}
+          handleChangeEntidades={this.handleChangeEntidades}
+          handleChangeFecha={this.handleChangeFecha}
+          handleChangeEdoCivil={this.handleChangeEdoCivil}
+          handleChangeRegimen={this.handleChangeRegimen}
+          handleChangeDirPais={this.handleChangeDirPais}
+          handleChangeMunicipios={this.handleChangeMunicipios}
+          handleChangeLocalidades={this.handleChangeLocalidades}
+          handleChangeTipoVialidad={this.handleChangeTipoVialidad}
+          handleChangeNombreVialidad={this.handleChangeNombreVialidad}
+          handleClick={this.handleClick}
+        />
+
 
 */}
 
-            <BienesInmuebles
+            <OtrasObligaciones
               data={this.state}
-              handleClickOtrosIngresos={this.handleClickOtrosIngresos}
+              handleClickOtrasObligaciones={this.handleClickOtrasObligaciones}
               handleChange={this.handleChange}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
