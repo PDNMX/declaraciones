@@ -1,10 +1,10 @@
-#Interfaz de declaraciones
+# Interfaz de declaraciones
 
-##¿Qué es y para qué sirve?
+## ¿Qué es y para qué sirve?
 
 Es una interfaz web que permite a las dependencias capturar las declaraciones referentes al primer sistema de la PDN.
 
-##¿Cómo se corre?
+## ¿Cómo se corre?
 
 1. 
 2.
