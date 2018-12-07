@@ -63,19 +63,8 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    setDataInformacionPersonal,
-    anyTextChange,
-    handleChangeDirPais,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad
+    setDataInformacionPersonal
   } = props;
-
-  let fecha_nacimiento=new Date(data.fecha_nacimiento);
 
   return (
     <Card className={classes.card}>
@@ -212,26 +201,28 @@ function SimpleCard(props) {
             </FormControl>
           </Grid>
           <Grid item xs={2}>
-          {/*
+
             <TextField
               id="fecha_nacimiento"
               label="Fecha de nacimiento"
               type="date"
-              defaultValue={moment(data.fecha_nacimiento, "YYYY-MM-DD").format(
-                "DD-MM-YYYY"
+              defaultValue={moment(data.fecha_nacimiento).format(
+                "DD/MM/YYYY"
               )}
-              format={"DD/MM/YYYY"}
+              format={"DD-MM-YYYY"}
               className={classes.select}
               onChange={setDataInformacionPersonal("fecha_nacimiento")}
               InputLabelProps={{
                 shrink: true
               }}
             />
-            */}
+            {/*
             <DatePicker
               selected={fecha_nacimiento}
               onChange={setDataInformacionPersonal("fecha_nacimiento")}
             />
+            */}
+
           </Grid>
           <Grid item xs={2}>
             <TextField
@@ -339,17 +330,7 @@ function SimpleCard(props) {
               municipios={data.municipios}
               localidades={data.localidades}
               tipovialidad={data.tipovialidad}
-              direccion="domicilio_informacion_general"
               handleChange={setDataInformacionPersonal}
-              anyTextChange={anyTextChange}
-              handleChangeEntidades={handleChangeEntidades}
-              handleChangeEdoCivil={handleChangeEdoCivil}
-              handleChangeRegimen={handleChangeRegimen}
-              handleChangeDirPais={handleChangeDirPais}
-              handleChangeMunicipios={handleChangeMunicipios}
-              handleChangeLocalidades={handleChangeLocalidades}
-              handleChangeTipoVialidad={handleChangeTipoVialidad}
-              handleChangeNombreVialidad={handleChangeNombreVialidad}
             />
           </Grid>
         </Grid>

@@ -1,7 +1,8 @@
 import moment from "moment";
 
 export var data = {
-  show: 1,
+  debug: true,
+  show: 2,
   message: "",
   type: "",
   ciudades: [],
@@ -10,103 +11,100 @@ export var data = {
   localidades: [],
   tipovialidad: [],
   estadosciviles: [],
+  documentoObtenido: [],
+  estatusEstudio: [],
   regimen: [],
   startDate: moment(),
-  informacion_general_nacionalidades: ["MX"],
+  informacion_general_nacionalidades: [],
   informacion_general: {
-    nombres: "Carlos",
-    primer_apellido: "Pérez",
-    segundo_apellido: "López",
-    nacionalidades: [
-      {
-        valor: "México",
-        codigo: "MX"
-      }
-    ],
+    nombres: "",
+    primer_apellido: "",
+    segundo_apellido: "",
+    nacionalidades: [],
     pais_nacimiento: {
-      valor: "México",
-      codigo: "MX"
+      valor: "",
+      codigo: ""
     },
     entidad_federativa_nacimiento: {
-      nom_ent: "México",
-      cve_ent: "15"
+      nom_ent: "",
+      cve_ent: ""
     },
-    curp: "BEML920313HMCLNS09",
-    rfc: "GOAP780710RH7",
-    fecha_nacimiento: "2010-07-26",
-    numero_identificacion_oficial: "a1b2c3d4",
+    curp: "",
+    rfc: "",
+    fecha_nacimiento: "",
+    numero_identificacion_oficial: "",
     correo_electronico: {
-      personal: "jperez@ejemplo.com.mx",
-      laboral: "jperez@ejemplo.com.mx"
+      personal: "",
+      laboral: ""
     },
     telefono: {
-      particular: "+525510203040",
-      celular: "+525510203040"
+      particular: "",
+      celular: ""
     },
     domicilio: {
       pais: {
-        valor: "México",
-        codigo: "MX"
+        valor: "",
+        codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "México",
-        cve_ent: "15"
+        nom_ent: "",
+        cve_ent: ""
       },
       municipio: {
-        nom_mun: "Ecatepec de Morelos",
-        cve_mun: "033"
+        nom_mun: "",
+        cve_mun: ""
       },
-      cp: "55018",
+      cp: "",
       localidad: {
-        nom_loc: "Ecatepec de Morelos",
-        cve_loc: "0001"
+        nom_loc: "",
+        cve_loc: ""
       },
       vialidad: {
-        tipo_vial: "CALLE",
-        nom_vial: "El Rosal"
+        tipo_vial: "",
+        nom_vial: ""
       },
-      numExt: "24",
-      numInt: "48"
+      numExt: "",
+      numInt: ""
     },
     estado_civil: {
-      codigo: "CAS",
-      valor: "Casado (a)"
+      codigo: "",
+      valor: ""
     },
     regimen_matrimonial: {
-      codigo: "SBI",
-      valor: "Separación de bienes"
+      codigo: "",
+      valor: ""
     },
-    fecha_declaracion: "2010-07-26"
+    fecha_declaracion: ""
   },
+  datos_curriculares_grados_academicos: {
+    grado_obtenido: "",
+    institucion_educativa: "",
+    lugar_institucion_educativa: {
+      pais: {
+        valor: "",
+        codigo: ""
+      },
+      entidad: {
+        nom_ent: "",
+        cve_ent: ""
+      }
+    },
+    carrera: "",
+    estatus: {
+      codigo: "",
+      valor: ""
+    },
+    ano_conclusion: "",
+    documento_obtenido: {
+      codigo: "",
+      valor: ""
+    },
+    cedula_profesional: ""
+  },
+
   datos_curriculares: {
     grado_maximo_escolaridad: "Licenciatura",
-    grados_academicos: [
-      {
-        grado_obtenido: "Licenciatura",
-        institucion_educativa: "La Universidad Nacionalista México",
-        lugar_institucion_educativa: {
-          pais: {
-            valor: "México",
-            codigo: "MX"
-          },
-          entidad: {
-            nom_ent: "México",
-            cve_ent: "15"
-          }
-        },
-        carrera: "Ing. en Sistemas Computacionales",
-        estatus: {
-          codigo: "CURS",
-          valor: "Cursando"
-        },
-        ano_conclusion: "2005",
-        documento_obtenido: {
-          codigo: "BOL",
-          valor: "Boleta"
-        },
-        cedula_profesional: "2094884"
-      }
-    ]
+    grados_academicos: []
   },
   datos_encargo_actual: {
     ente_publico: "Presidencia de la República",
@@ -1945,4 +1943,30 @@ export var data = {
       observaciones: "Esto es una observación"
     }
   ]
+};
+
+export var datos_curriculares_grados_academicos = {
+  grado_obtenido: "",
+  institucion_educativa: "",
+  lugar_institucion_educativa: {
+    pais: {
+      valor: "",
+      codigo: ""
+    },
+    entidad: {
+      nom_ent: "",
+      cve_ent: ""
+    }
+  },
+  carrera: "",
+  estatus: {
+    codigo: "",
+    valor: ""
+  },
+  ano_conclusion: "",
+  documento_obtenido: {
+    codigo: "",
+    valor: ""
+  },
+  cedula_profesional: ""
 };

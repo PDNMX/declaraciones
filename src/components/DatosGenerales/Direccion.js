@@ -38,7 +38,6 @@ function FullWidthGrid(props) {
     municipios,
     localidades,
     tipovialidad,
-    direccion,
     handleChange
   } = props;
 

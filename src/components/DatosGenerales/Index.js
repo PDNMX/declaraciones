@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { data } from "./data";
+import { data,datos_curriculares_grados_academicos} from "./data";
 
 import Menu from "../Menu";
 import Formulario from "./Formulario";
@@ -142,40 +142,90 @@ class Index extends Component {
 
   getEntidadFederativa = cve_ent => {
     let info = this.state.entidades.filter(x => x.cve_ent === cve_ent);
+    this.updateMunicipios(cve_ent);
+
     return {
       nom_ent: info[0].nom_ent,
       cve_ent: info[0].cve_ent
     };
   };
 
-  getCiudad = codigo =>{
+  getMunicipios = cve_mun => {
+    let info = this.state.municipios.filter(x => x.cve_mun === cve_mun);
+
+    this.updateLocalidades(
+      this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
+      cve_mun
+    );
+
+    return {
+      nom_mun: info[0].nom_mun,
+      cve_mun: info[0].cve_mun
+    };
+  };
+
+  getLocalidad = cve_loc => {
+    let info = this.state.localidades.filter(x => x.cve_loc === cve_loc);
+
+    return {
+      nom_loc: info[0].nom_loc,
+      cve_loc: info[0].cve_loc
+    };
+  };
+
+  getCiudad = codigo => {
     let info = this.state.ciudades.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
     };
-  }
+  };
 
-  getEstadoCivil = codigo =>{
+  getEstadoCivil = codigo => {
     let info = this.state.estadosciviles.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
     };
-  }
+  };
 
-  getRegimenMatrimonial = codigo =>{
+  getRegimenMatrimonial = codigo => {
     let info = this.state.regimen.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
     };
-  }
+  };
 
+
+  getEstatusEstudio = codigo => {
+    let info = this.state.estatusEstudio.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+
+  getDocumuentoObtenido = codigo => {
+    let info = this.state.documentoObtenido.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
   updateMunicipios = cve_ent => {
     fetch(config.apiHost + "municipios?cve_ent=" + cve_ent)
       .then(res => res.json())
       .then(municipios => this.setState({ municipios: municipios }));
+  };
+
+  updateLocalidades = (cve_ent, cve_mun) => {
+    fetch(
+      config.apiHost + "localidades?cve_ent=" + cve_ent + "&cve_mun=" + cve_mun
+    )
+      .then(res => res.json())
+      .then(localidades => this.setState({ localidades: localidades }));
   };
 
   handleChangeEntidades = name => event => {
@@ -228,52 +278,34 @@ class Index extends Component {
   };
 
   handleChange = name => event => {
-    var ciudades = event.target.value;
-    var nacionalidad = [];
-    for (var index in ciudades) {
-      var ciudad = ciudades[index];
-      var valor = this.state.ciudades.filter(x => x.codigo === ciudad);
+    // var ciudades = event.target.value;
+    // var nacionalidad = [];
+    // for (var index in ciudades) {
+    //   var ciudad = ciudades[index];
+    //   var valor = this.state.ciudades.filter(x => x.codigo === ciudad);
+    //
+    //   delete valor[0]._id;
+    //   nacionalidad.push(valor);
+    //   // console.log(nacionalidad);
+    // }
 
-      delete valor[0]._id;
-      nacionalidad.push(valor);
-      // console.log(nacionalidad);
-    }
-
-    this.setState({ nacionalidades: nacionalidad });
-    this.setState({
-      [name]: event.target.value
-    });
+    // this.setState({ nacionalidades: nacionalidad });
+    // this.setState({
+    //   [name]: event.target.value
+    // });
     // console.log(event.target.value);
   };
 
   handleClickDatosCurriculares = () => event => {
-    this.state.datos_curriculares.grados_academicos.push({
-      grado_obtenido: "Licenciatura",
-      institucion_educativa: "La Universidad Nacionalista México",
-      lugar_institucion_educativa: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad: {
-          nom_ent: "México",
-          cve_ent: "15"
-        }
-      },
-      carrera: "Ing. en Sistemas Computacionales",
-      estatus: {
-        codigo: "CURS",
-        valor: "Cursando"
-      },
-      ano_conclusion: "2005",
-      documento_obtenido: {
-        codigo: "BOL",
-        valor: "Boleta"
-      },
-      cedula_profesional: "2094884"
-    });
+    let datos=Object.assign({}, this.state.datos_curriculares_grados_academicos);
+    this.state.datos_curriculares.grados_academicos.push(datos);
     this.setState(this.state);
+    this.setState({datos_curriculares_grados_academicos:Object.assign({}, datos_curriculares_grados_academicos)});
     // console.log("hi");
+  };
+
+  handleClickEliminarDatosCurriculares = () => event =>{
+    console.log(event.target.value);
   };
 
   handleClickExperienciaLaborar = () => event => {
@@ -2110,6 +2142,48 @@ class Index extends Component {
     });
   }
 
+  setDataDatosCurriculares = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "datos_curriculares_grados_academicos.grado_obtenido":
+        data.datos_curriculares_grados_academicos.grado_obtenido = valor;
+        break;
+      case "datos_curriculares_grados_academicos.institucion_educativa":
+        data.datos_curriculares_grados_academicos.institucion_educativa = valor;
+        break;
+      case "datos_curriculares_grados_academicos.lugar_institucion_educativa.pais":
+        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.pais = this.getCiudad(valor);
+        break;
+      case "datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad":
+        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad = this.getEntidadFederativa(valor);
+        break;
+      case "datos_curriculares_grados_academicos.carrera":
+        data.datos_curriculares_grados_academicos.carrera = valor;
+        break;
+      case "datos_curriculares_grados_academicos.estatus":
+        data.datos_curriculares_grados_academicos.estatus = this.getEstatusEstudio(valor);
+        break;
+      case "datos_curriculares_grados_academicos.ano_conclusion":
+        data.datos_curriculares_grados_academicos.ano_conclusion = valor;
+        break;
+      case "datos_curriculares_grados_academicos.documento_obtenido":
+        data.datos_curriculares_grados_academicos.documento_obtenido = this.getDocumuentoObtenido(valor);
+        break;
+      case "datos_curriculares_grados_academicos.cedula_profesional":
+        data.datos_curriculares_grados_academicos.cedula_profesional = valor;
+        break;
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.datos_curriculares_grados_academicos);
+      }
+    });
+  };
+
   setDataInformacionPersonal = field => event => {
     let valor = event.target.value;
     let data = this.state;
@@ -2125,10 +2199,12 @@ class Index extends Component {
         data.informacion_general.segundo_apellido = valor;
         break;
       case "nacionalidades":
-        data.informacion_general_nacionalidades=valor;
-        let nacionalidad=[];
+        data.informacion_general_nacionalidades = valor;
+        let nacionalidad = [];
         for (var index in data.informacion_general_nacionalidades) {
-          nacionalidad.push(this.getCiudad(data.informacion_general_nacionalidades[index]));
+          nacionalidad.push(
+            this.getCiudad(data.informacion_general_nacionalidades[index])
+          );
         }
 
         data.informacion_general.nacionalidades = nacionalidad;
@@ -2137,7 +2213,10 @@ class Index extends Component {
         data.informacion_general.pais_nacimiento = this.getCiudad(valor);
         break;
       case "entidad_federativa_nacimiento":
-        data.informacion_general.entidad_federativa_nacimiento =this.getEntidadFederativa(valor);
+        data.informacion_general.entidad_federativa_nacimiento = this.getEntidadFederativa(
+          valor
+        );
+
         break;
       case "curp":
         data.informacion_general.curp = valor;
@@ -2151,8 +2230,8 @@ class Index extends Component {
       case "numero_identificacion_oficial":
         data.informacion_general.numero_identificacion_oficial = valor;
         break;
-      case "correo_electronico.particular":
-        data.informacion_general.correo_electronico.particular = valor;
+      case "correo_electronico.personal":
+        data.informacion_general.correo_electronico.personal = valor;
         break;
       case "correo_electronico.laboral":
         data.informacion_general.correo_electronico.laboral = valor;
@@ -2167,23 +2246,29 @@ class Index extends Component {
         data.informacion_general.estado_civil = this.getEstadoCivil(valor);
         break;
       case "regimen_matrimonial":
-        data.informacion_general.regimen_matrimonial = this.getRegimenMatrimonial(valor);
+        data.informacion_general.regimen_matrimonial = this.getRegimenMatrimonial(
+          valor
+        );
         break;
-
+      /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
-        data.informacion_general.domicilio.pais.codigo = valor;
+        data.informacion_general.domicilio.pais = this.getCiudad(valor);
         break;
       case "entidad_federativa":
-        data.informacion_general.domicilio.entidad_federativa = this.getEntidadFederativa(valor);
+        data.informacion_general.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
         break;
       case "municipio":
-        data.informacion_general.domicilio.municipio.cve_mun = valor;
+        data.informacion_general.domicilio.municipio = this.getMunicipios(
+          valor
+        );
         break;
       case "cp":
         data.informacion_general.domicilio.cp = valor;
         break;
       case "localidad":
-        data.informacion_general.domicilio.localidad.cve_loc = valor;
+        data.informacion_general.domicilio.localidad = this.getLocalidad(valor);
         break;
       case "vialidad.tipo_vial":
         data.informacion_general.domicilio.vialidad.tipo_vial = valor;
@@ -2201,12 +2286,13 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data
-    //   , () => {
-    //   console.log(this.state.informacion_general);
-    //   console.log(this.state.informacion_general_nacionalidades);
-    // }
-  );
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.informacion_general);
+        // console.log(this.state.informacion_general_nacionalidades);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
   };
 
   componentDidMount() {
@@ -2217,6 +2303,14 @@ class Index extends Component {
     fetch(config.apiHost + "entidades")
       .then(res => res.json())
       .then(entidades => this.setState({ entidades: entidades }));
+
+    fetch(config.apiHost + "documentosObtenidos")
+      .then(res => res.json())
+      .then(documentos => this.setState({ documentoObtenido: documentos }));
+
+    fetch(config.apiHost + "estatusEstudio")
+      .then(res => res.json())
+      .then(estatus => this.setState({ estatusEstudio: estatus }));
 
     fetch(config.apiHost + "estadosciviles")
       .then(res => res.json())
@@ -2230,23 +2324,31 @@ class Index extends Component {
         this.setState({ regimen: regimenmatrimonial })
       );
 
-    fetch(
-      config.apiHost +
-        "municipios?cve_ent=" +
-        this.state.dom_entidad_federativa.cve_ent
-    )
-      .then(res => res.json())
-      .then(municipios => this.setState({ municipios: municipios }));
+    this.updateMunicipios(
+      this.state.informacion_general.domicilio.entidad_federativa.cve_ent
+    );
 
-    fetch(
-      config.apiHost +
-        "localidades?cve_ent=" +
-        this.state.dom_entidad_federativa.cve_ent +
-        "&cve_mun=" +
-        this.state.dom_municipio.cve_mun
-    )
-      .then(res => res.json())
-      .then(localidades => this.setState({ localidades: localidades }));
+    this.updateLocalidades(
+      this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
+      this.state.informacion_general.domicilio.municipio.cve_mun
+    );
+    // fetch(
+    //   config.apiHost +
+    //     "municipios?cve_ent=" +
+    //     this.state.informacion_general.domicilio.entidad_federativa.cve_ent
+    // )
+    //   .then(res => res.json())
+    //   .then(municipios => this.setState({ municipios: municipios }));
+
+    // fetch(
+    //   config.apiHost +
+    //     "localidades?cve_ent=" +
+    //     this.state.informacion_general.domicilio.entidad_federativa.cve_ent +
+    //     "&cve_mun=" +
+    //     this.state.informacion_general.domicilio.municipio.cve_mun
+    // )
+    //   .then(res => res.json())
+    //   .then(localidades => this.setState({ localidades: localidades }));
 
     fetch(config.apiHost + "tipovialidad")
       .then(res => res.json())
@@ -2308,9 +2410,11 @@ class Index extends Component {
           {this.state.show === 2 && (
             <DatosCurriculares
               data={this.state}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChange={this.handleChange}
-              handleClickDatosCurriculares={this.handleClickDatosCurriculares}
+              entidades={this.state.entidades}
+              ciudades={this.state.ciudades}
+              handleChange={this.setDataDatosCurriculares}
+              handleClick={this.handleClickDatosCurriculares}
+              buttonClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
           {this.state.show === 3 && (
