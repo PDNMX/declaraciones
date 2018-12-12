@@ -2,7 +2,7 @@ import moment from "moment";
 
 export var data = {
   debug: true,
-  show: 2,
+  show: 3,
   message: "",
   type: "",
   ciudades: [],
@@ -101,7 +101,6 @@ export var data = {
     },
     cedula_profesional: ""
   },
-
   datos_curriculares: {
     grado_maximo_escolaridad: "Licenciatura",
     grados_academicos: []

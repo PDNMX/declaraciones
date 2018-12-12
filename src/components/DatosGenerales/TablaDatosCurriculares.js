@@ -82,7 +82,7 @@ function CustomizedTable(props) {
                     variant="contained"
                     size="small"
                     value={index}
-                    onClick={buttonClick()}
+                    onClick={buttonClick(index)}
                   >
                     Eliminar
                   </Button>

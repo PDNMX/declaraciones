@@ -27,6 +27,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
+import Direccion from "./Direccion";
+
 // data picker
 import moment from "moment";
 
@@ -68,21 +70,7 @@ const MenuProps = {
 };
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickDatosCurriculares,
-    handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
-  } = props;
+  const { classes, data, handleChange } = props;
 
   return (
     <Card className={classes.card}>
@@ -92,32 +80,22 @@ function SimpleCard(props) {
         </Typography>
         <Grid container spacing={24}>
           <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Ente Publico</InputLabel>
-              <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
-                inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
-                }}
-              >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <TextField
+              id="grado"
+              label="Ente Publico"
+              className={classes.textField}
+              value={data.datos_encargo_actual.ente_publico}
+              onChange={handleChange("datos_encargo_actual.ente_publico")}
+              margin="normal"
+            />
           </Grid>
-
           <Grid item xs={2}>
             <TextField
               id="grado"
               label="Nombre del Empleo"
               className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
+              value={data.datos_encargo_actual.empleo_cargo_comision}
+              onChange={handleChange("datos_encargo_actual.empleo_cargo_comision")}
               margin="normal"
             />
           </Grid>
@@ -125,8 +103,8 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Nivel de Gobierno</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_encargo_actual.nivel_gobierno.codigo}
+                onChange={handleChange("datos_encargo_actual.nivel_gobierno")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
@@ -136,7 +114,7 @@ function SimpleCard(props) {
                   <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
                     {estadocivil.valor}
                   </MenuItem>
-                ))}
+                ))},
               </Select>
             </FormControl>
           </Grid>
@@ -144,8 +122,8 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Poder Juridico</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_encargo_actual.poder_juridico.codigo}
+                onChange={handleChange("datos_encargo_actual.poder_juridico")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
@@ -164,8 +142,9 @@ function SimpleCard(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={data.contratado_honorarios}
-                  value="contratado_honorarios"
+                  checked={data.datos_encargo_actual.contratado_honorarios}
+                  onChange={handleChange("datos_encargo_actual.contratado_honorarios")}
+                  value="datos_encargo_actual.contratado_honorarios"
                   color="primary"
                 />
               }
@@ -173,31 +152,22 @@ function SimpleCard(props) {
             />
           </Grid>
           <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Nivel de encargo</InputLabel>
-              <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
-                inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
-                }}
-              >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <TextField
+              id="grado"
+              label="Nivel de encargo"
+              className={classes.textField}
+              value={data.datos_encargo_actual.nivel_encargo}
+              onChange={handleChange("datos_encargo_actual.nivel_encargo")}
+              margin="normal"
+            />
           </Grid>
           <Grid item xs={2}>
             <TextField
               id="grado"
               label="Área de adscripción"
               className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
+              value={data.datos_encargo_actual.area_adscripcion}
+              onChange={handleChange("datos_encargo_actual.area_adscripcion")}
               margin="normal"
             />
           </Grid>
@@ -206,8 +176,8 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de posesión"
               className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
+              value={data.datos_encargo_actual.fecha_posesion}
+              onChange={handleChange("datos_encargo_actual.fecha_posesion")}
               margin="normal"
             />
           </Grid>
@@ -216,8 +186,8 @@ function SimpleCard(props) {
               id="grado"
               label="Telefono laboral"
               className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
+              value={data.datos_encargo_actual.telefono_laboral.numero}
+              onChange={handleChange("datos_encargo_actual.telefono_laboral.numero")}
               margin="normal"
             />
           </Grid>
@@ -226,8 +196,8 @@ function SimpleCard(props) {
               id="grado"
               label="Extensión"
               className={classes.textField}
-              value={data.grado_obtenido}
-              onChange={handleChange("grado_obtenido")}
+              value={data.datos_encargo_actual.telefono_laboral.extension}
+              onChange={handleChange("datos_encargo_actual.telefono_laboral.extension")}
               margin="normal"
             />
           </Grid>
@@ -235,8 +205,8 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_encargo_actual.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
@@ -255,183 +225,27 @@ function SimpleCard(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={data.contratado_honorarios}
-                  value="contratado_honorarios"
+                  checked={data.datos_encargo_actual.funciones_principales[0].codigo}
+                  onChange={handleChange("datos_encargo_actual.funciones_principales.codigo")}
+                  value="datos_encargo_actual.funciones_principales.codigo"
                   color="primary"
                 />
               }
               label="Funciones"
             />
           </Grid>
-          {/*domicilio*/}
-          <CardContent>
-            <Typography variant="h5" gutterBottom>
-              Domicilio
-            </Typography>
-            <Grid container spacing={24}>
-              <Grid item xs={2}>
-                <FormControl className={classes.select}>
-                  <InputLabel htmlFor="dom_pais">País</InputLabel>
-                  <Select
-                    value={data.dom_pais.codigo}
-                    onChange={handleChangeDirPais("dom_pais")}
-                    inputProps={{
-                      name: "dom_pais",
-                      id: "dom_pais"
-                    }}
-                  >
-                    {data.ciudades.map(ciudad => (
-                      <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
-                        {ciudad.valor}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={2}>
-                <FormControl className={classes.select}>
-                  <InputLabel htmlFor="dom_entidad_federativa">
-                    Entidad federativa
-                  </InputLabel>
-                  <Select
-                    value={data.dom_entidad_federativa.cve_ent}
-                    onChange={handleChangeEntidades("dom_entidad_federativa")}
-                    inputProps={{
-                      name: "dom_entidad_federativa",
-                      id: "dom_entidad_federativa"
-                    }}
-                  >
-                    {data.entidades.map(entidad => (
-                      <MenuItem key={entidad.cve_ent} value={entidad.cve_ent}>
-                        {entidad.nom_ent}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={2}>
-                <FormControl className={classes.select}>
-                  <InputLabel htmlFor="dom_municipio">Municipio</InputLabel>
-                  <Select
-                    value={data.dom_municipio.cve_mun}
-                    onChange={handleChangeMunicipios("dom_municipio")}
-                    inputProps={{
-                      name: "dom_municipio",
-                      id: "dom_municipio"
-                    }}
-                  >
-                    {data.municipios.map(municipios => (
-                      <MenuItem
-                        key={municipios.cve_mun}
-                        value={municipios.cve_mun}
-                      >
-                        {municipios.nom_mun}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={2}>
-                <FormControl className={classes.select}>
-                  <InputLabel htmlFor="dom_localidad">Localidad</InputLabel>
-                  <Select
-                    value={data.dom_localidad.cve_loc}
-                    onChange={handleChangeLocalidades("dom_localidad")}
-                    inputProps={{
-                      name: "dom_localidad",
-                      id: "dom_localidad"
-                    }}
-                  >
-                    {data.localidades.map(localidades => (
-                      <MenuItem
-                        key={localidades.cve_loc}
-                        value={localidades.cve_loc}
-                      >
-                        {localidades.nom_loc}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={2}>
-                <TextField
-                  id="standard-name"
-                  label="Código postal"
-                  className={classes.textField}
-                  value={data.dom_cp}
-                  onChange={handleChange("dom_cp")}
-                  margin="normal"
-                />
-              </Grid>
-              <Grid item xs={2}>
-                <FormControl className={classes.select}>
-                  <InputLabel htmlFor="dom_vialidad">Tipo de vía</InputLabel>
-                  <Select
-                    value={data.dom_vialidad.codigo}
-                    onChange={handleChangeTipoVialidad("dom_vialidad")}
-                    inputProps={{
-                      name: "dom_vialidad",
-                      id: "dom_vialidad"
-                    }}
-                  >
-                    {data.tipovialidad.map(tipovialidad => (
-                      <MenuItem
-                        key={tipovialidad.codigo}
-                        value={tipovialidad.codigo}
-                      >
-                        {tipovialidad.valor}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={2}>
-                <TextField
-                  id="standard-name"
-                  label="Nombre de la vía"
-                  className={classes.textField}
-                  value={data.dom_vialidad.nom_vial}
-                  onChange={handleChangeNombreVialidad()}
-                  margin="normal"
-                />
-              </Grid>
-              <Grid item xs={2}>
-                <TextField
-                  id="standard-name"
-                  label="Número exterior"
-                  className={classes.textField}
-                  value={data.dom_numExt}
-                  onChange={handleChange("dom_numExt")}
-                  margin="normal"
-                />
-              </Grid>
-              <Grid item xs={2}>
-                <TextField
-                  id="standard-name"
-                  label="Número interior"
-                  className={classes.textField}
-                  value={data.dom_numInt}
-                  onChange={handleChange("dom_numInt")}
-                  margin="normal"
-                />
-              </Grid>
-            </Grid>
-          </CardContent>
-          {/*fin domicilio*/}
-
-          {/*
-          <Grid item xs={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={handleClickDatosCurriculares()}
-            >
-              Agregar
-            </Button>
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_encargo_actual.direccion_encargo}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
+            />
           </Grid>
-          */}
-        </Grid>              
+        </Grid>
       </CardContent>
     </Card>
   );

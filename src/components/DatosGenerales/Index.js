@@ -49,7 +49,7 @@ import PropietarioTercero from "./PropietarioTercero";
 import Deudas from "./Deudas";
 import OtrasObligaciones from "./OtrasObligaciones";
 
-console.log(process.env.PUBLIC_URL);
+console.log(process.env.PRUEBA);
 
 const styles = theme => ({
   root: {
@@ -300,12 +300,18 @@ class Index extends Component {
     let datos=Object.assign({}, this.state.datos_curriculares_grados_academicos);
     this.state.datos_curriculares.grados_academicos.push(datos);
     this.setState(this.state);
+
+    // limpieza del Formulario
     this.setState({datos_curriculares_grados_academicos:Object.assign({}, datos_curriculares_grados_academicos)});
-    // console.log("hi");
   };
 
-  handleClickEliminarDatosCurriculares = () => event =>{
-    console.log(event.target.value);
+  handleClickEliminarDatosCurriculares = (index) => event =>{
+    this.state.datos_curriculares.grados_academicos.splice(index,1);
+    this.setState({datos_curriculares:this.state.datos_curriculares},()=>{
+      console.log(this.state.datos_curriculares);
+    });
+
+
   };
 
   handleClickExperienciaLaborar = () => event => {
@@ -2295,6 +2301,94 @@ class Index extends Component {
     });
   };
 
+  setDataEncargoActual = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "datos_encargo_actual.ente_publico":
+        data.datos_encargo_actual.ente_publico = valor;
+        break;
+      case "datos_encargo_actual.empleo_cargo_comision":
+        data.datos_encargo_actual.empleo_cargo_comision = valor;
+        break;
+      case "datos_encargo_actual.nivel_gobierno":
+        data.datos_encargo_actual.nivel_gobierno = valor;
+        break;
+      case "datos_encargo_actual.poder_juridico":
+        data.datos_encargo_actual.poder_juridico = this.getCiudad(valor);
+        break;
+      case "datos_encargo_actual.contratado_honorarios":
+        data.datos_encargo_actual.contratado_honorarios = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "datos_encargo_actual.nivel_encargo":
+        data.datos_encargo_actual.nivel_encargo = valor;
+        break;
+      case "datos_encargo_actual.area_adscripcion":
+        data.datos_encargo_actual.area_adscripcion = valor;
+        break;
+      case "datos_encargo_actual.fecha_posesion":
+        data.datos_encargo_actual.fecha_posesion = valor;
+        break;
+      case "datos_encargo_actual.telefono_laboral.numero":
+        data.datos_encargo_actual.telefono_laboral.numero = valor;
+        break;
+      case "datos_encargo_actual.telefono_laboral.extension":
+        data.datos_encargo_actual.telefono_laboral.extension = valor;
+        break;
+      case "datos_encargo_actual.sector_industria":
+        data.datos_encargo_actual.sector_industria = valor;
+        break;
+      case "datos_encargo_actual.funciones_principales.codigo":
+        data.datos_encargo_actual.funciones_principales.codigo = valor;
+        break;
+      /////////////////////////////  direccion_encargo  /////////////////////////////////////
+      case "pais":
+        data.datos_encargo_actual.direccion_encargo.pais = this.getCiudad(valor);
+        break;
+      case "entidad_federativa":
+        data.datos_encargo_actual.direccion_encargo.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_encargo_actual.direccion_encargo.municipio = this.getMunicipios(
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_encargo_actual.direccion_encargo.cp = valor;
+        break;
+      case "localidad":
+        data.datos_encargo_actual.direccion_encargo.localidad = this.getLocalidad(valor);
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_encargo_actual.direccion_encargo.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_encargo_actual.direccion_encargo.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_encargo_actual.direccion_encargo.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_encargo_actual.direccion_encargo.numInt = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.datos_encargo_actual);
+        // console.log(this.state.datos_encargo_actual_nacionalidades);
+        // console.log(this.state.datos_encargo_actual.direccion_encargo);
+      }
+    });
+  };
+
   componentDidMount() {
     fetch(config.apiHost + "ciudades")
       .then(res => res.json())
@@ -2393,17 +2487,6 @@ class Index extends Component {
               <Formulario
                 data={this.state}
                 setDataInformacionPersonal={this.setDataInformacionPersonal}
-                anyTextChange={this.anyTextChange}
-                handleChangeEntidades={this.handleChangeEntidades}
-                handleChangeFecha={this.handleChangeFecha}
-                handleChangeEdoCivil={this.handleChangeEdoCivil}
-                handleChangeRegimen={this.handleChangeRegimen}
-                handleChangeDirPais={this.handleChangeDirPais}
-                handleChangeMunicipios={this.handleChangeMunicipios}
-                handleChangeLocalidades={this.handleChangeLocalidades}
-                handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-                handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-                handleClick={this.handleClick}
               />
             </Grid>
           )}
@@ -2420,18 +2503,7 @@ class Index extends Component {
           {this.state.show === 3 && (
             <EncargoActual
               data={this.state}
-              handleClickDatosCurriculares={this.handleClickDatosCurriculares}
-              handleChange={this.handleChange}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
+              handleChange={this.setDataEncargoActual}
             />
           )}
 
@@ -2439,7 +2511,7 @@ class Index extends Component {
             <ExperienciaLaboral
               data={this.state}
               handleClickExperienciaLaborar={this.handleClickExperienciaLaborar}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2459,7 +2531,7 @@ class Index extends Component {
               handleClickDependientesEconomicos={
                 this.handleClickDependientesEconomicos
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2479,7 +2551,7 @@ class Index extends Component {
               handleClickEmpresasSociedadesAsociaciones={
                 this.handleClickEmpresasSociedadesAsociaciones
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2497,7 +2569,7 @@ class Index extends Component {
             <Membresias
               data={this.state}
               handleClickMembresias={this.handleClickMembresias}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2515,7 +2587,7 @@ class Index extends Component {
             <ApoyosPublicos
               data={this.state}
               handleClickApoyosPublicos={this.handleClickApoyosPublicos}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2535,7 +2607,7 @@ class Index extends Component {
               handleClickRepresentacionActiva={
                 this.handleClickRepresentacionActiva
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2555,7 +2627,7 @@ class Index extends Component {
               handleClickRepresentacionPasiva={
                 this.handleClickRepresentacionPasiva
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2573,7 +2645,7 @@ class Index extends Component {
             <SociosComerciales
               data={this.state}
               handleClickSociosComerciales={this.handleClickSociosComerciales}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2593,7 +2665,7 @@ class Index extends Component {
               handleClickClientesPrincipales={
                 this.handleClickClientesPrincipales
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2613,7 +2685,7 @@ class Index extends Component {
               handleClickOtrasPartesRelacionadas={
                 this.handleClickOtrasPartesRelacionadas
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2633,7 +2705,7 @@ class Index extends Component {
               handleClickBeneficiosGratuitos={
                 this.handleClickBeneficiosGratuitos
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2651,7 +2723,7 @@ class Index extends Component {
             <SalariosPublicos
               data={this.state}
               handleClickSalariosPublicos={this.handleClickSalariosPublicos}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2669,7 +2741,7 @@ class Index extends Component {
             <SalariosEmpleos
               data={this.state}
               handleClickSalariosEmpleos={this.handleClickSalariosEmpleos}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2689,7 +2761,7 @@ class Index extends Component {
               handleClickActividadProfesional={
                 this.handleClickActividadProfesional
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2709,7 +2781,7 @@ class Index extends Component {
               handleClickActividadEmpresarial={
                 this.handleClickActividadEmpresarial
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2727,7 +2799,7 @@ class Index extends Component {
             <ActividadMenor
               data={this.state}
               handleClickActividadMenor={this.handleClickActividadMenor}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2745,7 +2817,7 @@ class Index extends Component {
             <Arrendamiento
               data={this.state}
               handleClickArrendamiento={this.handleClickArrendamiento}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2763,7 +2835,7 @@ class Index extends Component {
             <Intereses
               data={this.state}
               handleClickIntereses={this.handleClickIntereses}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2781,7 +2853,7 @@ class Index extends Component {
             <Premios
               data={this.state}
               handleClickPremios={this.handleClickPremios}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2799,7 +2871,7 @@ class Index extends Component {
             <EnajenacionBienes
               data={this.state}
               handleClickEnajenacionBienes={this.handleClickEnajenacionBienes}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2817,7 +2889,7 @@ class Index extends Component {
             <OtrosIngresos
               data={this.state}
               handleClickOtrosIngresos={this.handleClickOtrosIngresos}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2835,7 +2907,7 @@ class Index extends Component {
             <BienesInmuebles
               data={this.state}
               handleClickBienesInmuebles={this.handleClickBienesInmuebles}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2855,7 +2927,7 @@ class Index extends Component {
               handleClickBienesMueblesRegistrables={
                 this.handleClickBienesMueblesRegistrables
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2875,7 +2947,7 @@ class Index extends Component {
               handleClickBienesMueblesNoRegistrables={
                 this.handleClickBienesMueblesNoRegistrables
               }
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2893,7 +2965,7 @@ class Index extends Component {
             <Inversiones
               data={this.state}
               handleClickInversiones={this.handleClickInversiones}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2911,7 +2983,7 @@ class Index extends Component {
             <EfectivoMetales
               data={this.state}
               handleClickEfectivoMetales={this.handleClickEfectivoMetales}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2929,7 +3001,7 @@ class Index extends Component {
             <Fideicomisos
               data={this.state}
               handleClickFideicomisos={this.handleClickFideicomisos}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2947,7 +3019,7 @@ class Index extends Component {
             <BienesIntangibles
               data={this.state}
               handleClickBienesIntangibles={this.handleClickBienesIntangibles}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2965,7 +3037,7 @@ class Index extends Component {
             <CuentasCobrar
               data={this.state}
               handleClickCuentasCobrar={this.handleClickCuentasCobrar}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -2983,7 +3055,7 @@ class Index extends Component {
             <PropietarioTercero
               data={this.state}
               handleClickPropietarioTercero={this.handleClickPropietarioTercero}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -3001,7 +3073,7 @@ class Index extends Component {
             <Deudas
               data={this.state}
               handleClickDeudas={this.handleClickDeudas}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
@@ -3019,7 +3091,7 @@ class Index extends Component {
             <OtrasObligaciones
               data={this.state}
               handleClickOtrasObligaciones={this.handleClickOtrasObligaciones}
-              handleChange={this.handleChange}
+              handleChange={this.setDataEncargoActual}
               handleChangeEntidades={this.handleChangeEntidades}
               handleChangeFecha={this.handleChangeFecha}
               handleChangeEdoCivil={this.handleChangeEdoCivil}
