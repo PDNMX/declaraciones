@@ -5,6 +5,9 @@ export var data = {
   show: 3,
   message: "",
   type: "",
+  nivelGobierno:[],
+  poderEjecutivo:[],
+  sectorIndustria:[],
   ciudades: [],
   entidades: [],
   municipios: [],
@@ -106,67 +109,67 @@ export var data = {
     grados_academicos: []
   },
   datos_encargo_actual: {
-    ente_publico: "Presidencia de la República",
-    empleo_cargo_comision: "Director General de Datos Abiertos",
+    ente_publico: "",
+    empleo_cargo_comision: "",
     nivel_gobierno: {
-      codigo: "EST",
-      valor: "Estatal"
+      codigo: "",
+      valor: ""
     },
     poder_juridico: {
-      codigo: "JUD",
-      valor: "Judicial"
+      codigo: "",
+      valor: ""
     },
-    contratado_honorarios: true,
-    nivel_encargo: "CA0001",
-    area_adscripcion: "Unidad de Política Regulatoria",
-    fecha_posesion: "2010-07-26",
+    contratado_honorarios: false,
+    nivel_encargo: "",
+    area_adscripcion: "",
+    fecha_posesion: "",
     lugar_ubicacion: {
       pais: {
-        valor: "México",
-        codigo: "MX"
+        valor: "",
+        codigo: ""
       },
       entidad: {
-        nom_ent: "México",
-        cve_ent: "15"
+        nom_ent: "",
+        cve_ent: ""
       }
     },
     direccion_encargo: {
       pais: {
-        valor: "México",
-        codigo: "MX"
+        valor: "",
+        codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "México",
-        cve_ent: "15"
+        nom_ent: "",
+        cve_ent: ""
       },
       municipio: {
-        nom_mun: "Ecatepec de Morelos",
-        cve_mun: "033"
+        nom_mun: "",
+        cve_mun: ""
       },
-      cp: "55018",
+      cp: "",
       localidad: {
-        nom_loc: "Ecatepec de Morelos",
-        cve_loc: "0001"
+        nom_loc: "",
+        cve_loc: ""
       },
       vialidad: {
-        tipo_vial: "CALLE",
-        nom_vial: "El Rosal"
+        tipo_vial: "",
+        nom_vial: ""
       },
-      numExt: "24",
-      numInt: "48"
+      numExt: "",
+      numInt: ""
     },
     telefono_laboral: {
-      numero: "+525510203040",
-      extension: 1020
+      numero: "",
+      extension: ""
     },
     sector_industria: {
-      codigo: "SFS",
-      valor: "Servicios de salud y asistencia social"
+      codigo: "",
+      valor: " "
     },
     funciones_principales: [
       {
-        codigo: "ABI",
-        valor: "Administración de bienes"
+        codigo: "",
+        valor: ""
       }
     ]
   },

@@ -70,7 +70,14 @@ const MenuProps = {
 };
 
 function SimpleCard(props) {
-  const { classes, data, handleChange } = props;
+  const {
+    classes,
+    data,
+    handleChange,
+    nivelGobierno,
+    poderEjecutivo,
+    sectorIndustria
+  } = props;
 
   return (
     <Card className={classes.card}>
@@ -95,7 +102,9 @@ function SimpleCard(props) {
               label="Nombre del Empleo"
               className={classes.textField}
               value={data.datos_encargo_actual.empleo_cargo_comision}
-              onChange={handleChange("datos_encargo_actual.empleo_cargo_comision")}
+              onChange={handleChange(
+                "datos_encargo_actual.empleo_cargo_comision"
+              )}
               margin="normal"
             />
           </Grid>
@@ -110,11 +119,12 @@ function SimpleCard(props) {
                   id: "estado_civil"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {nivelGobierno.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
                   </MenuItem>
-                ))},
+                ))}
+                ,
               </Select>
             </FormControl>
           </Grid>
@@ -129,9 +139,9 @@ function SimpleCard(props) {
                   id: "estado_civil"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {poderEjecutivo.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -143,8 +153,9 @@ function SimpleCard(props) {
               control={
                 <Checkbox
                   checked={data.datos_encargo_actual.contratado_honorarios}
-                  onChange={handleChange("datos_encargo_actual.contratado_honorarios")}
-                  value="datos_encargo_actual.contratado_honorarios"
+                  onChange={handleChange(
+                    "datos_encargo_actual.contratado_honorarios"
+                  )}
                   color="primary"
                 />
               }
@@ -187,7 +198,9 @@ function SimpleCard(props) {
               label="Telefono laboral"
               className={classes.textField}
               value={data.datos_encargo_actual.telefono_laboral.numero}
-              onChange={handleChange("datos_encargo_actual.telefono_laboral.numero")}
+              onChange={handleChange(
+                "datos_encargo_actual.telefono_laboral.numero"
+              )}
               margin="normal"
             />
           </Grid>
@@ -197,7 +210,9 @@ function SimpleCard(props) {
               label="Extensión"
               className={classes.textField}
               value={data.datos_encargo_actual.telefono_laboral.extension}
-              onChange={handleChange("datos_encargo_actual.telefono_laboral.extension")}
+              onChange={handleChange(
+                "datos_encargo_actual.telefono_laboral.extension"
+              )}
               margin="normal"
             />
           </Grid>
@@ -212,9 +227,9 @@ function SimpleCard(props) {
                   id: "estado_civil"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -225,13 +240,17 @@ function SimpleCard(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={data.datos_encargo_actual.funciones_principales[0].codigo}
-                  onChange={handleChange("datos_encargo_actual.funciones_principales.codigo")}
+                  checked={
+                    data.datos_encargo_actual.funciones_principales[0].codigo
+                  }
+                  onChange={handleChange(
+                    "datos_encargo_actual.funciones_principales.codigo"
+                  )}
                   value="datos_encargo_actual.funciones_principales.codigo"
                   color="primary"
                 />
               }
-              label="Funciones"
+              label="Funciones******************************************************"
             />
           </Grid>
           <Grid item xs={12}>

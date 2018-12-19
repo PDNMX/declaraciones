@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { data,datos_curriculares_grados_academicos} from "./data";
+import { data, datos_curriculares_grados_academicos } from "./data";
 
 import Menu from "../Menu";
 import Formulario from "./Formulario";
@@ -153,11 +153,6 @@ class Index extends Component {
   getMunicipios = cve_mun => {
     let info = this.state.municipios.filter(x => x.cve_mun === cve_mun);
 
-    this.updateLocalidades(
-      this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
-      cve_mun
-    );
-
     return {
       nom_mun: info[0].nom_mun,
       cve_mun: info[0].cve_mun
@@ -197,7 +192,6 @@ class Index extends Component {
     };
   };
 
-
   getEstatusEstudio = codigo => {
     let info = this.state.estatusEstudio.filter(x => x.codigo === codigo);
     return {
@@ -206,7 +200,6 @@ class Index extends Component {
     };
   };
 
-
   getDocumuentoObtenido = codigo => {
     let info = this.state.documentoObtenido.filter(x => x.codigo === codigo);
     return {
@@ -214,6 +207,31 @@ class Index extends Component {
       valor: info[0].valor
     };
   };
+
+  getNivelGobierno = codigo => {
+    let info = this.state.nivelGobierno.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getPoderEjecutivo = codigo => {
+    let info = this.state.poderEjecutivo.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getSectorIndustria = codigo => {
+    let info = this.state.sectorIndustria.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
   updateMunicipios = cve_ent => {
     fetch(config.apiHost + "municipios?cve_ent=" + cve_ent)
       .then(res => res.json())
@@ -288,7 +306,6 @@ class Index extends Component {
     //   nacionalidad.push(valor);
     //   // console.log(nacionalidad);
     // }
-
     // this.setState({ nacionalidades: nacionalidad });
     // this.setState({
     //   [name]: event.target.value
@@ -297,21 +314,27 @@ class Index extends Component {
   };
 
   handleClickDatosCurriculares = () => event => {
-    let datos=Object.assign({}, this.state.datos_curriculares_grados_academicos);
+    let datos = Object.assign(
+      {},
+      this.state.datos_curriculares_grados_academicos
+    );
     this.state.datos_curriculares.grados_academicos.push(datos);
     this.setState(this.state);
 
     // limpieza del Formulario
-    this.setState({datos_curriculares_grados_academicos:Object.assign({}, datos_curriculares_grados_academicos)});
+    this.setState({
+      datos_curriculares_grados_academicos: Object.assign(
+        {},
+        datos_curriculares_grados_academicos
+      )
+    });
   };
 
-  handleClickEliminarDatosCurriculares = (index) => event =>{
-    this.state.datos_curriculares.grados_academicos.splice(index,1);
-    this.setState({datos_curriculares:this.state.datos_curriculares},()=>{
+  handleClickEliminarDatosCurriculares = index => event => {
+    this.state.datos_curriculares.grados_academicos.splice(index, 1);
+    this.setState({ datos_curriculares: this.state.datos_curriculares }, () => {
       console.log(this.state.datos_curriculares);
     });
-
-
   };
 
   handleClickExperienciaLaborar = () => event => {
@@ -2160,22 +2183,30 @@ class Index extends Component {
         data.datos_curriculares_grados_academicos.institucion_educativa = valor;
         break;
       case "datos_curriculares_grados_academicos.lugar_institucion_educativa.pais":
-        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.pais = this.getCiudad(valor);
+        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.pais = this.getCiudad(
+          valor
+        );
         break;
       case "datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad":
-        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad = this.getEntidadFederativa(valor);
+        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad = this.getEntidadFederativa(
+          valor
+        );
         break;
       case "datos_curriculares_grados_academicos.carrera":
         data.datos_curriculares_grados_academicos.carrera = valor;
         break;
       case "datos_curriculares_grados_academicos.estatus":
-        data.datos_curriculares_grados_academicos.estatus = this.getEstatusEstudio(valor);
+        data.datos_curriculares_grados_academicos.estatus = this.getEstatusEstudio(
+          valor
+        );
         break;
       case "datos_curriculares_grados_academicos.ano_conclusion":
         data.datos_curriculares_grados_academicos.ano_conclusion = valor;
         break;
       case "datos_curriculares_grados_academicos.documento_obtenido":
-        data.datos_curriculares_grados_academicos.documento_obtenido = this.getDocumuentoObtenido(valor);
+        data.datos_curriculares_grados_academicos.documento_obtenido = this.getDocumuentoObtenido(
+          valor
+        );
         break;
       case "datos_curriculares_grados_academicos.cedula_profesional":
         data.datos_curriculares_grados_academicos.cedula_profesional = valor;
@@ -2269,6 +2300,11 @@ class Index extends Component {
         data.informacion_general.domicilio.municipio = this.getMunicipios(
           valor
         );
+
+        this.updateLocalidades(
+          this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
+          valor
+        );
         break;
       case "cp":
         data.informacion_general.domicilio.cp = valor;
@@ -2313,10 +2349,109 @@ class Index extends Component {
         data.datos_encargo_actual.empleo_cargo_comision = valor;
         break;
       case "datos_encargo_actual.nivel_gobierno":
-        data.datos_encargo_actual.nivel_gobierno = valor;
+        data.datos_encargo_actual.nivel_gobierno = this.getNivelGobierno(valor);
         break;
       case "datos_encargo_actual.poder_juridico":
-        data.datos_encargo_actual.poder_juridico = this.getCiudad(valor);
+        data.datos_encargo_actual.poder_juridico = this.getPoderEjecutivo(valor);
+        break;
+      case "datos_encargo_actual.contratado_honorarios":
+        data.datos_encargo_actual.contratado_honorarios = !data.datos_encargo_actual.contratado_honorarios;
+        break;
+      case "datos_encargo_actual.nivel_encargo":
+        data.datos_encargo_actual.nivel_encargo = valor;
+        break;
+      case "datos_encargo_actual.area_adscripcion":
+        data.datos_encargo_actual.area_adscripcion = valor;
+        break;
+      case "datos_encargo_actual.fecha_posesion":
+        data.datos_encargo_actual.fecha_posesion = valor;
+        break;
+      case "datos_encargo_actual.telefono_laboral.numero":
+        data.datos_encargo_actual.telefono_laboral.numero = valor;
+        break;
+      case "datos_encargo_actual.telefono_laboral.extension":
+        data.datos_encargo_actual.telefono_laboral.extension = valor;
+        break;
+      case "datos_encargo_actual.sector_industria":
+        data.datos_encargo_actual.sector_industria = this.getSectorIndustria(
+          valor
+        );
+        break;
+      case "datos_encargo_actual.funciones_principales.codigo":
+        data.datos_encargo_actual.funciones_principales.codigo = valor;
+        break;
+      /////////////////////////////  direccion_encargo  /////////////////////////////////////
+      case "pais":
+        data.datos_encargo_actual.direccion_encargo.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "entidad_federativa":
+        data.datos_encargo_actual.direccion_encargo.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_encargo_actual.direccion_encargo.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_encargo_actual.direccion_encargo.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_encargo_actual.direccion_encargo.cp = valor;
+        break;
+      case "localidad":
+        data.datos_encargo_actual.direccion_encargo.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_encargo_actual.direccion_encargo.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_encargo_actual.direccion_encargo.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_encargo_actual.direccion_encargo.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_encargo_actual.direccion_encargo.numInt = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.datos_encargo_actual);
+        // console.log(this.state.datos_encargo_actual_nacionalidades);
+        // console.log(this.state.datos_encargo_actual.direccion_encargo);
+      }
+    });
+  };
+
+
+  setDataExperienciaLaboral = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "datos_encargo_actual.ente_publico":
+        data.datos_encargo_actual.ente_publico = valor;
+        break;
+      case "datos_encargo_actual.empleo_cargo_comision":
+        data.datos_encargo_actual.empleo_cargo_comision = valor;
+        break;
+      case "datos_encargo_actual.nivel_gobierno":
+        data.datos_encargo_actual.nivel_gobierno = this.getNivelGobierno(valor);
+        break;
+      case "datos_encargo_actual.poder_juridico":
+        data.datos_encargo_actual.poder_juridico = this.getPoderEjecutivo(valor);
         break;
       case "datos_encargo_actual.contratado_honorarios":
         data.datos_encargo_actual.contratado_honorarios = this.getEntidadFederativa(
@@ -2339,14 +2474,18 @@ class Index extends Component {
         data.datos_encargo_actual.telefono_laboral.extension = valor;
         break;
       case "datos_encargo_actual.sector_industria":
-        data.datos_encargo_actual.sector_industria = valor;
+        data.datos_encargo_actual.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "datos_encargo_actual.funciones_principales.codigo":
         data.datos_encargo_actual.funciones_principales.codigo = valor;
         break;
       /////////////////////////////  direccion_encargo  /////////////////////////////////////
       case "pais":
-        data.datos_encargo_actual.direccion_encargo.pais = this.getCiudad(valor);
+        data.datos_encargo_actual.direccion_encargo.pais = this.getCiudad(
+          valor
+        );
         break;
       case "entidad_federativa":
         data.datos_encargo_actual.direccion_encargo.entidad_federativa = this.getEntidadFederativa(
@@ -2357,12 +2496,20 @@ class Index extends Component {
         data.datos_encargo_actual.direccion_encargo.municipio = this.getMunicipios(
           valor
         );
+
+        this.updateLocalidades(
+          this.state.datos_encargo_actual.direccion_encargo.entidad_federativa
+            .cve_ent,
+          valor
+        );
         break;
       case "cp":
         data.datos_encargo_actual.direccion_encargo.cp = valor;
         break;
       case "localidad":
-        data.datos_encargo_actual.direccion_encargo.localidad = this.getLocalidad(valor);
+        data.datos_encargo_actual.direccion_encargo.localidad = this.getLocalidad(
+          valor
+        );
         break;
       case "vialidad.tipo_vial":
         data.datos_encargo_actual.direccion_encargo.vialidad.tipo_vial = valor;
@@ -2447,6 +2594,22 @@ class Index extends Component {
     fetch(config.apiHost + "tipovialidad")
       .then(res => res.json())
       .then(tipovialidad => this.setState({ tipovialidad: tipovialidad }));
+
+    fetch(config.apiHost + "nivelGobierno")
+      .then(res => res.json())
+      .then(nivelGobierno => this.setState({ nivelGobierno: nivelGobierno }));
+
+    fetch(config.apiHost + "poderEjecutivo")
+      .then(res => res.json())
+      .then(poderEjecutivo =>
+        this.setState({ poderEjecutivo: poderEjecutivo })
+      );
+
+    fetch(config.apiHost + "sectorIndustria")
+      .then(res => res.json())
+      .then(sectorIndustria =>
+        this.setState({ sectorIndustria: sectorIndustria })
+      );
   }
 
   render() {
@@ -2504,6 +2667,9 @@ class Index extends Component {
             <EncargoActual
               data={this.state}
               handleChange={this.setDataEncargoActual}
+              nivelGobierno={this.state.nivelGobierno}
+              poderEjecutivo={this.state.poderEjecutivo}
+              sectorIndustria={this.state.sectorIndustria}
             />
           )}
 
