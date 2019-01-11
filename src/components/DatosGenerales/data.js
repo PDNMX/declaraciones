@@ -2,12 +2,14 @@ import moment from "moment";
 
 export var data = {
   debug: true,
-  show: 3,
+  show: 5,
   message: "",
   type: "",
-  nivelGobierno:[],
-  poderEjecutivo:[],
-  sectorIndustria:[],
+  relacionDeclarante:[],
+  nivelGobierno: [],
+  poderEjecutivo: [],
+  sectorIndustria: [],
+  ambitos:[],
   ciudades: [],
   entidades: [],
   municipios: [],
@@ -173,132 +175,125 @@ export var data = {
       }
     ]
   },
-  experiencia_laboral: [
-    {
-      ambito: {
-        codigo: "Pub",
-        valor: "Público"
+  datos_experiencia_laboral: {
+    ambito: {
+      codigo: "",
+      valor: ""
+    },
+    nivel_gobierno: {
+      codigo: "",
+      valor: ""
+    },
+    poder_ente: {
+      codigo: "",
+      valor: ""
+    },
+    nombre_institucion: "",
+    unidad_administrativa: "",
+    direccion: {
+      pais: {
+        valor: "",
+        codigo: ""
       },
-      nivel_gobierno: {
-        codigo: "EST",
-        valor: "Estatal"
+      entidad_federativa: {
+        nom_ent: "",
+        cve_ent: ""
       },
-      poder_ente: {
-        codigo: "JUD",
-        valor: "Judicial"
+      municipio: {
+        nom_mun: "",
+        cve_mun: ""
       },
-      nombre_institucion: "Instituto Federal de Telecomunicaciones",
-      unidad_administrativa: "Unidad de Política Regulatoria",
-      direccion: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
+      cp: "",
+      localidad: {
+        nom_loc: "",
+        cve_loc: ""
       },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+      vialidad: {
+        tipo_vial: "",
+        nom_vial: ""
       },
-      jerarquia_rango: "string",
-      cargo_puesto: "Jefe de Departamento",
-      fecha_ingreso: "2010-07-26",
-      fecha_salida: "2010-07-26",
-      funciones_principales: [
-        {
-          codigo: "ABI",
-          valor: "Administración de bienes"
-        }
-      ]
-    }
-  ],
-  dependientes_economicos: [
-    {
-      nombre_personal: {
-        nombres: "Carlos",
-        primer_apellido: "Pérez",
-        segundo_apellido: "López"
+      numExt: "",
+      numInt: ""
+    },
+    sector_industria: {
+      codigo: "",
+      valor: ""
+    },
+    jerarquia_rango: "",
+    cargo_puesto: "",
+    fecha_ingreso: "",
+    fecha_salida: "",
+    funciones_principales: []
+  },
+  experiencia_laboral: [],
+  dependientes_economicos_nacionlidades:[],
+  datos_dependientes_economicos:{
+    nombre_personal: {
+      nombres: "Carlos",
+      primer_apellido: "Pérez",
+      segundo_apellido: "López"
+    },
+    tipo_relacion: {
+      codigo: "CONY",
+      valor: "Cónyuge"
+    },
+    nacionalidades: [
+      {
+        valor: "México",
+        codigo: "MX"
+      }
+    ],
+    curp: "BEML920313HMCLNS09",
+    rfc: "GOAP780710RH7",
+    fecha_nacimiento: "2010-07-26",
+    numero_identificacion_nacional: "ABCD1234",
+    habita_domicilio_declarante: false,
+    domicilio: {
+      pais: {
+        valor: "México",
+        codigo: "MX"
       },
-      tipo_relacion: {
-        codigo: "CONY",
-        valor: "Cónyuge"
+      entidad_federativa: {
+        nom_ent: "México",
+        cve_ent: "15"
       },
-      nacionalidades: [
-        {
-          valor: "México",
-          codigo: "MX"
-        }
-      ],
-      curp: "BEML920313HMCLNS09",
-      rfc: "GOAP780710RH7",
-      fecha_nacimiento: "2010-07-26",
-      numero_identificacion_nacional: "ABCD1234",
-      habita_domicilio_declarante: true,
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
+      municipio: {
+        nom_mun: "Ecatepec de Morelos",
+        cve_mun: "033"
       },
-      medio_contacto: "usuario@correo.com",
-      ingresos_propios: true,
-      ocupacion_profesion: "Administrador de empresas",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+      cp: "55018",
+      localidad: {
+        nom_loc: "Ecatepec de Morelos",
+        cve_loc: "0001"
       },
-      proveedor_contratista_gobierno: true,
-      tiene_intereses_mismo_sector_declarante: true,
-      desarrolla_cabildeo_sector_declarante: true,
-      beneficiario_programa_publico: [
-        {
-          nombre_programa: "Prospera",
-          institucion_otorga_apoyo: "XE-IPN Canal 11",
-          tipo_apoyo: "Servicio",
-          valor_apoyo: 4000
-        }
-      ],
-      observaciones: "Esto es una observación"
-    }
-  ],
-
+      vialidad: {
+        tipo_vial: "CALLE",
+        nom_vial: "El Rosal"
+      },
+      numExt: "24",
+      numInt: "48"
+    },
+    medio_contacto: "usuario@correo.com",
+    ingresos_propios: true,
+    ocupacion_profesion: "Administrador de empresas",
+    sector_industria: {
+      codigo: "SFS",
+      valor: "Servicios de salud y asistencia social"
+    },
+    proveedor_contratista_gobierno: true,
+    tiene_intereses_mismo_sector_declarante: true,
+    desarrolla_cabildeo_sector_declarante: true,
+    beneficiario_programa_publico: [
+      {
+        nombre_programa: "Prospera",
+        institucion_otorga_apoyo: "XE-IPN Canal 11",
+        tipo_apoyo: "Servicio",
+        valor_apoyo: 4000
+      }
+    ],
+    observaciones: "Esto es una observación"
+  },
+  dependientes_economicos: [],
   nombres: "",
   primer_apellido: "",
   segundo_apellido: "",
@@ -392,73 +387,6 @@ export var data = {
     numInt: "48"
   },
   fecha_declaracion: "",
-
-  datos_dependientes_economicos: [
-    {
-      nombres: "Carlos",
-      primer_apellido: "Pérez",
-      segundo_apellido: "López",
-      tipo_relacion: {
-        codigo: "CONY",
-        valor: "Cónyuge"
-      },
-      nacionalidad: [
-        {
-          valor: "México",
-          codigo: "MX"
-        }
-      ],
-      curp: "BEML920313HMCLNS09",
-      rfc: "GOAP780710RH7",
-      fecha_nacimiento: "31/07/1980",
-      numero_identificacion_nacional: "ABCD1234",
-      habita_domicilio_declarante: true,
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      medio_contacto: "usuario@correo.com",
-      ingresos_propios: true,
-      ocupacion_profesion: "Administrador de empresas",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      proveedor_contratista_gobierno: true,
-      tiene_intereses_mismo_sector_declarante: true,
-      desarrolla_cabildeo_sector_declarante: true,
-      beneficiario_programa_publico: [
-        {
-          nombre_programa: "Prospera",
-          institucion_otorga_apoyo: "XE-IPN Canal 11",
-          tipo_apoyo: "Servicio",
-          valor_apoyo: 4000
-        }
-      ],
-      observaciones: "Esto es una observación"
-    }
-  ],
   empresas_sociedades_asociaciones: [
     {
       id: 123,
@@ -1971,4 +1899,122 @@ export var datos_curriculares_grados_academicos = {
     valor: ""
   },
   cedula_profesional: ""
+};
+
+export var datos_experiencia_laboral = {
+  ambito: {
+    codigo: "",
+    valor: ""
+  },
+  nivel_gobierno: {
+    codigo: "",
+    valor: ""
+  },
+  poder_ente: {
+    codigo: "",
+    valor: ""
+  },
+  nombre_institucion: "",
+  unidad_administrativa: "",
+  direccion: {
+    pais: {
+      valor: "",
+      codigo: ""
+    },
+    entidad_federativa: {
+      nom_ent: "",
+      cve_ent: ""
+    },
+    municipio: {
+      nom_mun: "",
+      cve_mun: ""
+    },
+    cp: "",
+    localidad: {
+      nom_loc: "",
+      cve_loc: ""
+    },
+    vialidad: {
+      tipo_vial: "",
+      nom_vial: ""
+    },
+    numExt: "",
+    numInt: ""
+  },
+  sector_industria: {
+    codigo: "",
+    valor: ""
+  },
+  jerarquia_rango: "",
+  cargo_puesto: "",
+  fecha_ingreso: "",
+  fecha_salida: "",
+  funciones_principales: []
+};
+
+export var datos_dependientes_economicos={
+  nombre_personal: {
+    nombres: "",
+    primer_apellido: "",
+    segundo_apellido: ""
+  },
+  tipo_relacion: {
+    codigo: "",
+    valor: ""
+  },
+  nacionalidades: [
+    {
+      valor: "",
+      codigo: ""
+    }
+  ],
+  curp: "",
+  rfc: "",
+  fecha_nacimiento: "",
+  numero_identificacion_nacional: "",
+  habita_domicilio_declarante: null,
+  domicilio: {
+    pais: {
+      valor: "",
+      codigo: ""
+    },
+    entidad_federativa: {
+      nom_ent: "",
+      cve_ent: ""
+    },
+    municipio: {
+      nom_mun: "",
+      cve_mun: ""
+    },
+    cp: "",
+    localidad: {
+      nom_loc: "",
+      cve_loc: ""
+    },
+    vialidad: {
+      tipo_vial: "",
+      nom_vial: ""
+    },
+    numExt: "",
+    numInt: ""
+  },
+  medio_contacto: "",
+  ingresos_propios: null,
+  ocupacion_profesion: "",
+  sector_industria: {
+    codigo: "",
+    valor: ""
+  },
+  proveedor_contratista_gobierno: null,
+  tiene_intereses_mismo_sector_declarante: null,
+  desarrolla_cabildeo_sector_declarante: null,
+  beneficiario_programa_publico: [
+    {
+      nombre_programa: "",
+      institucion_otorga_apoyo: "",
+      tipo_apoyo: "",
+      valor_apoyo: null
+    }
+  ],
+  observaciones: ""
 };

@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+import Button from "@material-ui/core/Button";
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -35,7 +36,7 @@ const styles = theme => ({
 });
 
 function CustomizedTable(props) {
-  const { classes, data } = props;
+  const { classes, data, buttonClick } = props;
 
   return (
     <Paper className={classes.root}>
@@ -69,7 +70,7 @@ function CustomizedTable(props) {
               <TableRow className={classes.row} key={index}>
                 <CustomTableCell>{index}-{item.nombres} {item.primer_apellido} {item.segundo_apellido}</CustomTableCell>
                 <CustomTableCell>{item.tipo_relacion.valor}</CustomTableCell>
-                <CustomTableCell>{item.nacionalidad[0].valor}</CustomTableCell>
+                <CustomTableCell>{item.nacionalidades[0].valor}</CustomTableCell>
                 <CustomTableCell>{item.curp}</CustomTableCell>
                 <CustomTableCell>{item.rfc}</CustomTableCell>
                 <CustomTableCell>{item.fecha_nacimiento}</CustomTableCell>
@@ -85,7 +86,16 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.desarrolla_cabildeo_sector_declarante}</CustomTableCell>
                 <CustomTableCell>{item.beneficiario_programa_publico[0].nombre_programa}</CustomTableCell>
                 <CustomTableCell>{item.observaciones}</CustomTableCell>
-                <CustomTableCell />
+                  <CustomTableCell>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      value={index}
+                      onClick={buttonClick(index)}
+                    >
+                      Eliminar
+                    </Button>
+                  </CustomTableCell>
               </TableRow>
             );
           })}

@@ -10,7 +10,12 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { data, datos_curriculares_grados_academicos } from "./data";
+import {
+  data,
+  datos_curriculares_grados_academicos,
+  datos_experiencia_laboral,
+  datos_dependientes_economicos
+} from "./data";
 
 import Menu from "../Menu";
 import Formulario from "./Formulario";
@@ -76,13 +81,13 @@ class Index extends Component {
     });
   };
 
-  handleNext = () => event => {
+  handleNext = () => {
     this.setState({
       show: this.state.show + 1
     });
   };
 
-  handleBack = () => event => {
+  handleBack = () => {
     this.setState({
       show: this.state.show - 1
     });
@@ -232,6 +237,22 @@ class Index extends Component {
     };
   };
 
+  getAmbito = codigo => {
+    let info = this.state.ambitos.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoRelacion = codigo => {
+    let info = this.state.relacionDeclarante.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
   updateMunicipios = cve_ent => {
     fetch(config.apiHost + "municipios?cve_ent=" + cve_ent)
       .then(res => res.json())
@@ -337,64 +358,49 @@ class Index extends Component {
     });
   };
 
-  handleClickExperienciaLaborar = () => event => {
-    this.state.experiencia_laboral.push({
-      ambito: {
-        codigo: "Pub",
-        valor: "Público"
-      },
-      nivel_gobierno: {
-        codigo: "EST",
-        valor: "Estatal"
-      },
-      poder_ente: {
-        codigo: "JUD",
-        valor: "Judicial"
-      },
-      nombre_institucion: "Instituto Federal de Telecomunicaciones",
-      unidad_administrativa: "Unidad de Política Regulatoria",
-      direccion: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      jerarquia_rango: "string",
-      cargo_puesto: "Jefe de Departamento",
-      fecha_ingreso: "31/07/1980",
-      fecha_salida: "31/07/1980",
-      funciones_principales: [
-        {
-          codigo: "ABI",
-          valor: "Administración de bienes"
-        }
-      ]
-    });
+  handleAddExperienciaLaborar = () => {
+    let datos = Object.assign({}, this.state.datos_experiencia_laboral);
+    this.state.experiencia_laboral.push(datos);
     this.setState(this.state);
-    // console.log("hi");
+
+    // limpieza del Formulario
+    this.setState({
+      datos_experiencia_laboral: Object.assign({}, datos_experiencia_laboral)
+    });
+  };
+
+  handleRemoveExperienciaLaborar = index => event => {
+    this.state.experiencia_laboral.splice(index, 1);
+    this.setState(
+      { experiencia_laboral: this.state.experiencia_laboral },
+      () => {
+        console.log(this.state.experiencia_laboral);
+      }
+    );
+  };
+
+  handleAddDependientesEconomicos = () => {
+    let datos = Object.assign({}, this.state.datos_dependientes_economicos);
+    this.state.dependientes_economicos.push(datos);
+    this.setState(this.state);
+
+    // limpieza del Formulario
+    this.setState({
+      datos_dependientes_economicos: Object.assign(
+        {},
+        datos_dependientes_economicos
+      )
+    });
+  };
+
+  handleRemoveDependientesEconomicos = index => event => {
+    this.state.dependientes_economicos.splice(index, 1);
+    this.setState(
+      { dependientes_economicos: this.state.dependientes_economicos },
+      () => {
+        console.log(this.state.dependientes_economicos);
+      }
+    );
   };
 
   handleClickDependientesEconomicos = () => event => {
@@ -2352,10 +2358,13 @@ class Index extends Component {
         data.datos_encargo_actual.nivel_gobierno = this.getNivelGobierno(valor);
         break;
       case "datos_encargo_actual.poder_juridico":
-        data.datos_encargo_actual.poder_juridico = this.getPoderEjecutivo(valor);
+        data.datos_encargo_actual.poder_juridico = this.getPoderEjecutivo(
+          valor
+        );
         break;
       case "datos_encargo_actual.contratado_honorarios":
-        data.datos_encargo_actual.contratado_honorarios = !data.datos_encargo_actual.contratado_honorarios;
+        data.datos_encargo_actual.contratado_honorarios = !data
+          .datos_encargo_actual.contratado_honorarios;
         break;
       case "datos_encargo_actual.nivel_encargo":
         data.datos_encargo_actual.nivel_encargo = valor;
@@ -2435,93 +2444,90 @@ class Index extends Component {
     });
   };
 
-
   setDataExperienciaLaboral = field => event => {
     let valor = event.target.value;
     let data = this.state;
 
     switch (field) {
-      case "datos_encargo_actual.ente_publico":
-        data.datos_encargo_actual.ente_publico = valor;
+      case "datos_experiencia_laboral.ambito":
+        data.datos_experiencia_laboral.ambito = this.getAmbito(valor);
         break;
-      case "datos_encargo_actual.empleo_cargo_comision":
-        data.datos_encargo_actual.empleo_cargo_comision = valor;
-        break;
-      case "datos_encargo_actual.nivel_gobierno":
-        data.datos_encargo_actual.nivel_gobierno = this.getNivelGobierno(valor);
-        break;
-      case "datos_encargo_actual.poder_juridico":
-        data.datos_encargo_actual.poder_juridico = this.getPoderEjecutivo(valor);
-        break;
-      case "datos_encargo_actual.contratado_honorarios":
-        data.datos_encargo_actual.contratado_honorarios = this.getEntidadFederativa(
+      case "datos_experiencia_laboral.nivel_gobierno":
+        data.datos_experiencia_laboral.nivel_gobierno = this.getNivelGobierno(
           valor
         );
         break;
-      case "datos_encargo_actual.nivel_encargo":
-        data.datos_encargo_actual.nivel_encargo = valor;
-        break;
-      case "datos_encargo_actual.area_adscripcion":
-        data.datos_encargo_actual.area_adscripcion = valor;
-        break;
-      case "datos_encargo_actual.fecha_posesion":
-        data.datos_encargo_actual.fecha_posesion = valor;
-        break;
-      case "datos_encargo_actual.telefono_laboral.numero":
-        data.datos_encargo_actual.telefono_laboral.numero = valor;
-        break;
-      case "datos_encargo_actual.telefono_laboral.extension":
-        data.datos_encargo_actual.telefono_laboral.extension = valor;
-        break;
-      case "datos_encargo_actual.sector_industria":
-        data.datos_encargo_actual.sector_industria = this.getSectorIndustria(
+      case "datos_experiencia_laboral.poder_ente":
+        data.datos_experiencia_laboral.poder_ente = this.getPoderEjecutivo(
           valor
         );
         break;
-      case "datos_encargo_actual.funciones_principales.codigo":
-        data.datos_encargo_actual.funciones_principales.codigo = valor;
+      case "datos_experiencia_laboral.nombre_institucion":
+        data.datos_experiencia_laboral.nombre_institucion = valor;
         break;
-      /////////////////////////////  direccion_encargo  /////////////////////////////////////
+      case "datos_experiencia_laboral.unidad_administrativa":
+        data.datos_experiencia_laboral.unidad_administrativa = valor;
+        break;
+      case "datos_experiencia_laboral.sector_industria":
+        data.datos_experiencia_laboral.sector_industria = this.getSectorIndustria(
+          valor
+        );
+        break;
+      case "datos_experiencia_laboral.jerarquia_rango":
+        data.datos_experiencia_laboral.jerarquia_rango = valor;
+        break;
+
+      case "datos_experiencia_laboral.cargo_puesto":
+        data.datos_experiencia_laboral.cargo_puesto = valor;
+        break;
+      case "datos_experiencia_laboral.fecha_ingreso":
+        data.datos_experiencia_laboral.fecha_ingreso = valor;
+        break;
+      case "datos_experiencia_laboral.fecha_salida":
+        data.datos_experiencia_laboral.fecha_salida = valor;
+        break;
+      case "datos_experiencia_laboral.funciones_principales.codigo":
+        data.datos_experiencia_laboral.funciones_principales[0].codigo = valor;
+        break;
+      /////////////////////////////  direccion  /////////////////////////////////////
       case "pais":
-        data.datos_encargo_actual.direccion_encargo.pais = this.getCiudad(
-          valor
-        );
+        data.datos_experiencia_laboral.direccion.pais = this.getCiudad(valor);
         break;
       case "entidad_federativa":
-        data.datos_encargo_actual.direccion_encargo.entidad_federativa = this.getEntidadFederativa(
+        data.datos_experiencia_laboral.direccion.entidad_federativa = this.getEntidadFederativa(
           valor
         );
         break;
       case "municipio":
-        data.datos_encargo_actual.direccion_encargo.municipio = this.getMunicipios(
+        data.datos_experiencia_laboral.direccion.municipio = this.getMunicipios(
           valor
         );
 
         this.updateLocalidades(
-          this.state.datos_encargo_actual.direccion_encargo.entidad_federativa
+          this.state.datos_experiencia_laboral.direccion.entidad_federativa
             .cve_ent,
           valor
         );
         break;
       case "cp":
-        data.datos_encargo_actual.direccion_encargo.cp = valor;
+        data.datos_experiencia_laboral.direccion.cp = valor;
         break;
       case "localidad":
-        data.datos_encargo_actual.direccion_encargo.localidad = this.getLocalidad(
+        data.datos_experiencia_laboral.direccion.localidad = this.getLocalidad(
           valor
         );
         break;
       case "vialidad.tipo_vial":
-        data.datos_encargo_actual.direccion_encargo.vialidad.tipo_vial = valor;
+        data.datos_experiencia_laboral.direccion.vialidad.tipo_vial = valor;
         break;
       case "vialidad.nom_vial":
-        data.datos_encargo_actual.direccion_encargo.vialidad.nom_vial = valor;
+        data.datos_experiencia_laboral.direccion.vialidad.nom_vial = valor;
         break;
       case "numExt":
-        data.datos_encargo_actual.direccion_encargo.numExt = valor;
+        data.datos_experiencia_laboral.direccion.numExt = valor;
         break;
       case "numInt":
-        data.datos_encargo_actual.direccion_encargo.numInt = valor;
+        data.datos_experiencia_laboral.direccion.numInt = valor;
         break;
 
       default:
@@ -2529,9 +2535,128 @@ class Index extends Component {
 
     this.setState(data, () => {
       if (this.state.debug) {
-        console.log(this.state.datos_encargo_actual);
-        // console.log(this.state.datos_encargo_actual_nacionalidades);
-        // console.log(this.state.datos_encargo_actual.direccion_encargo);
+        console.log(valor);
+        console.log(this.state.datos_experiencia_laboral);
+
+        // console.log(this.state.datos_experiencia_laboral_nacionalidades);
+        // console.log(this.state.datos_experiencia_laboral.direccion_encargo);
+      }
+    });
+  };
+
+  setDataDependientesEconomicos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "datos_dependientes_economicos.tipo_relacion":
+        data.datos_dependientes_economicos.tipo_relacion = this.getTipoRelacion(
+          valor
+        );
+        break;
+      case "datos_dependientes_economicos.nombre_personal.nombres":
+        data.datos_dependientes_economicos.nombre_personal.nombres = valor;
+        break;
+      case "datos_dependientes_economicos.nombre_personal.primer_apellido":
+        data.datos_dependientes_economicos.nombre_personal.primer_apellido = valor;
+        break;
+      case "datos_dependientes_economicos.nombre_personal.segundo_apellido":
+        data.datos_dependientes_economicos.nombre_personal.segundo_apellido = valor;
+        break;
+      case "nacionalidades":
+        data.dependientes_economicos_nacionlidades = valor;
+        let nacionalidad = [];
+        for (var index in data.dependientes_economicos_nacionlidades) {
+          nacionalidad.push(
+            this.getCiudad(data.dependientes_economicos_nacionlidades[index])
+          );
+        }
+
+        data.datos_dependientes_economicos.nacionalidades = nacionalidad;
+        break;
+      case "curp":
+        data.datos_dependientes_economicos.curp = valor;
+        break;
+      case "rfc":
+        data.datos_dependientes_economicos.rfc = valor;
+        break;
+      case "fecha_nacimiento":
+        data.datos_dependientes_economicos.fecha_nacimiento = valor;
+        break;
+      case "numero_identificacion_nacional":
+        data.datos_dependientes_economicos.numero_identificacion_nacional = valor;
+        break;
+
+      case "habita_domicilio_declarante":
+        data.datos_dependientes_economicos.habita_domicilio_declarante = !data.datos_dependientes_economicos.habita_domicilio_declarante;
+        break;
+      case "medio_contacto":
+        data.datos_dependientes_economicos.medio_contacto = valor;
+        break;
+      case "ingresos_propios":
+        data.datos_dependientes_economicos.ingresos_propios = !data.datos_dependientes_economicos.ingresos_propios;
+        break;
+      case "ocupacion_profesion":
+        data.datos_dependientes_economicos.ocupacion_profesion = valor;
+        break;
+      case "sector_industria":
+        data.datos_dependientes_economicos.sector_industria = this.getSectorIndustria(valor);
+        break;
+      case "proveedor_contratista_gobierno":
+        data.datos_dependientes_economicos.proveedor_contratista_gobierno = !data.datos_dependientes_economicos.proveedor_contratista_gobierno;
+        break;
+        case "tiene_intereses_mismo_sector_declarante":
+          data.datos_dependientes_economicos.tiene_intereses_mismo_sector_declarante = !data.datos_dependientes_economicos.tiene_intereses_mismo_sector_declarante;
+          break;
+        case "desarrolla_cabildeo_sector_declarante":
+        data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante = !data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante;
+          break;
+      /////////////////////////////  DOMICILIO  /////////////////////////////////////
+      case "pais":
+        data.informacion_general.domicilio.pais = this.getCiudad(valor);
+        break;
+      case "entidad_federativa":
+        data.informacion_general.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.informacion_general.domicilio.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.informacion_general.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.informacion_general.domicilio.localidad = this.getLocalidad(valor);
+        break;
+      case "vialidad.tipo_vial":
+        data.informacion_general.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.informacion_general.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.informacion_general.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.informacion_general.domicilio.numInt = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.datos_dependientes_economicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
       }
     });
   };
@@ -2610,6 +2735,15 @@ class Index extends Component {
       .then(sectorIndustria =>
         this.setState({ sectorIndustria: sectorIndustria })
       );
+
+    fetch(config.apiHost + "catAmbitos")
+      .then(res => res.json())
+      .then(ambitos => this.setState({ ambitos: ambitos }));
+    fetch(config.apiHost + "catRelacionDeclarante")
+      .then(res => res.json())
+      .then(relacionDeclarante =>
+        this.setState({ relacionDeclarante: relacionDeclarante })
+      );
   }
 
   render() {
@@ -2627,7 +2761,7 @@ class Index extends Component {
               <Button
                 variant="contained"
                 size="small"
-                onClick={this.handleBack()}
+                onClick={this.handleBack}
               >
                 Anterior
               </Button>
@@ -2639,7 +2773,7 @@ class Index extends Component {
               <Button
                 variant="contained"
                 size="small"
-                onClick={this.handleNext()}
+                onClick={this.handleNext}
               >
                 Siguiente
               </Button>
@@ -2676,38 +2810,28 @@ class Index extends Component {
           {this.state.show === 4 && (
             <ExperienciaLaboral
               data={this.state}
-              handleClickExperienciaLaborar={this.handleClickExperienciaLaborar}
-              handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
+              handleAddExperienciaLaborar={this.handleAddExperienciaLaborar}
+              handleRemoveExperienciaLaborar={
+                this.handleRemoveExperienciaLaborar
+              }
+              handleChange={this.setDataExperienciaLaboral}
+              nivelGobierno={this.state.nivelGobierno}
+              poderEjecutivo={this.state.poderEjecutivo}
+              sectorIndustria={this.state.sectorIndustria}
             />
           )}
 
           {this.state.show === 5 && (
             <DependientesEconomicos
               data={this.state}
-              handleClickDependientesEconomicos={
-                this.handleClickDependientesEconomicos
+              handleChange={this.setDataDependientesEconomicos}
+              data={this.state}
+              handleAddDependientesEconomicos={
+                this.handleAddDependientesEconomicos
               }
-              handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
+              handleRemoveDependientesEconomicos={
+                this.handleRemoveDependientesEconomicos
+              }
             />
           )}
 

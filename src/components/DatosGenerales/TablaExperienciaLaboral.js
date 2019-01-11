@@ -8,6 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+import Button from "@material-ui/core/Button";
+
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -35,7 +37,7 @@ const styles = theme => ({
 });
 
 function CustomizedTable(props) {
-  const { classes, data } = props;
+  const { classes, data, buttonClick } = props;
 
   return (
     <Paper className={classes.root}>
@@ -60,7 +62,9 @@ function CustomizedTable(props) {
           {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
-                <CustomTableCell>{index}-{item.ambito.valor}</CustomTableCell>
+                <CustomTableCell>
+                  {index}-{item.ambito.valor}
+                </CustomTableCell>
                 <CustomTableCell>{item.nivel_gobierno.valor}</CustomTableCell>
                 <CustomTableCell>{item.nombre_institucion}</CustomTableCell>
                 <CustomTableCell>{item.unidad_administrativa}</CustomTableCell>
@@ -69,10 +73,18 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.cargo_puesto}</CustomTableCell>
                 <CustomTableCell>{item.fecha_ingreso}</CustomTableCell>
                 <CustomTableCell>{item.fecha_salida}</CustomTableCell>
-                <CustomTableCell>{item.funciones_principales[0].valor}</CustomTableCell>
+                <CustomTableCell>{item.funciones_principales}</CustomTableCell>
                 <CustomTableCell>{item.direccion.pais.valor}</CustomTableCell>
-                <CustomTableCell></CustomTableCell>
-                <CustomTableCell />
+                <CustomTableCell>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    value={index}
+                    onClick={buttonClick(index)}
+                  >
+                    Eliminar
+                  </Button>
+                </CustomTableCell>
               </TableRow>
             );
           })}

@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+import Button from "@material-ui/core/Button";
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -35,7 +36,7 @@ const styles = theme => ({
 });
 
 function CustomizedTable(props) {
-  const { classes, data } = props;
+  const { classes, data, buttonClick } = props;
 
   return (
     <Paper className={classes.root}>
@@ -89,7 +90,16 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.precio_adquisicion.valor} </CustomTableCell>
                 <CustomTableCell>{item.precio_adquisicion.moneda.moneda}</CustomTableCell>
                 <CustomTableCell>{item.observaciones}</CustomTableCell>
-                <CustomTableCell />
+                  <CustomTableCell>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      value={index}
+                      onClick={buttonClick(index)}
+                    >
+                      Eliminar
+                    </Button>
+                  </CustomTableCell>
               </TableRow>
             );
           })}
