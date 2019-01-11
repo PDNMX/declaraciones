@@ -328,7 +328,7 @@ function SimpleCard(props) {
               label="Observaciones/Comentarios"
               className={classes.textField}
               value={data.datos_dependientes_economicos.observaciones}
-              onChange={handleChange("estado_civil")}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />

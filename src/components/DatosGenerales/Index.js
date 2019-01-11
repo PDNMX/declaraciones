@@ -2611,44 +2611,46 @@ class Index extends Component {
         case "desarrolla_cabildeo_sector_declarante":
         data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante = !data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante;
           break;
+          case "observaciones":
+            data.datos_dependientes_economicos.observaciones = valor;
+            break;
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
-        data.informacion_general.domicilio.pais = this.getCiudad(valor);
+        data.datos_dependientes_economicos.domicilio.pais = this.getCiudad(valor);
         break;
       case "entidad_federativa":
-        data.informacion_general.domicilio.entidad_federativa = this.getEntidadFederativa(
+        data.datos_dependientes_economicos.domicilio.entidad_federativa = this.getEntidadFederativa(
           valor
         );
         break;
       case "municipio":
-        data.informacion_general.domicilio.municipio = this.getMunicipios(
+        data.datos_dependientes_economicos.domicilio.municipio = this.getMunicipios(
           valor
         );
 
         this.updateLocalidades(
-          this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
+          this.state.datos_dependientes_economicos.domicilio.entidad_federativa.cve_ent,
           valor
         );
         break;
       case "cp":
-        data.informacion_general.domicilio.cp = valor;
+        data.datos_dependientes_economicos.domicilio.cp = valor;
         break;
       case "localidad":
-        data.informacion_general.domicilio.localidad = this.getLocalidad(valor);
+        data.datos_dependientes_economicos.domicilio.localidad = this.getLocalidad(valor);
         break;
       case "vialidad.tipo_vial":
-        data.informacion_general.domicilio.vialidad.tipo_vial = valor;
+        data.datos_dependientes_economicos.domicilio.vialidad.tipo_vial = valor;
         break;
       case "vialidad.nom_vial":
-        data.informacion_general.domicilio.vialidad.nom_vial = valor;
+        data.datos_dependientes_economicos.domicilio.vialidad.nom_vial = valor;
         break;
       case "numExt":
-        data.informacion_general.domicilio.numExt = valor;
+        data.datos_dependientes_economicos.domicilio.numExt = valor;
         break;
       case "numInt":
-        data.informacion_general.domicilio.numInt = valor;
+        data.datos_dependientes_economicos.domicilio.numInt = valor;
         break;
-
       default:
     }
 
