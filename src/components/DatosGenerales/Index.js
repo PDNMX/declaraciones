@@ -2669,11 +2669,11 @@ class Index extends Component {
   };
 
   componentDidMount() {
-    fetch(apiHost + "ciudades")
+    fetch(config.apiHost + "ciudades")
       .then(res => res.json())
       .then(ciudades => this.setState({ ciudades: ciudades }));
 
-    fetch(apiHost + "entidades")
+    fetch(config.apiHost + "entidades")
       .then(res => res.json())
       .then(entidades => this.setState({ entidades: entidades }));
 
@@ -2691,7 +2691,7 @@ class Index extends Component {
         this.setState({ estadosciviles: estadosciviles })
       );
 
-    fetch(apiHost + "regimenmatrimonial")
+    fetch(config.apiHost + "regimenmatrimonial")
       .then(res => res.json())
       .then(regimenmatrimonial =>
         this.setState({ regimen: regimenmatrimonial })
@@ -2723,7 +2723,7 @@ class Index extends Component {
     //   .then(res => res.json())
     //   .then(localidades => this.setState({ localidades: localidades }));
 
-    fetch(apiHost + "tipovialidad")
+    fetch(config.apiHost + "tipovialidad")
       .then(res => res.json())
       .then(tipovialidad => this.setState({ tipovialidad: tipovialidad }));
 
