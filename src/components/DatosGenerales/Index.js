@@ -2094,7 +2094,6 @@ class Index extends Component {
     // console.log(data);
 
     var apiBaseUrl = apiHost;
-    // var apiHost = process.env.APP_API || 'https://localhost/captura/api/';
     var self = this;
     var info;
 
