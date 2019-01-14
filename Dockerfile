@@ -2,8 +2,8 @@ FROM node:10-alpine
 
 MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
 
-ADD . /declaraciones/client
-WORKDIR /declaraciones/client
+ADD . /
+WORKDIR /
 
 RUN yarn add global yarn \
 && yarn install \
