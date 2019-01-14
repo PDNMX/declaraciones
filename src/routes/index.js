@@ -6,7 +6,7 @@ import DatosGenerales from "../components/DatosGenerales/Index";
 const routes = [
   {
     path: "/",
-    component: Home
+    component: DatosGenerales
   },
   {
     path: "/login",
