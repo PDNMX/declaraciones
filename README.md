@@ -1,3 +1,21 @@
+# Interfaz de declaraciones
+
+## ¿Qué es y para qué sirve?
+
+Es una interfaz web que permite a las dependencias capturar las declaraciones referentes al primer sistema de la PDN.
+
+Se conecta con la [API de declaraciones](https://github.com/PDNMX/dummy_api)
+
+## ¿Cómo se corre?
+
+1. 
+2.
+3.
+
+
+-----------------------------------------------
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import config from "../../config.json";
 
+
 //Grid
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -55,6 +56,8 @@ import Deudas from "./Deudas";
 import OtrasObligaciones from "./OtrasObligaciones";
 
 console.log(process.env.PRUEBA);
+
+var apiHost = process.env.APP_API || 'https://localhost/captura/api/';
 
 const styles = theme => ({
   root: {
@@ -2090,7 +2093,8 @@ class Index extends Component {
     };
     // console.log(data);
 
-    var apiBaseUrl = config.apiHost;
+    var apiBaseUrl = apiHost;
+    // var apiHost = process.env.APP_API || 'https://localhost/captura/api/';
     var self = this;
     var info;
 
@@ -2405,6 +2409,7 @@ class Index extends Component {
           valor
         );
 
+
         this.updateLocalidades(
           this.state.datos_encargo_actual.direccion_encargo.entidad_federativa
             .cve_ent,
@@ -2664,11 +2669,11 @@ class Index extends Component {
   };
 
   componentDidMount() {
-    fetch(config.apiHost + "ciudades")
+    fetch(apiHost + "ciudades")
       .then(res => res.json())
       .then(ciudades => this.setState({ ciudades: ciudades }));
 
-    fetch(config.apiHost + "entidades")
+    fetch(apiHost + "entidades")
       .then(res => res.json())
       .then(entidades => this.setState({ entidades: entidades }));
 
@@ -2686,7 +2691,7 @@ class Index extends Component {
         this.setState({ estadosciviles: estadosciviles })
       );
 
-    fetch(config.apiHost + "regimenmatrimonial")
+    fetch(apiHost + "regimenmatrimonial")
       .then(res => res.json())
       .then(regimenmatrimonial =>
         this.setState({ regimen: regimenmatrimonial })
@@ -2718,7 +2723,7 @@ class Index extends Component {
     //   .then(res => res.json())
     //   .then(localidades => this.setState({ localidades: localidades }));
 
-    fetch(config.apiHost + "tipovialidad")
+    fetch(apiHost + "tipovialidad")
       .then(res => res.json())
       .then(tipovialidad => this.setState({ tipovialidad: tipovialidad }));
 
