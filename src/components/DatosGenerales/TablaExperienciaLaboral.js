@@ -44,39 +44,37 @@ function CustomizedTable(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <CustomTableCell>Grado Obtenido</CustomTableCell>
-            <CustomTableCell>Institución Educativa</CustomTableCell>
-            <CustomTableCell>Pais</CustomTableCell>
-            <CustomTableCell>Entidad</CustomTableCell>
-            <CustomTableCell>Carrera</CustomTableCell>
-            <CustomTableCell>Estatus</CustomTableCell>
-            <CustomTableCell>Año de Conclusión</CustomTableCell>
-            <CustomTableCell>Documento Obtenido</CustomTableCell>
-            <CustomTableCell>Cedula Profesional</CustomTableCell>
+            <CustomTableCell>Ambito</CustomTableCell>
+            <CustomTableCell>Nivel de gobierno</CustomTableCell>
+            <CustomTableCell>Nombre de la institución</CustomTableCell>
+            <CustomTableCell>Unidad administrativa</CustomTableCell>
+            <CustomTableCell>Sector/Industria</CustomTableCell>
+            <CustomTableCell>Poder Juridico</CustomTableCell>
+            <CustomTableCell>Cargo/Puesto</CustomTableCell>
+            <CustomTableCell>Fecha de ingreso</CustomTableCell>
+            <CustomTableCell>Fecha salida</CustomTableCell>
+            <CustomTableCell>Funciones</CustomTableCell>
+            <CustomTableCell>Dirección</CustomTableCell>
             <CustomTableCell>Opciones</CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((grado, index) => {
+          {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
                 <CustomTableCell>
-                  {index}-{grado.grado_obtenido}
+                  {index}-{item.ambito.valor}
                 </CustomTableCell>
-                <CustomTableCell>{grado.institucion_educativa}</CustomTableCell>
-                <CustomTableCell>
-                  {grado.lugar_institucion_educativa.pais.valor}
-                </CustomTableCell>
-                <CustomTableCell>
-                  {grado.lugar_institucion_educativa.entidad.nom_ent}
-                </CustomTableCell>
-                <CustomTableCell>{grado.carrera}</CustomTableCell>
-                <CustomTableCell>{grado.estatus.valor}</CustomTableCell>
-                <CustomTableCell>{grado.ano_conclusion}</CustomTableCell>
-                <CustomTableCell>
-                  {grado.documento_obtenido.valor}
-                </CustomTableCell>
-                <CustomTableCell>{grado.cedula_profesional}</CustomTableCell>
+                <CustomTableCell>{item.nivel_gobierno.valor}</CustomTableCell>
+                <CustomTableCell>{item.nombre_institucion}</CustomTableCell>
+                <CustomTableCell>{item.unidad_administrativa}</CustomTableCell>
+                <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
+                <CustomTableCell>{item.poder_ente.valor}</CustomTableCell>
+                <CustomTableCell>{item.cargo_puesto}</CustomTableCell>
+                <CustomTableCell>{item.fecha_ingreso}</CustomTableCell>
+                <CustomTableCell>{item.fecha_salida}</CustomTableCell>
+                <CustomTableCell>{item.funciones_principales}</CustomTableCell>
+                <CustomTableCell>{item.direccion.pais.valor}</CustomTableCell>
                 <CustomTableCell>
                   <Button
                     variant="contained"

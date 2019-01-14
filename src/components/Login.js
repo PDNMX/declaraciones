@@ -177,7 +177,6 @@ class Login extends React.Component {
                             </CardContent>
                         </Card>
                     </Grid>
-
                 </Grid>
             </div>
         );
