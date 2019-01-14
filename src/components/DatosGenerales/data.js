@@ -2,7 +2,7 @@ import moment from "moment";
 
 export var data = {
   debug: true,
-  show: 5,
+  show: 1,
   message: "",
   type: "",
   relacionDeclarante:[],
