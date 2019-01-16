@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -28,7 +28,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -73,15 +73,7 @@ function SimpleCard(props) {
     data,
     handleClickRepresentacionActiva,
     handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
+
   } = props;
 
   // console.log(data);
@@ -94,18 +86,18 @@ function SimpleCard(props) {
         <Grid container spacing={24}>
         <Grid item xs={2}>
           <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Tipo de representación</InputLabel>
+            <InputLabel htmlFor="tipo_representacion">Tipo de representación</InputLabel>
             <Select
               value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
+              onChange={handleChange("tipo_representacion")}
               inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
+                name: "tipo_representacion",
+                id: "tipo_representacion"
               }}
             >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
+              {data.catTiposRepresentaciones.map(tipoRepresentacion => (
+                <MenuItem key={tipoRepresentacion.codigo} value={tipoRepresentacion.codigo}>
+                  {tipoRepresentacion.valor}
                 </MenuItem>
               ))}
             </Select>
@@ -113,18 +105,23 @@ function SimpleCard(props) {
         </Grid>
         <Grid item xs={2}>
           <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Nacionalidades</InputLabel>
+            <InputLabel htmlFor="select-multiple-checkbox">
+              Nacionalidades
+            </InputLabel>
             <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
-              inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
-              }}
+              multiple
+              value={data.informacion_general_nacionalidades}
+              onChange={handleChange("nacionalidades")}
+              input={<Input id="select-multiple-checkbox" />}
+              renderValue={selected => selected.join(", ")}
+              MenuProps={MenuProps}
             >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
+              {data.ciudades.map(ciudad => (
+                <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                  <Checkbox
+                    checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
+                  />
+                  <ListItemText primary={ciudad.valor} />
                 </MenuItem>
               ))}
             </Select>
@@ -170,16 +167,16 @@ function SimpleCard(props) {
           <FormControl className={classes.select}>
             <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
             <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
+              value={data.datos_encargo_actual.sector_industria.codigo}
+              onChange={handleChange("datos_encargo_actual.sector_industria")}
               inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
+                name: "sector_industria",
+                id: "sector_industria"
               }}
             >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
+              {data.sectorIndustria.map(dato => (
+                <MenuItem key={dato.codigo} value={dato.codigo}>
+                  {dato.valor}
                 </MenuItem>
               ))}
             </Select>

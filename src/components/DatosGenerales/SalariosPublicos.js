@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -20,15 +20,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
-import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import Input from "@material-ui/core/Input";
+// import Checkbox from "@material-ui/core/Checkbox";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -55,17 +55,6 @@ const styles = theme => ({
   }
 });
 
-// estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
 
 function SimpleCard(props) {
   const {
@@ -73,15 +62,7 @@ function SimpleCard(props) {
     data,
     handleClickSalariosPublicos,
     handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
+
   } = props;
 
   // console.log(data);
@@ -94,18 +75,18 @@ function SimpleCard(props) {
         <Grid container spacing={24}>
         <Grid item xs={2}>
           <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Ente Público</InputLabel>
+            <InputLabel htmlFor="ente_publico">Ente Público</InputLabel>
             <Select
               value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
+              onChange={handleChange("ente_publico")}
               inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
+                name: "ente_publico",
+                id: "ente_publico"
               }}
             >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
+              {data.catDependencias.map(entesPublicos => (
+                <MenuItem key={entesPublicos.valor} value={entesPublicos.valor}>
+                  {entesPublicos.valor}
                 </MenuItem>
               ))}
             </Select>
@@ -133,18 +114,18 @@ function SimpleCard(props) {
         </Grid>
         <Grid item xs={2}>
           <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Moneda</InputLabel>
+            <InputLabel htmlFor="moneda">Moneda</InputLabel>
             <Select
               value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
+              onChange={handleChange("moneda")}
               inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
+                name: "moneda",
+                id: "moneda"
               }}
             >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
+              {data.catTiposMonedas.map(tipoMoneda => (
+                <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
+                  {tipoMoneda.valor}
                 </MenuItem>
               ))}
             </Select>
@@ -152,18 +133,18 @@ function SimpleCard(props) {
         </Grid>
         <Grid item xs={2}>
           <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Frecuencia</InputLabel>
+            <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
             <Select
               value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
+              onChange={handleChange("frecuencia")}
               inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
+                name: "frecuencia",
+                id: "frecuencia"
               }}
             >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
+              {data.catMedidasPlazos.map(medidaPlazo => (
+                <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
+                  {medidaPlazo.valor}
                 </MenuItem>
               ))}
             </Select>

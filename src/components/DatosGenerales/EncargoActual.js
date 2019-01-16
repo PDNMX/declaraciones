@@ -53,7 +53,6 @@ function SimpleCard(props) {
     handleChange,
     nivelGobierno,
     poderEjecutivo,
-    sectorIndustria
   } = props;
 
   return (
@@ -200,11 +199,11 @@ function SimpleCard(props) {
                 value={data.datos_encargo_actual.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "sector_industria",
+                  id: "sector_industria"
                 }}
               >
-                {sectorIndustria.map(dato => (
+                {data.sectorIndustria.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>

@@ -61,29 +61,6 @@ function SimpleCard(props) {
           Datos Curriculares
         </Typography>
         <Grid container spacing={24}>
-          {/*
-          <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">
-                Grado académico obtenido
-              </InputLabel>
-              <Select
-                value={
-                  data.datos_curriculares_grados_academicos.documento_obtenido
-                    .codigo
-                }
-                onChange={handleChange("estado_civil")}
-
-              >
-                {data.estadosciviles.map(dato => (
-                  <MenuItem key={dato.codigo} value={dato.codigo}>
-                    {dato.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          */}
           <Grid item xs={2}>
             <TextField
               label="Grado académico obtenido"

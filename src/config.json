@@ -1,3 +1,4 @@
 {
-  "apiHost":"https://demospdn.host/demo1/captura/api/"
+  "apiHost":"https://demospdn.host/demo1/captura/api/",
+  "apiHost":"http://localhost:5000/catTiposInstituciones"
 }

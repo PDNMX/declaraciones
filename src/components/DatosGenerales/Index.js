@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import config from "../../config.json";
 
-
 //Grid
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -57,7 +56,7 @@ import OtrasObligaciones from "./OtrasObligaciones";
 
 console.log(process.env.PRUEBA);
 
-var apiHost = process.env.APP_API || 'https://localhost/captura/api/';
+var apiHost = process.env.APP_API || "https://localhost/captura/api/";
 
 const styles = theme => ({
   root: {
@@ -96,7 +95,7 @@ class Index extends Component {
     });
   };
 
-  handleChangeDirPais = name => event => {
+  handleChange = name => event => {
     const valor = this.state.ciudades.filter(
       x => x.codigo === event.target.value
     );
@@ -117,7 +116,7 @@ class Index extends Component {
     );
   };
 
-  handleChangeEdoCivil = name => event => {
+  handleChange = name => event => {
     const valor = this.state.estadosciviles.filter(
       x => x.codigo === event.target.value
     );
@@ -270,7 +269,7 @@ class Index extends Component {
       .then(localidades => this.setState({ localidades: localidades }));
   };
 
-  handleChangeEntidades = name => event => {
+  handleChange = name => event => {
     const valor = this.state.entidades.filter(
       x => x.cve_ent === event.target.value
     );
@@ -283,7 +282,7 @@ class Index extends Component {
     });
   };
 
-  handleChangeMunicipios = name => event => {
+  handleChange = name => event => {
     const valor = this.state.municipios.filter(
       x => x.cve_mun === event.target.value
     );
@@ -306,7 +305,7 @@ class Index extends Component {
     });
   };
 
-  handleChangeLocalidades = name => event => {
+  handleChange = name => event => {
     const valor = this.state.localidades.filter(
       x => x.cve_loc === event.target.value
     );
@@ -2129,7 +2128,7 @@ class Index extends Component {
     });
   };
 
-  handleChangeTipoVialidad = name => event => {
+  handleChange = name => event => {
     const valor = this.state.tipovialidad.filter(
       x => x.codigo === event.target.value
     );
@@ -2144,7 +2143,7 @@ class Index extends Component {
     });
   };
 
-  handleChangeNombreVialidad = obj => event => {
+  handleChange = obj => event => {
     this.setState({
       dom_vialidad: {
         valor: this.state.dom_vialidad.valor,
@@ -2408,7 +2407,6 @@ class Index extends Component {
           valor
         );
 
-
         this.updateLocalidades(
           this.state.datos_encargo_actual.direccion_encargo.entidad_federativa
             .cve_ent,
@@ -2592,35 +2590,45 @@ class Index extends Component {
         break;
 
       case "habita_domicilio_declarante":
-        data.datos_dependientes_economicos.habita_domicilio_declarante = !data.datos_dependientes_economicos.habita_domicilio_declarante;
+        data.datos_dependientes_economicos.habita_domicilio_declarante = !data
+          .datos_dependientes_economicos.habita_domicilio_declarante;
         break;
       case "medio_contacto":
         data.datos_dependientes_economicos.medio_contacto = valor;
         break;
       case "ingresos_propios":
-        data.datos_dependientes_economicos.ingresos_propios = !data.datos_dependientes_economicos.ingresos_propios;
+        data.datos_dependientes_economicos.ingresos_propios = !data
+          .datos_dependientes_economicos.ingresos_propios;
         break;
       case "ocupacion_profesion":
         data.datos_dependientes_economicos.ocupacion_profesion = valor;
         break;
       case "sector_industria":
-        data.datos_dependientes_economicos.sector_industria = this.getSectorIndustria(valor);
+        data.datos_dependientes_economicos.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "proveedor_contratista_gobierno":
-        data.datos_dependientes_economicos.proveedor_contratista_gobierno = !data.datos_dependientes_economicos.proveedor_contratista_gobierno;
+        data.datos_dependientes_economicos.proveedor_contratista_gobierno = !data
+          .datos_dependientes_economicos.proveedor_contratista_gobierno;
         break;
-        case "tiene_intereses_mismo_sector_declarante":
-          data.datos_dependientes_economicos.tiene_intereses_mismo_sector_declarante = !data.datos_dependientes_economicos.tiene_intereses_mismo_sector_declarante;
-          break;
-        case "desarrolla_cabildeo_sector_declarante":
-        data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante = !data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante;
-          break;
-          case "observaciones":
-            data.datos_dependientes_economicos.observaciones = valor;
-            break;
+      case "tiene_intereses_mismo_sector_declarante":
+        data.datos_dependientes_economicos.tiene_intereses_mismo_sector_declarante = !data
+          .datos_dependientes_economicos
+          .tiene_intereses_mismo_sector_declarante;
+        break;
+      case "desarrolla_cabildeo_sector_declarante":
+        data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante = !data
+          .datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante;
+        break;
+      case "observaciones":
+        data.datos_dependientes_economicos.observaciones = valor;
+        break;
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
-        data.datos_dependientes_economicos.domicilio.pais = this.getCiudad(valor);
+        data.datos_dependientes_economicos.domicilio.pais = this.getCiudad(
+          valor
+        );
         break;
       case "entidad_federativa":
         data.datos_dependientes_economicos.domicilio.entidad_federativa = this.getEntidadFederativa(
@@ -2633,7 +2641,8 @@ class Index extends Component {
         );
 
         this.updateLocalidades(
-          this.state.datos_dependientes_economicos.domicilio.entidad_federativa.cve_ent,
+          this.state.datos_dependientes_economicos.domicilio.entidad_federativa
+            .cve_ent,
           valor
         );
         break;
@@ -2641,7 +2650,9 @@ class Index extends Component {
         data.datos_dependientes_economicos.domicilio.cp = valor;
         break;
       case "localidad":
-        data.datos_dependientes_economicos.domicilio.localidad = this.getLocalidad(valor);
+        data.datos_dependientes_economicos.domicilio.localidad = this.getLocalidad(
+          valor
+        );
         break;
       case "vialidad.tipo_vial":
         data.datos_dependientes_economicos.domicilio.vialidad.tipo_vial = valor;
@@ -2704,23 +2715,6 @@ class Index extends Component {
       this.state.informacion_general.domicilio.entidad_federativa.cve_ent,
       this.state.informacion_general.domicilio.municipio.cve_mun
     );
-    // fetch(
-    //   config.apiHost +
-    //     "municipios?cve_ent=" +
-    //     this.state.informacion_general.domicilio.entidad_federativa.cve_ent
-    // )
-    //   .then(res => res.json())
-    //   .then(municipios => this.setState({ municipios: municipios }));
-
-    // fetch(
-    //   config.apiHost +
-    //     "localidades?cve_ent=" +
-    //     this.state.informacion_general.domicilio.entidad_federativa.cve_ent +
-    //     "&cve_mun=" +
-    //     this.state.informacion_general.domicilio.municipio.cve_mun
-    // )
-    //   .then(res => res.json())
-    //   .then(localidades => this.setState({ localidades: localidades }));
 
     fetch(config.apiHost + "tipovialidad")
       .then(res => res.json())
@@ -2745,10 +2739,157 @@ class Index extends Component {
     fetch(config.apiHost + "catAmbitos")
       .then(res => res.json())
       .then(ambitos => this.setState({ ambitos: ambitos }));
+
     fetch(config.apiHost + "catRelacionDeclarante")
       .then(res => res.json())
       .then(relacionDeclarante =>
         this.setState({ relacionDeclarante: relacionDeclarante })
+      );
+
+    fetch(config.apiHost + "catTiposOperaciones")
+      .then(res => res.json())
+      .then(catTipoOperacion =>
+        this.setState({ catTipoOperacion: catTipoOperacion })
+      );
+
+    fetch(config.apiHost + "catTiposMonedas")
+      .then(res => res.json())
+      .then(catTiposMonedas =>
+        this.setState({ catTiposMonedas: catTiposMonedas })
+      );
+
+    fetch(config.apiHost + "catTiposMetales")
+      .then(res => res.json())
+      .then(catTiposMetales =>
+        this.setState({ catTiposMetales: catTiposMetales })
+      );
+
+    fetch(config.apiHost + "catFormaAdquision")
+      .then(res => res.json())
+      .then(catFormaAdquision =>
+        this.setState({ catFormaAdquision: catFormaAdquision })
+      );
+
+    fetch(config.apiHost + "catTiposBienesInmuebles")
+      .then(res => res.json())
+      .then(catTiposBienesInmuebles =>
+        this.setState({ catTiposBienesInmuebles: catTiposBienesInmuebles })
+      );
+
+    fetch(config.apiHost + "catEntidadesFederativas")
+      .then(res => res.json())
+      .then(catEntidadesFederativas =>
+        this.setState({ catEntidadesFederativas: catEntidadesFederativas })
+      );
+
+    fetch(config.apiHost + "catTitularesBienes")
+      .then(res => res.json())
+      .then(catTitularesBienes =>
+        this.setState({ catTitularesBienes: catTitularesBienes })
+      );
+
+    fetch(config.apiHost + "catRelacionDeclarante")
+      .then(res => res.json())
+      .then(catRelacionDeclarante =>
+        this.setState({ catRelacionDeclarante: catRelacionDeclarante })
+      );
+
+    fetch(config.apiHost + "catTiposMonedas")
+      .then(res => res.json())
+      .then(catTiposMonedas =>
+        this.setState({ catTiposMonedas: catTiposMonedas })
+      );
+
+    fetch(config.apiHost + "catMedidasPlazos")
+      .then(res => res.json())
+      .then(catMedidasPlazos =>
+        this.setState({ catMedidasPlazos: catMedidasPlazos })
+      );
+
+    fetch(config.apiHost + "catDependencias")
+      .then(res => res.json())
+      .then(catDependencias =>
+        this.setState({ catDependencias: catDependencias })
+      );
+
+    fetch(config.apiHost + "catTiposActividades")
+      .then(res => res.json())
+      .then(catTiposActividades =>
+        this.setState({ catTiposActividades: catTiposActividades })
+      );
+
+    fetch(config.apiHost + "catTiposAcredores")
+      .then(res => res.json())
+      .then(catTiposAcredores =>
+        this.setState({ catTiposAcredores: catTiposAcredores })
+      );
+
+    fetch(config.apiHost + "catTiposAdeudos")
+      .then(res => res.json())
+      .then(catTiposAdeudos =>
+        this.setState({ catTiposAdeudos: catTiposAdeudos })
+      );
+
+    fetch(config.apiHost + "catTiposBienes")
+      .then(res => res.json())
+      .then(catTiposBienes =>
+        this.setState({ catTiposBienes: catTiposBienes })
+      );
+
+    fetch(config.apiHost + "catNivelesGobierno")
+      .then(res => res.json())
+      .then(catNivelesGobierno =>
+        this.setState({ catNivelesGobierno: catNivelesGobierno })
+      );
+
+    fetch(config.apiHost + "catTiposApoyos")
+      .then(res => res.json())
+      .then(catTiposApoyos =>
+        this.setState({ catTiposApoyos: catTiposApoyos })
+      );
+
+    fetch(config.apiHost + "catTiposFideicomisos")
+      .then(res => res.json())
+      .then(catTiposFideicomisos =>
+        this.setState({ catTiposFideicomisos: catTiposFideicomisos })
+      );
+
+    fetch(config.apiHost + "catTiposInversiones")
+      .then(res => res.json())
+      .then(catTiposInversiones =>
+        this.setState({ catTiposInversiones: catTiposInversiones })
+      );
+
+    fetch(config.apiHost + "catTiposEspecificosInversion")
+      .then(res => res.json())
+      .then(catTiposEspecificosInversion =>
+        this.setState({
+          catTiposEspecificosInversion: catTiposEspecificosInversion
+        })
+      );
+
+    fetch(config.apiHost + "catTiposInstituciones")
+      .then(res => res.json())
+      .then(catTiposInstituciones =>
+        this.setState({ catTiposInstituciones: catTiposInstituciones })
+      );
+
+    fetch(config.apiHost + "catNaturalezaMembresias")
+      .then(res => res.json())
+      .then(catNaturalezaMembresias =>
+        this.setState({ catNaturalezaMembresias: catNaturalezaMembresias })
+      );
+
+    fetch(config.apiHost + "catTiposAdeudos")
+      .then(res => res.json())
+      .then(catTiposAdeudos =>
+        this.setState({ catTiposAdeudos: catTiposAdeudos })
+      );
+
+    fetch(config.apiHost + "catTiposRepresentaciones")
+      .then(res => res.json())
+      .then(catTiposRepresentaciones =>
+        this.setState({ catTiposRepresentaciones: catTiposRepresentaciones })
       );
   }
 
@@ -2831,7 +2972,6 @@ class Index extends Component {
             <DependientesEconomicos
               data={this.state}
               handleChange={this.setDataDependientesEconomicos}
-              data={this.state}
               handleAddDependientesEconomicos={
                 this.handleAddDependientesEconomicos
               }
@@ -2848,16 +2988,6 @@ class Index extends Component {
                 this.handleClickEmpresasSociedadesAsociaciones
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2866,16 +2996,6 @@ class Index extends Component {
               data={this.state}
               handleClickMembresias={this.handleClickMembresias}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2884,16 +3004,6 @@ class Index extends Component {
               data={this.state}
               handleClickApoyosPublicos={this.handleClickApoyosPublicos}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2904,16 +3014,6 @@ class Index extends Component {
                 this.handleClickRepresentacionActiva
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2924,16 +3024,6 @@ class Index extends Component {
                 this.handleClickRepresentacionPasiva
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2942,16 +3032,6 @@ class Index extends Component {
               data={this.state}
               handleClickSociosComerciales={this.handleClickSociosComerciales}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2962,16 +3042,6 @@ class Index extends Component {
                 this.handleClickClientesPrincipales
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -2982,16 +3052,6 @@ class Index extends Component {
                 this.handleClickOtrasPartesRelacionadas
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3002,16 +3062,6 @@ class Index extends Component {
                 this.handleClickBeneficiosGratuitos
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3020,16 +3070,6 @@ class Index extends Component {
               data={this.state}
               handleClickSalariosPublicos={this.handleClickSalariosPublicos}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3038,16 +3078,6 @@ class Index extends Component {
               data={this.state}
               handleClickSalariosEmpleos={this.handleClickSalariosEmpleos}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3058,16 +3088,6 @@ class Index extends Component {
                 this.handleClickActividadProfesional
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3078,16 +3098,6 @@ class Index extends Component {
                 this.handleClickActividadEmpresarial
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3096,16 +3106,6 @@ class Index extends Component {
               data={this.state}
               handleClickActividadMenor={this.handleClickActividadMenor}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3114,16 +3114,6 @@ class Index extends Component {
               data={this.state}
               handleClickArrendamiento={this.handleClickArrendamiento}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3132,16 +3122,6 @@ class Index extends Component {
               data={this.state}
               handleClickIntereses={this.handleClickIntereses}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3150,16 +3130,6 @@ class Index extends Component {
               data={this.state}
               handleClickPremios={this.handleClickPremios}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3168,16 +3138,6 @@ class Index extends Component {
               data={this.state}
               handleClickEnajenacionBienes={this.handleClickEnajenacionBienes}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3186,16 +3146,6 @@ class Index extends Component {
               data={this.state}
               handleClickOtrosIngresos={this.handleClickOtrosIngresos}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3204,16 +3154,6 @@ class Index extends Component {
               data={this.state}
               handleClickBienesInmuebles={this.handleClickBienesInmuebles}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3224,16 +3164,6 @@ class Index extends Component {
                 this.handleClickBienesMueblesRegistrables
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3244,16 +3174,6 @@ class Index extends Component {
                 this.handleClickBienesMueblesNoRegistrables
               }
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3262,16 +3182,6 @@ class Index extends Component {
               data={this.state}
               handleClickInversiones={this.handleClickInversiones}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3280,16 +3190,6 @@ class Index extends Component {
               data={this.state}
               handleClickEfectivoMetales={this.handleClickEfectivoMetales}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3298,16 +3198,6 @@ class Index extends Component {
               data={this.state}
               handleClickFideicomisos={this.handleClickFideicomisos}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3316,16 +3206,6 @@ class Index extends Component {
               data={this.state}
               handleClickBienesIntangibles={this.handleClickBienesIntangibles}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3334,16 +3214,6 @@ class Index extends Component {
               data={this.state}
               handleClickCuentasCobrar={this.handleClickCuentasCobrar}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3352,16 +3222,6 @@ class Index extends Component {
               data={this.state}
               handleClickPropietarioTercero={this.handleClickPropietarioTercero}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3370,16 +3230,6 @@ class Index extends Component {
               data={this.state}
               handleClickDeudas={this.handleClickDeudas}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
 
@@ -3388,16 +3238,6 @@ class Index extends Component {
               data={this.state}
               handleClickOtrasObligaciones={this.handleClickOtrasObligaciones}
               handleChange={this.setDataEncargoActual}
-              handleChangeEntidades={this.handleChangeEntidades}
-              handleChangeFecha={this.handleChangeFecha}
-              handleChangeEdoCivil={this.handleChangeEdoCivil}
-              handleChangeRegimen={this.handleChangeRegimen}
-              handleChangeDirPais={this.handleChangeDirPais}
-              handleChangeMunicipios={this.handleChangeMunicipios}
-              handleChangeLocalidades={this.handleChangeLocalidades}
-              handleChangeTipoVialidad={this.handleChangeTipoVialidad}
-              handleChangeNombreVialidad={this.handleChangeNombreVialidad}
-              handleClick={this.handleClick}
             />
           )}
         </Grid>

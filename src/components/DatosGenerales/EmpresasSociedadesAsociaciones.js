@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -20,15 +20,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
+// import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -55,17 +55,6 @@ const styles = theme => ({
   }
 });
 
-// estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
 
 function SimpleCard(props) {
   const {
@@ -73,15 +62,7 @@ function SimpleCard(props) {
     data,
     handleClickEmpresasSociedadesAsociaciones,
     handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
+
   } = props;
 
   // console.log(data);
@@ -103,18 +84,20 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Pais</InputLabel>
+              <InputLabel htmlFor="pais">
+                País
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.informacion_general.pais_nacimiento.codigo}
+                onChange={handleChange("pais")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "pais",
+                  id: "pais"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    {ciudad.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -173,16 +156,16 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_encargo_actual.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "sector_industria",
+                  id: "sector_industria"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -209,7 +192,7 @@ function SimpleCard(props) {
                   <InputLabel htmlFor="dom_pais">País</InputLabel>
                   <Select
                     value={data.dom_pais.codigo}
-                    onChange={handleChangeDirPais("dom_pais")}
+                    onChange={handleChange("dom_pais")}
                     inputProps={{
                       name: "dom_pais",
                       id: "dom_pais"
@@ -230,7 +213,7 @@ function SimpleCard(props) {
                   </InputLabel>
                   <Select
                     value={data.dom_entidad_federativa.cve_ent}
-                    onChange={handleChangeEntidades("dom_entidad_federativa")}
+                    onChange={handleChange("dom_entidad_federativa")}
                     inputProps={{
                       name: "dom_entidad_federativa",
                       id: "dom_entidad_federativa"
@@ -249,7 +232,7 @@ function SimpleCard(props) {
                   <InputLabel htmlFor="dom_municipio">Municipio</InputLabel>
                   <Select
                     value={data.dom_municipio.cve_mun}
-                    onChange={handleChangeMunicipios("dom_municipio")}
+                    onChange={handleChange("dom_municipio")}
                     inputProps={{
                       name: "dom_municipio",
                       id: "dom_municipio"
@@ -271,7 +254,7 @@ function SimpleCard(props) {
                   <InputLabel htmlFor="dom_localidad">Localidad</InputLabel>
                   <Select
                     value={data.dom_localidad.cve_loc}
-                    onChange={handleChangeLocalidades("dom_localidad")}
+                    onChange={handleChange("dom_localidad")}
                     inputProps={{
                       name: "dom_localidad",
                       id: "dom_localidad"
@@ -303,7 +286,7 @@ function SimpleCard(props) {
                   <InputLabel htmlFor="dom_vialidad">Tipo de vía</InputLabel>
                   <Select
                     value={data.dom_vialidad.codigo}
-                    onChange={handleChangeTipoVialidad("dom_vialidad")}
+                    onChange={handleChange("dom_vialidad")}
                     inputProps={{
                       name: "dom_vialidad",
                       id: "dom_vialidad"
@@ -326,7 +309,7 @@ function SimpleCard(props) {
                   label="Nombre de la vía"
                   className={classes.textField}
                   value={data.dom_vialidad.nom_vial}
-                  onChange={handleChangeNombreVialidad()}
+                  onChange={handleChange()}
                   margin="normal"
                 />
               </Grid>

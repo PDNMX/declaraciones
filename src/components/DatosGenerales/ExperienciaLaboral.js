@@ -59,7 +59,6 @@ function SimpleCard(props) {
     handleRemoveExperienciaLaborar,
     nivelGobierno,
     poderEjecutivo,
-    sectorIndustria,
     handleChange
   } = props;
 
@@ -150,7 +149,7 @@ function SimpleCard(props) {
                   "datos_experiencia_laboral.sector_industria"
                 )}
               >
-                {sectorIndustria.map(dato => (
+                {data.sectorIndustria.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>
