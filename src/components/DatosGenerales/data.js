@@ -2,7 +2,7 @@ import moment from "moment";
 
 export var data = {
   debug: true,
-  show: 11,
+  show: 1,
   message: "",
   type: "",
   nacionalidad: [],

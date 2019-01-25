@@ -336,7 +336,7 @@ class Index extends Component {
     // console.log(event.target.value);
   };
 
-  handleClickDatosCurriculares = () => event => {
+  addClickDatosCurriculares = () => event => {
     let datos = Object.assign(
       {},
       this.state.datos_curriculares_grados_academicos
@@ -353,7 +353,7 @@ class Index extends Component {
     });
   };
 
-  handleClickEliminarDatosCurriculares = index => event => {
+  addClickEliminarDatosCurriculares = index => event => {
     this.state.datos_curriculares.grados_academicos.splice(index, 1);
     this.setState({ datos_curriculares: this.state.datos_curriculares }, () => {
       console.log(this.state.datos_curriculares);
@@ -405,7 +405,7 @@ class Index extends Component {
     );
   };
 
-  handleClickDependientesEconomicos = () => event => {
+  addClickDependientesEconomicos = () => event => {
     this.state.datos_dependientes_economicos.push({
       nombres: "Carlos",
       primer_apellido: "Pérez",
@@ -474,7 +474,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickEmpresasSociedadesAsociaciones = () => event => {
+  addClickEmpresasSociedadesAsociaciones = () => event => {
     this.state.empresas_sociedades_asociaciones.push({
       id: 123,
       nombre_empresa_sociedad_asociacion: "DataIQ",
@@ -522,7 +522,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickMembresias = () => event => {
+  addClickMembresias = () => event => {
     this.state.membresias.push({
       id: 123,
       tipo_institucion: {
@@ -572,7 +572,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickApoyosPublicos = () => event => {
+  addClickApoyosPublicos = () => event => {
     this.state.apoyos_beneficios_publicos.push({
       id: 123,
       es_beneficiario: true,
@@ -591,7 +591,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickRepresentacionActiva = () => event => {
+  addClickRepresentacionActiva = () => event => {
     this.state.representacion_activa.push({
       id: 123,
       tipo_representacion: {
@@ -620,7 +620,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickRepresentacionPasiva = () => event => {
+  addClickRepresentacionPasiva = () => event => {
     this.state.representacion_pasiva.push({
       id: 123,
       tipo_representacion: {
@@ -650,7 +650,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickSociosComerciales = () => event => {
+  addClickSociosComerciales = () => event => {
     this.state.socios_comerciales.push({
       id: 123,
       nombre_negocio: "Nombre negocio",
@@ -694,7 +694,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickClientesPrincipales = () => event => {
+  addClickClientesPrincipales = () => event => {
     this.state.clientes_principales.push({
       id: 123,
       nombre_negocio: "Nombre negocio",
@@ -738,7 +738,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickOtrasPartesRelacionadas = () => event => {
+  addClickOtrasPartesRelacionadas = () => event => {
     this.state.otras_partes.push({
       id: 123,
       tipo_relacion: "Garantes de Préstamos Recibidos",
@@ -765,7 +765,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickBeneficiosGratuitos = () => event => {
+  addClickBeneficiosGratuitos = () => event => {
     this.state.beneficios_gratuitos.push({
       id: 123,
       tipo_beneficio: "Tarjetas o monederos electrónicos",
@@ -781,7 +781,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickSalariosPublicos = () => event => {
+  addClickSalariosPublicos = () => event => {
     this.state.sueldos_salarios_publicos.push({
       id: 123,
       ente_publico: {
@@ -808,7 +808,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickSalariosEmpleos = () => event => {
+  addClickSalariosEmpleos = () => event => {
     this.state.sueldos_salarios_otros_empleos.push({
       id: 123,
       nombre_denominacion_razon_social: "Max Power Inc.",
@@ -867,7 +867,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickActividadProfesional = () => event => {
+  addClickActividadProfesional = () => event => {
     this.state.actividad_profesional.push({
       id: 123,
       nombre_denominacion_razon_social: "Nombre",
@@ -926,7 +926,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickActividadEmpresarial = () => {
+  addClickActividadEmpresarial = () => {
     this.state.actividad_empresarial.push({
       id: 123,
       nombre_denominacion_razon_social: "Empresa S.A.",
@@ -985,7 +985,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickActividadMenor = () => event => {
+  addClickActividadMenor = () => event => {
     this.state.actividad_economica_menor.push({
       id: 123,
       nombre_denominacion_razon_social: "Nombre",
@@ -1044,7 +1044,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickArrendamiento = () => event => {
+  addClickArrendamiento = () => event => {
     this.state.arrendamiento.push({
       id: 123,
       nombre_denominacion_razon_social: "ABC Inc.",
@@ -1103,7 +1103,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickIntereses = () => event => {
+  addClickIntereses = () => event => {
     this.state.intereses.push({
       id: 123,
       nombre_denominacion_razon_social: "BANC S.A.",
@@ -1162,7 +1162,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickPremios = () => event => {
+  addClickPremios = () => event => {
     this.state.premios.push({
       id: 123,
       nombre_denominacion: "Loteria Nacional",
@@ -1221,7 +1221,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickEnajenacionBienes = () => event => {
+  addClickEnajenacionBienes = () => event => {
     this.state.enajenacion_bienes.push({
       id: 123,
       nombre_denominacion: "Loteria Nacional",
@@ -1281,7 +1281,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickOtrosIngresos = () => event => {
+  addClickOtrosIngresos = () => event => {
     this.state.otros_ingresos.push({
       id: 123,
       nombre_denominacion: "Centro Educativo",
@@ -1340,7 +1340,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickBienesInmuebles = () => event => {
+  addClickBienesInmuebles = () => event => {
     this.state.bienes_inmuebles.push({
       id: 123,
       tipo_operacion: {
@@ -1424,7 +1424,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickBienesMueblesRegistrables = () => event => {
+  addClickBienesMueblesRegistrables = () => event => {
     this.state.bienes_muebles_registrables.push({
       id: 123,
       tipo_operacion: {
@@ -1484,7 +1484,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickBienesMueblesNoRegistrables = () => event => {
+  addClickBienesMueblesNoRegistrables = () => event => {
     this.state.bienes_muebles_no_registrables.push({
       id: 123,
       tipo_operacion: {
@@ -1525,7 +1525,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickInversiones = () => event => {
+  addClickInversiones = () => event => {
     this.state.inversiones_cuentas_valores.push({
       id: 123,
       tipo_operacion: {
@@ -1604,7 +1604,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickEfectivoMetales = () => event => {
+  addClickEfectivoMetales = () => event => {
     this.state.efectivo_metales.push({
       id: 123,
       tipo_operacion: {
@@ -1631,7 +1631,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickFideicomisos = () => event => {
+  addClickFideicomisos = () => event => {
     this.state.fideicomisos.push({
       id: 123,
       tipo_operacion: {
@@ -1758,7 +1758,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickBienesIntangibles = () => event => {
+  addClickBienesIntangibles = () => event => {
     this.state.bienes_intangibles.push({
       id: 123,
       tipo_operacion: {
@@ -1806,7 +1806,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickCuentasCobrar = () => event => {
+  addClickCuentasCobrar = () => event => {
     this.state.cuentas_por_cobrar.push({
       id: 123,
       nombre_prestatario: "Max Power Tier",
@@ -1853,7 +1853,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickPropietarioTercero = () => event => {
+  addClickPropietarioTercero = () => event => {
     this.state.uso_especie_propiedad_tercero.push({
       id: 123,
       tipo_bien: {
@@ -1910,7 +1910,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickDeudas = () => event => {
+  addClickDeudas = () => event => {
     this.state.deudas.push({
       id: 123,
       tipo_operacion: {
@@ -1988,7 +1988,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickOtrasObligaciones = () => event => {
+  addClickOtrasObligaciones = () => event => {
     this.state.otras_obligaciones.push({
       id: 123,
       tipo_operacion: {
@@ -2062,7 +2062,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClick = () => event => {
+  addClick = () => event => {
     var data = {
       nombres: this.state.nombres,
       primer_apellido: this.state.primer_apellido,
@@ -2178,6 +2178,147 @@ class Index extends Component {
       fecha_nacimiento: fecha
     });
   }
+
+  setDataOtrosIngresos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.otros_ingresos.curp = valor;
+        break;
+      case "descripcion_actividad":
+        data.otros_ingresos.descripcion_actividad = valor;
+        break;
+      case "domicilio_actividad":
+        data.otros_ingresos.domicilio_actividad = valor;
+        break;
+      case "domicilio_actividad.cp":
+        data.otros_ingresos.domicilio_actividad.cp = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa":
+        data.otros_ingresos.domicilio_actividad.entidad_federativa = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa.cve_ent":
+        data.otros_ingresos.domicilio_actividad.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa.nom_ent":
+        data.otros_ingresos.domicilio_actividad.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_actividad.localidad":
+        data.otros_ingresos.domicilio_actividad.localidad = valor;
+        break;
+      case "domicilio_actividad.localidad.cve_loc":
+        data.otros_ingresos.domicilio_actividad.localidad.cve_loc = valor;
+        break;
+      case "domicilio_actividad.localidad.nom_loc":
+        data.otros_ingresos.domicilio_actividad.localidad.nom_loc = valor;
+        break;
+      case "domicilio_actividad.municipio":
+        data.otros_ingresos.domicilio_actividad.municipio = valor;
+        break;
+      case "domicilio_actividad.municipio.cve_mun":
+        data.otros_ingresos.domicilio_actividad.municipio.cve_mun = valor;
+        break;
+      case "domicilio_actividad.municipio.nom_mun":
+        data.otros_ingresos.domicilio_actividad.municipio.nom_mun = valor;
+        break;
+      case "domicilio_actividad.numExt":
+        data.otros_ingresos.domicilio_actividad.numExt = valor;
+        break;
+      case "domicilio_actividad.numInt":
+        data.otros_ingresos.domicilio_actividad.numInt = valor;
+        break;
+      case "domicilio_actividad.pais":
+        data.otros_ingresos.domicilio_actividad.pais = valor;
+        break;
+      case "domicilio_actividad.pais.codigo":
+        data.otros_ingresos.domicilio_actividad.pais.codigo = valor;
+        break;
+      case "domicilio_actividad.pais.valor":
+        data.otros_ingresos.domicilio_actividad.pais.valor = valor;
+        break;
+      case "domicilio_actividad.vialidad":
+        data.otros_ingresos.domicilio_actividad.vialidad = valor;
+        break;
+      case "domicilio_actividad.vialidad.nom_vial":
+        data.otros_ingresos.domicilio_actividad.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_actividad.vialidad.tipo_vial":
+        data.otros_ingresos.domicilio_actividad.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.otros_ingresos.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.otros_ingresos.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.otros_ingresos.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.otros_ingresos.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.otros_ingresos.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.otros_ingresos.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.otros_ingresos.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.otros_ingresos.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.otros_ingresos.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.otros_ingresos.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.otros_ingresos.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion":
+        data.otros_ingresos.nombre_denominacion = valor;
+        break;
+      case "observaciones":
+        data.otros_ingresos.observaciones = valor;
+        break;
+      case "rfc":
+        data.otros_ingresos.rfc = valor;
+        break;
+      case "sector_industria":
+        data.otros_ingresos.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.otros_ingresos.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.otros_ingresos.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad":
+        data.otros_ingresos.tipo_actividad = valor;
+        break;
+      case "tipo_actividad.codigo":
+        data.otros_ingresos.tipo_actividad.codigo = valor;
+        break;
+      case "tipo_actividad.valor":
+        data.otros_ingresos.tipo_actividad.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.otros_ingresos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
 
   setDataDatosCurriculares = field => event => {
     let valor = event.target.value;
@@ -4172,6 +4313,146 @@ class Index extends Component {
     });
   };
 
+  setDataIntereses = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.intereses.curp = valor;
+        break;
+      case "descripcion_actividad_servicio":
+        data.intereses.descripcion_actividad_servicio = valor;
+        break;
+      case "domicilio":
+        data.intereses.domicilio = valor;
+        break;
+      case "domicilio.cp":
+        data.intereses.domicilio.cp = valor;
+        break;
+      case "domicilio.entidad_federativa":
+        data.intereses.domicilio.entidad_federativa = valor;
+        break;
+      case "domicilio.entidad_federativa.cve_ent":
+        data.intereses.domicilio.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio.entidad_federativa.nom_ent":
+        data.intereses.domicilio.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio.localidad":
+        data.intereses.domicilio.localidad = valor;
+        break;
+      case "domicilio.localidad.cve_loc":
+        data.intereses.domicilio.localidad.cve_loc = valor;
+        break;
+      case "domicilio.localidad.nom_loc":
+        data.intereses.domicilio.localidad.nom_loc = valor;
+        break;
+      case "domicilio.municipio":
+        data.intereses.domicilio.municipio = valor;
+        break;
+      case "domicilio.municipio.cve_mun":
+        data.intereses.domicilio.municipio.cve_mun = valor;
+        break;
+      case "domicilio.municipio.nom_mun":
+        data.intereses.domicilio.municipio.nom_mun = valor;
+        break;
+      case "domicilio.numExt":
+        data.intereses.domicilio.numExt = valor;
+        break;
+      case "domicilio.numInt":
+        data.intereses.domicilio.numInt = valor;
+        break;
+      case "domicilio.pais":
+        data.intereses.domicilio.pais = valor;
+        break;
+      case "domicilio.pais.codigo":
+        data.intereses.domicilio.pais.codigo = valor;
+        break;
+      case "domicilio.pais.valor":
+        data.intereses.domicilio.pais.valor = valor;
+        break;
+      case "domicilio.vialidad":
+        data.intereses.domicilio.vialidad = valor;
+        break;
+      case "domicilio.vialidad.nom_vial":
+        data.intereses.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "domicilio.vialidad.tipo_vial":
+        data.intereses.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.intereses.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.intereses.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.intereses.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.intereses.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.intereses.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.intereses.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.intereses.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.intereses.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.intereses.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.intereses.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.intereses.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion_razon_social":
+        data.intereses.nombre_denominacion_razon_social = valor;
+        break;
+      case "observaciones":
+        data.intereses.observaciones = valor;
+        break;
+      case "rfc":
+        data.intereses.rfc = valor;
+        break;
+      case "sector_industria":
+        data.intereses.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.intereses.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.intereses.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.intereses.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.intereses.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.intereses.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.interes);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
   setDataPremios = field => event => {
     let valor = event.target.value;
     let data = this.state;
@@ -6574,8 +6855,8 @@ class Index extends Component {
             <DatosCurriculares
               data={this.state}
               handleChange={this.setDataDatosCurriculares}
-              addClick={this.handleClickDatosCurriculares}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              addClick={this.addClickDatosCurriculares}
+              removeClick={this.removeClickDatosCurriculares}
             />
           )}
           {this.state.show === 3 && (
@@ -6594,9 +6875,6 @@ class Index extends Component {
               handleChange={this.setDataExperienciaLaboral}
               addClick={this.handleAddExperienciaLaborar}
               removeClick={this.handleRemoveExperienciaLaborar}
-              nivelGobierno={this.state.nivelGobierno}
-              poderEjecutivo={this.state.poderEjecutivo}
-              sectorIndustria={this.state.sectorIndustria}
             />
           )}
 
@@ -6612,270 +6890,270 @@ class Index extends Component {
           {this.state.show === 6 && (
             <EmpresasSociedadesAsociaciones
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickEmpresasSociedadesAsociaciones}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataEmpresasSociedadesAsociaciones}
+              addClick={this.addClickEmpresasSociedadesAsociaciones}
+              removeClick={this.removeClickEmpresasSociedadesAsociaciones}
             />
           )}
 
           {this.state.show === 7 && (
             <Membresias
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickMembresias}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataMembresias}
+              addClick={this.addClickMembresias}
+              removeClick={this.removeClickMembresias}
             />
           )}
 
           {this.state.show === 8 && (
             <ApoyosPublicos
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickApoyosPublicos}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataApoyosBeneficiosPublicos}
+              addClick={this.addClickApoyosPublicos}
+              removeClick={this.removeClickApoyosPublicos}
             />
           )}
 
           {this.state.show === 9 && (
             <RepresentacionActiva
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickRepresentacionActiva}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataRepresentacionActiva}
+              addClick={this.addClickRepresentacionActiva}
+              removeClick={this.removeClickRepresentacionActiva}
             />
           )}
 
           {this.state.show === 10 && (
             <RepresentacionPasiva
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickRepresentacionPasiva}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataRepresentacionPasiva}
+              addClick={this.addClickRepresentacionPasiva}
+              removeClick={this.removeClickRepresentacionPasiva}
             />
           )}
 
           {this.state.show === 11 && (
             <SociosComerciales
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickSociosComerciales}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataSociosComerciales}
+              addClick={this.addClickSociosComerciales}
+              removeClick={this.removeClickSociosComerciales}
             />
           )}
 
           {this.state.show === 12 && (
             <ClientesPrincipales
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickClientesPrincipales}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataClientesPrincipales}
+              addClick={this.addClickClientesPrincipales}
+              removeClick={this.removeClickClientesPrincipales}
             />
           )}
 
           {this.state.show === 13 && (
             <OtrasPartesRelacionadas
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickOtrasPartesRelacionadas}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataOtrasPartes}
+              addClick={this.addClickOtrasPartesRelacionadas}
+              removeClick={this.removeClickOtrasPartesRelacionadas}
             />
           )}
 
           {this.state.show === 14 && (
             <BeneficiosGratuitos
               data={this.state}
-              handleChange={this.setDataDatosCurriculares}
-              addClick={this.handleClickDatosCurriculares}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataBeneficiosGratuitos}
+              addClick={this.addClickDatosCurriculares}
+              removeClick={this.removeClickBeneficiosGratuitos}
             />
           )}
 
           {this.state.show === 15 && (
             <SalariosPublicos
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickSalariosPublicos}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataSueldosSalariosPublicos}
+              addClick={this.addClickSalariosPublicos}
+              removeClick={this.removeClickSalariosPublicos}
             />
           )}
 
           {this.state.show === 16 && (
             <SalariosEmpleos
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickSalariosEmpleos}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataSueldosSalariosOtrosEmpleos}
+              addClick={this.addClickSalariosEmpleos}
+              removeClick={this.removeClickSalariosEmpleos}
             />
           )}
 
           {this.state.show === 17 && (
             <ActividadProfesional
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickActividadProfesional}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataActividadProfesional}
+              addClick={this.addClickActividadProfesional}
+              removeClick={this.removeClickActividadProfesional}
             />
           )}
 
           {this.state.show === 18 && (
             <ActividadEmpresarial
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickActividadEmpresarial}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataActividadEmpresarial}
+              addClick={this.addClickActividadEmpresarial}
+              removeClick={this.removeClickActividadEmpresarial}
             />
           )}
 
           {this.state.show === 19 && (
             <ActividadMenor
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickActividadMenor}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataActividadEconomicaMenor}
+              addClick={this.addClickActividadMenor}
+              removeClick={this.removeClickActividadMenor}
             />
           )}
 
           {this.state.show === 20 && (
             <Arrendamiento
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickArrendamiento}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataArrendamiento}
+              addClick={this.addClickArrendamiento}
+              removeClick={this.removeClickArrendamiento}
             />
           )}
 
           {this.state.show === 21 && (
             <Intereses
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickIntereses}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataIntereses}
+              addClick={this.addClickIntereses}
+              removeClick={this.removeClickIntereses}
             />
           )}
 
           {this.state.show === 22 && (
             <Premios
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickPremios}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataPremios}
+              addClick={this.addClickPremios}
+              removeClick={this.removeClickPremios}
             />
           )}
 
           {this.state.show === 23 && (
             <EnajenacionBienes
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickEnajenacionBienes}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataEnajenacionBienes}
+              addClick={this.addClickEnajenacionBienes}
+              removeClick={this.removeClickEnajenacionBienes}
             />
           )}
 
           {this.state.show === 24 && (
             <OtrosIngresos
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickOtrosIngresos}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataOtrosIngresos}
+              addClick={this.addClickOtrosIngresos}
+              removeClick={this.removeClickOtrosIngresos}
             />
           )}
 
           {this.state.show === 25 && (
             <BienesInmuebles
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickBienesInmuebles}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataBienesInmuebles}
+              addClick={this.addClickBienesInmuebles}
+              removeClick={this.removeClickBienesInmuebles}
             />
           )}
 
           {this.state.show === 26 && (
             <BienesMueblesRegistrables
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickBienesMueblesRegistrables}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataBienesMueblesRegistables}
+              addClick={this.addClickBienesMueblesRegistrables}
+              removeClick={this.removeClickBienesMueblesRegistrables}
             />
           )}
 
           {this.state.show === 27 && (
             <BienesMueblesNoRegistrables
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickBienesMueblesNoRegistrables}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataBienesMueblesNoRegistables}
+              addClick={this.addClickBienesMueblesNoRegistrables}
+              removeClick={this.removeClickBienesMueblesNoRegistrables}
             />
           )}
 
           {this.state.show === 28 && (
             <Inversiones
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickInversiones}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataInversionesCuentasValores}
+              addClick={this.addClickInversiones}
+              removeClick={this.removeClickInversiones}
             />
           )}
 
           {this.state.show === 29 && (
             <EfectivoMetales
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickEfectivoMetales}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataEfectivoMetales}
+              addClick={this.addClickEfectivoMetales}
+              removeClick={this.removeClickEfectivoMetales}
             />
           )}
 
           {this.state.show === 30 && (
             <Fideicomisos
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickFideicomisos}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataFideicomisos}
+              addClick={this.addClickFideicomisos}
+              removeClick={this.removeClickFideicomisos}
             />
           )}
 
           {this.state.show === 31 && (
             <BienesIntangibles
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickBienesIntangibles}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataBienesIntangibles}
+              addClick={this.addClickBienesIntangibles}
+              removeClick={this.removeClickBienesIntangibles}
             />
           )}
 
           {this.state.show === 32 && (
             <CuentasCobrar
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickCuentasCobrar}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataCuentasPorCobrar}
+              addClick={this.addClickCuentasCobrar}
+              removeClick={this.removeClickCuentasCobrar}
             />
           )}
 
           {this.state.show === 33 && (
             <PropietarioTercero
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickPropietarioTercero}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataUsoEspeciePropiedadTercero}
+              addClick={this.addClickPropietarioTercero}
+              removeClick={this.removeClickPropietarioTercero}
             />
           )}
 
           {this.state.show === 34 && (
             <Deudas
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickDeudas}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataDeudas}
+              addClick={this.addClickDeudas}
+              removeClick={this.removeClickDeudas}
             />
           )}
 
           {this.state.show === 35 && (
             <OtrasObligaciones
               data={this.state}
-              handleChange={this.setDataEncargoActual}
-              addClick={this.handleClickOtrasObligaciones}
-              removeClick={this.handleClickEliminarDatosCurriculares}
+              handleChange={this.setDataOtrasObligaciones}
+              addClick={this.addClickOtrasObligaciones}
+              removeClick={this.removeClickOtrasObligaciones}
             />
           )}
         </Grid>
