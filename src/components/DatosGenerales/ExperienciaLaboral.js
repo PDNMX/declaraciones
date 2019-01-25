@@ -55,12 +55,11 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    handleAddExperienciaLaborar,
-    handleRemoveExperienciaLaborar,
     nivelGobierno,
     poderEjecutivo,
-    sectorIndustria,
-    handleChange
+    handleChange,
+    addClick,
+    removeClick
   } = props;
 
   // console.log(data);
@@ -150,7 +149,7 @@ function SimpleCard(props) {
                   "datos_experiencia_laboral.sector_industria"
                 )}
               >
-                {sectorIndustria.map(dato => (
+                {data.sectorIndustria.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>
@@ -225,14 +224,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleAddExperienciaLaborar}
+              onClick={addClick}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.experiencia_laboral} buttonClick={handleRemoveExperienciaLaborar} />
+          <Tabla data={data.experiencia_laboral} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

@@ -44,15 +44,7 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    entidades,
-    ciudades,
-    handleClick,
-    handleChange,
-    buttonClick
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   return (
     <Card className={classes.card}>
@@ -61,29 +53,6 @@ function SimpleCard(props) {
           Datos Curriculares
         </Typography>
         <Grid container spacing={24}>
-          {/*
-          <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">
-                Grado académico obtenido
-              </InputLabel>
-              <Select
-                value={
-                  data.datos_curriculares_grados_academicos.documento_obtenido
-                    .codigo
-                }
-                onChange={handleChange("estado_civil")}
-
-              >
-                {data.estadosciviles.map(dato => (
-                  <MenuItem key={dato.codigo} value={dato.codigo}>
-                    {dato.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          */}
           <Grid item xs={2}>
             <TextField
               label="Grado académico obtenido"
@@ -120,7 +89,7 @@ function SimpleCard(props) {
                   "datos_curriculares_grados_academicos.lugar_institucion_educativa.pais"
                 )}
               >
-                {ciudades.map(dato => (
+                {data.ciudades.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>
@@ -142,7 +111,7 @@ function SimpleCard(props) {
                     "datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad"
                   )}
                 >
-                  {entidades.map(dato => (
+                  {data.entidades.map(dato => (
                     <MenuItem key={dato.cve_ent} value={dato.cve_ent}>
                       {dato.nom_ent}
                     </MenuItem>
@@ -228,14 +197,17 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClick()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.datos_curriculares.grados_academicos} buttonClick={buttonClick} />
+          <Tabla
+            data={data.datos_curriculares.grados_academicos}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>

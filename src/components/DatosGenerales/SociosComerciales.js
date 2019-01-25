@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -20,15 +20,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
-import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import Input from "@material-ui/core/Input";
+// import Checkbox from "@material-ui/core/Checkbox";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -55,34 +55,8 @@ const styles = theme => ({
   }
 });
 
-// estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickSociosComerciales,
-    handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -97,7 +71,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre de la actividad comercial vinculante"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.nombre_actividad}
               margin="normal"
             />
           </Grid>
@@ -106,7 +80,7 @@ function SimpleCard(props) {
               id="grado"
               label="Tipo de vinculo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.tipo_vinculo}
               margin="normal"
             />
           </Grid>
@@ -115,7 +89,7 @@ function SimpleCard(props) {
               id="grado"
               label="Antiguedad del vinculo (meses)"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.antiguedad_vinculo}
               margin="normal"
             />
           </Grid>
@@ -124,7 +98,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC de la entidad"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.rfc_entidad}
               margin="normal"
             />
           </Grid>
@@ -133,7 +107,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, del socio comercial"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.nombre}
               margin="normal"
             />
           </Grid>
@@ -142,7 +116,7 @@ function SimpleCard(props) {
               id="grado"
               label="CURP del socio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.curp}
               margin="normal"
             />
           </Grid>
@@ -151,54 +125,56 @@ function SimpleCard(props) {
               id="grado"
               label="RFC del socio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.rfc}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Nacionalidad</InputLabel>
+              <InputLabel htmlFor="nacionalidad">Nacionalidad</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_socios_comerciales.lugar_nacimiento.pais.codigo}
+                onChange={handleChange("nacionalidad")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "nacionalidad",
+                  id: "nacionalidad"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    {ciudad.valor}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Grid>
+
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Entidad</InputLabel>
+              <InputLabel htmlFor="entidad">Entidad federativa</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_socios_comerciales.lugar_nacimiento.entidad.cve_ent}
+                onChange={handleChange("entidad")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "entidad",
+                  id: "entidad"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.entidades.map(entidad => (
+                  <MenuItem key={entidad.cve_ent} value={entidad.cve_ent}>
+                    {entidad.nom_ent}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Grid>
+
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Fecha de nacimiento del socio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.fecha_nacimiento}
               margin="normal"
             />
           </Grid>
@@ -207,7 +183,7 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje de participación del socio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.porcentaje_participacion}
               margin="normal"
             />
           </Grid>
@@ -215,16 +191,16 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_socios_comerciales.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "sector_industria",
+                  id: "sector_industria"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -236,7 +212,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_socios_comerciales.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -247,14 +223,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickSociosComerciales()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.socios_comerciales} />
+          <Tabla data={data.socios_comerciales} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

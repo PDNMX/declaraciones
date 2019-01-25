@@ -18,13 +18,11 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
-
 /*Multiselect*/
 import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
-
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
@@ -65,15 +63,8 @@ const MenuProps = {
   }
 };
 
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleAddDependientesEconomicos,
-    handleRemoveDependientesEconomicos,
-    handleChange
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   return (
     <Card className={classes.card}>
@@ -87,10 +78,15 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Tipo de Relación</InputLabel>
               <Select
                 value={data.datos_dependientes_economicos.tipo_relacion.codigo}
-                onChange={handleChange("datos_dependientes_economicos.tipo_relacion")}
+                onChange={handleChange(
+                  "datos_dependientes_economicos.tipo_relacion"
+                )}
               >
                 {data.relacionDeclarante.map(relacionDeclarante => (
-                  <MenuItem key={relacionDeclarante.codigo} value={relacionDeclarante.codigo}>
+                  <MenuItem
+                    key={relacionDeclarante.codigo}
+                    value={relacionDeclarante.codigo}
+                  >
                     {relacionDeclarante.valor}
                   </MenuItem>
                 ))}
@@ -102,7 +98,9 @@ function SimpleCard(props) {
               label="Nombres"
               className={classes.textField}
               value={data.datos_dependientes_economicos.nombre_personal.nombres}
-              onChange={handleChange("datos_dependientes_economicos.nombre_personal.nombres")}
+              onChange={handleChange(
+                "datos_dependientes_economicos.nombre_personal.nombres"
+              )}
               margin="normal"
             />
           </Grid>
@@ -114,7 +112,9 @@ function SimpleCard(props) {
                 data.datos_dependientes_economicos.nombre_personal
                   .primer_apellido
               }
-              onChange={handleChange("datos_dependientes_economicos.nombre_personal.primer_apellido")}
+              onChange={handleChange(
+                "datos_dependientes_economicos.nombre_personal.primer_apellido"
+              )}
               margin="normal"
             />
           </Grid>
@@ -127,34 +127,36 @@ function SimpleCard(props) {
                 data.datos_dependientes_economicos.nombre_personal
                   .segundo_apellido
               }
-              onChange={handleChange("datos_dependientes_economicos.nombre_personal.segundo_apellido")}
+              onChange={handleChange(
+                "datos_dependientes_economicos.nombre_personal.segundo_apellido"
+              )}
               margin="normal"
             />
           </Grid>
-            <Grid item xs={2}>
-              <FormControl className={classes.select}>
-                <InputLabel htmlFor="select-multiple-checkbox">
-                  Nacionalidades
-                </InputLabel>
-                <Select
-                  multiple
-                  value={data.dependientes_economicos_nacionlidades}
-                  onChange={handleChange("nacionalidades")}
-                  input={<Input id="select-multiple-checkbox" />}
-                  renderValue={selected => selected.join(", ")}
-                  MenuProps={MenuProps}
-                >
-                  {data.ciudades.map(ciudad => (
-                    <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
-                      <Checkbox
-                        checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
-                      />
-                      <ListItemText primary={ciudad.valor} />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="select-multiple-checkbox">
+                Nacionalidades
+              </InputLabel>
+              <Select
+                multiple
+                value={data.dependientes_economicos_nacionlidades}
+                onChange={handleChange("nacionalidades")}
+                input={<Input id="select-multiple-checkbox" />}
+                renderValue={selected => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    <Checkbox
+                      checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
+                    />
+                    <ListItemText primary={ciudad.valor} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
           <Grid item xs={3}>
             <TextField
               label="CURP"
@@ -187,7 +189,8 @@ function SimpleCard(props) {
               label="Numero de identificacion Nacional"
               className={classes.textField}
               value={
-                data.datos_dependientes_economicos.numero_identificacion_nacional
+                data.datos_dependientes_economicos
+                  .numero_identificacion_nacional
               }
               onChange={handleChange("numero_identificacion_nacional")}
               margin="normal"
@@ -252,7 +255,10 @@ function SimpleCard(props) {
                 onChange={handleChange("sector_industria")}
               >
                 {data.sectorIndustria.map(sectorIndustria => (
-                  <MenuItem key={sectorIndustria.codigo} value={sectorIndustria.codigo}>
+                  <MenuItem
+                    key={sectorIndustria.codigo}
+                    value={sectorIndustria.codigo}
+                  >
                     {sectorIndustria.valor}
                   </MenuItem>
                 ))}
@@ -286,7 +292,9 @@ function SimpleCard(props) {
                       .tiene_intereses_mismo_sector_declarante
                   }
                   value="true"
-                  onChange={handleChange("tiene_intereses_mismo_sector_declarante")}
+                  onChange={handleChange(
+                    "tiene_intereses_mismo_sector_declarante"
+                  )}
                   color="primary"
                 />
               }
@@ -303,7 +311,9 @@ function SimpleCard(props) {
                       .desarrolla_cabildeo_sector_declarante
                   }
                   value="true"
-                  onChange={handleChange("desarrolla_cabildeo_sector_declarante")}
+                  onChange={handleChange(
+                    "desarrolla_cabildeo_sector_declarante"
+                  )}
                   color="primary"
                 />
               }
@@ -338,7 +348,7 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleAddDependientesEconomicos}
+              onClick={addClick}
             >
               Agregar
             </Button>
@@ -347,7 +357,7 @@ function SimpleCard(props) {
         <Grid container spacing={24}>
           <Tabla
             data={data.dependientes_economicos}
-            buttonClick={handleRemoveDependientesEconomicos}
+            buttonClick={removeClick}
           />
         </Grid>
       </CardContent>

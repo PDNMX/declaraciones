@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -20,15 +20,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
-import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import Input from "@material-ui/core/Input";
+// import Checkbox from "@material-ui/core/Checkbox";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -55,57 +55,38 @@ const styles = theme => ({
   }
 });
 
-// estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickInversiones,
-    handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Inversiones, cuentas, valores (acciones, bonos valores, títulos, cuentas de ahorro o bancarias o con entidades financieras, fondo de retiro, etc.)
+          Inversiones, cuentas, valores (acciones, bonos valores, títulos,
+          cuentas de ahorro o bancarias o con entidades financieras, fondo de
+          retiro, etc.)
         </Typography>
         <Grid container spacing={24}>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Tipo de operación</InputLabel>
+              <InputLabel htmlFor="tipo_operacion">
+                Tipo de operación
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.tipo_operacion.codigo}
+                onChange={handleChange("tipo_operacion")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "tipo_operacion",
+                  id: "tipo_operacion"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catTipoOperacion.map(tipoOperacion => (
+                  <MenuItem
+                    key={tipoOperacion.codigo}
+                    value={tipoOperacion.codigo}
+                  >
+                    {tipoOperacion.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -113,20 +94,23 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">
+              <InputLabel htmlFor="tipo_inversion">
                 Tipo de inversión
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.tipo_inversion.codigo}
+                onChange={handleChange("tipo_inversion")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "tipo_inversion",
+                  id: "tipo_inversion"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catTiposInversiones.map(tipoInversion => (
+                  <MenuItem
+                    key={tipoInversion.codigo}
+                    value={tipoInversion.codigo}
+                  >
+                    {tipoInversion.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -134,22 +118,27 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">
+              <InputLabel htmlFor="tipo_especifico_inversion">
                 Tipo específico de la inversión
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.tipo_especifico_inversion.codigo}
+                onChange={handleChange("tipo_especifico_inversion")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "tipo_especifico_inversion",
+                  id: "tipo_especifico_inversion"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
-                  </MenuItem>
-                ))}
+                {data.catTiposEspecificosInversion.map(
+                  tipoEspecificoInversion => (
+                    <MenuItem
+                      key={tipoEspecificoInversion.codigo}
+                      value={tipoEspecificoInversion.codigo}
+                    >
+                      {tipoEspecificoInversion.valor}
+                    </MenuItem>
+                  )
+                )}
               </Select>
             </FormControl>
           </Grid>
@@ -159,16 +148,18 @@ function SimpleCard(props) {
               id="grado"
               label="Número de cuenta, contrato o identificador de la inversión"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.numero_cuenta}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Nacional o extranjero</InputLabel>
+              <InputLabel htmlFor="estado_civil">
+                Nacional o extranjero
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.nacional_extranjero.codigo}
+                onChange={handleChange("estado_civil")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
@@ -187,7 +178,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre de la institución"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.nombre_institucion}
               margin="normal"
             />
           </Grid>
@@ -196,7 +187,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC de la institución"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.rfc_institucion}
               margin="normal"
             />
           </Grid>
@@ -204,16 +195,16 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "sector_industria",
+                  id: "sector_industria"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -221,18 +212,23 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Forma de adquisición</InputLabel>
+              <InputLabel htmlFor="forma_adquisicion">
+                Forma de adquisición
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.forma_adquisicion.codigo}
+                onChange={handleChange("forma_adquisicion")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "forma_adquisicion",
+                  id: "forma_adquisicion"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catFormaAdquision.map(formaAdquision => (
+                  <MenuItem
+                    key={formaAdquision.codigo}
+                    value={formaAdquision.codigo}
+                  >
+                    {formaAdquision.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -243,7 +239,7 @@ function SimpleCard(props) {
               id="grado"
               label="fecha de inicio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.fecha_inicio}
               margin="normal"
             />
           </Grid>
@@ -252,24 +248,24 @@ function SimpleCard(props) {
               id="grado"
               label="Monto original"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.monto_original}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Tipo de moneda</InputLabel>
+              <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.tipo_moneda.codigo}
+                onChange={handleChange("tipo_moneda")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "tipo_moneda",
+                  id: "tipo_moneda"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catTiposMonedas.map(tipoMoneda => (
+                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
+                    {tipoMoneda.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -280,7 +276,7 @@ function SimpleCard(props) {
               id="grado"
               label="Tasa de interés"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.tasa_interes}
               margin="normal"
             />
           </Grid>
@@ -289,7 +285,7 @@ function SimpleCard(props) {
               id="grado"
               label="Saldo al año que se reporta"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.saldo_anual}
               margin="normal"
             />
           </Grid>
@@ -298,24 +294,26 @@ function SimpleCard(props) {
               id="grado"
               label="Plazo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.plazo}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Unidad de medida del plazo</InputLabel>
+              <InputLabel htmlFor="unidad_medida_plazo">
+                Unidad de medida del plazo
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.unidad_medida_plazo.codigo}
+                onChange={handleChange("unidad_medida_plazo")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "unidad_medida_plazo",
+                  id: "unidad_medida_plazo"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catMedidasPlazos.map(medidaPlazo => (
+                  <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
+                    {medidaPlazo.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -323,18 +321,18 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Titular</InputLabel>
+              <InputLabel htmlFor="titular">Titular</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_inversiones_cuentas_valores.titular_bien.codigo}
+                onChange={handleChange("titular")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "titular",
+                  id: "titular"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catTitularesBienes.map(titularBien => (
+                  <MenuItem key={titularBien.codigo} value={titularBien.codigo}>
+                    {titularBien.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -345,46 +343,17 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje de la inversión"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.grado_obporcentaje_inversiontenido}
               margin="normal"
             />
           </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_inversiones_cuentas_valores.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -395,14 +364,17 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickInversiones()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.inversiones_cuentas_valores} />
+          <Tabla
+            data={data.inversiones_cuentas_valores}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>

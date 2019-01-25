@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
 
@@ -47,14 +46,7 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleChange,
-    nivelGobierno,
-    poderEjecutivo,
-    sectorIndustria
-  } = props;
+  const { classes, data, handleChange, nivelGobierno, poderEjecutivo } = props;
 
   return (
     <Card className={classes.card}>
@@ -200,11 +192,11 @@ function SimpleCard(props) {
                 value={data.datos_encargo_actual.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "sector_industria",
+                  id: "sector_industria"
                 }}
               >
-                {sectorIndustria.map(dato => (
+                {data.sectorIndustria.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>

@@ -55,10 +55,6 @@ function FullWidthGrid(props) {
             <Select
               value={data.pais.codigo}
               onChange={handleChange("pais")}
-              inputProps={{
-                name: "pais",
-                id: "pais"
-              }}
             >
               {ciudades.map(ciudad => (
                 <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
@@ -98,10 +94,6 @@ function FullWidthGrid(props) {
               <Select
                 value={data.municipio.cve_mun}
                 onChange={handleChange("municipio")}
-                inputProps={{
-                  name: "municipio",
-                  id: "municipio"
-                }}
               >
                 {municipios.map(municipios => (
                   <MenuItem key={municipios.cve_mun} value={municipios.cve_mun}>
@@ -119,10 +111,6 @@ function FullWidthGrid(props) {
               <Select
                 value={data.localidad.cve_loc}
                 onChange={handleChange("localidad")}
-                inputProps={{
-                  name: "localidad",
-                  id: "localidad"
-                }}
               >
                 {localidades.map(localidades => (
                   <MenuItem

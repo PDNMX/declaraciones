@@ -34,7 +34,7 @@ const styles = theme => ({
     }
 });
 
-var loggedIn = sessionStorage.getItem("logged");
+// var loggedIn = sessionStorage.getItem("logged");
 
 class Login extends React.Component {
     constructor(props) {

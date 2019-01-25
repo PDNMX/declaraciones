@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -20,15 +20,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
+// import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -55,34 +55,8 @@ const styles = theme => ({
   }
 });
 
-// estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickApoyosPublicos,
-    handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -97,7 +71,7 @@ function SimpleCard(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={data.contratado_honorarios}
+                  checked={data.datos_apoyos_beneficios_publicos.es_beneficiario}
                   value="Habita el domicilio del declarante"
                   color="primary"
                 />
@@ -110,7 +84,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre del programa"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_apoyos_beneficios_publicos.programa}
               margin="normal"
             />
           </Grid>
@@ -119,25 +93,30 @@ function SimpleCard(props) {
               id="grado"
               label="Institución que otorga el apoyo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_apoyos_beneficios_publicos.institucion_otorgante}
               margin="normal"
             />
           </Grid>
 
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Nivel de gobierno</InputLabel>
+              <InputLabel htmlFor="nivel_gobierno">
+                Nivel de gobierno
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_apoyos_beneficios_publicos.nivel_orden_gobierno.codigo}
+                onChange={handleChange("nivel_gobierno")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "nivel_gobierno",
+                  id: "nivel_gobierno"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catNivelesGobierno.map(nivelGobierno => (
+                  <MenuItem
+                    key={nivelGobierno.codigo}
+                    value={nivelGobierno.codigo}
+                  >
+                    {nivelGobierno.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -145,18 +124,18 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Tipo de apoyo</InputLabel>
+              <InputLabel htmlFor="tipo_apoyo">Tipo de apoyo</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_apoyos_beneficios_publicos.tipo_apoyo.codigo}
+                onChange={handleChange("tipo_apoyo")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "tipo_apoyo",
+                  id: "tipo_apoyo"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catTiposApoyos.map(tipoApoyo => (
+                  <MenuItem key={tipoApoyo.codigo} value={tipoApoyo.codigo}>
+                    {tipoApoyo.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -167,7 +146,7 @@ function SimpleCard(props) {
               id="grado"
               label="Valor anual del apoyo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_apoyos_beneficios_publicos.valor_anual_apoyo}
               margin="normal"
             />
           </Grid>
@@ -177,7 +156,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_apoyos_beneficios_publicos.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -187,14 +166,17 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickApoyosPublicos()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.apoyos_beneficios_publicos} />
+          <Tabla
+            data={data.apoyos_beneficios_publicos}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>

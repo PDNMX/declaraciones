@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -20,15 +20,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
-import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import Input from "@material-ui/core/Input";
+// import Checkbox from "@material-ui/core/Checkbox";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
-import moment from "moment";
+// import moment from "moment";
 
 const styles = theme => ({
   card: {
@@ -55,34 +55,8 @@ const styles = theme => ({
   }
 });
 
-// estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickEfectivoMetales,
-    handleChange,
-    handleChangeEntidades,
-    handleChangeEdoCivil,
-    handleChangeRegimen,
-    handleChangeDirPais,
-    handleChangeMunicipios,
-    handleChangeLocalidades,
-    handleChangeTipoVialidad,
-    handleChangeNombreVialidad,
-    handleClick
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -92,122 +66,115 @@ function SimpleCard(props) {
           Efectivo y metales
         </Typography>
         <Grid container spacing={24}>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Tipo de operación</InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
-              inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
-              }}
-            >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">
-              Tipo de moneda
-            </InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
-              inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
-              }}
-            >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Monto "
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">
-              Tipo de metal
-            </InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChangeEdoCivil("estado_civil")}
-              inputProps={{
-                name: "estado_civil",
-                id: "estado_civil"
-              }}
-            >
-              {data.estadosciviles.map(estadocivil => (
-                <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                  {estadocivil.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Unidades"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Monto en pesos"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="tipo_operacion">
+                Tipo de operación
+              </InputLabel>
+              <Select
+                value={data.datos_efectivo_metales.tipo_operacion.codigo}
+                onChange={handleChange("tipo_operacion")}
+                inputProps={{
+                  name: "tipo_operacion",
+                  id: "tipo_operacion"
+                }}
+              >
+                {data.catTipoOperacion.map(tipoOperacion => (
+                  <MenuItem
+                    key={tipoOperacion.codigo}
+                    value={tipoOperacion.codigo}
+                  >
+                    {tipoOperacion.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
+              <Select
+                value={data.datos_efectivo_metales.tipo_moneda.codigo}
+                onChange={handleChange("tipo_moneda")}
+                inputProps={{
+                  name: "tipo_moneda",
+                  id: "tipo_moneda"
+                }}
+              >
+                {data.catTiposMonedas.map(tipoMoneda => (
+                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
+                    {tipoMoneda.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Monto "
+              className={classes.textField}
+              value={data.datos_efectivo_metales.monto}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="tipo_metal">Tipo de metal</InputLabel>
+              <Select
+                value={data.datos_efectivo_metales.tipo_metal.codigo}
+                onChange={handleChange("tipo_metal")}
+                inputProps={{
+                  name: "tipo_metal",
+                  id: "tipo_metal"
+                }}
+              >
+                {data.catTiposMetales.map(tipoMetal => (
+                  <MenuItem key={tipoMetal.codigo} value={tipoMetal.codigo}>
+                    {tipoMetal.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Unidades"
+              className={classes.textField}
+              value={data.datos_efectivo_metales.unidades}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Monto en pesos"
+              className={classes.textField}
+              value={data.datos_efectivo_metales.monto_pesos}
+              margin="normal"
+            />
+          </Grid>
 
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Forma de adquisición</InputLabel>
+              <InputLabel htmlFor="forma_adquisicion">
+                Forma de adquisición
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
-                onChange={handleChangeEdoCivil("estado_civil")}
+                value={data.datos_efectivo_metales.forma_adquisicion.codigo}
+                onChange={handleChange("forma_adquisicion")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "forma_adquisicion",
+                  id: "forma_adquisicion"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.catFormaAdquision.map(formaAdquision => (
+                  <MenuItem
+                    key={formaAdquision.codigo}
+                    value={formaAdquision.codigo}
+                  >
+                    {formaAdquision.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -219,7 +186,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_efectivo_metales.observaciones_comentarios}
               margin="normal"
               multiline={true}
             />
@@ -230,14 +197,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickEfectivoMetales()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.efectivo_metales} />
+          <Tabla data={data.efectivo_metales} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

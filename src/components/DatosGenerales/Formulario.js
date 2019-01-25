@@ -59,11 +59,7 @@ const MenuProps = {
 };
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    setDataInformacionPersonal
-  } = props;
+  const { classes, data, handleChange } = props;
 
   return (
     <Card className={classes.card}>
@@ -79,7 +75,7 @@ function SimpleCard(props) {
               label="Nombre(s)"
               className={classes.textField}
               value={data.informacion_general.nombres}
-              onChange={setDataInformacionPersonal("nombres")}
+              onChange={handleChange("nombres")}
               margin="normal"
             />
           </Grid>
@@ -89,7 +85,7 @@ function SimpleCard(props) {
               label="Apellido uno"
               className={classes.textField}
               value={data.informacion_general.primer_apellido}
-              onChange={setDataInformacionPersonal("primer_apellido")}
+              onChange={handleChange("primer_apellido")}
               margin="normal"
             />
           </Grid>
@@ -99,7 +95,7 @@ function SimpleCard(props) {
               label="Apellido dos"
               className={classes.textField}
               value={data.informacion_general.segundo_apellido}
-              onChange={setDataInformacionPersonal("segundo_apellido")}
+              onChange={handleChange("segundo_apellido")}
               margin="normal"
             />
           </Grid>
@@ -110,7 +106,7 @@ function SimpleCard(props) {
               label="CURP"
               className={classes.textField}
               value={data.informacion_general.curp}
-              onChange={setDataInformacionPersonal("curp")}
+              onChange={handleChange("curp")}
               margin="normal"
             />
           </Grid>
@@ -121,7 +117,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.informacion_general.rfc}
-              onChange={setDataInformacionPersonal("rfc")}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -133,7 +129,7 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.informacion_general.pais_nacimiento.codigo}
-                onChange={setDataInformacionPersonal("pais_nacimiento")}
+                onChange={handleChange("pais_nacimiento")}
                 inputProps={{
                   name: "pais_nacimiento",
                   id: "pais_nacimiento"
@@ -158,7 +154,7 @@ function SimpleCard(props) {
                 value={
                   data.informacion_general.entidad_federativa_nacimiento.cve_ent
                 }
-                onChange={setDataInformacionPersonal(
+                onChange={handleChange(
                   "entidad_federativa_nacimiento"
                 )}
                 inputProps={{
@@ -183,7 +179,7 @@ function SimpleCard(props) {
               <Select
                 multiple
                 value={data.informacion_general_nacionalidades}
-                onChange={setDataInformacionPersonal("nacionalidades")}
+                onChange={handleChange("nacionalidades")}
                 input={<Input id="select-multiple-checkbox" />}
                 renderValue={selected => selected.join(", ")}
                 MenuProps={MenuProps}
@@ -200,17 +196,14 @@ function SimpleCard(props) {
             </FormControl>
           </Grid>
           <Grid item xs={2}>
-
             <TextField
               id="fecha_nacimiento"
               label="Fecha de nacimiento"
               type="date"
-              defaultValue={moment(data.fecha_nacimiento).format(
-                "DD/MM/YYYY"
-              )}
+              defaultValue={moment(data.fecha_nacimiento).format("DD/MM/YYYY")}
               format={"DD-MM-YYYY"}
               className={classes.select}
-              onChange={setDataInformacionPersonal("fecha_nacimiento")}
+              onChange={handleChange("fecha_nacimiento")}
               InputLabelProps={{
                 shrink: true
               }}
@@ -218,10 +211,9 @@ function SimpleCard(props) {
             {/*
             <DatePicker
               selected={fecha_nacimiento}
-              onChange={setDataInformacionPersonal("fecha_nacimiento")}
+              onChange={handleChange("fecha_nacimiento")}
             />
             */}
-
           </Grid>
           <Grid item xs={2}>
             <TextField
@@ -229,7 +221,7 @@ function SimpleCard(props) {
               label="Numero identificacion oficial"
               className={classes.textField}
               value={data.informacion_general.numero_identificacion_oficial}
-              onChange={setDataInformacionPersonal(
+              onChange={handleChange(
                 "numero_identificacion_oficial"
               )}
               margin="normal"
@@ -242,7 +234,7 @@ function SimpleCard(props) {
               label="Correo electrónico personal"
               className={classes.textField}
               value={data.informacion_general.correo_electronico.personal}
-              onChange={setDataInformacionPersonal(
+              onChange={handleChange(
                 "correo_electronico.personal"
               )}
               margin="normal"
@@ -254,7 +246,7 @@ function SimpleCard(props) {
               label="Correo electrónico laboral"
               className={classes.textField}
               value={data.informacion_general.correo_electronico.laboral}
-              onChange={setDataInformacionPersonal(
+              onChange={handleChange(
                 "correo_electronico.laboral"
               )}
               margin="normal"
@@ -266,7 +258,7 @@ function SimpleCard(props) {
               label="Teléfono particular"
               className={classes.textField}
               value={data.informacion_general.telefono.particular}
-              onChange={setDataInformacionPersonal("telefono.particular")}
+              onChange={handleChange("telefono.particular")}
               margin="normal"
             />
           </Grid>
@@ -276,7 +268,7 @@ function SimpleCard(props) {
               label="Teléfono celular"
               className={classes.textField}
               value={data.informacion_general.telefono.celular}
-              onChange={setDataInformacionPersonal("telefono.celular")}
+              onChange={handleChange("telefono.celular")}
               margin="normal"
             />
           </Grid>
@@ -285,7 +277,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Estado civil</InputLabel>
               <Select
                 value={data.informacion_general.estado_civil.codigo}
-                onChange={setDataInformacionPersonal("estado_civil")}
+                onChange={handleChange("estado_civil")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
@@ -307,7 +299,7 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.informacion_general.regimen_matrimonial.codigo}
-                onChange={setDataInformacionPersonal("regimen_matrimonial")}
+                onChange={handleChange("regimen_matrimonial")}
                 inputProps={{
                   name: "regimen_matrimonial",
                   id: "regimen_matrimonial"
@@ -329,7 +321,7 @@ function SimpleCard(props) {
               municipios={data.municipios}
               localidades={data.localidades}
               tipovialidad={data.tipovialidad}
-              handleChange={setDataInformacionPersonal}
+              handleChange={handleChange}
             />
           </Grid>
         </Grid>

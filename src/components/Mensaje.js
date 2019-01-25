@@ -49,20 +49,21 @@ const styles = theme => ({
     border: "1px solid transparent",
     borderRadius: "4px",
     margin: "0 auto",
-    padding: "15px",
+    padding: "15px"
   }
 });
 
 class Mensaje extends React.Component {
   render() {
     let { mensaje, classes } = this.props;
+    let code;
 
     switch (mensaje.type) {
       case "danger":
-        return <div className={classes.danger}>{mensaje.mensaje}</div>;
+        code = <div className={classes.danger}>{mensaje.mensaje}</div>;
         break;
       case "success":
-        return (
+        code = (
           <div>
             <Paper>
               <Typography variant={"title"} className={classes.success}>
@@ -73,7 +74,7 @@ class Mensaje extends React.Component {
         );
         break;
       case "info":
-        return (
+        code = (
           <div>
             <Paper>
               <Typography variant={"title"} className={classes.info}>
@@ -84,7 +85,7 @@ class Mensaje extends React.Component {
         );
         break;
       case "warning":
-        return (
+        code = (
           <div>
             <Paper>
               <Typography variant={"title"} className={classes.warning}>
@@ -95,7 +96,7 @@ class Mensaje extends React.Component {
         );
         break;
       default:
-        return (
+        code = (
           <div>
             <Paper>
               <Typography variant={"title"} className={classes.default}>
@@ -105,6 +106,8 @@ class Mensaje extends React.Component {
           </div>
         );
     }
+
+    return code;
   }
 }
 
