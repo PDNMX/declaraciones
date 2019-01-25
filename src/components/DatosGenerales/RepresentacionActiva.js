@@ -68,13 +68,7 @@ const MenuProps = {
 };
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickRepresentacionActiva,
-    handleChange,
-
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -84,133 +78,138 @@ function SimpleCard(props) {
           Representación activa
         </Typography>
         <Grid container spacing={24}>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="tipo_representacion">Tipo de representación</InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChange("tipo_representacion")}
-              inputProps={{
-                name: "tipo_representacion",
-                id: "tipo_representacion"
-              }}
-            >
-              {data.catTiposRepresentaciones.map(tipoRepresentacion => (
-                <MenuItem key={tipoRepresentacion.codigo} value={tipoRepresentacion.codigo}>
-                  {tipoRepresentacion.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="select-multiple-checkbox">
-              Nacionalidades
-            </InputLabel>
-            <Select
-              multiple
-              value={data.informacion_general_nacionalidades}
-              onChange={handleChange("nacionalidades")}
-              input={<Input id="select-multiple-checkbox" />}
-              renderValue={selected => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {data.ciudades.map(ciudad => (
-                <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
-                  <Checkbox
-                    checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
-                  />
-                  <ListItemText primary={ciudad.valor} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Nombre completo"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="CURP"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="RFC"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de nacimiento"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
-            <Select
-              value={data.datos_encargo_actual.sector_industria.codigo}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
-              inputProps={{
-                name: "sector_industria",
-                id: "sector_industria"
-              }}
-            >
-              {data.sectorIndustria.map(dato => (
-                <MenuItem key={dato.codigo} value={dato.codigo}>
-                  {dato.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de inicio"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <br />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={data.contratado_honorarios}
-                value="Habita el domicilio del declarante"
-                color="primary"
-              />
-            }
-            label="¿Pagado o no pagado?"
-          />
-        </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="tipo_representacion">
+                Tipo de representación
+              </InputLabel>
+              <Select
+                value={data.datos_representacion_activa.tipo_representacion.codigo}
+                onChange={handleChange("tipo_representacion")}
+                inputProps={{
+                  name: "tipo_representacion",
+                  id: "tipo_representacion"
+                }}
+              >
+                {data.catTiposRepresentaciones.map(tipoRepresentacion => (
+                  <MenuItem
+                    key={tipoRepresentacion.codigo}
+                    value={tipoRepresentacion.codigo}
+                  >
+                    {tipoRepresentacion.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="select-multiple-checkbox">
+                Nacionalidades
+              </InputLabel>
+              <Select
+                multiple
+                value={data.datos_representacion_activa.nacionalidades}
+                onChange={handleChange("nacionalidades")}
+                input={<Input id="select-multiple-checkbox" />}
+                renderValue={selected => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    <Checkbox
+                      checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
+                    />
+                    <ListItemText primary={ciudad.valor} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Nombre completo"
+              className={classes.textField}
+              value={data.datos_representacion_activa.nombre_parte_representada}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="CURP"
+              className={classes.textField}
+              value={data.datos_representacion_activa.curp_parte}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="RFC"
+              className={classes.textField}
+              value={data.datos_representacion_activa.rfc_parte}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de nacimiento"
+              className={classes.textField}
+              value={data.datos_representacion_activa.fecha_nacimiento_parte}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
+              <Select
+                value={data.datos_representacion_activa.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                inputProps={{
+                  name: "sector_industria",
+                  id: "sector_industria"
+                }}
+              >
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de inicio"
+              className={classes.textField}
+              value={data.datos_representacion_activa.fecha_inicio}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.datos_representacion_activa.pagado}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="¿Pagado o no pagado?"
+            />
+          </Grid>
 
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_representacion_activa.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -220,14 +219,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickRepresentacionActiva()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.representacion_activa} />
+          <Tabla data={data.representacion_activa} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

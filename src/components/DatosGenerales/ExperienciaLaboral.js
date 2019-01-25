@@ -55,11 +55,11 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    handleAddExperienciaLaborar,
-    handleRemoveExperienciaLaborar,
     nivelGobierno,
     poderEjecutivo,
-    handleChange
+    handleChange,
+    addClick,
+    removeClick
   } = props;
 
   // console.log(data);
@@ -224,14 +224,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleAddExperienciaLaborar}
+              onClick={addClick}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.experiencia_laboral} buttonClick={handleRemoveExperienciaLaborar} />
+          <Tabla data={data.experiencia_laboral} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

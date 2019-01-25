@@ -55,15 +55,8 @@ const styles = theme => ({
   }
 });
 
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickBienesIntangibles,
-    handleChange,
-
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -75,9 +68,11 @@ function SimpleCard(props) {
         <Grid container spacing={24}>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_operacion">Tipo de operación</InputLabel>
+              <InputLabel htmlFor="tipo_operacion">
+                Tipo de operación
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_intangibles.tipo_operacion.codigo}
                 onChange={handleChange("tipo_operacion")}
                 inputProps={{
                   name: "tipo_operacion",
@@ -85,186 +80,183 @@ function SimpleCard(props) {
                 }}
               >
                 {data.catTipoOperacion.map(tipoOperacion => (
-                  <MenuItem key={tipoOperacion.codigo} value={tipoOperacion.codigo}>
+                  <MenuItem
+                    key={tipoOperacion.codigo}
+                    value={tipoOperacion.codigo}
+                  >
                     {tipoOperacion.valor}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Propietario registrado"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Descripción"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Ente Público encargado del registro"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Número de registro"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de registro"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
-            <Select
-              value={data.datos_encargo_actual.sector_industria.codigo}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
-              inputProps={{
-                name: "sector_industria",
-                id: "sector_industria"
-              }}
-            >
-              {data.sectorIndustria.map(dato => (
-                <MenuItem key={dato.codigo} value={dato.codigo}>
-                  {dato.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Precio de adquisición"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="forma_adquisicion">Forma de adquisición</InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChange("forma_adquisicion")}
-              inputProps={{
-                name: "forma_adquisicion",
-                id: "forma_adquisicion"
-              }}
-            >
-              {data.catFormaAdquision.map(formaAdquision => (
-                <MenuItem key={formaAdquision.codigo} value={formaAdquision.codigo}>
-                  {formaAdquision.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de vencimiento"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Porcentaje de propiedad en caso de copropiedad"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Precio total de adquisición en caso de copropiedad"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Nombre, denominación o razón social del copropietario"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Porcentaje de propiedad del copropietario"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-
-
-
-
-
-
-
-
-
-
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Propietario registrado"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.propietario_registrado}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Descripción"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.descripcion}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Ente Público encargado del registro"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.ente_publico_encargado.nombre}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Número de registro"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.numero_registro}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de registro"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.fecha_registro}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
+              <Select
+                value={data.datos_bienes_intangibles.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                inputProps={{
+                  name: "sector_industria",
+                  id: "sector_industria"
+                }}
+              >
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Precio de adquisición"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.precio_adquisicion.valor}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="forma_adquisicion">
+                Forma de adquisición
+              </InputLabel>
+              <Select
+                value={data.datos_bienes_intangibles.forma_adquisicion.codigo}
+                onChange={handleChange("forma_adquisicion")}
+                inputProps={{
+                  name: "forma_adquisicion",
+                  id: "forma_adquisicion"
+                }}
+              >
+                {data.catFormaAdquision.map(formaAdquision => (
+                  <MenuItem
+                    key={formaAdquision.codigo}
+                    value={formaAdquision.codigo}
+                  >
+                    {formaAdquision.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de vencimiento"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.fecha_vencimiento}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Porcentaje de propiedad en caso de copropiedad"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.porcentaje_copropiedad}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Precio total de adquisición en caso de copropiedad"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.precio_total_copropiedad.valor}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Nombre, denominación o razón social del copropietario"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.nombre_copropietario}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Porcentaje de propiedad del copropietario"
+              className={classes.textField}
+              value={data.datos_bienes_intangibles.porcentaje_propiedad_copropietario}
+              margin="normal"
+            />
+          </Grid>
 
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_intangibles.observaciones}
               margin="normal"
               multiline={true}
             />
           </Grid>
-
 
           <Grid item xs={2}>
             <Button
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickBienesIntangibles()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.bienes_intangibles} />
+          <Tabla data={data.bienes_intangibles} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

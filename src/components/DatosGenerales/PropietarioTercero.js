@@ -55,10 +55,8 @@ const styles = theme => ({
   }
 });
 
-
-
 function SimpleCard(props) {
-  const { classes, data, handleClickPropietarioTercero, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -73,7 +71,7 @@ function SimpleCard(props) {
               id="grado"
               label="Tipo de bien o servicio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.tipo_bien.codigo}
               margin="normal"
             />
           </Grid>
@@ -82,7 +80,7 @@ function SimpleCard(props) {
               id="grado"
               label="Valor de mercado aproximado"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.valor_mercado.valor}
               margin="normal"
             />
           </Grid>
@@ -91,7 +89,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.nombre_tercero_propietario}
               margin="normal"
             />
           </Grid>
@@ -100,7 +98,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC del tercero propietario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.rfc_tercero_propietario}
               margin="normal"
             />
           </Grid>
@@ -109,7 +107,7 @@ function SimpleCard(props) {
               id="grado"
               label="CURP del tercero propietario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.curp_tercero_propietario}
               margin="normal"
             />
           </Grid>
@@ -118,7 +116,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="relacion">Relación</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_uso_especie_propiedad_tercero.relacion_persona.codigo}
                 onChange={handleChange("relacion")}
                 inputProps={{
                   name: "relacion",
@@ -141,7 +139,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.datos_uso_especie_propiedad_tercero.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -162,7 +160,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de inicio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.fecha_inicio}
               margin="normal"
             />
           </Grid>
@@ -172,7 +170,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_uso_especie_propiedad_tercero.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -183,14 +181,17 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickPropietarioTercero()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.uso_especie_propiedad_tercero} />
+          <Tabla
+            data={data.uso_especie_propiedad_tercero}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>

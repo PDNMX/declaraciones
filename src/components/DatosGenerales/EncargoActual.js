@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
 
@@ -47,13 +46,7 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleChange,
-    nivelGobierno,
-    poderEjecutivo,
-  } = props;
+  const { classes, data, handleChange, nivelGobierno, poderEjecutivo } = props;
 
   return (
     <Card className={classes.card}>

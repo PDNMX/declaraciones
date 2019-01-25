@@ -55,10 +55,8 @@ const styles = theme => ({
   }
 });
 
-
-
 function SimpleCard(props) {
-  const { classes, data, handleClickDeudas, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -74,7 +72,7 @@ function SimpleCard(props) {
                 Tipo de operación
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.tipo_operacion.codigo}
                 onChange={handleChange("tipo_operacion")}
                 inputProps={{
                   name: "tipo_operacion",
@@ -96,7 +94,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_acreedor">Tipo de acreedor</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.tipo_acreedor.codigo}
                 onChange={handleChange("tipo_acreedor")}
                 inputProps={{
                   name: "tipo_acreedor",
@@ -118,7 +116,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_adeudo">Tipo de adeudo</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.tipo_adeudo.codigo}
                 onChange={handleChange("tipo_adeudo")}
                 inputProps={{
                   name: "tipo_adeudo",
@@ -138,7 +136,7 @@ function SimpleCard(props) {
               id="grado"
               label="Número de cuenta, contrato o identificador de la deuda"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.identificador_deuda}
               margin="normal"
             />
           </Grid>
@@ -148,7 +146,7 @@ function SimpleCard(props) {
                 Nacional o extranjero
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.nacional_extranjero.codigo}
                 onChange={handleChange("estado_civil")}
                 inputProps={{
                   name: "estado_civil",
@@ -168,7 +166,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social del acreedor"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.nombre_acreedor}
               margin="normal"
             />
           </Grid>
@@ -177,7 +175,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC del acreedor"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.rfc_acreedor}
               margin="normal"
             />
           </Grid>
@@ -185,7 +183,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.datos_deudas.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -205,7 +203,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha en la que se generó el adeudo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.fecha_adeudo}
               margin="normal"
             />
           </Grid>
@@ -214,7 +212,7 @@ function SimpleCard(props) {
               id="grado"
               label="Monto original del adeudo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.monto_original}
               margin="normal"
             />
           </Grid>
@@ -222,7 +220,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.tipo_moneda.codigo}
                 onChange={handleChange("tipo_moneda")}
                 inputProps={{
                   name: "tipo_moneda",
@@ -242,7 +240,7 @@ function SimpleCard(props) {
               id="grado"
               label="Tasa de interés"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.tasa_interes}
               margin="normal"
             />
           </Grid>
@@ -251,7 +249,7 @@ function SimpleCard(props) {
               id="grado"
               label="Saldo pendiente"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.saldo_pendiente}
               margin="normal"
             />
           </Grid>
@@ -260,7 +258,7 @@ function SimpleCard(props) {
               id="grado"
               label="Montos abonados a favor de la deuda"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.montos_abonados}
               margin="normal"
             />
           </Grid>
@@ -269,7 +267,7 @@ function SimpleCard(props) {
               id="grado"
               label="Plazo del adeudo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.plazo_adeudo}
               margin="normal"
             />
           </Grid>
@@ -279,7 +277,7 @@ function SimpleCard(props) {
                 Unidad de medida del plazo
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.unidad_medida_adeudo.codigo}
                 onChange={handleChange("unidad_medida_plazo")}
                 inputProps={{
                   name: "unidad_medida_plazo",
@@ -298,7 +296,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="titular">Titular</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_deudas.titularidad_deuda.codigo}
                 onChange={handleChange("titular")}
                 inputProps={{
                   name: "titular",
@@ -318,7 +316,7 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje del adeudo del titular"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.porcentaje_adeudo_titular}
               margin="normal"
             />
           </Grid>
@@ -327,7 +325,7 @@ function SimpleCard(props) {
               id="grado"
               label="¿Se otorgó garantía?"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.garantia}
               margin="normal"
             />
           </Grid>
@@ -336,7 +334,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social del garante"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.nombre_garante}
               margin="normal"
             />
           </Grid>
@@ -346,7 +344,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_deudas.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -357,14 +355,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickDeudas()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.deudas} />
+          <Tabla data={data.deudas} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

@@ -55,14 +55,8 @@ const styles = theme => ({
   }
 });
 
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickBeneficiosGratuitos,
-    handleChange,
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -72,82 +66,77 @@ function SimpleCard(props) {
           Beneficios gratuitos distintos a efectivo y bienes.
         </Typography>
         <Grid container spacing={24}>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Tipo de beneficio"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Origen del beneficio"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
-            <Select
-              value={data.datos_encargo_actual.sector_industria.codigo}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
-              inputProps={{
-                name: "sector_industria",
-                id: "sector_industria"
-              }}
-            >
-              {data.sectorIndustria.map(dato => (
-                <MenuItem key={dato.codigo} value={dato.codigo}>
-                  {dato.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Valor del beneficio"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Tipo de beneficio"
+              className={classes.textField}
+              value={data.datos_beneficios_gratuitos.tipo_beneficio}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Origen del beneficio"
+              className={classes.textField}
+              value={data.datos_beneficios_gratuitos.origen_beneficio}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
+              <Select
+                value={data.datos_beneficios_gratuitos.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                inputProps={{
+                  name: "sector_industria",
+                  id: "sector_industria"
+                }}
+              >
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Valor del beneficio"
+              className={classes.textField}
+              value={data.datos_beneficios_gratuitos.valor_beneficio}
+              margin="normal"
+            />
+          </Grid>
 
-
-
-
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Observaciones"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-            multiline={true}
-          />
-        </Grid>
-
-
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Observaciones"
+              className={classes.textField}
+              value={data.datos_beneficios_gratuitos.observaciones}
+              margin="normal"
+              multiline={true}
+            />
+          </Grid>
 
           <Grid item xs={2}>
             <Button
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickBeneficiosGratuitos()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.beneficios_gratuitos} />
+          <Tabla data={data.beneficios_gratuitos} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

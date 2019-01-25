@@ -68,13 +68,7 @@ const MenuProps = {
 };
 
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickOtrasPartesRelacionadas,
-    handleChange,
-
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -84,155 +78,152 @@ function SimpleCard(props) {
           Otras partes relacionadas
         </Typography>
         <Grid container spacing={24}>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Tipo de relación con el Titular"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Tipo de relación con el Titular"
+              className={classes.textField}
+              value={data.datos_otras_partes.tipo_relacion}
+              margin="normal"
+            />
+          </Grid>
 
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Nombre o denominación social de la parte relacionada"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de inicio/Constitución de la relación"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="select-multiple-checkbox">
-              Nacionalidades
-            </InputLabel>
-            <Select
-              multiple
-              value={data.informacion_general_nacionalidades}
-              onChange={handleChange("nacionalidades")}
-              input={<Input id="select-multiple-checkbox" />}
-              renderValue={selected => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {data.ciudades.map(ciudad => (
-                <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
-                  <Checkbox
-                    checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
-                  />
-                  <ListItemText primary={ciudad.valor} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="CURP"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="RFC"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de nacimiento"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Ocupación/Profesión"
-            className={classes.textField}
-            value={data.ocupacion_profesion}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
-            <Select
-              value={data.datos_encargo_actual.sector_industria.codigo}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
-              inputProps={{
-                name: "sector_industria",
-                id: "sector_industria"
-              }}
-            >
-              {handleChange.sectorIndustria.map(dato => (
-                <MenuItem key={dato.codigo} value={dato.codigo}>
-                  {dato.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Nombre o denominación social de la parte relacionada"
+              className={classes.textField}
+              value={data.datos_otras_partes.nombre_denominacion_parte}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de inicio/Constitución de la relación"
+              className={classes.textField}
+              value={data.datos_otras_partes.fecha_inicio_relacion}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="select-multiple-checkbox">
+                Nacionalidades
+              </InputLabel>
+              <Select
+                multiple
+                value={data.datos_otras_partes.nacionalidades}
+                onChange={handleChange("nacionalidades")}
+                input={<Input id="select-multiple-checkbox" />}
+                renderValue={selected => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    <Checkbox
+                      checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
+                    />
+                    <ListItemText primary={ciudad.valor} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="CURP"
+              className={classes.textField}
+              value={data.datos_otras_partes.curp}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="RFC"
+              className={classes.textField}
+              value={data.datos_otras_partes.rfc}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de nacimiento"
+              className={classes.textField}
+              value={data.datos_otras_partes.fecha_nacimiento}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Ocupación/Profesión"
+              className={classes.textField}
+              value={data.datos_otras_partes.ocupacion}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
+              <Select
+                value={data.datos_otras_partes.sector_industria.codigo}
+                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                inputProps={{
+                  name: "sector_industria",
+                  id: "sector_industria"
+                }}
+              >
+                {data.sectorIndustria.map(dato => (
+                  <MenuItem key={dato.codigo} value={dato.codigo}>
+                    {dato.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
 
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Observaciones"
+              className={classes.textField}
+              value={data.datos_otras_partes.observaciones}
+              margin="normal"
+              multiline={true}
+            />
+          </Grid>
 
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Observaciones"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-            multiline={true}
-          />
-        </Grid>
-
-
-        <Grid item xs={12}>
-          <br />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={data.contratado_honorarios}
-                value="Habita el domicilio del declarante"
-                color="primary"
-              />
-            }
-            label="¿Tiene la parte relacionada intereses en el mismo sector/industria al que pertenece el empleo oficial del Declarante?"
-          />
-        </Grid>
-
+          <Grid item xs={12}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.datos_otras_partes.tiene_interes}
+                  value="Habita el domicilio del declarante"
+                  color="primary"
+                />
+              }
+              label="¿Tiene la parte relacionada intereses en el mismo sector/industria al que pertenece el empleo oficial del Declarante?"
+            />
+          </Grid>
 
           <Grid item xs={2}>
             <Button
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickOtrasPartesRelacionadas()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.otras_partes} />
+          <Tabla data={data.otras_partes} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

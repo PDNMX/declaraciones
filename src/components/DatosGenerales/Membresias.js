@@ -55,10 +55,8 @@ const styles = theme => ({
   }
 });
 
-
-
 function SimpleCard(props) {
-  const { classes, data, handleClickMembresias, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -74,7 +72,7 @@ function SimpleCard(props) {
                 Tipo de institución
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_membresias.tipo_institucion.codigo}
                 onChange={handleChange("tipo_institucion")}
                 inputProps={{
                   name: "tipo_institucion",
@@ -97,7 +95,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre de la institución"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_membresias.nombre_institucion}
               margin="normal"
             />
           </Grid>
@@ -107,7 +105,7 @@ function SimpleCard(props) {
                 Naturaleza de la membresía
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_membresias.naturaleza_membresia.codigo}
                 onChange={handleChange("naturaleza_membresia")}
                 inputProps={{
                   name: "naturaleza_membresia",
@@ -129,7 +127,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.datos_membresias.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -149,7 +147,7 @@ function SimpleCard(props) {
               id="grado"
               label="Puesto/Rol"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_membresias.puesto_rol}
               margin="normal"
             />
           </Grid>
@@ -158,7 +156,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de inicio"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_membresias.fecha_inicio}
               margin="normal"
             />
           </Grid>
@@ -167,7 +165,7 @@ function SimpleCard(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={data.contratado_honorarios}
+                  checked={data.datos_membresias.pagado}
                   value="Habita el domicilio del declarante"
                   color="primary"
                 />
@@ -181,7 +179,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_membresias.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -192,14 +190,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickMembresias()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.membresias} />
+          <Tabla data={data.membresias} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

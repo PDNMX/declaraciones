@@ -55,15 +55,8 @@ const styles = theme => ({
   }
 });
 
-
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickBienesMueblesNoRegistrables,
-    handleChange,
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -75,9 +68,11 @@ function SimpleCard(props) {
         <Grid container spacing={24}>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_operacion">Tipo de operación</InputLabel>
+              <InputLabel htmlFor="tipo_operacion">
+                Tipo de operación
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_muebles_no_registrables.tipo_operacion.codigo}
                 onChange={handleChange("tipo_operacion")}
                 inputProps={{
                   name: "tipo_operacion",
@@ -85,7 +80,10 @@ function SimpleCard(props) {
                 }}
               >
                 {data.catTipoOperacion.map(tipoOperacion => (
-                  <MenuItem key={tipoOperacion.codigo} value={tipoOperacion.codigo}>
+                  <MenuItem
+                    key={tipoOperacion.codigo}
+                    value={tipoOperacion.codigo}
+                  >
                     {tipoOperacion.valor}
                   </MenuItem>
                 ))}
@@ -94,11 +92,9 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_bien">
-                Tipo de bien
-              </InputLabel>
+              <InputLabel htmlFor="tipo_bien">Tipo de bien</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_muebles_no_registrables.tipo_bien.codigo}
                 onChange={handleChange("tipo_bien")}
                 inputProps={{
                   name: "tipo_bien",
@@ -118,7 +114,7 @@ function SimpleCard(props) {
               id="grado"
               label="Descripción del bien"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.descripcion}
               margin="normal"
             />
           </Grid>
@@ -126,7 +122,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="titular">Titular</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_muebles_no_registrables.titular_bien.codigo}
                 onChange={handleChange("titular")}
                 inputProps={{
                   name: "titular",
@@ -142,17 +138,12 @@ function SimpleCard(props) {
             </FormControl>
           </Grid>
 
-
-
-
-
-
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Porcentaje de propiedad"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.porcentaje_propiedad}
               margin="normal"
             />
           </Grid>
@@ -161,15 +152,17 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre de copropietarios"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.nombres_copropietarios}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="forma_adquisicion">Forma de adquisición</InputLabel>
+              <InputLabel htmlFor="forma_adquisicion">
+                Forma de adquisición
+              </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_muebles_no_registrables.forma_adquisicion.codigo}
                 onChange={handleChange("forma_adquisicion")}
                 inputProps={{
                   name: "forma_adquisicion",
@@ -177,7 +170,10 @@ function SimpleCard(props) {
                 }}
               >
                 {data.catFormaAdquision.map(formaAdquision => (
-                  <MenuItem key={formaAdquision.codigo} value={formaAdquision.codigo}>
+                  <MenuItem
+                    key={formaAdquision.codigo}
+                    value={formaAdquision.codigo}
+                  >
                     {formaAdquision.valor}
                   </MenuItem>
                 ))}
@@ -189,7 +185,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social de quien se adquirió el mueble"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.nombre_denominacion_adquirio}
               margin="normal"
             />
           </Grid>
@@ -197,7 +193,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="relacion">Relación</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_muebles_no_registrables.relacion_quien_adquirio.codigo}
                 onChange={handleChange("relacion")}
                 inputProps={{
                   name: "relacion",
@@ -205,7 +201,10 @@ function SimpleCard(props) {
                 }}
               >
                 {data.catRelacionDeclarante.map(relacionDeclarante => (
-                  <MenuItem key={relacionDeclarante.codigo} value={relacionDeclarante.codigo}>
+                  <MenuItem
+                    key={relacionDeclarante.codigo}
+                    value={relacionDeclarante.codigo}
+                  >
                     {relacionDeclarante.valor}
                   </MenuItem>
                 ))}
@@ -217,7 +216,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de adquisición"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.fecha_adquisicion}
               margin="normal"
             />
           </Grid>
@@ -226,7 +225,7 @@ function SimpleCard(props) {
               id="grado"
               label="Precio de adquisición"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.precio_adquisicion.valor}
               margin="normal"
             />
           </Grid>
@@ -234,7 +233,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_bienes_muebles_no_registrables.precio_adquisicion.moneda.codigo}
                 onChange={handleChange("moneda")}
                 inputProps={{
                   name: "moneda",
@@ -255,7 +254,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_bienes_muebles_no_registrables.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -266,14 +265,17 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickBienesMueblesNoRegistrables()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.bienes_muebles_no_registrables} />
+          <Tabla
+            data={data.bienes_muebles_no_registrables}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>

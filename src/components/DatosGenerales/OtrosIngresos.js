@@ -55,10 +55,8 @@ const styles = theme => ({
   }
 });
 
-
-
 function SimpleCard(props) {
-  const { classes, data, handleClickOtrosIngresos, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -73,7 +71,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.nombre_denominacion}
               margin="normal"
             />
           </Grid>
@@ -82,7 +80,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.rfc}
               margin="normal"
             />
           </Grid>
@@ -91,7 +89,7 @@ function SimpleCard(props) {
               id="grado"
               label="CURP"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.curp}
               margin="normal"
             />
           </Grid>
@@ -99,7 +97,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.datos_otros_ingresos.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -120,7 +118,7 @@ function SimpleCard(props) {
                 Tipo de actividad
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otros_ingresos.tipo_actividad.codigo}
                 onChange={handleChange("tipo_actividad")}
                 inputProps={{
                   name: "tipo_actividad",
@@ -143,7 +141,7 @@ function SimpleCard(props) {
               id="grado"
               label="Descripción de la actividad"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.descripcion_actividad}
               margin="normal"
             />
           </Grid>
@@ -152,7 +150,7 @@ function SimpleCard(props) {
               id="grado"
               label="Ingreso bruto anual recibido por el encargo público"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.ingreso_bruto_anual.valor}
               margin="normal"
             />
           </Grid>
@@ -160,7 +158,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otros_ingresos.ingreso_bruto_anual.moneda.codigo}
                 onChange={handleChange("moneda")}
                 inputProps={{
                   name: "moneda",
@@ -179,7 +177,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otros_ingresos.ingreso_bruto_anual.duracion_frecuencia.codigo}
                 onChange={handleChange("frecuencia")}
                 inputProps={{
                   name: "frecuencia",
@@ -199,7 +197,7 @@ function SimpleCard(props) {
               id="grado"
               label="Duración"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.ingreso_bruto_anual.duracion_frecuencia}
               margin="normal"
             />
           </Grid>
@@ -208,7 +206,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de pago"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.ingreso_bruto_anual.fecha_transaccion}
               margin="normal"
             />
           </Grid>
@@ -217,7 +215,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otros_ingresos.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -228,14 +226,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickOtrosIngresos()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.otros_ingresos} />
+          <Tabla data={data.otros_ingresos} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

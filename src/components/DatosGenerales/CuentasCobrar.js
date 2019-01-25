@@ -55,10 +55,8 @@ const styles = theme => ({
   }
 });
 
-
-
 function SimpleCard(props) {
-  const { classes, data, handleClickCuentasCobrar, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -73,7 +71,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre del prestatario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.nombre_prestatario}
               margin="normal"
             />
           </Grid>
@@ -82,7 +80,7 @@ function SimpleCard(props) {
               id="grado"
               label="Número de registro"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.numero_registro}
               margin="normal"
             />
           </Grid>
@@ -90,7 +88,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.datos_cuentas_por_cobrar.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -110,7 +108,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha del préstamo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.fecha_prestamo}
               margin="normal"
             />
           </Grid>
@@ -119,7 +117,7 @@ function SimpleCard(props) {
               id="grado"
               label="Monto original del préstamo"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.monto_original_prestamo}
               margin="normal"
             />
           </Grid>
@@ -128,7 +126,7 @@ function SimpleCard(props) {
               id="grado"
               label="Tasa de interés"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.tasa_interes}
               margin="normal"
             />
           </Grid>
@@ -137,7 +135,7 @@ function SimpleCard(props) {
               id="grado"
               label="Saldo pendiente"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.saldo_pendiente}
               margin="normal"
             />
           </Grid>
@@ -146,7 +144,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de vencimiento"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.fecha_vencimiento}
               margin="normal"
             />
           </Grid>
@@ -155,7 +153,7 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje de propiedad en caso de copropiedad"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.porcentaje_copropiedad}
               margin="normal"
             />
           </Grid>
@@ -164,7 +162,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre del copropietario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.nombre_copropietario}
               margin="normal"
             />
           </Grid>
@@ -174,7 +172,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_cuentas_por_cobrar.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -185,14 +183,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickCuentasCobrar()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.cuentas_por_cobrar} />
+          <Tabla data={data.cuentas_por_cobrar} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

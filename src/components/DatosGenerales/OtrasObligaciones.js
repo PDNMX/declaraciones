@@ -56,7 +56,7 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const { classes, data, handleClickOtrasObligaciones, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -72,7 +72,7 @@ function SimpleCard(props) {
                 Tipo de operación
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.tipo_operacion.codigo}
                 onChange={handleChange("tipo_operacion")}
                 inputProps={{
                   name: "tipo_operacion",
@@ -94,7 +94,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_acreedor">Tipo de acreedor</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.tipo_acreedor.codigo}
                 onChange={handleChange("tipo_acreedor")}
                 inputProps={{
                   name: "tipo_acreedor",
@@ -118,7 +118,7 @@ function SimpleCard(props) {
                 Tipo de obligación
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.tipo_obligacion.codigo}
                 onChange={handleChange("tipo_obligacion")}
                 inputProps={{
                   name: "tipo_obligacion",
@@ -139,7 +139,7 @@ function SimpleCard(props) {
               id="grado"
               label="Número de cuenta, contrato o identificador de la obligación"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.identificador_obligacion}
               margin="normal"
             />
           </Grid>
@@ -149,7 +149,7 @@ function SimpleCard(props) {
                 Nacional o extranjero
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.nacional_extranjero.codigo}
                 onChange={handleChange("estado_civil")}
                 inputProps={{
                   name: "estado_civil",
@@ -169,7 +169,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social del acreedor"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.nombre_acreedor}
               margin="normal"
             />
           </Grid>
@@ -178,7 +178,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC del acreedor"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.rfc_acreedor}
               margin="normal"
             />
           </Grid>
@@ -186,7 +186,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.datos_otras_obligaciones.sector_industria.codigo}
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -206,7 +206,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha en la que se generó el obligación"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.fecha_obligacion}
               margin="normal"
             />
           </Grid>
@@ -215,7 +215,7 @@ function SimpleCard(props) {
               id="grado"
               label="Monto original de la obligación"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.monto_original}
               margin="normal"
             />
           </Grid>
@@ -223,7 +223,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.tipo_moneda.codigo}
                 onChange={handleChange("tipo_moneda")}
                 inputProps={{
                   name: "tipo_moneda",
@@ -243,7 +243,7 @@ function SimpleCard(props) {
               id="grado"
               label="Tasa de interés"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.tasa_interes}
               margin="normal"
             />
           </Grid>
@@ -252,7 +252,7 @@ function SimpleCard(props) {
               id="grado"
               label="Saldo pendiente"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.saldo_pendiente}
               margin="normal"
             />
           </Grid>
@@ -261,7 +261,7 @@ function SimpleCard(props) {
               id="grado"
               label="Montos abonados a favor de la deuda"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.montos_abonados}
               margin="normal"
             />
           </Grid>
@@ -270,7 +270,7 @@ function SimpleCard(props) {
               id="grado"
               label="Plazo de la obligación"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.plazo_obligacion}
               margin="normal"
             />
           </Grid>
@@ -280,7 +280,7 @@ function SimpleCard(props) {
                 Unidad de medida del plazo
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.unidad_medida_plazo.codigo}
                 onChange={handleChange("unidad_medida_plazo")}
                 inputProps={{
                   name: "unidad_medida_plazo",
@@ -299,7 +299,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="titular">Titular</InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_otras_obligaciones.titularidad_obligacion.codigo}
                 onChange={handleChange("titular")}
                 inputProps={{
                   name: "titular",
@@ -319,7 +319,7 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje de la obligación del titular"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.porcentaje_obligacion_titular}
               margin="normal"
             />
           </Grid>
@@ -328,7 +328,7 @@ function SimpleCard(props) {
               id="grado"
               label="¿Se otorgó garantía?"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.garantia}
               margin="normal"
             />
           </Grid>
@@ -338,7 +338,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_otras_obligaciones.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -349,14 +349,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickOtrasObligaciones()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.otras_obligaciones} />
+          <Tabla data={data.otras_obligaciones} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

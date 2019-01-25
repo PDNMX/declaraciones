@@ -926,7 +926,7 @@ class Index extends Component {
     // console.log("hi");
   };
 
-  handleClickActividadEmpresarial = () => event => {
+  handleClickActividadEmpresarial = () => {
     this.state.actividad_empresarial.push({
       id: 123,
       nombre_denominacion_razon_social: "Empresa S.A.",
@@ -2678,6 +2678,3639 @@ class Index extends Component {
     });
   };
 
+  setDataEmpresasSociedadesAsociaciones = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "actividad_economica":
+        data.empresas_sociedades_asociaciones.actividad_economica = valor;
+        break;
+      case "domicilio":
+        data.empresas_sociedades_asociaciones.domicilio = valor;
+        break;
+      case "domicilio.cp":
+        data.empresas_sociedades_asociaciones.domicilio.cp = valor;
+        break;
+      case "domicilio.entidad_federativa":
+        data.empresas_sociedades_asociaciones.domicilio.entidad_federativa = valor;
+        break;
+      case "domicilio.entidad_federativa.cve_ent":
+        data.empresas_sociedades_asociaciones.domicilio.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio.entidad_federativa.nom_ent":
+        data.empresas_sociedades_asociaciones.domicilio.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio.localidad":
+        data.empresas_sociedades_asociaciones.domicilio.localidad = valor;
+        break;
+      case "domicilio.localidad.cve_loc":
+        data.empresas_sociedades_asociaciones.domicilio.localidad.cve_loc = valor;
+        break;
+      case "domicilio.localidad.nom_loc":
+        data.empresas_sociedades_asociaciones.domicilio.localidad.nom_loc = valor;
+        break;
+      case "domicilio.municipio":
+        data.empresas_sociedades_asociaciones.domicilio.municipio = valor;
+        break;
+      case "domicilio.municipio.cve_mun":
+        data.empresas_sociedades_asociaciones.domicilio.municipio.cve_mun = valor;
+        break;
+      case "domicilio.municipio.nom_mun":
+        data.empresas_sociedades_asociaciones.domicilio.municipio.nom_mun = valor;
+        break;
+      case "domicilio.numExt":
+        data.empresas_sociedades_asociaciones.domicilio.numExt = valor;
+        break;
+      case "domicilio.numInt":
+        data.empresas_sociedades_asociaciones.domicilio.numInt = valor;
+        break;
+      case "domicilio.pais":
+        data.empresas_sociedades_asociaciones.domicilio.pais = valor;
+        break;
+      case "domicilio.pais.codigo":
+        data.empresas_sociedades_asociaciones.domicilio.pais.codigo = valor;
+        break;
+      case "domicilio.pais.valor":
+        data.empresas_sociedades_asociaciones.domicilio.pais.valor = valor;
+        break;
+      case "domicilio.vialidad":
+        data.empresas_sociedades_asociaciones.domicilio.vialidad = valor;
+        break;
+      case "domicilio.vialidad.nom_vial":
+        data.empresas_sociedades_asociaciones.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "domicilio.vialidad.tipo_vial":
+        data.empresas_sociedades_asociaciones.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_constitucion":
+        data.empresas_sociedades_asociaciones.fecha_constitucion = valor;
+        break;
+      case "id":
+        data.empresas_sociedades_asociaciones.id = valor;
+        break;
+      case "nombre_empresa_sociedad_asociacion":
+        data.empresas_sociedades_asociaciones.nombre_empresa_sociedad_asociacion = valor;
+        break;
+      case "numero_registro":
+        data.empresas_sociedades_asociaciones.numero_registro = valor;
+        break;
+      case "pais_registro":
+        data.empresas_sociedades_asociaciones.pais_registro = valor;
+        break;
+      case "pais_registro.codigo":
+        data.empresas_sociedades_asociaciones.pais_registro.codigo = valor;
+        break;
+      case "pais_registro.valor":
+        data.empresas_sociedades_asociaciones.pais_registro.valor = valor;
+        break;
+      case "porcentaje_participacion":
+        data.empresas_sociedades_asociaciones.porcentaje_participacion = valor;
+        break;
+      case "rfc":
+        data.empresas_sociedades_asociaciones.rfc = valor;
+        break;
+      case "rol":
+        data.empresas_sociedades_asociaciones.rol = valor;
+        break;
+      case "sector_industria":
+        data.empresas_sociedades_asociaciones.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.empresas_sociedades_asociaciones.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.empresas_sociedades_asociaciones.sector_industria.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.empresas_sociedades_asociaciones);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataMembresias = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "domicilio":
+        data.membresias.domicilio = valor;
+        break;
+      case "domicilio.cp":
+        data.membresias.domicilio.cp = valor;
+        break;
+      case "domicilio.entidad_federativa":
+        data.membresias.domicilio.entidad_federativa = valor;
+        break;
+      case "domicilio.entidad_federativa.cve_ent":
+        data.membresias.domicilio.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio.entidad_federativa.nom_ent":
+        data.membresias.domicilio.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio.localidad":
+        data.membresias.domicilio.localidad = valor;
+        break;
+      case "domicilio.localidad.cve_loc":
+        data.membresias.domicilio.localidad.cve_loc = valor;
+        break;
+      case "domicilio.localidad.nom_loc":
+        data.membresias.domicilio.localidad.nom_loc = valor;
+        break;
+      case "domicilio.municipio":
+        data.membresias.domicilio.municipio = valor;
+        break;
+      case "domicilio.municipio.cve_mun":
+        data.membresias.domicilio.municipio.cve_mun = valor;
+        break;
+      case "domicilio.municipio.nom_mun":
+        data.membresias.domicilio.municipio.nom_mun = valor;
+        break;
+      case "domicilio.numExt":
+        data.membresias.domicilio.numExt = valor;
+        break;
+      case "domicilio.numInt":
+        data.membresias.domicilio.numInt = valor;
+        break;
+      case "domicilio.pais":
+        data.membresias.domicilio.pais = valor;
+        break;
+      case "domicilio.pais.codigo":
+        data.membresias.domicilio.pais.codigo = valor;
+        break;
+      case "domicilio.pais.valor":
+        data.membresias.domicilio.pais.valor = valor;
+        break;
+      case "domicilio.vialidad":
+        data.membresias.domicilio.vialidad = valor;
+        break;
+      case "domicilio.vialidad.nom_vial":
+        data.membresias.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "domicilio.vialidad.tipo_vial":
+        data.membresias.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_inicio":
+        data.membresias.fecha_inicio = valor;
+        break;
+      case "id":
+        data.membresias.id = valor;
+        break;
+      case "naturaleza_membresia":
+        data.membresias.naturaleza_membresia = valor;
+        break;
+      case "nombre_institucion":
+        data.membresias.nombre_institucion = valor;
+        break;
+      case "observaciones":
+        data.membresias.observaciones = valor;
+        break;
+      case "pagado":
+        data.membresias.pagado = valor;
+        break;
+      case "puesto_rol":
+        data.membresias.puesto_rol = valor;
+        break;
+      case "sector_industria":
+        data.membresias.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.membresias.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.membresias.sector_industria.valor = valor;
+        break;
+      case "tipo_institucion":
+        data.membresias.tipo_institucion = valor;
+        break;
+      case "tipo_institucion.codigo":
+        data.membresias.tipo_institucion.codigo = valor;
+        break;
+      case "tipo_institucion.valor":
+        data.membresias.tipo_institucion.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.membresias);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataApoyosBeneficiosPublicos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "es_beneficiario":
+        data.apoyos_beneficios_publicos.es_beneficiario = valor;
+        break;
+      case "id":
+        data.apoyos_beneficios_publicos.id = valor;
+        break;
+      case "institucion_otorgante":
+        data.apoyos_beneficios_publicos.institucion_otorgante = valor;
+        break;
+      case "nivel_orden_gobierno":
+        data.apoyos_beneficios_publicos.nivel_orden_gobierno = valor;
+        break;
+      case "nivel_orden_gobierno.codigo":
+        data.apoyos_beneficios_publicos.nivel_orden_gobierno.codigo = valor;
+        break;
+      case "nivel_orden_gobierno.valor":
+        data.apoyos_beneficios_publicos.nivel_orden_gobierno.valor = valor;
+        break;
+      case "observaciones":
+        data.apoyos_beneficios_publicos.observaciones = valor;
+        break;
+      case "programa":
+        data.apoyos_beneficios_publicos.programa = valor;
+        break;
+      case "tipo_apoyo":
+        data.apoyos_beneficios_publicos.tipo_apoyo = valor;
+        break;
+      case "tipo_apoyo.codigo":
+        data.apoyos_beneficios_publicos.tipo_apoyo.codigo = valor;
+        break;
+      case "tipo_apoyo.valor":
+        data.apoyos_beneficios_publicos.tipo_apoyo.valor = valor;
+        break;
+      case "valor_anual_apoyo":
+        data.apoyos_beneficios_publicos.valor_anual_apoyo = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataRepresentacionActiva = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp_parte":
+        data.representacion_activa.curp_parte = valor;
+        break;
+      case "fecha_inicio":
+        data.representacion_activa.fecha_inicio = valor;
+        break;
+      case "fecha_nacimiento_parte":
+        data.representacion_activa.fecha_nacimiento_parte = valor;
+        break;
+      case "id":
+        data.representacion_activa.id = valor;
+        break;
+      case "nombre_parte_representada":
+        data.representacion_activa.nombre_parte_representada = valor;
+        break;
+      case "observaciones":
+        data.representacion_activa.observaciones = valor;
+        break;
+      case "ocupacion_profesion_parte":
+        data.representacion_activa.ocupacion_profesion_parte = valor;
+        break;
+      case "pagado":
+        data.representacion_activa.pagado = valor;
+        break;
+      case "rfc_parte":
+        data.representacion_activa.rfc_parte = valor;
+        break;
+      case "sector_industria":
+        data.representacion_activa.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.representacion_activa.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.representacion_activa.sector_industria.valor = valor;
+        break;
+      case "tipo_representacion":
+        data.representacion_activa.tipo_representacion = valor;
+        break;
+      case "tipo_representacion.codigo":
+        data.representacion_activa.tipo_representacion.codigo = valor;
+        break;
+      case "tipo_representacion.valor":
+        data.representacion_activa.tipo_representacion.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataRepresentacionPasiva = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp_representante":
+        data.representacion_pasiva.curp_representante = valor;
+        break;
+      case "fecha_inicio_representacion":
+        data.representacion_pasiva.fecha_inicio_representacion = valor;
+        break;
+      case "fecha_nacimiento_representante":
+        data.representacion_pasiva.fecha_nacimiento_representante = valor;
+        break;
+      case "id":
+        data.representacion_pasiva.id = valor;
+        break;
+      case "nacionalidades_representante":
+        data.representacion_pasiva.nacionalidades_representante = valor;
+        break;
+      case "nacionalidades_representante.codigo":
+        data.representacion_pasiva.nacionalidades_representante.codigo = valor;
+        break;
+      case "nacionalidades_representante.valor":
+        data.representacion_pasiva.nacionalidades_representante.valor = valor;
+        break;
+      case "nombre_representante":
+        data.representacion_pasiva.nombre_representante = valor;
+        break;
+      case "observaciones":
+        data.representacion_pasiva.observaciones = valor;
+        break;
+      case "ocupacion_profesion":
+        data.representacion_pasiva.ocupacion_profesion = valor;
+        break;
+      case "rfc_representante":
+        data.representacion_pasiva.rfc_representante = valor;
+        break;
+      case "sector_industria":
+        data.representacion_pasiva.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.representacion_pasiva.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.representacion_pasiva.sector_industria.valor = valor;
+        break;
+      case "tiene_intereses":
+        data.representacion_pasiva.tiene_intereses = valor;
+        break;
+      case "tipo_representacion":
+        data.representacion_pasiva.tipo_representacion = valor;
+        break;
+      case "tipo_representacion.codigo":
+        data.representacion_pasiva.tipo_representacion.codigo = valor;
+        break;
+      case "tipo_representacion.valor":
+        data.representacion_pasiva.tipo_representacion.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataSociosComerciales = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "antiguedad_vinculo":
+        data.socios_comerciales.antiguedad_vinculo = valor;
+        break;
+      case "curp_socio":
+        data.socios_comerciales.curp_socio = valor;
+        break;
+      case "fecha_nacimiento_socio":
+        data.socios_comerciales.fecha_nacimiento_socio = valor;
+        break;
+      case "id":
+        data.socios_comerciales.id = valor;
+        break;
+      case "lugar_nacimiento_socio":
+        data.socios_comerciales.lugar_nacimiento_socio = valor;
+        break;
+      case "lugar_nacimiento_socio.entidad":
+        data.socios_comerciales.lugar_nacimiento_socio.entidad = valor;
+        break;
+      case "lugar_nacimiento_socio.entidad.cve_ent":
+        data.socios_comerciales.lugar_nacimiento_socio.entidad.cve_ent = valor;
+        break;
+      case "lugar_nacimiento_socio.entidad.nom_ent":
+        data.socios_comerciales.lugar_nacimiento_socio.entidad.nom_ent = valor;
+        break;
+      case "lugar_nacimiento_socio.pais":
+        data.socios_comerciales.lugar_nacimiento_socio.pais = valor;
+        break;
+      case "lugar_nacimiento_socio.pais.codigo":
+        data.socios_comerciales.lugar_nacimiento_socio.pais.codigo = valor;
+        break;
+      case "lugar_nacimiento_socio.pais.valor":
+        data.socios_comerciales.lugar_nacimiento_socio.pais.valor = valor;
+        break;
+      case "nombre_actividad":
+        data.socios_comerciales.nombre_actividad = valor;
+        break;
+      case "nombre_socio":
+        data.socios_comerciales.nombre_socio = valor;
+        break;
+      case "observaciones":
+        data.socios_comerciales.observaciones = valor;
+        break;
+      case "porcentaje_participacion":
+        data.socios_comerciales.porcentaje_participacion = valor;
+        break;
+      case "rfc_entidad":
+        data.socios_comerciales.rfc_entidad = valor;
+        break;
+      case "rfc_socio":
+        data.socios_comerciales.rfc_socio = valor;
+        break;
+      case "sector_industria":
+        data.socios_comerciales.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.socios_comerciales.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.socios_comerciales.sector_industria.valor = valor;
+        break;
+      case "tipo_vinculo":
+        data.socios_comerciales.tipo_vinculo = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataClientesPrincipales = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "domicilio_cliente":
+        data.clientes_principales.domicilio_cliente = valor;
+        break;
+      case "domicilio_cliente.cp":
+        data.clientes_principales.domicilio_cliente.cp = valor;
+        break;
+      case "domicilio_cliente.entidad_federativa":
+        data.clientes_principales.domicilio_cliente.entidad_federativa = valor;
+        break;
+      case "domicilio_cliente.entidad_federativa.cve_ent":
+        data.clientes_principales.domicilio_cliente.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_cliente.entidad_federativa.nom_ent":
+        data.clientes_principales.domicilio_cliente.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_cliente.localidad":
+        data.clientes_principales.domicilio_cliente.localidad = valor;
+        break;
+      case "domicilio_cliente.localidad.cve_loc":
+        data.clientes_principales.domicilio_cliente.localidad.cve_loc = valor;
+        break;
+      case "domicilio_cliente.localidad.nom_loc":
+        data.clientes_principales.domicilio_cliente.localidad.nom_loc = valor;
+        break;
+      case "domicilio_cliente.municipio":
+        data.clientes_principales.domicilio_cliente.municipio = valor;
+        break;
+      case "domicilio_cliente.municipio.cve_mun":
+        data.clientes_principales.domicilio_cliente.municipio.cve_mun = valor;
+        break;
+      case "domicilio_cliente.municipio.nom_mun":
+        data.clientes_principales.domicilio_cliente.municipio.nom_mun = valor;
+        break;
+      case "domicilio_cliente.numExt":
+        data.clientes_principales.domicilio_cliente.numExt = valor;
+        break;
+      case "domicilio_cliente.numInt":
+        data.clientes_principales.domicilio_cliente.numInt = valor;
+        break;
+      case "domicilio_cliente.pais":
+        data.clientes_principales.domicilio_cliente.pais = valor;
+        break;
+      case "domicilio_cliente.pais.codigo":
+        data.clientes_principales.domicilio_cliente.pais.codigo = valor;
+        break;
+      case "domicilio_cliente.pais.valor":
+        data.clientes_principales.domicilio_cliente.pais.valor = valor;
+        break;
+      case "domicilio_cliente.vialidad":
+        data.clientes_principales.domicilio_cliente.vialidad = valor;
+        break;
+      case "domicilio_cliente.vialidad.nom_vial":
+        data.clientes_principales.domicilio_cliente.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_cliente.vialidad.tipo_vial":
+        data.clientes_principales.domicilio_cliente.vialidad.tipo_vial = valor;
+        break;
+      case "dueno_encargado":
+        data.clientes_principales.dueno_encargado = valor;
+        break;
+      case "id":
+        data.clientes_principales.id = valor;
+        break;
+      case "nombre_cliente":
+        data.clientes_principales.nombre_cliente = valor;
+        break;
+      case "nombre_negocio":
+        data.clientes_principales.nombre_negocio = valor;
+        break;
+      case "numero_registro":
+        data.clientes_principales.numero_registro = valor;
+        break;
+      case "observaciones":
+        data.clientes_principales.observaciones = valor;
+        break;
+      case "porcentaje_facturacion":
+        data.clientes_principales.porcentaje_facturacion = valor;
+        break;
+      case "rfc_cliente":
+        data.clientes_principales.rfc_cliente = valor;
+        break;
+      case "sector_industria":
+        data.clientes_principales.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.clientes_principales.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.clientes_principales.sector_industria.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataOtrasPartes = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.otras_partes.curp = valor;
+        break;
+      case "fecha_inicio_relacion":
+        data.otras_partes.fecha_inicio_relacion = valor;
+        break;
+      case "fecha_nacimiento":
+        data.otras_partes.fecha_nacimiento = valor;
+        break;
+      case "id":
+        data.otras_partes.id = valor;
+        break;
+      case "nacionalidades":
+        data.otras_partes.nacionalidades = valor;
+        break;
+      case "nacionalidades.codigo":
+        data.otras_partes.nacionalidades.codigo = valor;
+        break;
+      case "nacionalidades.valor":
+        data.otras_partes.nacionalidades.valor = valor;
+        break;
+      case "nombre_denominacion_parte":
+        data.otras_partes.nombre_denominacion_parte = valor;
+        break;
+      case "observaciones":
+        data.otras_partes.observaciones = valor;
+        break;
+      case "ocupacion":
+        data.otras_partes.ocupacion = valor;
+        break;
+      case "rfc":
+        data.otras_partes.rfc = valor;
+        break;
+      case "sector_industria":
+        data.otras_partes.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.otras_partes.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.otras_partes.sector_industria.valor = valor;
+        break;
+      case "tiene_interes":
+        data.otras_partes.tiene_interes = valor;
+        break;
+      case "tipo_relacion":
+        data.otras_partes.tipo_relacion = valor;
+        break;
+      case "tipo_relacion.codigo":
+        data.otras_partes.tipo_relacion.codigo = valor;
+        break;
+      case "tipo_relacion.valor":
+        data.otras_partes.tipo_relacion.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataBeneficiosGratuitos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "id":
+        data.beneficios_gratuitos.id = valor;
+        break;
+      case "observaciones":
+        data.beneficios_gratuitos.observaciones = valor;
+        break;
+      case "origen_beneficio":
+        data.beneficios_gratuitos.origen_beneficio = valor;
+        break;
+      case "sector_industria":
+        data.beneficios_gratuitos.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.beneficios_gratuitos.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.beneficios_gratuitos.sector_industria.valor = valor;
+        break;
+      case "tipo_beneficio":
+        data.beneficios_gratuitos.tipo_beneficio = valor;
+        break;
+      case "tipo_beneficio.codigo":
+        data.beneficios_gratuitos.tipo_beneficio.codigo = valor;
+        break;
+      case "tipo_beneficio.valor":
+        data.beneficios_gratuitos.tipo_beneficio.valor = valor;
+        break;
+      case "valor_beneficio":
+        data.beneficios_gratuitos.valor_beneficio = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataSueldosSalariosPublicos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "ente_publico":
+        data.sueldos_salarios_publicos.ente_publico = valor;
+        break;
+      case "id":
+        data.sueldos_salarios_publicos.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.sueldos_salarios_publicos.ingreso_bruto_anual.valor = valor;
+        break;
+      case "observaciones":
+        data.sueldos_salarios_publicos.observaciones = valor;
+        break;
+      case "rfc":
+        data.sueldos_salarios_publicos.rfc = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataSueldosSalariosOtrosEmpleos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.sueldos_salarios_otros_empleos.curp = valor;
+        break;
+      case "descripcion_actividad_servicio":
+        data.sueldos_salarios_otros_empleos.descripcion_actividad_servicio = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.cp":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.cp = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.entidad_federativa":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.entidad_federativa = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.localidad":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.localidad = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.localidad.cve_loc":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.localidad.cve_loc = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.localidad.nom_loc":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.localidad.nom_loc = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.municipio":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.municipio = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.municipio.cve_mun":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.municipio.cve_mun = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.municipio.nom_mun":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.municipio.nom_mun = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.numExt":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.numExt = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.numInt":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.numInt = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.pais":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.pais = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.pais.codigo":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.pais.codigo = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.pais.valor":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.pais.valor = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.vialidad":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.vialidad = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.vialidad.nom_vial":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.vialidad.tipo_vial":
+        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.sueldos_salarios_otros_empleos.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion_razon_social":
+        data.sueldos_salarios_otros_empleos.nombre_denominacion_razon_social = valor;
+        break;
+      case "observaciones":
+        data.sueldos_salarios_otros_empleos.observaciones = valor;
+        break;
+      case "rfc":
+        data.sueldos_salarios_otros_empleos.rfc = valor;
+        break;
+      case "sector_industria":
+        data.sueldos_salarios_otros_empleos.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.sueldos_salarios_otros_empleos.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.sueldos_salarios_otros_empleos.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.sueldos_salarios_otros_empleos.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.sueldos_salarios_otros_empleos.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.sueldos_salarios_otros_empleos.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataActividadProfesional = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.actividad_profesional.curp = valor;
+        break;
+      case "descripcion_actividad_servicio":
+        data.actividad_profesional.descripcion_actividad_servicio = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.cp":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.cp = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.entidad_federativa":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.entidad_federativa = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.localidad":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.localidad = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.localidad.cve_loc":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.localidad.cve_loc = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.localidad.nom_loc":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.localidad.nom_loc = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.municipio":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.municipio = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.municipio.cve_mun":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.municipio.cve_mun = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.municipio.nom_mun":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.municipio.nom_mun = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.numExt":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.numExt = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.numInt":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.numInt = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.pais":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.pais = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.pais.codigo":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.pais.codigo = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.pais.valor":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.pais.valor = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.vialidad":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.vialidad = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.vialidad.nom_vial":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_persona_recibe_ingreso.vialidad.tipo_vial":
+        data.actividad_profesional.domicilio_persona_recibe_ingreso.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.actividad_profesional.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.actividad_profesional.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.actividad_profesional.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.actividad_profesional.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.actividad_profesional.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.actividad_profesional.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.actividad_profesional.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.actividad_profesional.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.actividad_profesional.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.actividad_profesional.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.actividad_profesional.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion_razon_social":
+        data.actividad_profesional.nombre_denominacion_razon_social = valor;
+        break;
+      case "observaciones":
+        data.actividad_profesional.observaciones = valor;
+        break;
+      case "rfc":
+        data.actividad_profesional.rfc = valor;
+        break;
+      case "sector_industria":
+        data.actividad_profesional.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.actividad_profesional.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.actividad_profesional.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.actividad_profesional.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.actividad_profesional.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.actividad_profesional.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataActividadEmpresarial = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.actividad_empresarial.curp = valor;
+        break;
+      case "descripcion_actividad_servicio":
+        data.actividad_empresarial.descripcion_actividad_servicio = valor;
+        break;
+      case "domicilio_actividad_empresarial":
+        data.actividad_empresarial.domicilio_actividad_empresarial = valor;
+        break;
+      case "domicilio_actividad_empresarial.cp":
+        data.actividad_empresarial.domicilio_actividad_empresarial.cp = valor;
+        break;
+      case "domicilio_actividad_empresarial.entidad_federativa":
+        data.actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa = valor;
+        break;
+      case "domicilio_actividad_empresarial.entidad_federativa.cve_ent":
+        data.actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_actividad_empresarial.entidad_federativa.nom_ent":
+        data.actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_actividad_empresarial.localidad":
+        data.actividad_empresarial.domicilio_actividad_empresarial.localidad = valor;
+        break;
+      case "domicilio_actividad_empresarial.localidad.cve_loc":
+        data.actividad_empresarial.domicilio_actividad_empresarial.localidad.cve_loc = valor;
+        break;
+      case "domicilio_actividad_empresarial.localidad.nom_loc":
+        data.actividad_empresarial.domicilio_actividad_empresarial.localidad.nom_loc = valor;
+        break;
+      case "domicilio_actividad_empresarial.municipio":
+        data.actividad_empresarial.domicilio_actividad_empresarial.municipio = valor;
+        break;
+      case "domicilio_actividad_empresarial.municipio.cve_mun":
+        data.actividad_empresarial.domicilio_actividad_empresarial.municipio.cve_mun = valor;
+        break;
+      case "domicilio_actividad_empresarial.municipio.nom_mun":
+        data.actividad_empresarial.domicilio_actividad_empresarial.municipio.nom_mun = valor;
+        break;
+      case "domicilio_actividad_empresarial.numExt":
+        data.actividad_empresarial.domicilio_actividad_empresarial.numExt = valor;
+        break;
+      case "domicilio_actividad_empresarial.numInt":
+        data.actividad_empresarial.domicilio_actividad_empresarial.numInt = valor;
+        break;
+      case "domicilio_actividad_empresarial.pais":
+        data.actividad_empresarial.domicilio_actividad_empresarial.pais = valor;
+        break;
+      case "domicilio_actividad_empresarial.pais.codigo":
+        data.actividad_empresarial.domicilio_actividad_empresarial.pais.codigo = valor;
+        break;
+      case "domicilio_actividad_empresarial.pais.valor":
+        data.actividad_empresarial.domicilio_actividad_empresarial.pais.valor = valor;
+        break;
+      case "domicilio_actividad_empresarial.vialidad":
+        data.actividad_empresarial.domicilio_actividad_empresarial.vialidad = valor;
+        break;
+      case "domicilio_actividad_empresarial.vialidad.nom_vial":
+        data.actividad_empresarial.domicilio_actividad_empresarial.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_actividad_empresarial.vialidad.tipo_vial":
+        data.actividad_empresarial.domicilio_actividad_empresarial.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.actividad_empresarial.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.actividad_empresarial.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.actividad_empresarial.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.actividad_empresarial.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.actividad_empresarial.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.actividad_empresarial.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.actividad_empresarial.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.actividad_empresarial.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.actividad_empresarial.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.actividad_empresarial.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.actividad_empresarial.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion_razon_social":
+        data.actividad_empresarial.nombre_denominacion_razon_social = valor;
+        break;
+      case "observaciones":
+        data.actividad_empresarial.observaciones = valor;
+        break;
+      case "rfc":
+        data.actividad_empresarial.rfc = valor;
+        break;
+      case "sector_industria":
+        data.actividad_empresarial.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.actividad_empresarial.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.actividad_empresarial.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.actividad_empresarial.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.actividad_empresarial.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.actividad_empresarial.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataActividadEconomicaMenor = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.actividad_economica_menor.curp = valor;
+        break;
+      case "descripcion_actividad_servicio":
+        data.actividad_economica_menor.descripcion_actividad_servicio = valor;
+        break;
+      case "domicilio_actividad":
+        data.actividad_economica_menor.domicilio_actividad = valor;
+        break;
+      case "domicilio_actividad.cp":
+        data.actividad_economica_menor.domicilio_actividad.cp = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa":
+        data.actividad_economica_menor.domicilio_actividad.entidad_federativa = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa.cve_ent":
+        data.actividad_economica_menor.domicilio_actividad.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa.nom_ent":
+        data.actividad_economica_menor.domicilio_actividad.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_actividad.localidad":
+        data.actividad_economica_menor.domicilio_actividad.localidad = valor;
+        break;
+      case "domicilio_actividad.localidad.cve_loc":
+        data.actividad_economica_menor.domicilio_actividad.localidad.cve_loc = valor;
+        break;
+      case "domicilio_actividad.localidad.nom_loc":
+        data.actividad_economica_menor.domicilio_actividad.localidad.nom_loc = valor;
+        break;
+      case "domicilio_actividad.municipio":
+        data.actividad_economica_menor.domicilio_actividad.municipio = valor;
+        break;
+      case "domicilio_actividad.municipio.cve_mun":
+        data.actividad_economica_menor.domicilio_actividad.municipio.cve_mun = valor;
+        break;
+      case "domicilio_actividad.municipio.nom_mun":
+        data.actividad_economica_menor.domicilio_actividad.municipio.nom_mun = valor;
+        break;
+      case "domicilio_actividad.numExt":
+        data.actividad_economica_menor.domicilio_actividad.numExt = valor;
+        break;
+      case "domicilio_actividad.numInt":
+        data.actividad_economica_menor.domicilio_actividad.numInt = valor;
+        break;
+      case "domicilio_actividad.pais":
+        data.actividad_economica_menor.domicilio_actividad.pais = valor;
+        break;
+      case "domicilio_actividad.pais.codigo":
+        data.actividad_economica_menor.domicilio_actividad.pais.codigo = valor;
+        break;
+      case "domicilio_actividad.pais.valor":
+        data.actividad_economica_menor.domicilio_actividad.pais.valor = valor;
+        break;
+      case "domicilio_actividad.vialidad":
+        data.actividad_economica_menor.domicilio_actividad.vialidad = valor;
+        break;
+      case "domicilio_actividad.vialidad.nom_vial":
+        data.actividad_economica_menor.domicilio_actividad.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_actividad.vialidad.tipo_vial":
+        data.actividad_economica_menor.domicilio_actividad.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.actividad_economica_menor.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.actividad_economica_menor.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.actividad_economica_menor.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.actividad_economica_menor.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.actividad_economica_menor.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.actividad_economica_menor.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.actividad_economica_menor.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.actividad_economica_menor.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.actividad_economica_menor.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.actividad_economica_menor.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.actividad_economica_menor.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion_razon_social":
+        data.actividad_economica_menor.nombre_denominacion_razon_social = valor;
+        break;
+      case "observaciones":
+        data.actividad_economica_menor.observaciones = valor;
+        break;
+      case "rfc":
+        data.actividad_economica_menor.rfc = valor;
+        break;
+      case "sector_industria":
+        data.actividad_economica_menor.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.actividad_economica_menor.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.actividad_economica_menor.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.actividad_economica_menor.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.actividad_economica_menor.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.actividad_economica_menor.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataArrendamiento = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.arrendamiento.curp = valor;
+        break;
+      case "descripcion_actividad_servicio":
+        data.arrendamiento.descripcion_actividad_servicio = valor;
+        break;
+      case "domicilio_actividad":
+        data.arrendamiento.domicilio_actividad = valor;
+        break;
+      case "domicilio_actividad.cp":
+        data.arrendamiento.domicilio_actividad.cp = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa":
+        data.arrendamiento.domicilio_actividad.entidad_federativa = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa.cve_ent":
+        data.arrendamiento.domicilio_actividad.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_actividad.entidad_federativa.nom_ent":
+        data.arrendamiento.domicilio_actividad.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_actividad.localidad":
+        data.arrendamiento.domicilio_actividad.localidad = valor;
+        break;
+      case "domicilio_actividad.localidad.cve_loc":
+        data.arrendamiento.domicilio_actividad.localidad.cve_loc = valor;
+        break;
+      case "domicilio_actividad.localidad.nom_loc":
+        data.arrendamiento.domicilio_actividad.localidad.nom_loc = valor;
+        break;
+      case "domicilio_actividad.municipio":
+        data.arrendamiento.domicilio_actividad.municipio = valor;
+        break;
+      case "domicilio_actividad.municipio.cve_mun":
+        data.arrendamiento.domicilio_actividad.municipio.cve_mun = valor;
+        break;
+      case "domicilio_actividad.municipio.nom_mun":
+        data.arrendamiento.domicilio_actividad.municipio.nom_mun = valor;
+        break;
+      case "domicilio_actividad.numExt":
+        data.arrendamiento.domicilio_actividad.numExt = valor;
+        break;
+      case "domicilio_actividad.numInt":
+        data.arrendamiento.domicilio_actividad.numInt = valor;
+        break;
+      case "domicilio_actividad.pais":
+        data.arrendamiento.domicilio_actividad.pais = valor;
+        break;
+      case "domicilio_actividad.pais.codigo":
+        data.arrendamiento.domicilio_actividad.pais.codigo = valor;
+        break;
+      case "domicilio_actividad.pais.valor":
+        data.arrendamiento.domicilio_actividad.pais.valor = valor;
+        break;
+      case "domicilio_actividad.vialidad":
+        data.arrendamiento.domicilio_actividad.vialidad = valor;
+        break;
+      case "domicilio_actividad.vialidad.nom_vial":
+        data.arrendamiento.domicilio_actividad.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_actividad.vialidad.tipo_vial":
+        data.arrendamiento.domicilio_actividad.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.arrendamiento.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.arrendamiento.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.arrendamiento.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.arrendamiento.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.arrendamiento.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.arrendamiento.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.arrendamiento.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.arrendamiento.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.arrendamiento.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.arrendamiento.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.arrendamiento.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion_razon_social":
+        data.arrendamiento.nombre_denominacion_razon_social = valor;
+        break;
+      case "observaciones":
+        data.arrendamiento.observaciones = valor;
+        break;
+      case "rfc":
+        data.arrendamiento.rfc = valor;
+        break;
+      case "sector_industria":
+        data.arrendamiento.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.arrendamiento.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.arrendamiento.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.arrendamiento.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.arrendamiento.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.arrendamiento.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataPremios = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.premios.curp = valor;
+        break;
+      case "descripcion_actividad":
+        data.premios.descripcion_actividad = valor;
+        break;
+      case "domicilio":
+        data.premios.domicilio = valor;
+        break;
+      case "domicilio.cp":
+        data.premios.domicilio.cp = valor;
+        break;
+      case "domicilio.entidad_federativa":
+        data.premios.domicilio.entidad_federativa = valor;
+        break;
+      case "domicilio.entidad_federativa.cve_ent":
+        data.premios.domicilio.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio.entidad_federativa.nom_ent":
+        data.premios.domicilio.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio.localidad":
+        data.premios.domicilio.localidad = valor;
+        break;
+      case "domicilio.localidad.cve_loc":
+        data.premios.domicilio.localidad.cve_loc = valor;
+        break;
+      case "domicilio.localidad.nom_loc":
+        data.premios.domicilio.localidad.nom_loc = valor;
+        break;
+      case "domicilio.municipio":
+        data.premios.domicilio.municipio = valor;
+        break;
+      case "domicilio.municipio.cve_mun":
+        data.premios.domicilio.municipio.cve_mun = valor;
+        break;
+      case "domicilio.municipio.nom_mun":
+        data.premios.domicilio.municipio.nom_mun = valor;
+        break;
+      case "domicilio.numExt":
+        data.premios.domicilio.numExt = valor;
+        break;
+      case "domicilio.numInt":
+        data.premios.domicilio.numInt = valor;
+        break;
+      case "domicilio.pais":
+        data.premios.domicilio.pais = valor;
+        break;
+      case "domicilio.pais.codigo":
+        data.premios.domicilio.pais.codigo = valor;
+        break;
+      case "domicilio.pais.valor":
+        data.premios.domicilio.pais.valor = valor;
+        break;
+      case "domicilio.vialidad":
+        data.premios.domicilio.vialidad = valor;
+        break;
+      case "domicilio.vialidad.nom_vial":
+        data.premios.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "domicilio.vialidad.tipo_vial":
+        data.premios.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.premios.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.premios.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.premios.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.premios.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.premios.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.premios.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.premios.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.premios.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.premios.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.premios.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.premios.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion":
+        data.premios.nombre_denominacion = valor;
+        break;
+      case "observaciones":
+        data.premios.observaciones = valor;
+        break;
+      case "rfc":
+        data.premios.rfc = valor;
+        break;
+      case "sector_industria":
+        data.premios.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.premios.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.premios.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.premios.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.premios.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.premios.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataEnajenacionBienes = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.enajenacion_bienes.curp = valor;
+        break;
+      case "descripcion_bien":
+        data.enajenacion_bienes.descripcion_bien = valor;
+        break;
+      case "domicilio_bien_enajenado":
+        data.enajenacion_bienes.domicilio_bien_enajenado = valor;
+        break;
+      case "domicilio_bien_enajenado.cp":
+        data.enajenacion_bienes.domicilio_bien_enajenado.cp = valor;
+        break;
+      case "domicilio_bien_enajenado.entidad_federativa":
+        data.enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa = valor;
+        break;
+      case "domicilio_bien_enajenado.entidad_federativa.cve_ent":
+        data.enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_bien_enajenado.entidad_federativa.nom_ent":
+        data.enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_bien_enajenado.localidad":
+        data.enajenacion_bienes.domicilio_bien_enajenado.localidad = valor;
+        break;
+      case "domicilio_bien_enajenado.localidad.cve_loc":
+        data.enajenacion_bienes.domicilio_bien_enajenado.localidad.cve_loc = valor;
+        break;
+      case "domicilio_bien_enajenado.localidad.nom_loc":
+        data.enajenacion_bienes.domicilio_bien_enajenado.localidad.nom_loc = valor;
+        break;
+      case "domicilio_bien_enajenado.municipio":
+        data.enajenacion_bienes.domicilio_bien_enajenado.municipio = valor;
+        break;
+      case "domicilio_bien_enajenado.municipio.cve_mun":
+        data.enajenacion_bienes.domicilio_bien_enajenado.municipio.cve_mun = valor;
+        break;
+      case "domicilio_bien_enajenado.municipio.nom_mun":
+        data.enajenacion_bienes.domicilio_bien_enajenado.municipio.nom_mun = valor;
+        break;
+      case "domicilio_bien_enajenado.numExt":
+        data.enajenacion_bienes.domicilio_bien_enajenado.numExt = valor;
+        break;
+      case "domicilio_bien_enajenado.numInt":
+        data.enajenacion_bienes.domicilio_bien_enajenado.numInt = valor;
+        break;
+      case "domicilio_bien_enajenado.pais":
+        data.enajenacion_bienes.domicilio_bien_enajenado.pais = valor;
+        break;
+      case "domicilio_bien_enajenado.pais.codigo":
+        data.enajenacion_bienes.domicilio_bien_enajenado.pais.codigo = valor;
+        break;
+      case "domicilio_bien_enajenado.pais.valor":
+        data.enajenacion_bienes.domicilio_bien_enajenado.pais.valor = valor;
+        break;
+      case "domicilio_bien_enajenado.vialidad":
+        data.enajenacion_bienes.domicilio_bien_enajenado.vialidad = valor;
+        break;
+      case "domicilio_bien_enajenado.vialidad.nom_vial":
+        data.enajenacion_bienes.domicilio_bien_enajenado.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_bien_enajenado.vialidad.tipo_vial":
+        data.enajenacion_bienes.domicilio_bien_enajenado.vialidad.tipo_vial = valor;
+        break;
+      case "id":
+        data.enajenacion_bienes.id = valor;
+        break;
+      case "ingreso_bruto_anual":
+        data.enajenacion_bienes.ingreso_bruto_anual = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.enajenacion_bienes.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.enajenacion_bienes.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.enajenacion_bienes.ingreso_bruto_anual.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.codigo":
+        data.enajenacion_bienes.ingreso_bruto_anual.moneda.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.moneda.moneda":
+        data.enajenacion_bienes.ingreso_bruto_anual.moneda.moneda = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.enajenacion_bienes.ingreso_bruto_anual.unidad_temporal = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.codigo":
+        data.enajenacion_bienes.ingreso_bruto_anual.unidad_temporal.codigo = valor;
+        break;
+      case "ingreso_bruto_anual.unidad_temporal.valor":
+        data.enajenacion_bienes.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        break;
+      case "ingreso_bruto_anual.valor":
+        data.enajenacion_bienes.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion":
+        data.enajenacion_bienes.nombre_denominacion = valor;
+        break;
+      case "observaciones":
+        data.enajenacion_bienes.observaciones = valor;
+        break;
+      case "rfc":
+        data.enajenacion_bienes.rfc = valor;
+        break;
+      case "sector_industria":
+        data.enajenacion_bienes.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.enajenacion_bienes.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.enajenacion_bienes.sector_industria.valor = valor;
+        break;
+      case "tipo_actividad_servicio":
+        data.enajenacion_bienes.tipo_actividad_servicio = valor;
+        break;
+      case "tipo_actividad_servicio.codigo":
+        data.enajenacion_bienes.tipo_actividad_servicio.codigo = valor;
+        break;
+      case "tipo_actividad_servicio.valor":
+        data.enajenacion_bienes.tipo_actividad_servicio.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataBienesInmuebles = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp_quien_adquirio":
+        data.bienes_inmuebles.curp_quien_adquirio = valor;
+        break;
+      case "domicilio_bien":
+        data.bienes_inmuebles.domicilio_bien = valor;
+        break;
+      case "domicilio_bien.cp":
+        data.bienes_inmuebles.domicilio_bien.cp = valor;
+        break;
+      case "domicilio_bien.entidad_federativa":
+        data.bienes_inmuebles.domicilio_bien.entidad_federativa = valor;
+        break;
+      case "domicilio_bien.entidad_federativa.cve_ent":
+        data.bienes_inmuebles.domicilio_bien.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_bien.entidad_federativa.nom_ent":
+        data.bienes_inmuebles.domicilio_bien.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_bien.localidad":
+        data.bienes_inmuebles.domicilio_bien.localidad = valor;
+        break;
+      case "domicilio_bien.localidad.cve_loc":
+        data.bienes_inmuebles.domicilio_bien.localidad.cve_loc = valor;
+        break;
+      case "domicilio_bien.localidad.nom_loc":
+        data.bienes_inmuebles.domicilio_bien.localidad.nom_loc = valor;
+        break;
+      case "domicilio_bien.municipio":
+        data.bienes_inmuebles.domicilio_bien.municipio = valor;
+        break;
+      case "domicilio_bien.municipio.cve_mun":
+        data.bienes_inmuebles.domicilio_bien.municipio.cve_mun = valor;
+        break;
+      case "domicilio_bien.municipio.nom_mun":
+        data.bienes_inmuebles.domicilio_bien.municipio.nom_mun = valor;
+        break;
+      case "domicilio_bien.numExt":
+        data.bienes_inmuebles.domicilio_bien.numExt = valor;
+        break;
+      case "domicilio_bien.numInt":
+        data.bienes_inmuebles.domicilio_bien.numInt = valor;
+        break;
+      case "domicilio_bien.pais":
+        data.bienes_inmuebles.domicilio_bien.pais = valor;
+        break;
+      case "domicilio_bien.pais.codigo":
+        data.bienes_inmuebles.domicilio_bien.pais.codigo = valor;
+        break;
+      case "domicilio_bien.pais.valor":
+        data.bienes_inmuebles.domicilio_bien.pais.valor = valor;
+        break;
+      case "domicilio_bien.vialidad":
+        data.bienes_inmuebles.domicilio_bien.vialidad = valor;
+        break;
+      case "domicilio_bien.vialidad.nom_vial":
+        data.bienes_inmuebles.domicilio_bien.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_bien.vialidad.tipo_vial":
+        data.bienes_inmuebles.domicilio_bien.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_adquisicion":
+        data.bienes_inmuebles.fecha_adquisicion = valor;
+        break;
+      case "forma_adquisicion":
+        data.bienes_inmuebles.forma_adquisicion = valor;
+        break;
+      case "forma_adquisicion.codigo":
+        data.bienes_inmuebles.forma_adquisicion.codigo = valor;
+        break;
+      case "forma_adquisicion.valor":
+        data.bienes_inmuebles.forma_adquisicion.valor = valor;
+        break;
+      case "id":
+        data.bienes_inmuebles.id = valor;
+        break;
+      case "identificacion_bien":
+        data.bienes_inmuebles.identificacion_bien = valor;
+        break;
+      case "identificacion_bien.fecha_contrato":
+        data.bienes_inmuebles.identificacion_bien.fecha_contrato = valor;
+        break;
+      case "identificacion_bien.folio_real":
+        data.bienes_inmuebles.identificacion_bien.folio_real = valor;
+        break;
+      case "identificacion_bien.numero_escritura_publica":
+        data.bienes_inmuebles.identificacion_bien.numero_escritura_publica = valor;
+        break;
+      case "identificacion_bien.numero_registro_publico":
+        data.bienes_inmuebles.identificacion_bien.numero_registro_publico = valor;
+        break;
+      case "nombre_copropietario":
+        data.bienes_inmuebles.nombre_copropietario = valor;
+        break;
+      case "nombre_copropietario.nombres":
+        data.bienes_inmuebles.nombre_copropietario.nombres = valor;
+        break;
+      case "nombre_copropietario.primer_apellido":
+        data.bienes_inmuebles.nombre_copropietario.primer_apellido = valor;
+        break;
+      case "nombre_copropietario.segundo_apellido":
+        data.bienes_inmuebles.nombre_copropietario.segundo_apellido = valor;
+        break;
+      case "nombre_denominacion_quien_adquirio":
+        data.bienes_inmuebles.nombre_denominacion_quien_adquirio = valor;
+        break;
+      case "observaciones":
+        data.bienes_inmuebles.observaciones = valor;
+        break;
+      case "porcentaje_propiedad":
+        data.bienes_inmuebles.porcentaje_propiedad = valor;
+        break;
+      case "precio_adquisicion":
+        data.bienes_inmuebles.precio_adquisicion = valor;
+        break;
+      case "precio_adquisicion.moneda":
+        data.bienes_inmuebles.precio_adquisicion.moneda = valor;
+        break;
+      case "precio_adquisicion.moneda.codigo":
+        data.bienes_inmuebles.precio_adquisicion.moneda.codigo = valor;
+        break;
+      case "precio_adquisicion.moneda.moneda":
+        data.bienes_inmuebles.precio_adquisicion.moneda.moneda = valor;
+        break;
+      case "precio_adquisicion.valor":
+        data.bienes_inmuebles.precio_adquisicion.valor = valor;
+        break;
+      case "relacion_persona_adquirio":
+        data.bienes_inmuebles.relacion_persona_adquirio = valor;
+        break;
+      case "relacion_persona_adquirio.codigo":
+        data.bienes_inmuebles.relacion_persona_adquirio.codigo = valor;
+        break;
+      case "relacion_persona_adquirio.valor":
+        data.bienes_inmuebles.relacion_persona_adquirio.valor = valor;
+        break;
+      case "rfc_quien_adquirio":
+        data.bienes_inmuebles.rfc_quien_adquirio = valor;
+        break;
+      case "sector_industria":
+        data.bienes_inmuebles.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.bienes_inmuebles.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.bienes_inmuebles.sector_industria.valor = valor;
+        break;
+      case "superficie_construccion":
+        data.bienes_inmuebles.superficie_construccion = valor;
+        break;
+      case "superficie_terreno":
+        data.bienes_inmuebles.superficie_terreno = valor;
+        break;
+      case "tipo_bien":
+        data.bienes_inmuebles.tipo_bien = valor;
+        break;
+      case "tipo_bien.codigo":
+        data.bienes_inmuebles.tipo_bien.codigo = valor;
+        break;
+      case "tipo_bien.valor":
+        data.bienes_inmuebles.tipo_bien.valor = valor;
+        break;
+      case "tipo_operacion":
+        data.bienes_inmuebles.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.bienes_inmuebles.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.bienes_inmuebles.tipo_operacion.valor = valor;
+        break;
+      case "valor_catastral":
+        data.bienes_inmuebles.valor_catastral = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataBienesMueblesRegistables = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "fecha_adquisicion":
+        data.bienes_muebles_registrables.fecha_adquisicion = valor;
+        break;
+      case "forma_adquisicion":
+        data.bienes_muebles_registrables.forma_adquisicion = valor;
+        break;
+      case "forma_adquisicion.codigo":
+        data.bienes_muebles_registrables.forma_adquisicion.codigo = valor;
+        break;
+      case "forma_adquisicion.valor":
+        data.bienes_muebles_registrables.forma_adquisicion.valor = valor;
+        break;
+      case "id":
+        data.bienes_muebles_registrables.id = valor;
+        break;
+      case "lugar_registro":
+        data.bienes_muebles_registrables.lugar_registro = valor;
+        break;
+      case "lugar_registro.entidad":
+        data.bienes_muebles_registrables.lugar_registro.entidad = valor;
+        break;
+      case "lugar_registro.entidad.cve_ent":
+        data.bienes_muebles_registrables.lugar_registro.entidad.cve_ent = valor;
+        break;
+      case "lugar_registro.entidad.nom_ent":
+        data.bienes_muebles_registrables.lugar_registro.entidad.nom_ent = valor;
+        break;
+      case "lugar_registro.pais":
+        data.bienes_muebles_registrables.lugar_registro.pais = valor;
+        break;
+      case "lugar_registro.pais.codigo":
+        data.bienes_muebles_registrables.lugar_registro.pais.codigo = valor;
+        break;
+      case "lugar_registro.pais.valor":
+        data.bienes_muebles_registrables.lugar_registro.pais.valor = valor;
+        break;
+      case "marca":
+        data.bienes_muebles_registrables.marca = valor;
+        break;
+      case "modelo":
+        data.bienes_muebles_registrables.modelo = valor;
+        break;
+      case "nombre_denominacion_adquirio":
+        data.bienes_muebles_registrables.nombre_denominacion_adquirio = valor;
+        break;
+      case "nombres_copropietarios":
+        data.bienes_muebles_registrables.nombres_copropietarios = valor;
+        break;
+      case "numero_registro_vehicular":
+        data.bienes_muebles_registrables.numero_registro_vehicular = valor;
+        break;
+      case "numero_serie":
+        data.bienes_muebles_registrables.numero_serie = valor;
+        break;
+      case "observaciones":
+        data.bienes_muebles_registrables.observaciones = valor;
+        break;
+      case "porcentaje_propiedad":
+        data.bienes_muebles_registrables.porcentaje_propiedad = valor;
+        break;
+      case "precio_adquisicion":
+        data.bienes_muebles_registrables.precio_adquisicion = valor;
+        break;
+      case "precio_adquisicion.moneda":
+        data.bienes_muebles_registrables.precio_adquisicion.moneda = valor;
+        break;
+      case "precio_adquisicion.moneda.codigo":
+        data.bienes_muebles_registrables.precio_adquisicion.moneda.codigo = valor;
+        break;
+      case "precio_adquisicion.moneda.moneda":
+        data.bienes_muebles_registrables.precio_adquisicion.moneda.moneda = valor;
+        break;
+      case "precio_adquisicion.valor":
+        data.bienes_muebles_registrables.precio_adquisicion.valor = valor;
+        break;
+      case "relacion_persona_quien_adquirio":
+        data.bienes_muebles_registrables.relacion_persona_quien_adquirio = valor;
+        break;
+      case "relacion_persona_quien_adquirio.codigo":
+        data.bienes_muebles_registrables.relacion_persona_quien_adquirio.codigo = valor;
+        break;
+      case "relacion_persona_quien_adquirio.valor":
+        data.bienes_muebles_registrables.relacion_persona_quien_adquirio.valor = valor;
+        break;
+      case "rfc_quien_adquirio":
+        data.bienes_muebles_registrables.rfc_quien_adquirio = valor;
+        break;
+      case "sector_industria":
+        data.bienes_muebles_registrables.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.bienes_muebles_registrables.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.bienes_muebles_registrables.sector_industria.valor = valor;
+        break;
+      case "submarca":
+        data.bienes_muebles_registrables.submarca = valor;
+        break;
+      case "tipo_bien_mueble":
+        data.bienes_muebles_registrables.tipo_bien_mueble = valor;
+        break;
+      case "tipo_bien_mueble.codigo":
+        data.bienes_muebles_registrables.tipo_bien_mueble.codigo = valor;
+        break;
+      case "tipo_bien_mueble.valor":
+        data.bienes_muebles_registrables.tipo_bien_mueble.valor = valor;
+        break;
+      case "tipo_operacion":
+        data.bienes_muebles_registrables.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.bienes_muebles_registrables.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.bienes_muebles_registrables.tipo_operacion.valor = valor;
+        break;
+      case "titular_bien":
+        data.bienes_muebles_registrables.titular_bien = valor;
+        break;
+      case "titular_bien.codigo":
+        data.bienes_muebles_registrables.titular_bien.codigo = valor;
+        break;
+      case "titular_bien.valor":
+        data.bienes_muebles_registrables.titular_bien.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataBienesMueblesNoRegistables = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "descripcion":
+        data.bienes_muebles_no_registrables.descripcion = valor;
+        break;
+      case "fecha_adquisicion":
+        data.bienes_muebles_no_registrables.fecha_adquisicion = valor;
+        break;
+      case "forma_adquisicion":
+        data.bienes_muebles_no_registrables.forma_adquisicion = valor;
+        break;
+      case "forma_adquisicion.codigo":
+        data.bienes_muebles_no_registrables.forma_adquisicion.codigo = valor;
+        break;
+      case "forma_adquisicion.valor":
+        data.bienes_muebles_no_registrables.forma_adquisicion.valor = valor;
+        break;
+      case "id":
+        data.bienes_muebles_no_registrables.id = valor;
+        break;
+      case "nombre_denominacion_adquirio":
+        data.bienes_muebles_no_registrables.nombre_denominacion_adquirio = valor;
+        break;
+      case "nombres_copropietarios":
+        data.bienes_muebles_no_registrables.nombres_copropietarios = valor;
+        break;
+      case "observaciones":
+        data.bienes_muebles_no_registrables.observaciones = valor;
+        break;
+      case "porcentaje_propiedad":
+        data.bienes_muebles_no_registrables.porcentaje_propiedad = valor;
+        break;
+      case "precio_adquisicion":
+        data.bienes_muebles_no_registrables.precio_adquisicion = valor;
+        break;
+      case "precio_adquisicion.moneda":
+        data.bienes_muebles_no_registrables.precio_adquisicion.moneda = valor;
+        break;
+      case "precio_adquisicion.moneda.codigo":
+        data.bienes_muebles_no_registrables.precio_adquisicion.moneda.codigo = valor;
+        break;
+      case "precio_adquisicion.moneda.moneda":
+        data.bienes_muebles_no_registrables.precio_adquisicion.moneda.moneda = valor;
+        break;
+      case "precio_adquisicion.valor":
+        data.bienes_muebles_no_registrables.precio_adquisicion.valor = valor;
+        break;
+      case "relacion_quien_adquirio":
+        data.bienes_muebles_no_registrables.relacion_quien_adquirio = valor;
+        break;
+      case "relacion_quien_adquirio.codigo":
+        data.bienes_muebles_no_registrables.relacion_quien_adquirio.codigo = valor;
+        break;
+      case "relacion_quien_adquirio.valor":
+        data.bienes_muebles_no_registrables.relacion_quien_adquirio.valor = valor;
+        break;
+      case "tipo_bien":
+        data.bienes_muebles_no_registrables.tipo_bien = valor;
+        break;
+      case "tipo_bien.codigo":
+        data.bienes_muebles_no_registrables.tipo_bien.codigo = valor;
+        break;
+      case "tipo_bien.valor":
+        data.bienes_muebles_no_registrables.tipo_bien.valor = valor;
+        break;
+      case "tipo_operacion":
+        data.bienes_muebles_no_registrables.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.bienes_muebles_no_registrables.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.bienes_muebles_no_registrables.tipo_operacion.valor = valor;
+        break;
+      case "titular_bien":
+        data.bienes_muebles_no_registrables.titular_bien = valor;
+        break;
+      case "titular_bien.codigo":
+        data.bienes_muebles_no_registrables.titular_bien.codigo = valor;
+        break;
+      case "titular_bien.valor":
+        data.bienes_muebles_no_registrables.titular_bien.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataInversionesCuentasValores = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "domicilio_institucion":
+        data.inversiones_cuentas_valores.domicilio_institucion = valor;
+        break;
+      case "domicilio_institucion.cp":
+        data.inversiones_cuentas_valores.domicilio_institucion.cp = valor;
+        break;
+      case "domicilio_institucion.entidad_federativa":
+        data.inversiones_cuentas_valores.domicilio_institucion.entidad_federativa = valor;
+        break;
+      case "domicilio_institucion.entidad_federativa.cve_ent":
+        data.inversiones_cuentas_valores.domicilio_institucion.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_institucion.entidad_federativa.nom_ent":
+        data.inversiones_cuentas_valores.domicilio_institucion.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_institucion.localidad":
+        data.inversiones_cuentas_valores.domicilio_institucion.localidad = valor;
+        break;
+      case "domicilio_institucion.localidad.cve_loc":
+        data.inversiones_cuentas_valores.domicilio_institucion.localidad.cve_loc = valor;
+        break;
+      case "domicilio_institucion.localidad.nom_loc":
+        data.inversiones_cuentas_valores.domicilio_institucion.localidad.nom_loc = valor;
+        break;
+      case "domicilio_institucion.municipio":
+        data.inversiones_cuentas_valores.domicilio_institucion.municipio = valor;
+        break;
+      case "domicilio_institucion.municipio.cve_mun":
+        data.inversiones_cuentas_valores.domicilio_institucion.municipio.cve_mun = valor;
+        break;
+      case "domicilio_institucion.municipio.nom_mun":
+        data.inversiones_cuentas_valores.domicilio_institucion.municipio.nom_mun = valor;
+        break;
+      case "domicilio_institucion.numExt":
+        data.inversiones_cuentas_valores.domicilio_institucion.numExt = valor;
+        break;
+      case "domicilio_institucion.numInt":
+        data.inversiones_cuentas_valores.domicilio_institucion.numInt = valor;
+        break;
+      case "domicilio_institucion.pais":
+        data.inversiones_cuentas_valores.domicilio_institucion.pais = valor;
+        break;
+      case "domicilio_institucion.pais.codigo":
+        data.inversiones_cuentas_valores.domicilio_institucion.pais.codigo = valor;
+        break;
+      case "domicilio_institucion.pais.valor":
+        data.inversiones_cuentas_valores.domicilio_institucion.pais.valor = valor;
+        break;
+      case "domicilio_institucion.vialidad":
+        data.inversiones_cuentas_valores.domicilio_institucion.vialidad = valor;
+        break;
+      case "domicilio_institucion.vialidad.nom_vial":
+        data.inversiones_cuentas_valores.domicilio_institucion.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_institucion.vialidad.tipo_vial":
+        data.inversiones_cuentas_valores.domicilio_institucion.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_inicio":
+        data.inversiones_cuentas_valores.fecha_inicio = valor;
+        break;
+      case "forma_adquisicion":
+        data.inversiones_cuentas_valores.forma_adquisicion = valor;
+        break;
+      case "forma_adquisicion.codigo":
+        data.inversiones_cuentas_valores.forma_adquisicion.codigo = valor;
+        break;
+      case "forma_adquisicion.valor":
+        data.inversiones_cuentas_valores.forma_adquisicion.valor = valor;
+        break;
+      case "id":
+        data.inversiones_cuentas_valores.id = valor;
+        break;
+      case "monto_original":
+        data.inversiones_cuentas_valores.monto_original = valor;
+        break;
+      case "nacional_extranjero":
+        data.inversiones_cuentas_valores.nacional_extranjero = valor;
+        break;
+      case "nacional_extranjero.codigo":
+        data.inversiones_cuentas_valores.nacional_extranjero.codigo = valor;
+        break;
+      case "nacional_extranjero.valor":
+        data.inversiones_cuentas_valores.nacional_extranjero.valor = valor;
+        break;
+      case "nombre_institucion":
+        data.inversiones_cuentas_valores.nombre_institucion = valor;
+        break;
+      case "numero_cuenta":
+        data.inversiones_cuentas_valores.numero_cuenta = valor;
+        break;
+      case "observaciones":
+        data.inversiones_cuentas_valores.observaciones = valor;
+        break;
+      case "plazo":
+        data.inversiones_cuentas_valores.plazo = valor;
+        break;
+      case "porcentaje_inversion":
+        data.inversiones_cuentas_valores.porcentaje_inversion = valor;
+        break;
+      case "rfc_institucion":
+        data.inversiones_cuentas_valores.rfc_institucion = valor;
+        break;
+      case "saldo_anual":
+        data.inversiones_cuentas_valores.saldo_anual = valor;
+        break;
+      case "sector_industria":
+        data.inversiones_cuentas_valores.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.inversiones_cuentas_valores.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.inversiones_cuentas_valores.sector_industria.valor = valor;
+        break;
+      case "tasa_interes":
+        data.inversiones_cuentas_valores.tasa_interes = valor;
+        break;
+      case "tipo_especifico_inversion":
+        data.inversiones_cuentas_valores.tipo_especifico_inversion = valor;
+        break;
+      case "tipo_especifico_inversion.codigo":
+        data.inversiones_cuentas_valores.tipo_especifico_inversion.codigo = valor;
+        break;
+      case "tipo_especifico_inversion.valor":
+        data.inversiones_cuentas_valores.tipo_especifico_inversion.valor = valor;
+        break;
+      case "tipo_inversion":
+        data.inversiones_cuentas_valores.tipo_inversion = valor;
+        break;
+      case "tipo_inversion.codigo":
+        data.inversiones_cuentas_valores.tipo_inversion.codigo = valor;
+        break;
+      case "tipo_inversion.valor":
+        data.inversiones_cuentas_valores.tipo_inversion.valor = valor;
+        break;
+      case "tipo_moneda":
+        data.inversiones_cuentas_valores.tipo_moneda = valor;
+        break;
+      case "tipo_moneda.codigo":
+        data.inversiones_cuentas_valores.tipo_moneda.codigo = valor;
+        break;
+      case "tipo_moneda.moneda":
+        data.inversiones_cuentas_valores.tipo_moneda.moneda = valor;
+        break;
+      case "tipo_operacion":
+        data.inversiones_cuentas_valores.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.inversiones_cuentas_valores.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.inversiones_cuentas_valores.tipo_operacion.valor = valor;
+        break;
+      case "titular_bien":
+        data.inversiones_cuentas_valores.titular_bien = valor;
+        break;
+      case "titular_bien.codigo":
+        data.inversiones_cuentas_valores.titular_bien.codigo = valor;
+        break;
+      case "titular_bien.valor":
+        data.inversiones_cuentas_valores.titular_bien.valor = valor;
+        break;
+      case "unidad_medida_plazo":
+        data.inversiones_cuentas_valores.unidad_medida_plazo = valor;
+        break;
+      case "unidad_medida_plazo.codigo":
+        data.inversiones_cuentas_valores.unidad_medida_plazo.codigo = valor;
+        break;
+      case "unidad_medida_plazo.valor":
+        data.inversiones_cuentas_valores.unidad_medida_plazo.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataEfectivoMetales = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "forma_adquisicion":
+        data.efectivo_metales.forma_adquisicion = valor;
+        break;
+      case "forma_adquisicion.codigo":
+        data.efectivo_metales.forma_adquisicion.codigo = valor;
+        break;
+      case "forma_adquisicion.valor":
+        data.efectivo_metales.forma_adquisicion.valor = valor;
+        break;
+      case "id":
+        data.efectivo_metales.id = valor;
+        break;
+      case "monto":
+        data.efectivo_metales.monto = valor;
+        break;
+      case "observaciones_comentarios":
+        data.efectivo_metales.observaciones_comentarios = valor;
+        break;
+      case "tipo_metal":
+        data.efectivo_metales.tipo_metal = valor;
+        break;
+      case "tipo_metal.codigo":
+        data.efectivo_metales.tipo_metal.codigo = valor;
+        break;
+      case "tipo_metal.valor":
+        data.efectivo_metales.tipo_metal.valor = valor;
+        break;
+      case "tipo_moneda":
+        data.efectivo_metales.tipo_moneda = valor;
+        break;
+      case "tipo_moneda.codigo":
+        data.efectivo_metales.tipo_moneda.codigo = valor;
+        break;
+      case "tipo_moneda.moneda":
+        data.efectivo_metales.tipo_moneda.moneda = valor;
+        break;
+      case "tipo_operacion":
+        data.efectivo_metales.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.efectivo_metales.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.efectivo_metales.tipo_operacion.valor = valor;
+        break;
+      case "unidades":
+        data.efectivo_metales.unidades = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataFideicomisos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp_fideicomisario":
+        data.fideicomisos.curp_fideicomisario = valor;
+        break;
+      case "curp_fideicomitente":
+        data.fideicomisos.curp_fideicomitente = valor;
+        break;
+      case "curp_fiduciario":
+        data.fideicomisos.curp_fiduciario = valor;
+        break;
+      case "domicilio_fideicomisario":
+        data.fideicomisos.domicilio_fideicomisario = valor;
+        break;
+      case "domicilio_fideicomisario.cp":
+        data.fideicomisos.domicilio_fideicomisario.cp = valor;
+        break;
+      case "domicilio_fideicomisario.entidad_federativa":
+        data.fideicomisos.domicilio_fideicomisario.entidad_federativa = valor;
+        break;
+      case "domicilio_fideicomisario.entidad_federativa.cve_ent":
+        data.fideicomisos.domicilio_fideicomisario.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_fideicomisario.entidad_federativa.nom_ent":
+        data.fideicomisos.domicilio_fideicomisario.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_fideicomisario.localidad":
+        data.fideicomisos.domicilio_fideicomisario.localidad = valor;
+        break;
+      case "domicilio_fideicomisario.localidad.cve_loc":
+        data.fideicomisos.domicilio_fideicomisario.localidad.cve_loc = valor;
+        break;
+      case "domicilio_fideicomisario.localidad.nom_loc":
+        data.fideicomisos.domicilio_fideicomisario.localidad.nom_loc = valor;
+        break;
+      case "domicilio_fideicomisario.municipio":
+        data.fideicomisos.domicilio_fideicomisario.municipio = valor;
+        break;
+      case "domicilio_fideicomisario.municipio.cve_mun":
+        data.fideicomisos.domicilio_fideicomisario.municipio.cve_mun = valor;
+        break;
+      case "domicilio_fideicomisario.municipio.nom_mun":
+        data.fideicomisos.domicilio_fideicomisario.municipio.nom_mun = valor;
+        break;
+      case "domicilio_fideicomisario.numExt":
+        data.fideicomisos.domicilio_fideicomisario.numExt = valor;
+        break;
+      case "domicilio_fideicomisario.numInt":
+        data.fideicomisos.domicilio_fideicomisario.numInt = valor;
+        break;
+      case "domicilio_fideicomisario.pais":
+        data.fideicomisos.domicilio_fideicomisario.pais = valor;
+        break;
+      case "domicilio_fideicomisario.pais.codigo":
+        data.fideicomisos.domicilio_fideicomisario.pais.codigo = valor;
+        break;
+      case "domicilio_fideicomisario.pais.valor":
+        data.fideicomisos.domicilio_fideicomisario.pais.valor = valor;
+        break;
+      case "domicilio_fideicomisario.vialidad":
+        data.fideicomisos.domicilio_fideicomisario.vialidad = valor;
+        break;
+      case "domicilio_fideicomisario.vialidad.nom_vial":
+        data.fideicomisos.domicilio_fideicomisario.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_fideicomisario.vialidad.tipo_vial":
+        data.fideicomisos.domicilio_fideicomisario.vialidad.tipo_vial = valor;
+        break;
+      case "domicilio_fideicomitente":
+        data.fideicomisos.domicilio_fideicomitente = valor;
+        break;
+      case "domicilio_fideicomitente.cp":
+        data.fideicomisos.domicilio_fideicomitente.cp = valor;
+        break;
+      case "domicilio_fideicomitente.entidad_federativa":
+        data.fideicomisos.domicilio_fideicomitente.entidad_federativa = valor;
+        break;
+      case "domicilio_fideicomitente.entidad_federativa.cve_ent":
+        data.fideicomisos.domicilio_fideicomitente.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_fideicomitente.entidad_federativa.nom_ent":
+        data.fideicomisos.domicilio_fideicomitente.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_fideicomitente.localidad":
+        data.fideicomisos.domicilio_fideicomitente.localidad = valor;
+        break;
+      case "domicilio_fideicomitente.localidad.cve_loc":
+        data.fideicomisos.domicilio_fideicomitente.localidad.cve_loc = valor;
+        break;
+      case "domicilio_fideicomitente.localidad.nom_loc":
+        data.fideicomisos.domicilio_fideicomitente.localidad.nom_loc = valor;
+        break;
+      case "domicilio_fideicomitente.municipio":
+        data.fideicomisos.domicilio_fideicomitente.municipio = valor;
+        break;
+      case "domicilio_fideicomitente.municipio.cve_mun":
+        data.fideicomisos.domicilio_fideicomitente.municipio.cve_mun = valor;
+        break;
+      case "domicilio_fideicomitente.municipio.nom_mun":
+        data.fideicomisos.domicilio_fideicomitente.municipio.nom_mun = valor;
+        break;
+      case "domicilio_fideicomitente.numExt":
+        data.fideicomisos.domicilio_fideicomitente.numExt = valor;
+        break;
+      case "domicilio_fideicomitente.numInt":
+        data.fideicomisos.domicilio_fideicomitente.numInt = valor;
+        break;
+      case "domicilio_fideicomitente.pais":
+        data.fideicomisos.domicilio_fideicomitente.pais = valor;
+        break;
+      case "domicilio_fideicomitente.pais.codigo":
+        data.fideicomisos.domicilio_fideicomitente.pais.codigo = valor;
+        break;
+      case "domicilio_fideicomitente.pais.valor":
+        data.fideicomisos.domicilio_fideicomitente.pais.valor = valor;
+        break;
+      case "domicilio_fideicomitente.vialidad":
+        data.fideicomisos.domicilio_fideicomitente.vialidad = valor;
+        break;
+      case "domicilio_fideicomitente.vialidad.nom_vial":
+        data.fideicomisos.domicilio_fideicomitente.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_fideicomitente.vialidad.tipo_vial":
+        data.fideicomisos.domicilio_fideicomitente.vialidad.tipo_vial = valor;
+        break;
+      case "domicilio_fiduciario":
+        data.fideicomisos.domicilio_fiduciario = valor;
+        break;
+      case "domicilio_fiduciario.cp":
+        data.fideicomisos.domicilio_fiduciario.cp = valor;
+        break;
+      case "domicilio_fiduciario.entidad_federativa":
+        data.fideicomisos.domicilio_fiduciario.entidad_federativa = valor;
+        break;
+      case "domicilio_fiduciario.entidad_federativa.cve_ent":
+        data.fideicomisos.domicilio_fiduciario.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_fiduciario.entidad_federativa.nom_ent":
+        data.fideicomisos.domicilio_fiduciario.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_fiduciario.localidad":
+        data.fideicomisos.domicilio_fiduciario.localidad = valor;
+        break;
+      case "domicilio_fiduciario.localidad.cve_loc":
+        data.fideicomisos.domicilio_fiduciario.localidad.cve_loc = valor;
+        break;
+      case "domicilio_fiduciario.localidad.nom_loc":
+        data.fideicomisos.domicilio_fiduciario.localidad.nom_loc = valor;
+        break;
+      case "domicilio_fiduciario.municipio":
+        data.fideicomisos.domicilio_fiduciario.municipio = valor;
+        break;
+      case "domicilio_fiduciario.municipio.cve_mun":
+        data.fideicomisos.domicilio_fiduciario.municipio.cve_mun = valor;
+        break;
+      case "domicilio_fiduciario.municipio.nom_mun":
+        data.fideicomisos.domicilio_fiduciario.municipio.nom_mun = valor;
+        break;
+      case "domicilio_fiduciario.numExt":
+        data.fideicomisos.domicilio_fiduciario.numExt = valor;
+        break;
+      case "domicilio_fiduciario.numInt":
+        data.fideicomisos.domicilio_fiduciario.numInt = valor;
+        break;
+      case "domicilio_fiduciario.pais":
+        data.fideicomisos.domicilio_fiduciario.pais = valor;
+        break;
+      case "domicilio_fiduciario.pais.codigo":
+        data.fideicomisos.domicilio_fiduciario.pais.codigo = valor;
+        break;
+      case "domicilio_fiduciario.pais.valor":
+        data.fideicomisos.domicilio_fiduciario.pais.valor = valor;
+        break;
+      case "domicilio_fiduciario.vialidad":
+        data.fideicomisos.domicilio_fiduciario.vialidad = valor;
+        break;
+      case "domicilio_fiduciario.vialidad.nom_vial":
+        data.fideicomisos.domicilio_fiduciario.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_fiduciario.vialidad.tipo_vial":
+        data.fideicomisos.domicilio_fiduciario.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_creacion":
+        data.fideicomisos.fecha_creacion = valor;
+        break;
+      case "fecha_nacimiento_constitucion_fideicomisario":
+        data.fideicomisos.fecha_nacimiento_constitucion_fideicomisario = valor;
+        break;
+      case "fecha_nacimiento_constitucion_fideicomitente":
+        data.fideicomisos.fecha_nacimiento_constitucion_fideicomitente = valor;
+        break;
+      case "fecha_nacimiento_constitucion_fiduciario":
+        data.fideicomisos.fecha_nacimiento_constitucion_fiduciario = valor;
+        break;
+      case "id":
+        data.fideicomisos.id = valor;
+        break;
+      case "identificador_fideicomiso":
+        data.fideicomisos.identificador_fideicomiso = valor;
+        break;
+      case "ingreso_monetario_obtenido":
+        data.fideicomisos.ingreso_monetario_obtenido = valor;
+        break;
+      case "institucion_fiduciaria":
+        data.fideicomisos.institucion_fiduciaria = valor;
+        break;
+      case "moneda":
+        data.fideicomisos.moneda = valor;
+        break;
+      case "moneda.codigo":
+        data.fideicomisos.moneda.codigo = valor;
+        break;
+      case "moneda.moneda":
+        data.fideicomisos.moneda.moneda = valor;
+        break;
+      case "nombre_fideicomisario":
+        data.fideicomisos.nombre_fideicomisario = valor;
+        break;
+      case "nombre_fideicomitente":
+        data.fideicomisos.nombre_fideicomitente = valor;
+        break;
+      case "nombre_fiduciario":
+        data.fideicomisos.nombre_fiduciario = valor;
+        break;
+      case "numero_registro":
+        data.fideicomisos.numero_registro = valor;
+        break;
+      case "objetivo":
+        data.fideicomisos.objetivo = valor;
+        break;
+      case "observaciones":
+        data.fideicomisos.observaciones = valor;
+        break;
+      case "porcentaje_propiedad_derechos_fiduciarios":
+        data.fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;
+        break;
+      case "residencia":
+        data.fideicomisos.residencia = valor;
+        break;
+      case "residencia.codigo":
+        data.fideicomisos.residencia.codigo = valor;
+        break;
+      case "residencia.valor":
+        data.fideicomisos.residencia.valor = valor;
+        break;
+      case "rfc_fideicomitente":
+        data.fideicomisos.rfc_fideicomitente = valor;
+        break;
+      case "rfc_fideicomsario":
+        data.fideicomisos.rfc_fideicomsario = valor;
+        break;
+      case "rfc_fiduciario":
+        data.fideicomisos.rfc_fiduciario = valor;
+        break;
+      case "tipo_fideicomiso":
+        data.fideicomisos.tipo_fideicomiso = valor;
+        break;
+      case "tipo_fideicomiso.codigo":
+        data.fideicomisos.tipo_fideicomiso.codigo = valor;
+        break;
+      case "tipo_fideicomiso.valor":
+        data.fideicomisos.tipo_fideicomiso.valor = valor;
+        break;
+      case "tipo_operacion":
+        data.fideicomisos.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.fideicomisos.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.fideicomisos.tipo_operacion.valor = valor;
+        break;
+      case "valor":
+        data.fideicomisos.valor = valor;
+        break;
+      case "vigencia":
+        data.fideicomisos.vigencia = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataBienesIntangibles = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "descripcion":
+        data.bienes_intangibles.descripcion = valor;
+        break;
+      case "ente_publico_encargado":
+        data.bienes_intangibles.ente_publico_encargado = valor;
+        break;
+      case "ente_publico_encargado.nombres":
+        data.bienes_intangibles.ente_publico_encargado.nombres = valor;
+        break;
+      case "ente_publico_encargado.primer_apellido":
+        data.bienes_intangibles.ente_publico_encargado.primer_apellido = valor;
+        break;
+      case "ente_publico_encargado.segundo_apellido":
+        data.bienes_intangibles.ente_publico_encargado.segundo_apellido = valor;
+        break;
+      case "fecha_registro":
+        data.bienes_intangibles.fecha_registro = valor;
+        break;
+      case "fecha_vencimiento":
+        data.bienes_intangibles.fecha_vencimiento = valor;
+        break;
+      case "forma_adquisicion":
+        data.bienes_intangibles.forma_adquisicion = valor;
+        break;
+      case "forma_adquisicion.codigo":
+        data.bienes_intangibles.forma_adquisicion.codigo = valor;
+        break;
+      case "forma_adquisicion.valor":
+        data.bienes_intangibles.forma_adquisicion.valor = valor;
+        break;
+      case "id":
+        data.bienes_intangibles.id = valor;
+        break;
+      case "nombre_copropietario":
+        data.bienes_intangibles.nombre_copropietario = valor;
+        break;
+      case "numero_registro":
+        data.bienes_intangibles.numero_registro = valor;
+        break;
+      case "observaciones":
+        data.bienes_intangibles.observaciones = valor;
+        break;
+      case "porcentaje_copropiedad":
+        data.bienes_intangibles.porcentaje_copropiedad = valor;
+        break;
+      case "porcentaje_propiedad_copropietario":
+        data.bienes_intangibles.porcentaje_propiedad_copropietario = valor;
+        break;
+      case "precio_adquisicion":
+        data.bienes_intangibles.precio_adquisicion = valor;
+        break;
+      case "precio_adquisicion.moneda":
+        data.bienes_intangibles.precio_adquisicion.moneda = valor;
+        break;
+      case "precio_adquisicion.moneda.codigo":
+        data.bienes_intangibles.precio_adquisicion.moneda.codigo = valor;
+        break;
+      case "precio_adquisicion.moneda.moneda":
+        data.bienes_intangibles.precio_adquisicion.moneda.moneda = valor;
+        break;
+      case "precio_adquisicion.valor":
+        data.bienes_intangibles.precio_adquisicion.valor = valor;
+        break;
+      case "precio_total_copropiedad":
+        data.bienes_intangibles.precio_total_copropiedad = valor;
+        break;
+      case "precio_total_copropiedad.moneda":
+        data.bienes_intangibles.precio_total_copropiedad.moneda = valor;
+        break;
+      case "precio_total_copropiedad.moneda.codigo":
+        data.bienes_intangibles.precio_total_copropiedad.moneda.codigo = valor;
+        break;
+      case "precio_total_copropiedad.moneda.moneda":
+        data.bienes_intangibles.precio_total_copropiedad.moneda.moneda = valor;
+        break;
+      case "precio_total_copropiedad.valor":
+        data.bienes_intangibles.precio_total_copropiedad.valor = valor;
+        break;
+      case "propietario_registrado":
+        data.bienes_intangibles.propietario_registrado = valor;
+        break;
+      case "sector_industria":
+        data.bienes_intangibles.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.bienes_intangibles.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.bienes_intangibles.sector_industria.valor = valor;
+        break;
+      case "tipo_operacion":
+        data.bienes_intangibles.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.bienes_intangibles.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.bienes_intangibles.tipo_operacion.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataCuentasPorCobrar = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "domicilio_prestatarios":
+        data.cuentas_por_cobrar.domicilio_prestatarios = valor;
+        break;
+      case "domicilio_prestatarios.cp":
+        data.cuentas_por_cobrar.domicilio_prestatarios.cp = valor;
+        break;
+      case "domicilio_prestatarios.entidad_federativa":
+        data.cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa = valor;
+        break;
+      case "domicilio_prestatarios.entidad_federativa.cve_ent":
+        data.cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_prestatarios.entidad_federativa.nom_ent":
+        data.cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_prestatarios.localidad":
+        data.cuentas_por_cobrar.domicilio_prestatarios.localidad = valor;
+        break;
+      case "domicilio_prestatarios.localidad.cve_loc":
+        data.cuentas_por_cobrar.domicilio_prestatarios.localidad.cve_loc = valor;
+        break;
+      case "domicilio_prestatarios.localidad.nom_loc":
+        data.cuentas_por_cobrar.domicilio_prestatarios.localidad.nom_loc = valor;
+        break;
+      case "domicilio_prestatarios.municipio":
+        data.cuentas_por_cobrar.domicilio_prestatarios.municipio = valor;
+        break;
+      case "domicilio_prestatarios.municipio.cve_mun":
+        data.cuentas_por_cobrar.domicilio_prestatarios.municipio.cve_mun = valor;
+        break;
+      case "domicilio_prestatarios.municipio.nom_mun":
+        data.cuentas_por_cobrar.domicilio_prestatarios.municipio.nom_mun = valor;
+        break;
+      case "domicilio_prestatarios.numExt":
+        data.cuentas_por_cobrar.domicilio_prestatarios.numExt = valor;
+        break;
+      case "domicilio_prestatarios.numInt":
+        data.cuentas_por_cobrar.domicilio_prestatarios.numInt = valor;
+        break;
+      case "domicilio_prestatarios.pais":
+        data.cuentas_por_cobrar.domicilio_prestatarios.pais = valor;
+        break;
+      case "domicilio_prestatarios.pais.codigo":
+        data.cuentas_por_cobrar.domicilio_prestatarios.pais.codigo = valor;
+        break;
+      case "domicilio_prestatarios.pais.valor":
+        data.cuentas_por_cobrar.domicilio_prestatarios.pais.valor = valor;
+        break;
+      case "domicilio_prestatarios.vialidad":
+        data.cuentas_por_cobrar.domicilio_prestatarios.vialidad = valor;
+        break;
+      case "domicilio_prestatarios.vialidad.nom_vial":
+        data.cuentas_por_cobrar.domicilio_prestatarios.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_prestatarios.vialidad.tipo_vial":
+        data.cuentas_por_cobrar.domicilio_prestatarios.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_prestamo":
+        data.cuentas_por_cobrar.fecha_prestamo = valor;
+        break;
+      case "fecha_vencimiento":
+        data.cuentas_por_cobrar.fecha_vencimiento = valor;
+        break;
+      case "id":
+        data.cuentas_por_cobrar.id = valor;
+        break;
+      case "monto_original_prestamo":
+        data.cuentas_por_cobrar.monto_original_prestamo = valor;
+        break;
+      case "nombre_copropietario":
+        data.cuentas_por_cobrar.nombre_copropietario = valor;
+        break;
+      case "nombre_prestatario":
+        data.cuentas_por_cobrar.nombre_prestatario = valor;
+        break;
+      case "numero_registro":
+        data.cuentas_por_cobrar.numero_registro = valor;
+        break;
+      case "observaciones":
+        data.cuentas_por_cobrar.observaciones = valor;
+        break;
+      case "porcentaje_copropiedad":
+        data.cuentas_por_cobrar.porcentaje_copropiedad = valor;
+        break;
+      case "saldo_pendiente":
+        data.cuentas_por_cobrar.saldo_pendiente = valor;
+        break;
+      case "sector_industria":
+        data.cuentas_por_cobrar.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.cuentas_por_cobrar.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.cuentas_por_cobrar.sector_industria.valor = valor;
+        break;
+      case "tasa_interes":
+        data.cuentas_por_cobrar.tasa_interes = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataUsoEspeciePropiedadTercero = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp_tercero_propietario":
+        data.uso_especie_propiedad_tercero.curp_tercero_propietario = valor;
+        break;
+      case "domicilio_persona":
+        data.uso_especie_propiedad_tercero.domicilio_persona = valor;
+        break;
+      case "domicilio_persona.cp":
+        data.uso_especie_propiedad_tercero.domicilio_persona.cp = valor;
+        break;
+      case "domicilio_persona.entidad_federativa":
+        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = valor;
+        break;
+      case "domicilio_persona.entidad_federativa.cve_ent":
+        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_persona.entidad_federativa.nom_ent":
+        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_persona.localidad":
+        data.uso_especie_propiedad_tercero.domicilio_persona.localidad = valor;
+        break;
+      case "domicilio_persona.localidad.cve_loc":
+        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.cve_loc = valor;
+        break;
+      case "domicilio_persona.localidad.nom_loc":
+        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.nom_loc = valor;
+        break;
+      case "domicilio_persona.municipio":
+        data.uso_especie_propiedad_tercero.domicilio_persona.municipio = valor;
+        break;
+      case "domicilio_persona.municipio.cve_mun":
+        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.cve_mun = valor;
+        break;
+      case "domicilio_persona.municipio.nom_mun":
+        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.nom_mun = valor;
+        break;
+      case "domicilio_persona.numExt":
+        data.uso_especie_propiedad_tercero.domicilio_persona.numExt = valor;
+        break;
+      case "domicilio_persona.numInt":
+        data.uso_especie_propiedad_tercero.domicilio_persona.numInt = valor;
+        break;
+      case "domicilio_persona.pais":
+        data.uso_especie_propiedad_tercero.domicilio_persona.pais = valor;
+        break;
+      case "domicilio_persona.pais.codigo":
+        data.uso_especie_propiedad_tercero.domicilio_persona.pais.codigo = valor;
+        break;
+      case "domicilio_persona.pais.valor":
+        data.uso_especie_propiedad_tercero.domicilio_persona.pais.valor = valor;
+        break;
+      case "domicilio_persona.vialidad":
+        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad = valor;
+        break;
+      case "domicilio_persona.vialidad.nom_vial":
+        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_persona.vialidad.tipo_vial":
+        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_inicio":
+        data.uso_especie_propiedad_tercero.fecha_inicio = valor;
+        break;
+      case "id":
+        data.uso_especie_propiedad_tercero.id = valor;
+        break;
+      case "nombre_tercero_propietario":
+        data.uso_especie_propiedad_tercero.nombre_tercero_propietario = valor;
+        break;
+      case "observaciones":
+        data.uso_especie_propiedad_tercero.observaciones = valor;
+        break;
+      case "relacion_persona":
+        data.uso_especie_propiedad_tercero.relacion_persona = valor;
+        break;
+      case "relacion_persona.codigo":
+        data.uso_especie_propiedad_tercero.relacion_persona.codigo = valor;
+        break;
+      case "relacion_persona.valor":
+        data.uso_especie_propiedad_tercero.relacion_persona.valor = valor;
+        break;
+      case "rfc_tercero_propietario":
+        data.uso_especie_propiedad_tercero.rfc_tercero_propietario = valor;
+        break;
+      case "sector_industria":
+        data.uso_especie_propiedad_tercero.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.uso_especie_propiedad_tercero.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.uso_especie_propiedad_tercero.sector_industria.valor = valor;
+        break;
+      case "tipo_bien":
+        data.uso_especie_propiedad_tercero.tipo_bien = valor;
+        break;
+      case "tipo_bien.codigo":
+        data.uso_especie_propiedad_tercero.tipo_bien.codigo = valor;
+        break;
+      case "tipo_bien.valor":
+        data.uso_especie_propiedad_tercero.tipo_bien.valor = valor;
+        break;
+      case "valor_mercado":
+        data.uso_especie_propiedad_tercero.valor_mercado = valor;
+        break;
+      case "valor_mercado.moneda":
+        data.uso_especie_propiedad_tercero.valor_mercado.moneda = valor;
+        break;
+      case "valor_mercado.moneda.codigo":
+        data.uso_especie_propiedad_tercero.valor_mercado.moneda.codigo = valor;
+        break;
+      case "valor_mercado.moneda.moneda":
+        data.uso_especie_propiedad_tercero.valor_mercado.moneda.moneda = valor;
+        break;
+      case "valor_mercado.valor":
+        data.uso_especie_propiedad_tercero.valor_mercado.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataUsoEspeciePropiedadTercero = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp_tercero_propietario":
+        data.uso_especie_propiedad_tercero.curp_tercero_propietario = valor;
+        break;
+      case "domicilio_persona":
+        data.uso_especie_propiedad_tercero.domicilio_persona = valor;
+        break;
+      case "domicilio_persona.cp":
+        data.uso_especie_propiedad_tercero.domicilio_persona.cp = valor;
+        break;
+      case "domicilio_persona.entidad_federativa":
+        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = valor;
+        break;
+      case "domicilio_persona.entidad_federativa.cve_ent":
+        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_persona.entidad_federativa.nom_ent":
+        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_persona.localidad":
+        data.uso_especie_propiedad_tercero.domicilio_persona.localidad = valor;
+        break;
+      case "domicilio_persona.localidad.cve_loc":
+        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.cve_loc = valor;
+        break;
+      case "domicilio_persona.localidad.nom_loc":
+        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.nom_loc = valor;
+        break;
+      case "domicilio_persona.municipio":
+        data.uso_especie_propiedad_tercero.domicilio_persona.municipio = valor;
+        break;
+      case "domicilio_persona.municipio.cve_mun":
+        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.cve_mun = valor;
+        break;
+      case "domicilio_persona.municipio.nom_mun":
+        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.nom_mun = valor;
+        break;
+      case "domicilio_persona.numExt":
+        data.uso_especie_propiedad_tercero.domicilio_persona.numExt = valor;
+        break;
+      case "domicilio_persona.numInt":
+        data.uso_especie_propiedad_tercero.domicilio_persona.numInt = valor;
+        break;
+      case "domicilio_persona.pais":
+        data.uso_especie_propiedad_tercero.domicilio_persona.pais = valor;
+        break;
+      case "domicilio_persona.pais.codigo":
+        data.uso_especie_propiedad_tercero.domicilio_persona.pais.codigo = valor;
+        break;
+      case "domicilio_persona.pais.valor":
+        data.uso_especie_propiedad_tercero.domicilio_persona.pais.valor = valor;
+        break;
+      case "domicilio_persona.vialidad":
+        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad = valor;
+        break;
+      case "domicilio_persona.vialidad.nom_vial":
+        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_persona.vialidad.tipo_vial":
+        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_inicio":
+        data.uso_especie_propiedad_tercero.fecha_inicio = valor;
+        break;
+      case "id":
+        data.uso_especie_propiedad_tercero.id = valor;
+        break;
+      case "nombre_tercero_propietario":
+        data.uso_especie_propiedad_tercero.nombre_tercero_propietario = valor;
+        break;
+      case "observaciones":
+        data.uso_especie_propiedad_tercero.observaciones = valor;
+        break;
+      case "relacion_persona":
+        data.uso_especie_propiedad_tercero.relacion_persona = valor;
+        break;
+      case "relacion_persona.codigo":
+        data.uso_especie_propiedad_tercero.relacion_persona.codigo = valor;
+        break;
+      case "relacion_persona.valor":
+        data.uso_especie_propiedad_tercero.relacion_persona.valor = valor;
+        break;
+      case "rfc_tercero_propietario":
+        data.uso_especie_propiedad_tercero.rfc_tercero_propietario = valor;
+        break;
+      case "sector_industria":
+        data.uso_especie_propiedad_tercero.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.uso_especie_propiedad_tercero.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.uso_especie_propiedad_tercero.sector_industria.valor = valor;
+        break;
+      case "tipo_bien":
+        data.uso_especie_propiedad_tercero.tipo_bien = valor;
+        break;
+      case "tipo_bien.codigo":
+        data.uso_especie_propiedad_tercero.tipo_bien.codigo = valor;
+        break;
+      case "tipo_bien.valor":
+        data.uso_especie_propiedad_tercero.tipo_bien.valor = valor;
+        break;
+      case "valor_mercado":
+        data.uso_especie_propiedad_tercero.valor_mercado = valor;
+        break;
+      case "valor_mercado.moneda":
+        data.uso_especie_propiedad_tercero.valor_mercado.moneda = valor;
+        break;
+      case "valor_mercado.moneda.codigo":
+        data.uso_especie_propiedad_tercero.valor_mercado.moneda.codigo = valor;
+        break;
+      case "valor_mercado.moneda.moneda":
+        data.uso_especie_propiedad_tercero.valor_mercado.moneda.moneda = valor;
+        break;
+      case "valor_mercado.valor":
+        data.uso_especie_propiedad_tercero.valor_mercado.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataDeudas = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "domicilio_acreedor":
+        data.deudas.domicilio_acreedor = valor;
+        break;
+      case "domicilio_acreedor.cp":
+        data.deudas.domicilio_acreedor.cp = valor;
+        break;
+      case "domicilio_acreedor.entidad_federativa":
+        data.deudas.domicilio_acreedor.entidad_federativa = valor;
+        break;
+      case "domicilio_acreedor.entidad_federativa.cve_ent":
+        data.deudas.domicilio_acreedor.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_acreedor.entidad_federativa.nom_ent":
+        data.deudas.domicilio_acreedor.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_acreedor.localidad":
+        data.deudas.domicilio_acreedor.localidad = valor;
+        break;
+      case "domicilio_acreedor.localidad.cve_loc":
+        data.deudas.domicilio_acreedor.localidad.cve_loc = valor;
+        break;
+      case "domicilio_acreedor.localidad.nom_loc":
+        data.deudas.domicilio_acreedor.localidad.nom_loc = valor;
+        break;
+      case "domicilio_acreedor.municipio":
+        data.deudas.domicilio_acreedor.municipio = valor;
+        break;
+      case "domicilio_acreedor.municipio.cve_mun":
+        data.deudas.domicilio_acreedor.municipio.cve_mun = valor;
+        break;
+      case "domicilio_acreedor.municipio.nom_mun":
+        data.deudas.domicilio_acreedor.municipio.nom_mun = valor;
+        break;
+      case "domicilio_acreedor.numExt":
+        data.deudas.domicilio_acreedor.numExt = valor;
+        break;
+      case "domicilio_acreedor.numInt":
+        data.deudas.domicilio_acreedor.numInt = valor;
+        break;
+      case "domicilio_acreedor.pais":
+        data.deudas.domicilio_acreedor.pais = valor;
+        break;
+      case "domicilio_acreedor.pais.codigo":
+        data.deudas.domicilio_acreedor.pais.codigo = valor;
+        break;
+      case "domicilio_acreedor.pais.valor":
+        data.deudas.domicilio_acreedor.pais.valor = valor;
+        break;
+      case "domicilio_acreedor.vialidad":
+        data.deudas.domicilio_acreedor.vialidad = valor;
+        break;
+      case "domicilio_acreedor.vialidad.nom_vial":
+        data.deudas.domicilio_acreedor.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_acreedor.vialidad.tipo_vial":
+        data.deudas.domicilio_acreedor.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_adeudo":
+        data.deudas.fecha_adeudo = valor;
+        break;
+      case "garantia":
+        data.deudas.garantia = valor;
+        break;
+      case "id":
+        data.deudas.id = valor;
+        break;
+      case "identificador_deuda":
+        data.deudas.identificador_deuda = valor;
+        break;
+      case "monto_original":
+        data.deudas.monto_original = valor;
+        break;
+      case "montos_abonados":
+        data.deudas.montos_abonados = valor;
+        break;
+      case "nacional_extranjero":
+        data.deudas.nacional_extranjero = valor;
+        break;
+      case "nacional_extranjero.codigo":
+        data.deudas.nacional_extranjero.codigo = valor;
+        break;
+      case "nacional_extranjero.valor":
+        data.deudas.nacional_extranjero.valor = valor;
+        break;
+      case "nombre_acreedor":
+        data.deudas.nombre_acreedor = valor;
+        break;
+      case "nombre_garante":
+        data.deudas.nombre_garante = valor;
+        break;
+      case "observaciones":
+        data.deudas.observaciones = valor;
+        break;
+      case "plazo_adeudo":
+        data.deudas.plazo_adeudo = valor;
+        break;
+      case "porcentaje_adeudo_titular":
+        data.deudas.porcentaje_adeudo_titular = valor;
+        break;
+      case "rfc_acreedor":
+        data.deudas.rfc_acreedor = valor;
+        break;
+      case "saldo_pendiente":
+        data.deudas.saldo_pendiente = valor;
+        break;
+      case "sector_industria":
+        data.deudas.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.deudas.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.deudas.sector_industria.valor = valor;
+        break;
+      case "tasa_interes":
+        data.deudas.tasa_interes = valor;
+        break;
+      case "tipo_acreedor":
+        data.deudas.tipo_acreedor = valor;
+        break;
+      case "tipo_acreedor.codigo":
+        data.deudas.tipo_acreedor.codigo = valor;
+        break;
+      case "tipo_acreedor.valor":
+        data.deudas.tipo_acreedor.valor = valor;
+        break;
+      case "tipo_adeudo":
+        data.deudas.tipo_adeudo = valor;
+        break;
+      case "tipo_adeudo.codigo":
+        data.deudas.tipo_adeudo.codigo = valor;
+        break;
+      case "tipo_adeudo.valor":
+        data.deudas.tipo_adeudo.valor = valor;
+        break;
+      case "tipo_moneda":
+        data.deudas.tipo_moneda = valor;
+        break;
+      case "tipo_moneda.codigo":
+        data.deudas.tipo_moneda.codigo = valor;
+        break;
+      case "tipo_moneda.moneda":
+        data.deudas.tipo_moneda.moneda = valor;
+        break;
+      case "tipo_operacion":
+        data.deudas.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.deudas.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.deudas.tipo_operacion.valor = valor;
+        break;
+      case "titularidad_deuda":
+        data.deudas.titularidad_deuda = valor;
+        break;
+      case "titularidad_deuda.codigo":
+        data.deudas.titularidad_deuda.codigo = valor;
+        break;
+      case "titularidad_deuda.valor":
+        data.deudas.titularidad_deuda.valor = valor;
+        break;
+      case "unidad_medida_adeudo":
+        data.deudas.unidad_medida_adeudo = valor;
+        break;
+      case "unidad_medida_adeudo.codigo":
+        data.deudas.unidad_medida_adeudo.codigo = valor;
+        break;
+      case "unidad_medida_adeudo.valor":
+        data.deudas.unidad_medida_adeudo.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
+  setDataOtrasObligaciones = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "domicilio_acreedor":
+        data.otras_obligaciones.domicilio_acreedor = valor;
+        break;
+      case "domicilio_acreedor.cp":
+        data.otras_obligaciones.domicilio_acreedor.cp = valor;
+        break;
+      case "domicilio_acreedor.entidad_federativa":
+        data.otras_obligaciones.domicilio_acreedor.entidad_federativa = valor;
+        break;
+      case "domicilio_acreedor.entidad_federativa.cve_ent":
+        data.otras_obligaciones.domicilio_acreedor.entidad_federativa.cve_ent = valor;
+        break;
+      case "domicilio_acreedor.entidad_federativa.nom_ent":
+        data.otras_obligaciones.domicilio_acreedor.entidad_federativa.nom_ent = valor;
+        break;
+      case "domicilio_acreedor.localidad":
+        data.otras_obligaciones.domicilio_acreedor.localidad = valor;
+        break;
+      case "domicilio_acreedor.localidad.cve_loc":
+        data.otras_obligaciones.domicilio_acreedor.localidad.cve_loc = valor;
+        break;
+      case "domicilio_acreedor.localidad.nom_loc":
+        data.otras_obligaciones.domicilio_acreedor.localidad.nom_loc = valor;
+        break;
+      case "domicilio_acreedor.municipio":
+        data.otras_obligaciones.domicilio_acreedor.municipio = valor;
+        break;
+      case "domicilio_acreedor.municipio.cve_mun":
+        data.otras_obligaciones.domicilio_acreedor.municipio.cve_mun = valor;
+        break;
+      case "domicilio_acreedor.municipio.nom_mun":
+        data.otras_obligaciones.domicilio_acreedor.municipio.nom_mun = valor;
+        break;
+      case "domicilio_acreedor.numExt":
+        data.otras_obligaciones.domicilio_acreedor.numExt = valor;
+        break;
+      case "domicilio_acreedor.numInt":
+        data.otras_obligaciones.domicilio_acreedor.numInt = valor;
+        break;
+      case "domicilio_acreedor.pais":
+        data.otras_obligaciones.domicilio_acreedor.pais = valor;
+        break;
+      case "domicilio_acreedor.pais.codigo":
+        data.otras_obligaciones.domicilio_acreedor.pais.codigo = valor;
+        break;
+      case "domicilio_acreedor.pais.valor":
+        data.otras_obligaciones.domicilio_acreedor.pais.valor = valor;
+        break;
+      case "domicilio_acreedor.vialidad":
+        data.otras_obligaciones.domicilio_acreedor.vialidad = valor;
+        break;
+      case "domicilio_acreedor.vialidad.nom_vial":
+        data.otras_obligaciones.domicilio_acreedor.vialidad.nom_vial = valor;
+        break;
+      case "domicilio_acreedor.vialidad.tipo_vial":
+        data.otras_obligaciones.domicilio_acreedor.vialidad.tipo_vial = valor;
+        break;
+      case "fecha_obligacion":
+        data.otras_obligaciones.fecha_obligacion = valor;
+        break;
+      case "garantia":
+        data.otras_obligaciones.garantia = valor;
+        break;
+      case "id":
+        data.otras_obligaciones.id = valor;
+        break;
+      case "identificador_obligacion":
+        data.otras_obligaciones.identificador_obligacion = valor;
+        break;
+      case "monto_original":
+        data.otras_obligaciones.monto_original = valor;
+        break;
+      case "montos_abonados":
+        data.otras_obligaciones.montos_abonados = valor;
+        break;
+      case "nacional_extranjero":
+        data.otras_obligaciones.nacional_extranjero = valor;
+        break;
+      case "nacional_extranjero.codigo":
+        data.otras_obligaciones.nacional_extranjero.codigo = valor;
+        break;
+      case "nacional_extranjero.valor":
+        data.otras_obligaciones.nacional_extranjero.valor = valor;
+        break;
+      case "nombre_acreedor":
+        data.otras_obligaciones.nombre_acreedor = valor;
+        break;
+      case "observaciones":
+        data.otras_obligaciones.observaciones = valor;
+        break;
+      case "plazo_obligacion":
+        data.otras_obligaciones.plazo_obligacion = valor;
+        break;
+      case "porcentaje_obligacion_titular":
+        data.otras_obligaciones.porcentaje_obligacion_titular = valor;
+        break;
+      case "rfc_acreedor":
+        data.otras_obligaciones.rfc_acreedor = valor;
+        break;
+      case "saldo_pendiente":
+        data.otras_obligaciones.saldo_pendiente = valor;
+        break;
+      case "sector_industria":
+        data.otras_obligaciones.sector_industria = valor;
+        break;
+      case "sector_industria.codigo":
+        data.otras_obligaciones.sector_industria.codigo = valor;
+        break;
+      case "sector_industria.valor":
+        data.otras_obligaciones.sector_industria.valor = valor;
+        break;
+      case "tasa_interes":
+        data.otras_obligaciones.tasa_interes = valor;
+        break;
+      case "tipo_acreedor":
+        data.otras_obligaciones.tipo_acreedor = valor;
+        break;
+      case "tipo_acreedor.codigo":
+        data.otras_obligaciones.tipo_acreedor.codigo = valor;
+        break;
+      case "tipo_acreedor.valor":
+        data.otras_obligaciones.tipo_acreedor.valor = valor;
+        break;
+      case "tipo_moneda":
+        data.otras_obligaciones.tipo_moneda = valor;
+        break;
+      case "tipo_moneda.codigo":
+        data.otras_obligaciones.tipo_moneda.codigo = valor;
+        break;
+      case "tipo_moneda.moneda":
+        data.otras_obligaciones.tipo_moneda.moneda = valor;
+        break;
+      case "tipo_obligacion":
+        data.otras_obligaciones.tipo_obligacion = valor;
+        break;
+      case "tipo_operacion":
+        data.otras_obligaciones.tipo_operacion = valor;
+        break;
+      case "tipo_operacion.codigo":
+        data.otras_obligaciones.tipo_operacion.codigo = valor;
+        break;
+      case "tipo_operacion.valor":
+        data.otras_obligaciones.tipo_operacion.valor = valor;
+        break;
+      case "titularidad_obligacion":
+        data.otras_obligaciones.titularidad_obligacion = valor;
+        break;
+      case "titularidad_obligacion.codigo":
+        data.otras_obligaciones.titularidad_obligacion.codigo = valor;
+        break;
+      case "titularidad_obligacion.valor":
+        data.otras_obligaciones.titularidad_obligacion.valor = valor;
+        break;
+      case "unidad_medida_plazo":
+        data.otras_obligaciones.unidad_medida_plazo = valor;
+        break;
+      case "unidad_medida_plazo.codigo":
+        data.otras_obligaciones.unidad_medida_plazo.codigo = valor;
+        break;
+      case "unidad_medida_plazo.valor":
+        data.otras_obligaciones.unidad_medida_plazo.valor = valor;
+        break;
+
+      default:
+    }
+
+    this.setState(data, () => {
+      if (this.state.debug) {
+        console.log(this.state.apoyos_beneficios_publicos);
+        console.log(valor);
+        // console.log(this.state.informacion_general.domicilio);
+      }
+    });
+  };
+
   componentDidMount() {
     fetch(config.apiHost + "ciudades")
       .then(res => res.json())
@@ -2926,22 +6559,23 @@ class Index extends Component {
               </Button>
             )}
           </Grid>
+          <Grid item xs={12} style={{ textAlign: "center", padding: "20px" }}>
+            {this.state.show}
+          </Grid>
           {this.state.show === 1 && (
             <Grid item xs={12}>
               <Formulario
                 data={this.state}
-                setDataInformacionPersonal={this.setDataInformacionPersonal}
+                handleChange={this.setDataInformacionPersonal}
               />
             </Grid>
           )}
           {this.state.show === 2 && (
             <DatosCurriculares
               data={this.state}
-              entidades={this.state.entidades}
-              ciudades={this.state.ciudades}
               handleChange={this.setDataDatosCurriculares}
-              handleClick={this.handleClickDatosCurriculares}
-              buttonClick={this.handleClickEliminarDatosCurriculares}
+              addClick={this.handleClickDatosCurriculares}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
           {this.state.show === 3 && (
@@ -2957,11 +6591,9 @@ class Index extends Component {
           {this.state.show === 4 && (
             <ExperienciaLaboral
               data={this.state}
-              handleAddExperienciaLaborar={this.handleAddExperienciaLaborar}
-              handleRemoveExperienciaLaborar={
-                this.handleRemoveExperienciaLaborar
-              }
               handleChange={this.setDataExperienciaLaboral}
+              addClick={this.handleAddExperienciaLaborar}
+              removeClick={this.handleRemoveExperienciaLaborar}
               nivelGobierno={this.state.nivelGobierno}
               poderEjecutivo={this.state.poderEjecutivo}
               sectorIndustria={this.state.sectorIndustria}
@@ -2972,272 +6604,278 @@ class Index extends Component {
             <DependientesEconomicos
               data={this.state}
               handleChange={this.setDataDependientesEconomicos}
-              handleAddDependientesEconomicos={
-                this.handleAddDependientesEconomicos
-              }
-              handleRemoveDependientesEconomicos={
-                this.handleRemoveDependientesEconomicos
-              }
+              addClick={this.handleAddDependientesEconomicos}
+              removeClick={this.handleRemoveDependientesEconomicos}
             />
           )}
 
           {this.state.show === 6 && (
             <EmpresasSociedadesAsociaciones
               data={this.state}
-              handleClickEmpresasSociedadesAsociaciones={
-                this.handleClickEmpresasSociedadesAsociaciones
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickEmpresasSociedadesAsociaciones}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 7 && (
             <Membresias
               data={this.state}
-              handleClickMembresias={this.handleClickMembresias}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickMembresias}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 8 && (
             <ApoyosPublicos
               data={this.state}
-              handleClickApoyosPublicos={this.handleClickApoyosPublicos}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickApoyosPublicos}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 9 && (
             <RepresentacionActiva
               data={this.state}
-              handleClickRepresentacionActiva={
-                this.handleClickRepresentacionActiva
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickRepresentacionActiva}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 10 && (
             <RepresentacionPasiva
               data={this.state}
-              handleClickRepresentacionPasiva={
-                this.handleClickRepresentacionPasiva
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickRepresentacionPasiva}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 11 && (
             <SociosComerciales
               data={this.state}
-              handleClickSociosComerciales={this.handleClickSociosComerciales}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickSociosComerciales}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 12 && (
             <ClientesPrincipales
               data={this.state}
-              handleClickClientesPrincipales={
-                this.handleClickClientesPrincipales
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickClientesPrincipales}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 13 && (
             <OtrasPartesRelacionadas
               data={this.state}
-              handleClickOtrasPartesRelacionadas={
-                this.handleClickOtrasPartesRelacionadas
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickOtrasPartesRelacionadas}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 14 && (
             <BeneficiosGratuitos
               data={this.state}
-              handleClickBeneficiosGratuitos={
-                this.handleClickBeneficiosGratuitos
-              }
-              handleChange={this.setDataEncargoActual}
+              handleChange={this.setDataDatosCurriculares}
+              addClick={this.handleClickDatosCurriculares}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 15 && (
             <SalariosPublicos
               data={this.state}
-              handleClickSalariosPublicos={this.handleClickSalariosPublicos}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickSalariosPublicos}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 16 && (
             <SalariosEmpleos
               data={this.state}
-              handleClickSalariosEmpleos={this.handleClickSalariosEmpleos}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickSalariosEmpleos}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 17 && (
             <ActividadProfesional
               data={this.state}
-              handleClickActividadProfesional={
-                this.handleClickActividadProfesional
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickActividadProfesional}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 18 && (
             <ActividadEmpresarial
               data={this.state}
-              handleClickActividadEmpresarial={
-                this.handleClickActividadEmpresarial
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickActividadEmpresarial}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 19 && (
             <ActividadMenor
               data={this.state}
-              handleClickActividadMenor={this.handleClickActividadMenor}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickActividadMenor}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 20 && (
             <Arrendamiento
               data={this.state}
-              handleClickArrendamiento={this.handleClickArrendamiento}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickArrendamiento}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 21 && (
             <Intereses
               data={this.state}
-              handleClickIntereses={this.handleClickIntereses}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickIntereses}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 22 && (
             <Premios
               data={this.state}
-              handleClickPremios={this.handleClickPremios}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickPremios}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 23 && (
             <EnajenacionBienes
               data={this.state}
-              handleClickEnajenacionBienes={this.handleClickEnajenacionBienes}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickEnajenacionBienes}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 24 && (
             <OtrosIngresos
               data={this.state}
-              handleClickOtrosIngresos={this.handleClickOtrosIngresos}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickOtrosIngresos}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 25 && (
             <BienesInmuebles
               data={this.state}
-              handleClickBienesInmuebles={this.handleClickBienesInmuebles}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickBienesInmuebles}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 26 && (
             <BienesMueblesRegistrables
               data={this.state}
-              handleClickBienesMueblesRegistrables={
-                this.handleClickBienesMueblesRegistrables
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickBienesMueblesRegistrables}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 27 && (
             <BienesMueblesNoRegistrables
               data={this.state}
-              handleClickBienesMueblesNoRegistrables={
-                this.handleClickBienesMueblesNoRegistrables
-              }
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickBienesMueblesNoRegistrables}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 28 && (
             <Inversiones
               data={this.state}
-              handleClickInversiones={this.handleClickInversiones}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickInversiones}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 29 && (
             <EfectivoMetales
               data={this.state}
-              handleClickEfectivoMetales={this.handleClickEfectivoMetales}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickEfectivoMetales}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 30 && (
             <Fideicomisos
               data={this.state}
-              handleClickFideicomisos={this.handleClickFideicomisos}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickFideicomisos}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 31 && (
             <BienesIntangibles
               data={this.state}
-              handleClickBienesIntangibles={this.handleClickBienesIntangibles}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickBienesIntangibles}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 32 && (
             <CuentasCobrar
               data={this.state}
-              handleClickCuentasCobrar={this.handleClickCuentasCobrar}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickCuentasCobrar}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 33 && (
             <PropietarioTercero
               data={this.state}
-              handleClickPropietarioTercero={this.handleClickPropietarioTercero}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickPropietarioTercero}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 34 && (
             <Deudas
               data={this.state}
-              handleClickDeudas={this.handleClickDeudas}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickDeudas}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
 
           {this.state.show === 35 && (
             <OtrasObligaciones
               data={this.state}
-              handleClickOtrasObligaciones={this.handleClickOtrasObligaciones}
               handleChange={this.setDataEncargoActual}
+              addClick={this.handleClickOtrasObligaciones}
+              removeClick={this.handleClickEliminarDatosCurriculares}
             />
           )}
         </Grid>

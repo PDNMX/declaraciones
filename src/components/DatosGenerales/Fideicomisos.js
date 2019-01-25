@@ -55,9 +55,8 @@ const styles = theme => ({
   }
 });
 
-
 function SimpleCard(props) {
-  const { classes, data, handleClickFideicomisos, handleChange } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -73,7 +72,7 @@ function SimpleCard(props) {
                 Tipo de operación
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_fideicomisos.tipo_operacion.codigo}
                 onChange={handleChange("tipo_operacion")}
                 inputProps={{
                   name: "tipo_operacion",
@@ -96,7 +95,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre o identificador del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.identificador_fideicomiso}
               margin="normal"
             />
           </Grid>
@@ -106,7 +105,7 @@ function SimpleCard(props) {
                 Tipo de fideicomiso
               </InputLabel>
               <Select
-                value={data.estado_civil.codigo}
+                value={data.datos_fideicomisos.tipo_fideicomiso.codigo}
                 onChange={handleChange("tipo_fideicomiso")}
                 inputProps={{
                   name: "tipo_fideicomiso",
@@ -129,7 +128,7 @@ function SimpleCard(props) {
               id="grado"
               label="Objetivo del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.objetivo}
               margin="normal"
             />
           </Grid>
@@ -138,16 +137,7 @@ function SimpleCard(props) {
               id="grado"
               label="Número de registro o identificador"
               className={classes.textField}
-              value={data.grado_obtenido}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Número de registro o identificador"
-              className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.numero_registro}
               margin="normal"
             />
           </Grid>
@@ -156,7 +146,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de creación del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.fecha_creacion}
               margin="normal"
             />
           </Grid>
@@ -165,7 +155,7 @@ function SimpleCard(props) {
               id="grado"
               label="Vigencia del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.vigencia}
               margin="normal"
             />
           </Grid>
@@ -174,7 +164,7 @@ function SimpleCard(props) {
               id="grado"
               label="Residencia del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.residencia.codigo}
               margin="normal"
             />
           </Grid>
@@ -183,7 +173,7 @@ function SimpleCard(props) {
               id="grado"
               label="Valor del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.valor}
               margin="normal"
             />
           </Grid>
@@ -192,7 +182,7 @@ function SimpleCard(props) {
               id="grado"
               label="Moneda del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.moneda.codigo}
               margin="normal"
             />
           </Grid>
@@ -201,7 +191,7 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje propiedad/Derechos fiduciarios"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.porcentaje_propiedad_derechos_fiduciarios}
               margin="normal"
             />
           </Grid>
@@ -210,7 +200,7 @@ function SimpleCard(props) {
               id="grado"
               label="Ingreso monetario que obtiene del fideicomiso"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.ingreso_monetario_obtenido}
               margin="normal"
             />
           </Grid>
@@ -219,7 +209,7 @@ function SimpleCard(props) {
               id="grado"
               label="Institución fiduciaria"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.institucion_fiduciaria}
               margin="normal"
             />
           </Grid>
@@ -228,7 +218,7 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social del fideicomitente, fideicomisario, fiduciario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.fideicomitente.nombre}
               margin="normal"
             />
           </Grid>
@@ -237,7 +227,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC del fideicomitente, fideicomisario, fiduciario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.fideicomitente.rfc}
               margin="normal"
             />
           </Grid>
@@ -246,7 +236,7 @@ function SimpleCard(props) {
               id="grado"
               label="CURP del fideicomitente, fideicomisario, fiduciario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.fideicomitente.curp}
               margin="normal"
             />
           </Grid>
@@ -255,7 +245,7 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de nacimiento o de constitución del fideicomitente, fideicomisario, fiduciario"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.fideicomitente.fecha_constitucion}
               margin="normal"
             />
           </Grid>
@@ -265,7 +255,7 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.grado_obtenido}
+              value={data.datos_fideicomisos.observaciones}
               margin="normal"
               multiline={true}
             />
@@ -276,14 +266,14 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickFideicomisos()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.fideicomisos} />
+          <Tabla data={data.fideicomisos} buttonClick={removeClick} />
         </Grid>
       </CardContent>
     </Card>

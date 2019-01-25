@@ -55,15 +55,8 @@ const styles = theme => ({
   }
 });
 
-
 function SimpleCard(props) {
-  const {
-    classes,
-    data,
-    handleClickSalariosPublicos,
-    handleChange,
-
-  } = props;
+  const { classes, data, handleChange, addClick, removeClick } = props;
 
   // console.log(data);
   return (
@@ -73,128 +66,131 @@ function SimpleCard(props) {
           Sueldos y salarios públicos
         </Typography>
         <Grid container spacing={24}>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="ente_publico">Ente Público</InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChange("ente_publico")}
-              inputProps={{
-                name: "ente_publico",
-                id: "ente_publico"
-              }}
-            >
-              {data.catDependencias.map(entesPublicos => (
-                <MenuItem key={entesPublicos.valor} value={entesPublicos.valor}>
-                  {entesPublicos.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="RFC"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-
-
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Ingreso bruto anual recibido por el encargo público"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="moneda">Moneda</InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChange("moneda")}
-              inputProps={{
-                name: "moneda",
-                id: "moneda"
-              }}
-            >
-              {data.catTiposMonedas.map(tipoMoneda => (
-                <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                  {tipoMoneda.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={2}>
-          <FormControl className={classes.select}>
-            <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
-            <Select
-              value={data.estado_civil.codigo}
-              onChange={handleChange("frecuencia")}
-              inputProps={{
-                name: "frecuencia",
-                id: "frecuencia"
-              }}
-            >
-              {data.catMedidasPlazos.map(medidaPlazo => (
-                <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
-                  {medidaPlazo.valor}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Duración"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="ente_publico">Ente Público</InputLabel>
+              <Select
+                value={data.datos_sueldos_salarios_publicos.ente_publico.codigo}
+                onChange={handleChange("ente_publico")}
+                inputProps={{
+                  name: "ente_publico",
+                  id: "ente_publico"
+                }}
+              >
+                {data.catDependencias.map(entesPublicos => (
+                  <MenuItem
+                    key={entesPublicos.valor}
+                    value={entesPublicos.valor}
+                  >
+                    {entesPublicos.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Fecha de pago"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-          />
-        </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="RFC"
+              className={classes.textField}
+              value={data.datos_sueldos_salarios_publicos.rfc}
+              margin="normal"
+            />
+          </Grid>
 
-        <Grid item xs={3}>
-          <TextField
-            id="grado"
-            label="Observaciones"
-            className={classes.textField}
-            value={data.grado_obtenido}
-            margin="normal"
-            multiline={true}
-          />
-        </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Ingreso bruto anual recibido por el encargo público"
+              className={classes.textField}
+              value={data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.valor}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="moneda">Moneda</InputLabel>
+              <Select
+                value={data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.moneda.codigo}
+                onChange={handleChange("moneda")}
+                inputProps={{
+                  name: "moneda",
+                  id: "moneda"
+                }}
+              >
+                {data.catTiposMonedas.map(tipoMoneda => (
+                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
+                    {tipoMoneda.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
+              <Select
+                value={data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal.codigo}
+                onChange={handleChange("frecuencia")}
+                inputProps={{
+                  name: "frecuencia",
+                  id: "frecuencia"
+                }}
+              >
+                {data.catMedidasPlazos.map(medidaPlazo => (
+                  <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
+                    {medidaPlazo.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Duración"
+              className={classes.textField}
+              value={data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.duracion_frecuencia}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Fecha de pago"
+              className={classes.textField}
+              value={data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.fecha_transaccion}
+              margin="normal"
+            />
+          </Grid>
 
-
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Observaciones"
+              className={classes.textField}
+              value={data.datos_sueldos_salarios_publicos.observaciones}
+              margin="normal"
+              multiline={true}
+            />
+          </Grid>
 
           <Grid item xs={2}>
             <Button
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleClickSalariosPublicos()}
+              onClick={addClick()}
             >
               Agregar
             </Button>
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.sueldos_salarios_publicos} />
+          <Tabla
+            data={data.sueldos_salarios_publicos}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>
