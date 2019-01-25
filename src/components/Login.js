@@ -10,6 +10,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Mensaje from "./Mensaje";
 
+import config from "../config.json";
+
 // console.log(process.env.API);
 
 const styles = theme => ({
@@ -61,7 +63,7 @@ class Login extends React.Component {
 
     handleClick = event => {
         process.env.APP_API = process.env.APP_API || 'https://localhost/captura/api/';
-        let apiBaseUrl = process.env.APP_API + "users/";
+        let apiBaseUrl = config.apiHost + "users/";
 
         const payload = {
             usuario: this.state.usuario,
