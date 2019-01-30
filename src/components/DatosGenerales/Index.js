@@ -10,12 +10,7 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import {
-  data,
-  datos_curriculares_grados_academicos,
-  datos_experiencia_laboral,
-  datos_dependientes_economicos
-} from "./data";
+import { data, clean } from "./data";
 
 import Menu from "../Menu";
 import Formulario from "./Formulario";
@@ -54,7 +49,7 @@ import PropietarioTercero from "./PropietarioTercero";
 import Deudas from "./Deudas";
 import OtrasObligaciones from "./OtrasObligaciones";
 
-console.log(process.env.PRUEBA);
+console.log(process.env.APP_API);
 
 var apiHost = process.env.APP_API || "https://localhost/captura/api/";
 
@@ -72,7 +67,12 @@ const styles = theme => ({
 var loggedIn = sessionStorage.getItem("logged");
 
 class Index extends Component {
-  state = data;
+  constructor(props) {
+    super(props);
+    this.state = data;
+  }
+
+  // state = data;
 
   anyTextChange = (obj, name) => event => {
     let text = this.state[obj];
@@ -269,1800 +269,910 @@ class Index extends Component {
       .then(localidades => this.setState({ localidades: localidades }));
   };
 
-  handleChange = name => event => {
-    const valor = this.state.entidades.filter(
-      x => x.cve_ent === event.target.value
-    );
-
-    this.setState({
-      [name]: {
-        nom_ent: valor[0].nom_ent,
-        cve_ent: valor[0].cve_ent
+  removeClickActividadEmpresarial = index => event => {
+    this.state.actividad_empresarial.splice(index, 1);
+    this.setState(
+      { actividad_empresarial: this.state.actividad_empresarial },
+      () => {
+        // console.log(this.state.actividad_empresarial);
       }
-    });
-  };
-
-  handleChange = name => event => {
-    const valor = this.state.municipios.filter(
-      x => x.cve_mun === event.target.value
     );
-
-    fetch(
-      config.apiHost +
-        "localidades?cve_ent=" +
-        this.state.dom_entidad_federativa.cve_ent +
-        "&cve_mun=" +
-        event.target.value
-    )
-      .then(res => res.json())
-      .then(localidades => this.setState({ localidades: localidades }));
-
-    this.setState({
-      [name]: {
-        nom_mun: valor[0].nom_mun,
-        cve_mun: valor[0].cve_mun
+  };
+  removeClickActividadMenor = index => event => {
+    this.state.actividad_economica_menor.splice(index, 1);
+    this.setState(
+      { actividad_economica_menor: this.state.actividad_economica_menor },
+      () => {
+        // console.log(this.state.actividad_economica_menor);
       }
-    });
-  };
-
-  handleChange = name => event => {
-    const valor = this.state.localidades.filter(
-      x => x.cve_loc === event.target.value
     );
-
-    this.setState({
-      [name]: {
-        nom_loc: valor[0].nom_loc,
-        cve_loc: valor[0].cve_loc
+  };
+  removeClickActividadProfesional = index => event => {
+    this.state.actividad_profesional.splice(index, 1);
+    this.setState(
+      { actividad_profesional: this.state.actividad_profesional },
+      () => {
+        // console.log(this.state.actividad_profesional);
       }
-    });
-  };
-
-  handleChange = name => event => {
-    // var ciudades = event.target.value;
-    // var nacionalidad = [];
-    // for (var index in ciudades) {
-    //   var ciudad = ciudades[index];
-    //   var valor = this.state.ciudades.filter(x => x.codigo === ciudad);
-    //
-    //   delete valor[0]._id;
-    //   nacionalidad.push(valor);
-    //   // console.log(nacionalidad);
-    // }
-    // this.setState({ nacionalidades: nacionalidad });
-    // this.setState({
-    //   [name]: event.target.value
-    // });
-    // console.log(event.target.value);
-  };
-
-  addClickDatosCurriculares = () => event => {
-    let datos = Object.assign(
-      {},
-      this.state.datos_curriculares_grados_academicos
     );
-    this.state.datos_curriculares.grados_academicos.push(datos);
-    this.setState(this.state);
-
-    // limpieza del Formulario
-    this.setState({
-      datos_curriculares_grados_academicos: Object.assign(
-        {},
-        datos_curriculares_grados_academicos
-      )
+  };
+  removeClickApoyosPublicos = index => event => {
+    this.state.apoyos_beneficios_publicos.splice(index, 1);
+    this.setState(
+      { apoyos_beneficios_publicos: this.state.apoyos_beneficios_publicos },
+      () => {
+        // console.log(this.state.apoyos_beneficios_publicos);
+      }
+    );
+  };
+  removeClickArrendamiento = index => event => {
+    this.state.arrendamiento.splice(index, 1);
+    this.setState({ arrendamiento: this.state.arrendamiento }, () => {
+      // console.log(this.state.arrendamiento);
     });
   };
-
-  addClickEliminarDatosCurriculares = index => event => {
-    this.state.datos_curriculares.grados_academicos.splice(index, 1);
-    this.setState({ datos_curriculares: this.state.datos_curriculares }, () => {
-      console.log(this.state.datos_curriculares);
+  removeClickBeneficiosGratuitos = index => event => {
+    this.state.beneficios_gratuitos.splice(index, 1);
+    this.setState(
+      { beneficios_gratuitos: this.state.beneficios_gratuitos },
+      () => {
+        // console.log(this.state.beneficios_gratuitos);
+      }
+    );
+  };
+  removeClickBienesInmuebles = index => event => {
+    this.state.bienes_inmuebles.splice(index, 1);
+    this.setState({ bienes_inmuebles: this.state.bienes_inmuebles }, () => {
+      // console.log(this.state.bienes_inmuebles);
     });
   };
-
-  handleAddExperienciaLaborar = () => {
-    let datos = Object.assign({}, this.state.datos_experiencia_laboral);
-    this.state.experiencia_laboral.push(datos);
-    this.setState(this.state);
-
-    // limpieza del Formulario
-    this.setState({
-      datos_experiencia_laboral: Object.assign({}, datos_experiencia_laboral)
+  removeClickBienesIntangibles = index => event => {
+    this.state.bienes_intangibles.splice(index, 1);
+    this.setState({ bienes_intangibles: this.state.bienes_intangibles }, () => {
+      // console.log(this.state.bienes_intangibles);
     });
   };
-
-  handleRemoveExperienciaLaborar = index => event => {
+  removeClickBienesMueblesNoRegistrables = index => event => {
+    this.state.bienes_muebles_no_registrables.splice(index, 1);
+    this.setState(
+      {
+        bienes_muebles_no_registrables: this.state
+          .bienes_muebles_no_registrables
+      },
+      () => {
+        // console.log(this.state.bienes_muebles_no_registrables);
+      }
+    );
+  };
+  removeClickBienesMueblesRegistrables = index => event => {
+    this.state.bienes_muebles_registrables.splice(index, 1);
+    this.setState(
+      { bienes_muebles_registrables: this.state.bienes_muebles_registrables },
+      () => {
+        // console.log(this.state.bienes_muebles_registrables);
+      }
+    );
+  };
+  removeClickClientesPrincipales = index => event => {
+    this.state.clientes_principales.splice(index, 1);
+    this.setState(
+      { clientes_principales: this.state.clientes_principales },
+      () => {
+        // console.log(this.state.clientes_principales);
+      }
+    );
+  };
+  removeClickCuentasCobrar = index => event => {
+    this.state.cuentas_por_cobrar.splice(index, 1);
+    this.setState({ cuentas_por_cobrar: this.state.cuentas_por_cobrar }, () => {
+      // console.log(this.state.cuentas_por_cobrar);
+    });
+  };
+  removeClickDatosCurriculares = index => event => {
+    this.state.curriculares_grados_academicos.splice(event.target.value, 1);
+    this.setState(
+      {
+        curriculares_grados_academicos: this.state
+          .curriculares_grados_academicos
+      },
+      () => {
+        // console.log(this.state.datos_curriculares);
+      }
+    );
+  };
+  removeClickDependientesEconomicos = index => event => {
+    this.state.dependientes_economicos.splice(index, 1);
+    this.setState(
+      { dependientes_economicos: this.state.dependientes_economicos },
+      () => {
+        // console.log(this.state.dependientes_economicos);
+      }
+    );
+  };
+  removeClickDeudas = index => event => {
+    this.state.deudas.splice(index, 1);
+    this.setState({ deudas: this.state.deudas }, () => {
+      // console.log(this.state.deudas);
+    });
+  };
+  removeClickEfectivoMetales = index => event => {
+    this.state.efectivo_metales.splice(index, 1);
+    this.setState({ efectivo_metales: this.state.efectivo_metales }, () => {
+      // console.log(this.state.efectivo_metales);
+    });
+  };
+  removeClickEmpresasSociedadesAsociaciones = index => event => {
+    this.state.empresas_sociedades_asociaciones.splice(index, 1);
+    this.setState(
+      {
+        empresas_sociedades_asociaciones: this.state
+          .empresas_sociedades_asociaciones
+      },
+      () => {
+        // console.log(this.state.empresas_sociedades_asociaciones);
+      }
+    );
+  };
+  removeClickEnajenacionBienes = index => event => {
+    this.state.enajenacion_bienes.splice(index, 1);
+    this.setState({ enajenacion_bienes: this.state.enajenacion_bienes }, () => {
+      // console.log(this.state.enajenacion_bienes);
+    });
+  };
+  removeClickExperienciaLaborar = index => event => {
     this.state.experiencia_laboral.splice(index, 1);
     this.setState(
       { experiencia_laboral: this.state.experiencia_laboral },
+      () => {
+        // console.log(this.state.experiencia_laboral);
+      }
+    );
+  };
+  removeClickFideicomisos = index => event => {
+    this.state.fideicomisos.splice(index, 1);
+    this.setState({ fideicomisos: this.state.fideicomisos }, () => {
+      // console.log(this.state.fideicomisos);
+    });
+  };
+  removeClickIntereses = index => event => {
+    this.state.intereses.splice(index, 1);
+    this.setState({ intereses: this.state.intereses }, () => {
+      // console.log(this.state.intereses);
+    });
+  };
+  removeClickInversiones = index => event => {
+    this.state.inversiones_cuentas_valores.splice(index, 1);
+    this.setState(
+      { inversiones_cuentas_valores: this.state.inversiones_cuentas_valores },
+      () => {
+        // console.log(this.state.inversiones_cuentas_valores);
+      }
+    );
+  };
+
+  removeClickMembresias = index => event => {
+    // console.log(event);
+    //
+
+    this.state.membresias.splice(index, 1);
+    this.setState({ membresias: this.state.membresias }, () => {
+      console.log(index);
+      // console.log(this.state.membresias);
+    });
+  };
+  removeClickOtrasObligaciones = index => event => {
+    this.state.otras_obligaciones.splice(index, 1);
+    this.setState({ otras_obligaciones: this.state.otras_obligaciones }, () => {
+      // console.log(this.state.otras_obligaciones);
+    });
+  };
+  removeClickOtrasPartesRelacionadas = index => event => {
+    this.state.otras_partes.splice(index, 1);
+    this.setState({ otras_partes: this.state.otras_partes }, () => {
+      // console.log(this.state.otras_partes);
+    });
+  };
+  removeClickOtrosIngresos = index => event => {
+    this.state.otros_ingresos.splice(index, 1);
+    this.setState({ otros_ingresos: this.state.otros_ingresos }, () => {
+      // console.log(this.state.otros_ingresos);
+    });
+  };
+  removeClickPremios = index => event => {
+    this.state.premios.splice(index, 1);
+    this.setState({ premios: this.state.premios }, () => {
+      // console.log(this.state.premios);
+    });
+  };
+  removeClickPropietarioTercero = index => event => {
+    this.state.uso_especie_propiedad_tercero.splice(index, 1);
+    this.setState(
+      {
+        uso_especie_propiedad_tercero: this.state.uso_especie_propiedad_tercero
+      },
+      () => {
+        // console.log(this.state.uso_especie_propiedad_tercero);
+      }
+    );
+  };
+  removeClickRepresentacionActiva = index => event => {
+    this.state.representacion_activa.splice(index, 1);
+    this.setState(
+      { representacion_activa: this.state.representacion_activa },
+      () => {
+        // console.log(this.state.representacion_activa);
+      }
+    );
+  };
+  removeClickRepresentacionPasiva = index => event => {
+    this.state.representacion_pasiva.splice(index, 1);
+    this.setState(
+      { representacion_pasiva: this.state.representacion_pasiva },
+      () => {
+        // console.log(this.state.representacion_pasiva);
+      }
+    );
+  };
+  removeClickSalariosEmpleos = index => event => {
+    this.state.sueldos_salarios_otros_empleos.splice(index, 1);
+    this.setState(
+      {
+        sueldos_salarios_otros_empleos: this.state
+          .sueldos_salarios_otros_empleos
+      },
+      () => {
+        // console.log(this.state.sueldos_salarios_otros_empleos);
+      }
+    );
+  };
+  removeClickSalariosPublicos = index => event => {
+    this.state.sueldos_salarios_publicos.splice(index, 1);
+    this.setState(
+      { sueldos_salarios_publicos: this.state.sueldos_salarios_publicos },
+      () => {
+        // console.log(this.state.sueldos_salarios_publicos);
+      }
+    );
+  };
+  removeClickSociosComerciales = index => event => {
+    this.state.socios_comerciales.splice(index, 1);
+    this.setState({ socios_comerciales: this.state.socios_comerciales }, () => {
+      // console.log(this.state.socios_comerciales);
+    });
+  };
+
+  // handleChange = name => event => {
+
+  //   const valor = this.state.entidades.filter(
+  //     x => x.cve_ent === event.target.value
+  //   );
+  //
+  //   this.setState({
+  //     [name]: {
+  //       nom_ent: valor[0].nom_ent,
+  //       cve_ent: valor[0].cve_ent
+  //     }
+  //   });
+  // };
+
+  // handleChange = name => event => {
+
+  //   const valor = this.state.municipios.filter(
+  //     x => x.cve_mun === event.target.value
+  //   );
+  //
+  //   fetch(
+  //     config.apiHost +
+  //       "localidades?cve_ent=" +
+  //       this.state.dom_entidad_federativa.cve_ent +
+  //       "&cve_mun=" +
+  //       event.target.value
+  //   )
+  //     .then(res => res.json())
+  //     .then(localidades => this.setState({ localidades: localidades }));
+  //
+  //   this.setState({
+  //     [name]: {
+  //       nom_mun: valor[0].nom_mun,
+  //       cve_mun: valor[0].cve_mun
+  //     }
+  //   });
+  // };
+
+  // handleChange = name => event => {
+
+  //   const valor = this.state.localidades.filter(
+  //     x => x.cve_loc === event.target.value
+  //   );
+  //
+  //   this.setState({
+  //     [name]: {
+  //       nom_loc: valor[0].nom_loc,
+  //       cve_loc: valor[0].cve_loc
+  //     }
+  //   });
+  // };
+
+  // handleChange = name => event => {
+
+  // var ciudades = event.target.value;
+  // var nacionalidad = [];
+  // for (var event in ciudades) {
+  //   var ciudad = ciudades[event];
+  //   var valor = this.state.ciudades.filter(x => x.codigo === ciudad);
+  //
+  //   delete valor[0]._id;
+  //   nacionalidad.push(valor);
+  //   // console.log(nacionalidad);
+  // }
+  // this.setState({ nacionalidades: nacionalidad });
+  // this.setState({
+  //   [name]: event.target.value
+  // });
+  // console.log(index.target.value);
+  // };
+
+  addClickDatosCurriculares = () => {
+    let data = Object.assign(
+      {},
+      this.state.datos_curriculares_grados_academicos
+    );
+    let info = Object.assign({}, clean.datos_curriculares_grados_academicos);
+
+    this.setState(
+      {
+        curriculares_grados_academicos: [
+          ...this.state.curriculares_grados_academicos,
+          data
+        ],
+        datos_curriculares_grados_academicos: info
+      },
+      () => {
+        console.log(this.state.curriculares_grados_academicos);
+      }
+    );
+  };
+
+  addClickExperienciaLaborar = () => {
+    let data = Object.assign({}, this.state.datos_experiencia_laboral);
+    let info = Object.assign({}, clean.datos_experiencia_laboral);
+
+    this.setState(
+      {
+        experiencia_laboral: [...this.state.experiencia_laboral, data],
+        datos_experiencia_laboral: info
+      },
       () => {
         console.log(this.state.experiencia_laboral);
       }
     );
   };
 
-  handleAddDependientesEconomicos = () => {
-    let datos = Object.assign({}, this.state.datos_dependientes_economicos);
-    this.state.dependientes_economicos.push(datos);
-    this.setState(this.state);
-
-    // limpieza del Formulario
-    this.setState({
-      datos_dependientes_economicos: Object.assign(
-        {},
-        datos_dependientes_economicos
-      )
-    });
+  removeClickExperienciaLaborar = index => event => {
+    this.state.experiencia_laboral.splice(index, 1);
+    this.setState(
+      { experiencia_laboral: this.state.experiencia_laboral },
+      () => {
+        // console.log(this.state.experiencia_laboral);
+      }
+    );
   };
 
-  handleRemoveDependientesEconomicos = index => event => {
-    this.state.dependientes_economicos.splice(index, 1);
+  addClickDependientesEconomicos = () => {
+    let data = Object.assign({}, this.state.datos_dependientes_economicos);
+    let info = Object.assign({}, clean.datos_dependientes_economicos);
+
     this.setState(
-      { dependientes_economicos: this.state.dependientes_economicos },
+      {
+        dependientes_economicos: [...this.state.dependientes_economicos, data],
+        datos_dependientes_economicos: info
+      },
       () => {
         console.log(this.state.dependientes_economicos);
       }
     );
   };
 
-  addClickDependientesEconomicos = () => event => {
-    this.state.datos_dependientes_economicos.push({
-      nombres: "Carlos",
-      primer_apellido: "Pérez",
-      segundo_apellido: "López",
-      tipo_relacion: {
-        codigo: "CONY",
-        valor: "Cónyuge"
-      },
-      nacionalidad: [
-        {
-          valor: "México",
-          codigo: "MX"
-        }
-      ],
-      curp: "BEML920313HMCLNS09",
-      rfc: "GOAP780710RH7",
-      fecha_nacimiento: "31/07/1980",
-      numero_identificacion_nacional: "ABCD1234",
-      habita_domicilio_declarante: true,
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      medio_contacto: "usuario@correo.com",
-      ingresos_propios: true,
-      ocupacion_profesion: "Administrador de empresas",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      proveedor_contratista_gobierno: true,
-      tiene_intereses_mismo_sector_declarante: true,
-      desarrolla_cabildeo_sector_declarante: true,
-      beneficiario_programa_publico: [
-        {
-          nombre_programa: "Prospera",
-          institucion_otorga_apoyo: "XE-IPN Canal 11",
-          tipo_apoyo: "Servicio",
-          valor_apoyo: 4000
-        }
-      ],
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+  removeClickDependientesEconomicos = index => event => {
+    this.state.dependientes_economicos.splice(index, 1);
+    this.setState(
+      { dependientes_economicos: this.state.dependientes_economicos },
+      () => {
+        // console.log(this.state.dependientes_economicos);
+      }
+    );
   };
 
-  addClickEmpresasSociedadesAsociaciones = () => event => {
-    this.state.empresas_sociedades_asociaciones.push({
-      id: 123,
-      nombre_empresa_sociedad_asociacion: "DataIQ",
-      pais_registro: {
-        valor: "México",
-        codigo: "MX"
+  addClickEmpresasSociedadesAsociaciones = () => {
+    let data = Object.assign(
+      {},
+      this.state.datos_empresas_sociedades_asociaciones
+    );
+    let info = Object.assign({}, clean.datos_empresas_sociedades_asociaciones);
+
+    this.setState(
+      {
+        empresas_sociedades_asociaciones: [
+          ...this.state.empresas_sociedades_asociaciones,
+          data
+        ],
+        datos_empresas_sociedades_asociaciones: info
       },
-      fecha_constitucion: "31/07/1980",
-      numero_registro: "ABC123",
-      rfc: "GOAP780710RH7",
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      rol: "Dueño",
-      actividad_economica: true,
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      porcentaje_participacion: 70
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.empresas_sociedades_asociaciones);
+      }
+    );
   };
 
-  addClickMembresias = () => event => {
-    this.state.membresias.push({
-      id: 123,
-      tipo_institucion: {
-        codigo: "ASC",
-        valor: "Asociaciones civiles"
+  addClickMembresias = () => {
+    let data = Object.assign({}, this.state.datos_membresias);
+    let info = Object.assign({}, clean.datos_membresias);
+
+    this.setState(
+      {
+        membresias: [...this.state.membresias, data],
+        datos_membresias: info
       },
-      nombre_institucion: "Asociacion A.C",
-      naturaleza_membresia: {
-        codigo: "ASC",
-        valor: "Asociaciones civiles"
-      },
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      puesto_rol: "Titular",
-      fecha_inicio: "2010-07-26",
-      pagado: true,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.membresias);
+      }
+    );
   };
 
-  addClickApoyosPublicos = () => event => {
-    this.state.apoyos_beneficios_publicos.push({
-      id: 123,
-      es_beneficiario: true,
-      programa:
-        "Programa de Estímulos Económicos a Deportistas del Distrito Federal",
-      institucion_otorgante: "Instituto del Deporte del Distrito Federal ",
-      nivel_orden_gobierno: {
-        codigo: "EST",
-        valor: "Estatal"
+  addClickApoyosPublicos = () => {
+    let data = Object.assign({}, this.state.datos_apoyos_beneficios_publicos);
+    let info = Object.assign({}, clean.datos_apoyos_beneficios_publicos);
+
+    this.setState(
+      {
+        apoyos_beneficios_publicos: [
+          ...this.state.apoyos_beneficios_publicos,
+          data
+        ],
+        datos_apoyos_beneficios_publicos: info
       },
-      tipo_apoyo: "Servicio",
-      valor_anual_apoyo: 7500,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.apoyos_beneficios_publicos);
+      }
+    );
   };
 
-  addClickRepresentacionActiva = () => event => {
-    this.state.representacion_activa.push({
-      id: 123,
-      tipo_representacion: {
-        codigo: "APOD",
-        valor: "Apoderado"
+  addClickRepresentacionActiva = () => {
+    let data = Object.assign({}, this.state.datos_representacion_activa);
+    let info = Object.assign({}, clean.datos_representacion_activa);
+
+    this.setState(
+      {
+        representacion_activa: [...this.state.representacion_activa, data],
+        datos_representacion_activa: info
       },
-      nacionalidades: [
-        {
-          valor: "México",
-          codigo: "MX"
-        }
-      ],
-      nombre_parte_representada: "Cecilia Gómez Urrutia",
-      curp_parte: "BEML920313HMCLNS09",
-      rfc_parte: "GOAP780710RH7",
-      fecha_nacimiento_parte: "2010-07-26",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      fecha_inicio: "2010-07-26",
-      pagado: true,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.representacion_activa);
+      }
+    );
   };
 
-  addClickRepresentacionPasiva = () => event => {
-    this.state.representacion_pasiva.push({
-      id: 123,
-      tipo_representacion: {
-        codigo: "APOD",
-        valor: "Apoderado"
+  addClickRepresentacionPasiva = () => {
+    let data = Object.assign({}, this.state.datos_representacion_pasiva);
+    let info = Object.assign({}, clean.datos_representacion_pasiva);
+
+    this.setState(
+      {
+        representacion_pasiva: [...this.state.representacion_pasiva, data],
+        datos_representacion_pasiva: info
       },
-      nombre: "Augusto Fernández Castro",
-      fecha_inicio_representacion: "2010-07-26",
-      nacionalidades: [
-        {
-          valor: "México",
-          codigo: "MX"
-        }
-      ],
-      curp: "BEML920313HMCLNS09",
-      rfc: "GOAP780710RH7",
-      fecha_nacimiento: "2010-07-26",
-      tiene_intereses: true,
-      ocupacion_profesion: "Contador",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.representacion_pasiva);
+      }
+    );
   };
 
-  addClickSociosComerciales = () => event => {
-    this.state.socios_comerciales.push({
-      id: 123,
-      nombre_negocio: "Nombre negocio",
-      numero_Registro: "HTC896DSFA",
-      dueno_encargado: "Salvador Hernández Torres",
-      nombre: "AMEX.S.A.",
-      rfc: "GOAP780710RH7",
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
+  addClickSociosComerciales = () => {
+    let data = Object.assign({}, this.state.datos_socios_comerciales);
+    let info = Object.assign({}, clean.datos_socios_comerciales);
+
+    this.setState(
+      {
+        socios_comerciales: [...this.state.socios_comerciales, data],
+        datos_socios_comerciales: info
       },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      porcentaje_participacion: 70,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.socios_comerciales);
+      }
+    );
   };
 
-  addClickClientesPrincipales = () => event => {
-    this.state.clientes_principales.push({
-      id: 123,
-      nombre_negocio: "Nombre negocio",
-      numero_Registro: "HTC896DSFA",
-      dueno_encargado: "Salvador Hernández Torres",
-      nombre: "AMEX.S.A.",
-      rfc: "GOAP780710RH7",
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
+  addClickClientesPrincipales = () => {
+    let data = Object.assign({}, this.state.datos_clientes_principales);
+    let info = Object.assign({}, clean.datos_clientes_principales);
+
+    this.setState(
+      {
+        clientes_principales: [...this.state.clientes_principales, data],
+        datos_clientes_principales: info
       },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      porcentaje_participacion: 70,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.clientes_principales);
+      }
+    );
   };
 
-  addClickOtrasPartesRelacionadas = () => event => {
-    this.state.otras_partes.push({
-      id: 123,
-      tipo_relacion: "Garantes de Préstamos Recibidos",
-      nombre_denominacion_parte: "Sergio Rodríguez",
-      fecha_inicio_relacion: "2010-07-26",
-      nacionalidades: [
-        {
-          valor: "México",
-          codigo: "MX"
-        }
-      ],
-      curp: "BEML920313HMCLNS09",
-      rfc: "GOAP780710RH7",
-      fecha_nacimiento: "2010-07-26",
-      ocupacion: "Administrador de empresas",
-      tiene_interes: true,
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickOtrasPartesRelacionadas = () => {
+    let data = Object.assign({}, this.state.datos_otras_partes);
+    let info = Object.assign({}, clean.datos_otras_partes);
+
+    this.setState(
+      {
+        otras_partes: [...this.state.otras_partes, data],
+        datos_otras_partes: info
       },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.otras_partes);
+      }
+    );
   };
 
-  addClickBeneficiosGratuitos = () => event => {
-    this.state.beneficios_gratuitos.push({
-      id: 123,
-      tipo_beneficio: "Tarjetas o monederos electrónicos",
-      origen_beneficio: "Prestación laboral",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickBeneficiosGratuitos = () => {
+    let data = Object.assign({}, this.state.datos_beneficios_gratuitos);
+    let info = Object.assign({}, clean.datos_beneficios_gratuitos);
+
+    this.setState(
+      {
+        beneficios_gratuitos: [...this.state.beneficios_gratuitos, data],
+        datos_beneficios_gratuitos: info
       },
-      valor_beneficio: 1256,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.beneficios_gratuitos);
+      }
+    );
   };
 
-  addClickSalariosPublicos = () => event => {
-    this.state.sueldos_salarios_publicos.push({
-      id: 123,
-      ente_publico: {
-        valor: "Secretaría de Gobernación",
-        codigo: "SEGOB"
+  addClickSalariosPublicos = () => {
+    let data = Object.assign({}, this.state.datos_sueldos_salarios_publicos);
+    let info = Object.assign({}, clean.datos_sueldos_salarios_publicos);
+
+    this.setState(
+      {
+        sueldos_salarios_publicos: [
+          ...this.state.sueldos_salarios_publicos,
+          data
+        ],
+        datos_sueldos_salarios_publicos: info
       },
-      rfc: "GOAP780710RH7",
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.sueldos_salarios_publicos);
+      }
+    );
   };
 
-  addClickSalariosEmpleos = () => event => {
-    this.state.sueldos_salarios_otros_empleos.push({
-      id: 123,
-      nombre_denominacion_razon_social: "Max Power Inc.",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickSalariosEmpleos = () => {
+    let data = Object.assign(
+      {},
+      this.state.datos_sueldos_salarios_otros_empleos
+    );
+    let info = Object.assign({}, clean.datos_sueldos_salarios_otros_empleos);
+
+    this.setState(
+      {
+        sueldos_salarios_otros_empleos: [
+          ...this.state.sueldos_salarios_otros_empleos,
+          data
+        ],
+        datos_sueldos_salarios_otros_empleos: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad_servicio: "Servicio profesional de TI",
-      domicilio_persona_paga: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.sueldos_salarios_otros_empleos);
+      }
+    );
   };
 
-  addClickActividadProfesional = () => event => {
-    this.state.actividad_profesional.push({
-      id: 123,
-      nombre_denominacion_razon_social: "Nombre",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickActividadProfesional = () => {
+    let data = Object.assign({}, this.state.datos_actividad_profesional);
+    let info = Object.assign({}, clean.datos_actividad_profesional);
+
+    this.setState(
+      {
+        actividad_profesional: [...this.state.actividad_profesional, data],
+        datos_actividad_profesional: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad_servicio: "Descripción del servicio",
-      domicilio_persona_paga: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.actividad_profesional);
+      }
+    );
   };
 
   addClickActividadEmpresarial = () => {
-    this.state.actividad_empresarial.push({
-      id: 123,
-      nombre_denominacion_razon_social: "Empresa S.A.",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+    let data = Object.assign({}, this.state.datos_actividad_empresarial);
+    let info = Object.assign({}, clean.datos_actividad_empresarial);
+
+    this.setState(
+      {
+        actividad_empresarial: [...this.state.actividad_empresarial, data],
+        datos_actividad_empresarial: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad_servicio: "Descripción del servicio",
-      domicilio_actividad_empresarial: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.actividad_empresarial);
+      }
+    );
   };
 
-  addClickActividadMenor = () => event => {
-    this.state.actividad_economica_menor.push({
-      id: 123,
-      nombre_denominacion_razon_social: "Nombre",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickActividadMenor = () => {
+    let data = Object.assign({}, this.state.datos_actividad_economica_menor);
+    let info = Object.assign({}, clean.datos_actividad_economica_menor);
+
+    this.setState(
+      {
+        actividad_economica_menor: [
+          ...this.state.actividad_economica_menor,
+          data
+        ],
+        datos_actividad_economica_menor: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad_servicio: "Descripción del servicio",
-      domicilio_actividad: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.actividad_economica_menor);
+      }
+    );
   };
 
-  addClickArrendamiento = () => event => {
-    this.state.arrendamiento.push({
-      id: 123,
-      nombre_denominacion_razon_social: "ABC Inc.",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickArrendamiento = () => {
+    let data = Object.assign({}, this.state.datos_arrendamiento);
+    let info = Object.assign({}, clean.datos_arrendamiento);
+
+    this.setState(
+      {
+        arrendamiento: [...this.state.arrendamiento, data],
+        datos_arrendamiento: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad_servicio: "Descripción del servicio",
-      domicilio_actividad: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.arrendamiento);
+      }
+    );
   };
 
-  addClickIntereses = () => event => {
-    this.state.intereses.push({
-      id: 123,
-      nombre_denominacion_razon_social: "BANC S.A.",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickIntereses = () => {
+    let data = Object.assign({}, this.state.datos_intereses);
+    let info = Object.assign({}, clean.datos_intereses);
+
+    this.setState(
+      {
+        intereses: [...this.state.intereses, data],
+        datos_intereses: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad_servicio: "Descripción del servicio",
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.intereses);
+      }
+    );
   };
 
-  addClickPremios = () => event => {
-    this.state.premios.push({
-      id: 123,
-      nombre_denominacion: "Loteria Nacional",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickPremios = () => {
+    let data = Object.assign({}, this.state.datos_premios);
+    let info = Object.assign({}, clean.datos_premios);
+
+    this.setState(
+      {
+        premios: [...this.state.premios, data],
+        datos_premios: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_premio: "Descripción del servicio",
-      domicilio: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.premios);
+      }
+    );
   };
 
-  addClickEnajenacionBienes = () => event => {
-    this.state.enajenacion_bienes.push({
-      id: 123,
-      nombre_denominacion: "Loteria Nacional",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      tipo_bien: "Inmueble",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickEnajenacionBienes = () => {
+    let data = Object.assign({}, this.state.datos_enajenacion_bienes);
+    let info = Object.assign({}, clean.datos_enajenacion_bienes);
+
+    this.setState(
+      {
+        enajenacion_bienes: [...this.state.enajenacion_bienes, data],
+        datos_enajenacion_bienes: info
       },
-      tipo_actividad_servicio: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_bien: "Descripción del servicio",
-      domicilio_bien_enajenado: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.enajenacion_bienes);
+      }
+    );
   };
 
-  addClickOtrosIngresos = () => event => {
-    this.state.otros_ingresos.push({
-      id: 123,
-      nombre_denominacion: "Centro Educativo",
-      rfc: "GOAP780710RH7",
-      curp: "BEML920313HMCLNS09",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
+  addClickOtrosIngresos = () => {
+    let data = Object.assign({}, this.state.datos_otros_ingresos);
+    let info = Object.assign({}, clean.datos_otros_ingresos);
+
+    this.setState(
+      {
+        otros_ingresos: [...this.state.otros_ingresos, data],
+        datos_otros_ingresos: info
       },
-      tipo_actividad: {
-        codigo: "SPU",
-        valor: "Sector público"
-      },
-      descripcion_actividad: "Descripción del servicio",
-      domicilio_actividad: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      ingreso_bruto_anual: {
-        valor: 10000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        },
-        unidad_temporal: {
-          codigo: "MESS",
-          valor: "Meses"
-        },
-        duracion_frecuencia: 10,
-        fecha_transaccion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.otros_ingresos);
+      }
+    );
   };
 
-  addClickBienesInmuebles = () => event => {
-    this.state.bienes_inmuebles.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickBienesInmuebles = () => {
+    let data = Object.assign({}, this.state.datos_bienes_inmuebles);
+    let info = Object.assign({}, clean.datos_bienes_inmuebles);
+
+    this.setState(
+      {
+        bienes_inmuebles: [...this.state.bienes_inmuebles, data],
+        datos_bienes_inmuebles: info
       },
-      tipo_bien: {
-        codigo: "VEH",
-        valor: "Vehículo"
-      },
-      superficie_terreno: 300,
-      superficie_construccion: 100,
-      titular: {
-        codigo: "DECL",
-        valor: "Declarante"
-      },
-      porcentaje_propiedad: 70,
-      nombre_copropietario: {
-        nombres: "Carlos",
-        primer_apellido: "Pérez",
-        segundo_apellido: "string"
-      },
-      identificacion_bien: {
-        numero_escritura_publica: 202020,
-        numero_registro_publico: 404040,
-        folio_real: "jsjs74747",
-        fecha_contrato: "2010-07-26"
-      },
-      domicilio_bien: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      forma_adquisicion: {
-        codigo: "CES",
-        valor: "Cesión"
-      },
-      nombre_denominacion_quien_adquirio: "Monster Inc.",
-      rfc_quien_adquirio: "GOAP780710RH7",
-      curp_quien_adquirio: "BEML920313HMCLNS09",
-      relacion_persona_adquirio: {
-        codigo: "CONY",
-        valor: "Cónyuge"
-      },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      fecha_adquisicion: "2010-07-26",
-      precio_adquisicion: {
-        valor: 4000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        }
-      },
-      valor_catastral: 800,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.bienes_inmuebles);
+      }
+    );
   };
 
-  addClickBienesMueblesRegistrables = () => event => {
-    this.state.bienes_muebles_registrables.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickBienesMueblesRegistrables = () => {
+    let data = Object.assign({}, this.state.datos_bienes_muebles_registrables);
+    let info = Object.assign({}, clean.datos_bienes_muebles_registrables);
+
+    this.setState(
+      {
+        bienes_muebles_registrables: [
+          ...this.state.bienes_muebles_registrables,
+          data
+        ],
+        datos_bienes_muebles_registrables: info
       },
-      tipo_bien_mueble: {
-        codigo: "VEH",
-        valor: "Vehículo"
-      },
-      marca: "NISSAN",
-      submarca: "RS-122234",
-      modelo: 2018,
-      numero_serie: "6545243-4334",
-      lugar_registro: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad: {
-          nom_ent: "México",
-          cve_ent: "15"
-        }
-      },
-      titular_bien: {
-        codigo: "DECL",
-        valor: "Declarante"
-      },
-      porcentaje_propiedad: 70,
-      nombres_copropietarios: ["Monstr Inc."],
-      numero_registro_vehicular: 455000,
-      forma_adquisicion: {
-        codigo: "CES",
-        valor: "Cesión"
-      },
-      nombre_denominacion_adquirio: "Monstr Inc.",
-      rfc_quien_adquirio: "GOAP780710RH7",
-      relacion_persona_quien_adquirio: {
-        codigo: "CONY",
-        valor: "Cónyuge"
-      },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      fecha_adquisicion: "2010-07-26",
-      precio_adquisicion: {
-        valor: 4000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        }
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.bienes_muebles_registrables);
+      }
+    );
   };
 
-  addClickBienesMueblesNoRegistrables = () => event => {
-    this.state.bienes_muebles_no_registrables.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickBienesMueblesNoRegistrables = () => {
+    let data = Object.assign(
+      {},
+      this.state.datos_bienes_muebles_no_registrables
+    );
+    let info = Object.assign({}, clean.datos_bienes_muebles_no_registrables);
+
+    this.setState(
+      {
+        bienes_muebles_no_registrables: [
+          ...this.state.bienes_muebles_no_registrables,
+          data
+        ],
+        datos_bienes_muebles_no_registrables: info
       },
-      tipo_bien: {
-        codigo: "VEH",
-        valor: "Vehículo"
-      },
-      descripcion: "Con descripción",
-      titular_bien: {
-        codigo: "DECL",
-        valor: "Declarante"
-      },
-      porcentaje_propiedad: 70,
-      nombres_copropietarios: ["Monstr Inc."],
-      forma_adquisicion: {
-        codigo: "CES",
-        valor: "Cesión"
-      },
-      nombre_denominacion_adquirio: "Tesl Mtr Inc.",
-      relacion_quien_adquirio: {
-        codigo: "CONY",
-        valor: "Cónyuge"
-      },
-      fecha_adquisicion: "2010-07-26",
-      precio_adquisicion: {
-        valor: 4000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        }
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.bienes_muebles_no_registrables);
+      }
+    );
   };
 
-  addClickInversiones = () => event => {
-    this.state.inversiones_cuentas_valores.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickInversiones = () => {
+    let data = Object.assign({}, this.state.datos_inversiones_cuentas_valores);
+    let info = Object.assign({}, clean.datos_inversiones_cuentas_valores);
+
+    this.setState(
+      {
+        inversiones_cuentas_valores: [
+          ...this.state.inversiones_cuentas_valores,
+          data
+        ],
+        datos_inversiones_cuentas_valores: info
       },
-      tipo_inversion: {
-        codigo: "VALS",
-        valor: "Valores"
-      },
-      tipo_especifico_inversion: {
-        codigo: "VALRS",
-        valor: "Valores"
-      },
-      numero_cuenta: "GFHRTY788778",
-      nacional_extranjero: {
-        valor: "México",
-        codigo: "MX"
-      },
-      nombre_institucion: "Bank Inkc",
-      rfc_institucion: "GOAP780710RH7",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      domicilio_institucion: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      forma_adquisicion: {
-        codigo: "CES",
-        valor: "Cesión"
-      },
-      fecha_inicio: "2010-07-26",
-      monto_original: 80000,
-      tipo_moneda: {
-        codigo: "MXN",
-        moneda: "Peso mexicano"
-      },
-      tasa_interes: 10,
-      saldo_anual: 5000,
-      plazo: 6,
-      unidad_medida_plazo: {
-        codigo: "MESS",
-        valor: "Meses"
-      },
-      titular_bien: {
-        codigo: "DECL",
-        valor: "Declarante"
-      },
-      porcentaje_inversion: 70,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.inversiones_cuentas_valores);
+      }
+    );
   };
 
-  addClickEfectivoMetales = () => event => {
-    this.state.efectivo_metales.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickEfectivoMetales = () => {
+    let data = Object.assign({}, this.state.datos_efectivo_metales);
+    let info = Object.assign({}, clean.datos_efectivo_metales);
+
+    this.setState(
+      {
+        efectivo_metales: [...this.state.efectivo_metales, data],
+        datos_efectivo_metales: info
       },
-      tipo_moneda: {
-        codigo: "MXN",
-        moneda: "Peso mexicano"
-      },
-      monto: 78555,
-      tipo_metal: {
-        codigo: "ORO",
-        valor: "Oro"
-      },
-      unidades: 100,
-      forma_adquisicion: {
-        codigo: "CES",
-        valor: "Cesión"
-      },
-      observaciones_comentarios: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.efectivo_metales);
+      }
+    );
   };
 
-  addClickFideicomisos = () => event => {
-    this.state.fideicomisos.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickFideicomisos = () => {
+    let data = Object.assign({}, this.state.datos_fideicomisos);
+    let info = Object.assign({}, clean.datos_fideicomisos);
+
+    this.setState(
+      {
+        fideicomisos: [...this.state.fideicomisos, data],
+        datos_fideicomisos: info
       },
-      identificador_fideicomiso: "93232",
-      tipo_fideicomiso: {
-        codigo: "GARNT",
-        valor: "Garantía"
-      },
-      objetivo: "Objetivo del fideicomiso",
-      numero_registro: "788544abc",
-      fecha_creacion: "2010-07-26",
-      vigencia: "2010-07-26",
-      residencia: {
-        valor: "México",
-        codigo: "MX"
-      },
-      valor: 78555555,
-      moneda: {
-        codigo: "MXN",
-        moneda: "Peso mexicano"
-      },
-      porcentaje_propiedad_derechos_fiduciarios: 70,
-      ingreso_monetario_obtenido: 56666,
-      institucion_fiduciaria: "Banco de México",
-      fideicomitente: {
-        nombre: "Banco Robmen1",
-        rfc: "GOAP780710RH7",
-        curp: "BEML920313HMCLNS09",
-        domicilio: {
-          pais: {
-            valor: "México",
-            codigo: "MX"
-          },
-          entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
-          },
-          municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
-          },
-          cp: "55018",
-          localidad: {
-            nom_loc: "Ecatepec de Morelos",
-            cve_loc: "0001"
-          },
-          vialidad: {
-            tipo_vial: "CALLE",
-            nom_vial: "El Rosal"
-          },
-          numExt: "24",
-          numInt: "48"
-        },
-        fecha_constitucion: "2010-07-26"
-      },
-      fideicomisario: {
-        nombre: "Banco Robmen1",
-        rfc: "GOAP780710RH7",
-        curp: "BEML920313HMCLNS09",
-        domicilio: {
-          pais: {
-            valor: "México",
-            codigo: "MX"
-          },
-          entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
-          },
-          municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
-          },
-          cp: "55018",
-          localidad: {
-            nom_loc: "Ecatepec de Morelos",
-            cve_loc: "0001"
-          },
-          vialidad: {
-            tipo_vial: "CALLE",
-            nom_vial: "El Rosal"
-          },
-          numExt: "24",
-          numInt: "48"
-        },
-        fecha_constitucion: "2010-07-26"
-      },
-      fiduciario: {
-        nombre: "Banco Robmen1",
-        rfc: "GOAP780710RH7",
-        curp: "BEML920313HMCLNS09",
-        domicilio: {
-          pais: {
-            valor: "México",
-            codigo: "MX"
-          },
-          entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
-          },
-          municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
-          },
-          cp: "55018",
-          localidad: {
-            nom_loc: "Ecatepec de Morelos",
-            cve_loc: "0001"
-          },
-          vialidad: {
-            tipo_vial: "CALLE",
-            nom_vial: "El Rosal"
-          },
-          numExt: "24",
-          numInt: "48"
-        },
-        fecha_constitucion: "2010-07-26"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.fideicomisos);
+      }
+    );
   };
 
-  addClickBienesIntangibles = () => event => {
-    this.state.bienes_intangibles.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickBienesIntangibles = () => {
+    let data = Object.assign({}, this.state.datos_bienes_intangibles);
+    let info = Object.assign({}, clean.datos_bienes_intangibles);
+
+    this.setState(
+      {
+        bienes_intangibles: [...this.state.bienes_intangibles, data],
+        datos_bienes_intangibles: info
       },
-      propietario_registrado: "Sergio Perez",
-      descripcion: "Aquí va una descripción",
-      ente_publico_encargado: {
-        nombres: "Carlos",
-        primer_apellido: "Pérez",
-        segundo_apellido: "López"
-      },
-      numero_registro: 754444,
-      fecha_registro: "2010-07-26",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      precio_adquisicion: {
-        valor: 4000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        }
-      },
-      forma_adquisicion: {
-        codigo: "CES",
-        valor: "Cesión"
-      },
-      fecha_vencimiento: "2010-07-26",
-      porcentaje_copropiedad: 70,
-      precio_total_copropiedad: {
-        valor: 4000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        }
-      },
-      nombre_copropietario: "Vien Inc,",
-      porcentaje_propiedad_copropietario: 70,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.bienes_intangibles);
+      }
+    );
   };
 
-  addClickCuentasCobrar = () => event => {
-    this.state.cuentas_por_cobrar.push({
-      id: 123,
-      nombre_prestatario: "Max Power Tier",
-      numero_registro: "488755avvv",
-      domicilio_prestatarios: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
+  addClickCuentasCobrar = () => {
+    let data = Object.assign({}, this.state.datos_cuentas_por_cobrar);
+    let info = Object.assign({}, clean.datos_cuentas_por_cobrar);
+
+    this.setState(
+      {
+        cuentas_por_cobrar: [...this.state.cuentas_por_cobrar, data],
+        datos_cuentas_por_cobrar: info
       },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      fecha_prestamo: "2010-07-26",
-      monto_original_prestamo: 488844,
-      tasa_interes: 10.01,
-      saldo_pendiente: 4555,
-      fecha_vencimiento: "2010-07-26",
-      porcentaje_copropiedad: 70,
-      nombre_copropietario: "Max Power Bansky",
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.cuentas_por_cobrar);
+      }
+    );
   };
 
-  addClickPropietarioTercero = () => event => {
-    this.state.uso_especie_propiedad_tercero.push({
-      id: 123,
-      tipo_bien: {
-        codigo: "VEH",
-        valor: "Vehículo"
+  addClickPropietarioTercero = () => {
+    let data = Object.assign(
+      {},
+      this.state.datos_uso_especie_propiedad_tercero
+    );
+    let info = Object.assign({}, clean.datos_uso_especie_propiedad_tercero);
+
+    this.setState(
+      {
+        uso_especie_propiedad_tercero: [
+          ...this.state.uso_especie_propiedad_tercero,
+          data
+        ],
+        datos_uso_especie_propiedad_tercero: info
       },
-      valor_mercado: {
-        valor: 4000,
-        moneda: {
-          codigo: "MXN",
-          moneda: "Peso mexicano"
-        }
-      },
-      nombre_tercero_propietario: "Bansky Von Trier",
-      rfc_tercero_propietario: "GOAP780710RH7",
-      curp_tercero_propietario: "BEML920313HMCLNS09",
-      relacion_persona: {
-        codigo: "CONY",
-        valor: "Cónyuge"
-      },
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      fecha_inicio: "2010-07-26",
-      domicilio_persona: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.uso_especie_propiedad_tercero);
+      }
+    );
   };
 
-  addClickDeudas = () => event => {
-    this.state.deudas.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickDeudas = () => {
+    let data = Object.assign({}, this.state.datos_deudas);
+    let info = Object.assign({}, clean.datos_deudas);
+
+    this.setState(
+      {
+        deudas: [...this.state.deudas, data],
+        datos_deudas: info
       },
-      tipo_acreedor: {
-        codigo: "INSTF",
-        valor: "Institución Financiera"
-      },
-      tipo_adeudo: {
-        codigo: "CVH",
-        valor: "Compra de vehículo"
-      },
-      identificador_deuda: "CONT12354",
-      nacional_extranjero: {
-        valor: "México",
-        codigo: "MX"
-      },
-      nombre_acreedor: "PNBKSRIBAS S.A. DE C.V",
-      rfc_acreedor: "GOAP780710RH7",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      domicilio_acreedor: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      fecha_adeudo: "2010-07-26",
-      monto_original: 277900,
-      tipo_moneda: {
-        codigo: "MXN",
-        moneda: "Peso mexicano"
-      },
-      tasa_interes: 12,
-      saldo_pendiente: 28000,
-      montos_abonados: [28000],
-      plazo_adeudo: 24,
-      unidad_medida_adeudo: {
-        codigo: "MESS",
-        valor: "Meses"
-      },
-      titularidad_deuda: {
-        codigo: "DECL",
-        valor: "Declarante"
-      },
-      porcentaje_adeudo_titular: 70,
-      garantia: true,
-      nombre_garante: "Bansky Von Tier",
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.deudas);
+      }
+    );
   };
 
-  addClickOtrasObligaciones = () => event => {
-    this.state.otras_obligaciones.push({
-      id: 123,
-      tipo_operacion: {
-        codigo: "INCP",
-        valor: "Incorporación"
+  addClickOtrasObligaciones = () => {
+    let data = Object.assign({}, this.state.datos_otras_obligaciones);
+    let info = Object.assign({}, clean.datos_otras_obligaciones);
+
+    this.setState(
+      {
+        otras_obligaciones: [...this.state.otras_obligaciones, data],
+        datos_otras_obligaciones: info
       },
-      tipo_acreedor: {
-        codigo: "INSTF",
-        valor: "Institución Financiera"
-      },
-      tipo_obligacion: "Ejemplo",
-      identificador_obligacion: "FONAET8945",
-      nacional_extranjero: {
-        valor: "México",
-        codigo: "MX"
-      },
-      nombre_acreedor: "Bansky Hola Adios",
-      rfc_acreedor: "GOAP780710RH7",
-      sector_industria: {
-        codigo: "SFS",
-        valor: "Servicios de salud y asistencia social"
-      },
-      domicilio_acreedor: {
-        pais: {
-          valor: "México",
-          codigo: "MX"
-        },
-        entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
-        },
-        municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
-        },
-        cp: "55018",
-        localidad: {
-          nom_loc: "Ecatepec de Morelos",
-          cve_loc: "0001"
-        },
-        vialidad: {
-          tipo_vial: "CALLE",
-          nom_vial: "El Rosal"
-        },
-        numExt: "24",
-        numInt: "48"
-      },
-      fecha_obligacion: "2010-07-26",
-      monto_original: 300000,
-      tipo_moneda: {
-        codigo: "MXN",
-        moneda: "Peso mexicano"
-      },
-      tasa_interes: 12,
-      saldo_pendiente: 297000,
-      montos_abonados: [28000],
-      plazo_obligacion: 360,
-      unidad_medida_plazo: {
-        codigo: "MESS",
-        valor: "Meses"
-      },
-      titularidad_obligacion: {
-        codigo: "DECL",
-        valor: "Declarante"
-      },
-      porcentaje_obligacion_titular: 70,
-      garantia: true,
-      observaciones: "Esto es una observación"
-    });
-    this.setState(this.state);
-    // console.log("hi");
+      () => {
+        console.log(this.state.otras_obligaciones);
+      }
+    );
   };
 
-  addClick = () => event => {
+  addClick = () => {
     var data = {
       nombres: this.state.nombres,
       primer_apellido: this.state.primer_apellido,
@@ -2153,7 +1263,7 @@ class Index extends Component {
       }
     });
 
-    console.log(this.state.dom_vialidad);
+    // console.log(this.state.dom_vialidad);
   };
 
   anyTextChange = (obj, name) => event => {
@@ -2311,13 +1421,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.otros_ingresos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataDatosCurriculares = field => event => {
@@ -2363,11 +1467,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.datos_curriculares_grados_academicos);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataInformacionPersonal = field => event => {
@@ -2477,13 +1577,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.informacion_general);
-        // console.log(this.state.informacion_general_nacionalidades);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataEncargoActual = field => event => {
@@ -2578,13 +1672,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.datos_encargo_actual);
-        // console.log(this.state.datos_encargo_actual_nacionalidades);
-        // console.log(this.state.datos_encargo_actual.direccion_encargo);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataExperienciaLaboral = field => event => {
@@ -2676,15 +1764,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(valor);
-        console.log(this.state.datos_experiencia_laboral);
-
-        // console.log(this.state.datos_experiencia_laboral_nacionalidades);
-        // console.log(this.state.datos_experiencia_laboral.direccion_encargo);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataDependientesEconomicos = field => event => {
@@ -2810,13 +1890,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.datos_dependientes_economicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataEmpresasSociedadesAsociaciones = field => event => {
@@ -2927,13 +2001,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.empresas_sociedades_asociaciones);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataMembresias = field => event => {
@@ -3041,13 +2109,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.membresias);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataApoyosBeneficiosPublicos = field => event => {
@@ -3095,13 +2157,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataRepresentacionActiva = field => event => {
@@ -3158,13 +2214,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataRepresentacionPasiva = field => event => {
@@ -3230,13 +2280,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataSociosComerciales = field => event => {
@@ -3311,13 +2355,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataClientesPrincipales = field => event => {
@@ -3419,13 +2457,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataOtrasPartes = field => event => {
@@ -3491,13 +2523,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataBeneficiosGratuitos = field => event => {
@@ -3539,13 +2565,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataSueldosSalariosPublicos = field => event => {
@@ -3599,13 +2619,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataSueldosSalariosOtrosEmpleos = field => event => {
@@ -3740,13 +2754,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataActividadProfesional = field => event => {
@@ -3881,13 +2889,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataActividadEmpresarial = field => event => {
@@ -4022,13 +3024,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataActividadEconomicaMenor = field => event => {
@@ -4163,13 +3159,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataArrendamiento = field => event => {
@@ -4304,13 +3294,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataIntereses = field => event => {
@@ -4445,13 +3429,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.interes);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
   setDataPremios = field => event => {
     let valor = event.target.value;
@@ -4585,13 +3563,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataEnajenacionBienes = field => event => {
@@ -4726,13 +3698,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataBienesInmuebles = field => event => {
@@ -4918,13 +3884,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataBienesMueblesRegistables = field => event => {
@@ -5062,13 +4022,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataBienesMueblesNoRegistables = field => event => {
@@ -5161,13 +4115,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataInversionesCuentasValores = field => event => {
@@ -5350,13 +4298,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataEfectivoMetales = field => event => {
@@ -5416,13 +4358,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataFideicomisos = field => event => {
@@ -5710,13 +4646,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataBienesIntangibles = field => event => {
@@ -5827,13 +4757,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataCuentasPorCobrar = field => event => {
@@ -5944,13 +4868,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataUsoEspeciePropiedadTercero = field => event => {
@@ -6079,13 +4997,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataUsoEspeciePropiedadTercero = field => event => {
@@ -6214,13 +5126,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataDeudas = field => event => {
@@ -6403,13 +5309,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   setDataOtrasObligaciones = field => event => {
@@ -6583,13 +5483,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {
-      if (this.state.debug) {
-        console.log(this.state.apoyos_beneficios_publicos);
-        console.log(valor);
-        // console.log(this.state.informacion_general.domicilio);
-      }
-    });
+    this.setState(data, () => {});
   };
 
   componentDidMount() {
@@ -6873,8 +5767,8 @@ class Index extends Component {
             <ExperienciaLaboral
               data={this.state}
               handleChange={this.setDataExperienciaLaboral}
-              addClick={this.handleAddExperienciaLaborar}
-              removeClick={this.handleRemoveExperienciaLaborar}
+              addClick={this.addClickExperienciaLaborar}
+              removeClick={this.removeClickExperienciaLaborar}
             />
           )}
 
@@ -6882,8 +5776,8 @@ class Index extends Component {
             <DependientesEconomicos
               data={this.state}
               handleChange={this.setDataDependientesEconomicos}
-              addClick={this.handleAddDependientesEconomicos}
-              removeClick={this.handleRemoveDependientesEconomicos}
+              addClick={this.addClickDependientesEconomicos}
+              removeClick={this.removeClickDependientesEconomicos}
             />
           )}
 
@@ -6963,7 +5857,7 @@ class Index extends Component {
             <BeneficiosGratuitos
               data={this.state}
               handleChange={this.setDataBeneficiosGratuitos}
-              addClick={this.addClickDatosCurriculares}
+              addClick={this.addClickBeneficiosGratuitos}
               removeClick={this.removeClickBeneficiosGratuitos}
             />
           )}

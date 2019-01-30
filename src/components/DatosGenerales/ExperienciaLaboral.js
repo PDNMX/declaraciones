@@ -55,8 +55,6 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    nivelGobierno,
-    poderEjecutivo,
     handleChange,
     addClick,
     removeClick

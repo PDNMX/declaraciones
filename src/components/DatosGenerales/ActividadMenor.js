@@ -71,7 +71,10 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social"
               className={classes.textField}
-              value={data.datos_actividad_economica_menor.nombre_denominacion_razon_social}
+              value={
+                data.datos_actividad_economica_menor
+                  .nombre_denominacion_razon_social
+              }
               onChange={handleChange("dom_numInt")}
               margin="normal"
             />
@@ -100,7 +103,9 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_actividad_economica_menor.sector_industria.codigo}
+                value={
+                  data.datos_actividad_economica_menor.sector_industria.codigo
+                }
                 onChange={handleChange("datos_encargo_actual.sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -121,7 +126,10 @@ function SimpleCard(props) {
                 Tipo de actividad
               </InputLabel>
               <Select
-                value={data.datos_actividad_economica_menor.tipo_actividad_servicio.codigo}
+                value={
+                  data.datos_actividad_economica_menor.tipo_actividad_servicio
+                    .codigo
+                }
                 onChange={handleChange("tipo_actividad")}
                 inputProps={{
                   name: "tipo_actividad",
@@ -144,7 +152,10 @@ function SimpleCard(props) {
               id="grado"
               label="Descripción de la actividad"
               className={classes.textField}
-              value={data.datos_actividad_economica_menor.descripcion_actividad_servicio}
+              value={
+                data.datos_actividad_economica_menor
+                  .descripcion_actividad_servicio
+              }
               onChange={handleChange("dom_numInt")}
               margin="normal"
             />
@@ -154,7 +165,9 @@ function SimpleCard(props) {
               id="grado"
               label="Ingreso bruto anual recibido por el encargo público"
               className={classes.textField}
-              value={data.datos_actividad_economica_menor.ingreso_bruto_anual.valor}
+              value={
+                data.datos_actividad_economica_menor.ingreso_bruto_anual.valor
+              }
               onChange={handleChange("dom_numInt")}
               margin="normal"
             />
@@ -163,7 +176,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.datos_actividad_economica_menor.ingreso_bruto_anual.moneda.codigo}
+                value={
+                  data.datos_actividad_economica_menor.ingreso_bruto_anual
+                    .moneda.codigo
+                }
                 onChange={handleChange("moneda")}
                 inputProps={{
                   name: "moneda",
@@ -182,7 +198,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
-                value={data.datos_actividad_economica_menor.ingreso_bruto_anual.unidad_temporal.codigo}
+                value={
+                  data.datos_actividad_economica_menor.ingreso_bruto_anual
+                    .unidad_temporal.codigo
+                }
                 onChange={handleChange("frecuencia")}
                 inputProps={{
                   name: "frecuencia",
@@ -202,7 +221,10 @@ function SimpleCard(props) {
               id="grado"
               label="Duración"
               className={classes.textField}
-              value={data.datos_actividad_economica_menor.ingreso_bruto_anual.duracion_frecuencia}
+              value={
+                data.datos_actividad_economica_menor.ingreso_bruto_anual
+                  .duracion_frecuencia
+              }
               onChange={handleChange("dom_numInt")}
               margin="normal"
             />
@@ -212,7 +234,10 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de pago"
               className={classes.textField}
-              value={data.datos_actividad_economica_menor.ingreso_bruto_anual.fecha_transaccion}
+              value={
+                data.datos_actividad_economica_menor.ingreso_bruto_anual
+                  .fecha_transaccion
+              }
               onChange={handleChange("dom_numInt")}
               margin="normal"
             />
@@ -234,7 +259,7 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={addClick()}
+              onClick={addClick}
             >
               Agregar
             </Button>
