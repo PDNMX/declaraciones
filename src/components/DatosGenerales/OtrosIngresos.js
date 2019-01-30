@@ -158,7 +158,9 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.datos_otros_ingresos.ingreso_bruto_anual.moneda.codigo}
+                value={
+                  data.datos_otros_ingresos.ingreso_bruto_anual.moneda.codigo
+                }
                 onChange={handleChange("moneda")}
                 inputProps={{
                   name: "moneda",
@@ -177,7 +179,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
-                value={data.datos_otros_ingresos.ingreso_bruto_anual.duracion_frecuencia.codigo}
+                value={
+                  data.datos_otros_ingresos.ingreso_bruto_anual
+                    .duracion_frecuencia
+                }
                 onChange={handleChange("frecuencia")}
                 inputProps={{
                   name: "frecuencia",
@@ -197,7 +202,10 @@ function SimpleCard(props) {
               id="grado"
               label="Duración"
               className={classes.textField}
-              value={data.datos_otros_ingresos.ingreso_bruto_anual.duracion_frecuencia}
+              value={
+                data.datos_otros_ingresos.ingreso_bruto_anual
+                  .duracion_frecuencia
+              }
               margin="normal"
             />
           </Grid>
@@ -206,7 +214,9 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de pago"
               className={classes.textField}
-              value={data.datos_otros_ingresos.ingreso_bruto_anual.fecha_transaccion}
+              value={
+                data.datos_otros_ingresos.ingreso_bruto_anual.fecha_transaccion
+              }
               margin="normal"
             />
           </Grid>
@@ -226,7 +236,7 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={addClick()}
+              onClick={addClick}
             >
               Agregar
             </Button>

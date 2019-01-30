@@ -197,7 +197,7 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={addClick()}
+              onClick={addClick}
             >
               Agregar
             </Button>
@@ -205,7 +205,7 @@ function SimpleCard(props) {
         </Grid>
         <Grid container spacing={24}>
           <Tabla
-            data={data.datos_curriculares.grados_academicos}
+            data={data.curriculares_grados_academicos}
             buttonClick={removeClick}
           />
         </Grid>

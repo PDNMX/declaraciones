@@ -245,7 +245,7 @@ function SimpleCard(props) {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={addClick()}
+              onClick={addClick}
             >
               Agregar
             </Button>

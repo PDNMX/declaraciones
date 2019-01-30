@@ -55,8 +55,6 @@ function SimpleCard(props) {
   const {
     classes,
     data,
-    nivelGobierno,
-    poderEjecutivo,
     handleChange,
     addClick,
     removeClick
@@ -94,7 +92,7 @@ function SimpleCard(props) {
                   "datos_experiencia_laboral.nivel_gobierno"
                 )}
               >
-                {nivelGobierno.map(dato => (
+                {data.nivelGobierno.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>
@@ -110,7 +108,7 @@ function SimpleCard(props) {
                 value={data.datos_experiencia_laboral.poder_ente.codigo}
                 onChange={handleChange("datos_experiencia_laboral.poder_ente")}
               >
-                {poderEjecutivo.map(dato => (
+                {data.poderEjecutivo.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>

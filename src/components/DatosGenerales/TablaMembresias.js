@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 import Button from "@material-ui/core/Button";
+
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -28,6 +29,13 @@ const styles = theme => ({
   table: {
     minWidth: 700
   },
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white
+  },
+  body: {
+    fontSize: 14
+  },
   row: {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.background.default
@@ -41,7 +49,7 @@ function CustomizedTable(props) {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
-        <TableHead>
+        <TableHead className={classes.head}>
           <TableRow>
             <CustomTableCell>Tipo de institución</CustomTableCell>
             <CustomTableCell>Nombre de la institución</CustomTableCell>
@@ -59,25 +67,29 @@ function CustomizedTable(props) {
           {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
-                <CustomTableCell>{index}-{item.tipo_institucion.valor}</CustomTableCell>
-                <CustomTableCell>{item.nombre_institucion}</CustomTableCell>
-                <CustomTableCell>{item.naturaleza_membresia.valor}</CustomTableCell>
-                <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
-                <CustomTableCell>{item.puesto_rol}</CustomTableCell>
-                <CustomTableCell>{item.fecha_inicio}</CustomTableCell>
-                <CustomTableCell>{item.pagado}</CustomTableCell>
-                <CustomTableCell>{item.domicilio.pais.valor}</CustomTableCell>
-                <CustomTableCell>{item.observaciones}</CustomTableCell>
-                  <CustomTableCell>
-                    <Button
-                      variant="contained"
-                      size="small"
-                      value={index}
-                      onClick={buttonClick(index)}
-                    >
-                      Eliminar
-                    </Button>
-                  </CustomTableCell>
+              <CustomTableCell>
+                {index}-{item.tipo_institucion.valor}
+              </CustomTableCell>
+              <CustomTableCell>{item.nombre_institucion}</CustomTableCell>
+              <CustomTableCell>
+                {item.naturaleza_membresia.valor}
+              </CustomTableCell>
+              <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
+              <CustomTableCell>{item.puesto_rol}</CustomTableCell>
+              <CustomTableCell>{item.fecha_inicio}</CustomTableCell>
+              <CustomTableCell>{item.pagado}</CustomTableCell>
+              <CustomTableCell>{item.domicilio.pais.valor}</CustomTableCell>
+              <CustomTableCell>{item.observaciones}</CustomTableCell>
+              <CustomTableCell>
+                <Button
+                  variant="contained"
+                  size="small"
+                  value={index}
+                  onClick={buttonClick(index)}
+                >
+                  Eliminar
+                </Button>
+              </CustomTableCell>
               </TableRow>
             );
           })}
