@@ -84,6 +84,7 @@ function SimpleCard(props) {
               label="Tipo de relación con el Titular"
               className={classes.textField}
               value={data.datos_otras_partes.tipo_relacion}
+              onChange={handleChange("tipo_relacion")}
               margin="normal"
             />
           </Grid>
@@ -94,6 +95,7 @@ function SimpleCard(props) {
               label="Nombre o denominación social de la parte relacionada"
               className={classes.textField}
               value={data.datos_otras_partes.nombre_denominacion_parte}
+              onChange={handleChange("nombre_denominacion_parte")}
               margin="normal"
             />
           </Grid>
@@ -103,6 +105,7 @@ function SimpleCard(props) {
               label="Fecha de inicio/Constitución de la relación"
               className={classes.textField}
               value={data.datos_otras_partes.fecha_inicio_relacion}
+              onChange={handleChange("fecha_inicio_relacion")}
               margin="normal"
             />
           </Grid>
@@ -136,6 +139,7 @@ function SimpleCard(props) {
               label="CURP"
               className={classes.textField}
               value={data.datos_otras_partes.curp}
+              onChange={handleChange("curp")}
               margin="normal"
             />
           </Grid>
@@ -145,6 +149,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_otras_partes.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -154,6 +159,7 @@ function SimpleCard(props) {
               label="Fecha de nacimiento"
               className={classes.textField}
               value={data.datos_otras_partes.fecha_nacimiento}
+              onChange={handleChange("fecha_nacimiento")}
               margin="normal"
             />
           </Grid>
@@ -163,6 +169,7 @@ function SimpleCard(props) {
               label="Ocupación/Profesión"
               className={classes.textField}
               value={data.datos_otras_partes.ocupacion}
+              onChange={handleChange("ocupacion")}
               margin="normal"
             />
           </Grid>
@@ -171,7 +178,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_otras_partes.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -192,6 +199,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_otras_partes.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />
@@ -204,6 +212,7 @@ function SimpleCard(props) {
                 <Checkbox
                   checked={data.datos_otras_partes.tiene_interes}
                   value="Habita el domicilio del declarante"
+                  onChange={handleChange("tiene_interes")}
                   color="primary"
                 />
               }

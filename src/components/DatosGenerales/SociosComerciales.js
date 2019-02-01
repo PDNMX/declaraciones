@@ -72,6 +72,7 @@ function SimpleCard(props) {
               label="Nombre de la actividad comercial vinculante"
               className={classes.textField}
               value={data.datos_socios_comerciales.nombre_actividad}
+              onChange={handleChange("nombre_actividad")}
               margin="normal"
             />
           </Grid>
@@ -81,6 +82,7 @@ function SimpleCard(props) {
               label="Tipo de vinculo"
               className={classes.textField}
               value={data.datos_socios_comerciales.tipo_vinculo}
+              onChange={handleChange("tipo_vinculo")}
               margin="normal"
             />
           </Grid>
@@ -90,6 +92,7 @@ function SimpleCard(props) {
               label="Antiguedad del vinculo (meses)"
               className={classes.textField}
               value={data.datos_socios_comerciales.antiguedad_vinculo}
+              onChange={handleChange("antiguedad_vinculo")}
               margin="normal"
             />
           </Grid>
@@ -99,6 +102,7 @@ function SimpleCard(props) {
               label="RFC de la entidad"
               className={classes.textField}
               value={data.datos_socios_comerciales.rfc_entidad}
+              onChange={handleChange("rfc_entidad")}
               margin="normal"
             />
           </Grid>
@@ -108,6 +112,7 @@ function SimpleCard(props) {
               label="Nombre, del socio comercial"
               className={classes.textField}
               value={data.datos_socios_comerciales.nombre}
+              onChange={handleChange("nombre")}
               margin="normal"
             />
           </Grid>
@@ -117,6 +122,7 @@ function SimpleCard(props) {
               label="CURP del socio"
               className={classes.textField}
               value={data.datos_socios_comerciales.curp}
+              onChange={handleChange("curp")}
               margin="normal"
             />
           </Grid>
@@ -126,6 +132,7 @@ function SimpleCard(props) {
               label="RFC del socio"
               className={classes.textField}
               value={data.datos_socios_comerciales.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -133,8 +140,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="nacionalidad">Nacionalidad</InputLabel>
               <Select
-                value={data.datos_socios_comerciales.lugar_nacimiento.pais.codigo}
-                onChange={handleChange("nacionalidad")}
+                value={
+                  data.datos_socios_comerciales.lugar_nacimiento.pais.codigo
+                }
+                onChange={handleChange("lugar_nacimiento.pais")}
                 inputProps={{
                   name: "nacionalidad",
                   id: "nacionalidad"
@@ -153,8 +162,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="entidad">Entidad federativa</InputLabel>
               <Select
-                value={data.datos_socios_comerciales.lugar_nacimiento.entidad.cve_ent}
-                onChange={handleChange("entidad")}
+                value={
+                  data.datos_socios_comerciales.lugar_nacimiento.entidad.cve_ent
+                }
+                onChange={handleChange("lugar_nacimiento.entidad")}
                 inputProps={{
                   name: "entidad",
                   id: "entidad"
@@ -175,6 +186,7 @@ function SimpleCard(props) {
               label="Fecha de nacimiento del socio"
               className={classes.textField}
               value={data.datos_socios_comerciales.fecha_nacimiento}
+              onChange={handleChange("fecha_nacimiento")}
               margin="normal"
             />
           </Grid>
@@ -184,6 +196,7 @@ function SimpleCard(props) {
               label="Porcentaje de participación del socio"
               className={classes.textField}
               value={data.datos_socios_comerciales.porcentaje_participacion}
+              onChange={handleChange("porcentaje_participacion")}
               margin="normal"
             />
           </Grid>
@@ -192,7 +205,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_socios_comerciales.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -213,6 +226,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_socios_comerciales.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />

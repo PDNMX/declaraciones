@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaDependientesEconomicos";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -78,9 +79,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Tipo de Relación</InputLabel>
               <Select
                 value={data.datos_dependientes_economicos.tipo_relacion.codigo}
-                onChange={handleChange(
-                  "datos_dependientes_economicos.tipo_relacion"
-                )}
+                onChange={handleChange("tipo_relacion")}
               >
                 {data.relacionDeclarante.map(relacionDeclarante => (
                   <MenuItem
@@ -98,9 +97,7 @@ function SimpleCard(props) {
               label="Nombres"
               className={classes.textField}
               value={data.datos_dependientes_economicos.nombre_personal.nombres}
-              onChange={handleChange(
-                "datos_dependientes_economicos.nombre_personal.nombres"
-              )}
+              onChange={handleChange("nombre_personal.nombres")}
               margin="normal"
             />
           </Grid>
@@ -112,9 +109,7 @@ function SimpleCard(props) {
                 data.datos_dependientes_economicos.nombre_personal
                   .primer_apellido
               }
-              onChange={handleChange(
-                "datos_dependientes_economicos.nombre_personal.primer_apellido"
-              )}
+              onChange={handleChange("nombre_personal.primer_apellido")}
               margin="normal"
             />
           </Grid>
@@ -127,9 +122,7 @@ function SimpleCard(props) {
                 data.datos_dependientes_economicos.nombre_personal
                   .segundo_apellido
               }
-              onChange={handleChange(
-                "datos_dependientes_economicos.nombre_personal.segundo_apellido"
-              )}
+              onChange={handleChange("nombre_personal.segundo_apellido")}
               margin="normal"
             />
           </Grid>
@@ -341,6 +334,17 @@ function SimpleCard(props) {
               onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_dependientes_economicos.domicilio}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
           <Grid item xs={2}>

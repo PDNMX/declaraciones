@@ -78,13 +78,27 @@ function SimpleCard(props) {
           Representación activa
         </Typography>
         <Grid container spacing={24}>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Tipo de representación"
+              className={classes.textField}
+              value={data.datos_representacion_activa.tipo_representacion}
+              onChange={handleChange("tipo_representacion")}
+              margin="normal"
+            />
+          </Grid>
+
+          {/*
+            <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_representacion">
                 Tipo de representación
               </InputLabel>
               <Select
-                value={data.datos_representacion_activa.tipo_representacion.codigo}
+                value={
+                  data.datos_representacion_activa.tipo_representacion
+                }
                 onChange={handleChange("tipo_representacion")}
                 inputProps={{
                   name: "tipo_representacion",
@@ -94,7 +108,7 @@ function SimpleCard(props) {
                 {data.catTiposRepresentaciones.map(tipoRepresentacion => (
                   <MenuItem
                     key={tipoRepresentacion.codigo}
-                    value={tipoRepresentacion.codigo}
+                    value={tipoRepresentacion.valor}
                   >
                     {tipoRepresentacion.valor}
                   </MenuItem>
@@ -102,14 +116,15 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={2}>
+          */}
+          {/*<Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="select-multiple-checkbox">
                 Nacionalidades
               </InputLabel>
               <Select
                 multiple
-                value={data.datos_representacion_activa.nacionalidades}
+                value={data.datos_representacion_activa.nacionalidad}
                 onChange={handleChange("nacionalidades")}
                 input={<Input id="select-multiple-checkbox" />}
                 renderValue={selected => selected.join(", ")}
@@ -125,13 +140,14 @@ function SimpleCard(props) {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
+          </Grid>*/}
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Nombre completo"
               className={classes.textField}
               value={data.datos_representacion_activa.nombre_parte_representada}
+              onChange={handleChange("nombre_parte_representada")}
               margin="normal"
             />
           </Grid>
@@ -141,6 +157,7 @@ function SimpleCard(props) {
               label="CURP"
               className={classes.textField}
               value={data.datos_representacion_activa.curp_parte}
+              onChange={handleChange("curp_parte")}
               margin="normal"
             />
           </Grid>
@@ -150,6 +167,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_representacion_activa.rfc_parte}
+              onChange={handleChange("rfc_parte")}
               margin="normal"
             />
           </Grid>
@@ -159,6 +177,7 @@ function SimpleCard(props) {
               label="Fecha de nacimiento"
               className={classes.textField}
               value={data.datos_representacion_activa.fecha_nacimiento_parte}
+              onChange={handleChange("fecha_nacimiento_parte")}
               margin="normal"
             />
           </Grid>
@@ -167,7 +186,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_representacion_activa.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -187,6 +206,7 @@ function SimpleCard(props) {
               label="Fecha de inicio"
               className={classes.textField}
               value={data.datos_representacion_activa.fecha_inicio}
+              onChange={handleChange("fecha_inicio")}
               margin="normal"
             />
           </Grid>
@@ -197,6 +217,7 @@ function SimpleCard(props) {
                 <Checkbox
                   checked={data.datos_representacion_activa.pagado}
                   value="Habita el domicilio del declarante"
+                  onChange={handleChange("pagado")}
                   color="primary"
                 />
               }
@@ -210,6 +231,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_representacion_activa.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />

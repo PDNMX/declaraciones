@@ -10,10 +10,10 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { data, clean } from "./data";
+import { data, clean, example } from "./data";
 
 import Menu from "../Menu";
-import Formulario from "./Formulario";
+import InformacionGeneral from "./InformacionGeneral";
 import DatosCurriculares from "./DatosCurriculares";
 import EncargoActual from "./EncargoActual";
 import ExperienciaLaboral from "./ExperienciaLaboral";
@@ -27,8 +27,8 @@ import SociosComerciales from "./SociosComerciales";
 import ClientesPrincipales from "./ClientesPrincipales";
 import OtrasPartesRelacionadas from "./OtrasPartesRelacionadas";
 import BeneficiosGratuitos from "./BeneficiosGratuitos";
-import SalariosPublicos from "./SalariosPublicos";
-import SalariosEmpleos from "./SalariosEmpleos";
+import SueldosSalariosPublicos from "./SueldosSalariosPublicos";
+import SueldosSalariosOtrosEmpleos from "./SueldosSalariosOtrosEmpleos";
 import ActividadProfesional from "./ActividadProfesional";
 import ActividadEmpresarial from "./ActividadEmpresarial";
 import ActividadMenor from "./ActividadMenor";
@@ -70,9 +70,75 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = data;
+
+    this.state.informacion_general =
+      example.informacion_personal.informacion_general;
+    this.state.datos_curriculares_grados_academicos =
+      example.informacion_personal.datos_curriculares.grados_academicos[0];
+    this.state.datos_encargo_actual =
+      example.informacion_personal.datos_encargo_actual;
+    this.state.datos_experiencia_laboral =
+      example.informacion_personal.experiencia_laboral[0];
+    this.state.datos_dependientes_economicos =
+      example.informacion_personal.dependientes_economicos[0];
+
+    this.state.datos_empresas_sociedades_asociaciones =
+      example.intereses.empresas_sociedades_asociaciones[0];
+    this.state.datos_membresias = example.intereses.membresias[0];
+    this.state.datos_apoyos_beneficios_publicos =
+      example.intereses.apoyos_beneficios_publicos[0];
+    this.state.datos_representacion_activa =
+      example.intereses.representacion_activa[0];
+    this.state.datos_representacion_pasiva =
+      example.intereses.representacion_pasiva[0];
+    this.state.datos_socios_comerciales =
+      example.intereses.socios_comerciales[0];
+    this.state.datos_clientes_principales =
+      example.intereses.clientes_principales[0];
+    this.state.datos_otras_partes = example.intereses.otras_partes[0];
+    this.state.datos_beneficios_gratuitos =
+      example.intereses.beneficios_gratuitos[0];
+
+    this.state.datos_sueldos_salarios_publicos =
+      example.ingresos.sueldos_salarios_publicos[0];
+    this.state.datos_sueldos_salarios_otros_empleos =
+      example.ingresos.sueldos_salarios_otros_empleos[0];
+    this.state.datos_actividad_profesional =
+      example.ingresos.actividad_profesional[0];
+    this.state.datos_actividad_empresarial =
+      example.ingresos.actividad_empresarial[0];
+    this.state.datos_actividad_economica_menor =
+      example.ingresos.actividad_economica_menor[0];
+    this.state.datos_arrendamiento = example.ingresos.arrendamiento[0];
+    this.state.datos_intereses = example.ingresos.intereses[0];
+    this.state.datos_premios = example.ingresos.premios[0];
+    this.state.datos_enajenacion_bienes =
+      example.ingresos.enajenacion_bienes[0];
+    this.state.datos_otros_ingresos = example.ingresos.otros_ingresos[0];
+
+    this.state.datos_bienes_inmuebles = example.activos.bienes_inmuebles[0];
+    this.state.datos_bienes_muebles_registrables =
+      example.activos.bienes_muebles_registrables[0];
+    this.state.datos_bienes_muebles_no_registrables =
+      example.activos.bienes_muebles_no_registrables[0];
+    this.state.datos_inversiones_cuentas_valores =
+      example.activos.inversiones_cuentas_valores[0];
+    this.state.datos_efectivo_metales = example.activos.efectivo_metales[0];
+    this.state.datos_fideicomisos = example.activos.fideicomisos[0];
+    this.state.datos_bienes_intangibles = example.activos.bienes_intangibles[0];
+    this.state.datos_cuentas_por_cobrar = example.activos.cuentas_por_cobrar[0];
+    this.state.datos_uso_especie_propiedad_tercero =
+      example.activos.uso_especie_propiedad_tercero[0];
+
+    this.state.datos_deudas = example.pasivos.deudas[0];
+    this.state.datos_otras_obligaciones = example.pasivos.otras_obligaciones[0];
   }
 
   // state = data;
+
+  show = () => {
+    console.log(this.state.datos_actividad_profesional);
+  };
 
   anyTextChange = (obj, name) => event => {
     let text = this.state[obj];
@@ -233,6 +299,76 @@ class Index extends Component {
 
   getSectorIndustria = codigo => {
     let info = this.state.sectorIndustria.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoInstitucion = codigo => {
+    let info = this.state.catTiposInstituciones.filter(
+      x => x.codigo === codigo
+    );
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoApoyo = codigo => {
+    let info = this.state.catTiposApoyos.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoActividad = codigo => {
+    let info = this.state.catTiposActividades.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoRepresentacion = codigo => {
+    let info = this.state.catTiposRepresentaciones.filter(
+      x => x.codigo === codigo
+    );
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getEntePublico = valor => {
+    let info = this.state.catDependencias.filter(x => x.valor === valor);
+    return {
+      // codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getNaturalezaMembresia = codigo => {
+    let info = this.state.catNaturalezaMembresias.filter(
+      x => x.codigo === codigo
+    );
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getMoneda = codigo => {
+    let info = this.state.catTiposMonedas.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].moneda
+    };
+  };
+
+  getMedidasPlazo = codigo => {
+    let info = this.state.catMedidasPlazos.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -513,7 +649,7 @@ class Index extends Component {
       }
     );
   };
-  removeClickSalariosEmpleos = index => event => {
+  removeClickSueldosSalariosOtrosEmpleos = index => event => {
     this.state.sueldos_salarios_otros_empleos.splice(index, 1);
     this.setState(
       {
@@ -525,7 +661,7 @@ class Index extends Component {
       }
     );
   };
-  removeClickSalariosPublicos = index => event => {
+  removeClickSueldosSalariosPublicos = index => event => {
     this.state.sueldos_salarios_publicos.splice(index, 1);
     this.setState(
       { sueldos_salarios_publicos: this.state.sueldos_salarios_publicos },
@@ -827,7 +963,7 @@ class Index extends Component {
     );
   };
 
-  addClickSalariosPublicos = () => {
+  addClickSueldosSalariosPublicos = () => {
     let data = Object.assign({}, this.state.datos_sueldos_salarios_publicos);
     let info = Object.assign({}, clean.datos_sueldos_salarios_publicos);
 
@@ -845,7 +981,7 @@ class Index extends Component {
     );
   };
 
-  addClickSalariosEmpleos = () => {
+  addClickSueldosSalariosOtrosEmpleos = () => {
     let data = Object.assign(
       {},
       this.state.datos_sueldos_salarios_otros_empleos
@@ -1421,7 +1557,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataDatosCurriculares = field => event => {
@@ -1429,45 +1565,45 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "datos_curriculares_grados_academicos.grado_obtenido":
+      case "grado_obtenido":
         data.datos_curriculares_grados_academicos.grado_obtenido = valor;
         break;
-      case "datos_curriculares_grados_academicos.institucion_educativa":
+      case "institucion_educativa":
         data.datos_curriculares_grados_academicos.institucion_educativa = valor;
         break;
-      case "datos_curriculares_grados_academicos.lugar_institucion_educativa.pais":
+      case "lugar_institucion_educativa.pais":
         data.datos_curriculares_grados_academicos.lugar_institucion_educativa.pais = this.getCiudad(
           valor
         );
         break;
-      case "datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad":
+      case "lugar_institucion_educativa.entidad":
         data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad = this.getEntidadFederativa(
           valor
         );
         break;
-      case "datos_curriculares_grados_academicos.carrera":
+      case "carrera":
         data.datos_curriculares_grados_academicos.carrera = valor;
         break;
-      case "datos_curriculares_grados_academicos.estatus":
+      case "estatus":
         data.datos_curriculares_grados_academicos.estatus = this.getEstatusEstudio(
           valor
         );
         break;
-      case "datos_curriculares_grados_academicos.ano_conclusion":
+      case "ano_conclusion":
         data.datos_curriculares_grados_academicos.ano_conclusion = valor;
         break;
-      case "datos_curriculares_grados_academicos.documento_obtenido":
+      case "documento_obtenido":
         data.datos_curriculares_grados_academicos.documento_obtenido = this.getDocumuentoObtenido(
           valor
         );
         break;
-      case "datos_curriculares_grados_academicos.cedula_profesional":
+      case "cedula_profesional":
         data.datos_curriculares_grados_academicos.cedula_profesional = valor;
         break;
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataInformacionPersonal = field => event => {
@@ -1577,7 +1713,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataEncargoActual = field => event => {
@@ -1585,45 +1721,45 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "datos_encargo_actual.ente_publico":
+      case "ente_publico":
         data.datos_encargo_actual.ente_publico = valor;
         break;
-      case "datos_encargo_actual.empleo_cargo_comision":
+      case "empleo_cargo_comision":
         data.datos_encargo_actual.empleo_cargo_comision = valor;
         break;
-      case "datos_encargo_actual.nivel_gobierno":
+      case "nivel_gobierno":
         data.datos_encargo_actual.nivel_gobierno = this.getNivelGobierno(valor);
         break;
-      case "datos_encargo_actual.poder_juridico":
+      case "poder_juridico":
         data.datos_encargo_actual.poder_juridico = this.getPoderEjecutivo(
           valor
         );
         break;
-      case "datos_encargo_actual.contratado_honorarios":
+      case "contratado_honorarios":
         data.datos_encargo_actual.contratado_honorarios = !data
           .datos_encargo_actual.contratado_honorarios;
         break;
-      case "datos_encargo_actual.nivel_encargo":
+      case "nivel_encargo":
         data.datos_encargo_actual.nivel_encargo = valor;
         break;
-      case "datos_encargo_actual.area_adscripcion":
+      case "area_adscripcion":
         data.datos_encargo_actual.area_adscripcion = valor;
         break;
-      case "datos_encargo_actual.fecha_posesion":
+      case "fecha_posesion":
         data.datos_encargo_actual.fecha_posesion = valor;
         break;
-      case "datos_encargo_actual.telefono_laboral.numero":
+      case "telefono_laboral.numero":
         data.datos_encargo_actual.telefono_laboral.numero = valor;
         break;
-      case "datos_encargo_actual.telefono_laboral.extension":
+      case "telefono_laboral.extension":
         data.datos_encargo_actual.telefono_laboral.extension = valor;
         break;
-      case "datos_encargo_actual.sector_industria":
+      case "sector_industria":
         data.datos_encargo_actual.sector_industria = this.getSectorIndustria(
           valor
         );
         break;
-      case "datos_encargo_actual.funciones_principales.codigo":
+      case "funciones_principales.codigo":
         data.datos_encargo_actual.funciones_principales.codigo = valor;
         break;
       /////////////////////////////  direccion_encargo  /////////////////////////////////////
@@ -1672,7 +1808,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataExperienciaLaboral = field => event => {
@@ -1680,44 +1816,44 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "datos_experiencia_laboral.ambito":
+      case "ambito":
         data.datos_experiencia_laboral.ambito = this.getAmbito(valor);
         break;
-      case "datos_experiencia_laboral.nivel_gobierno":
+      case "nivel_gobierno":
         data.datos_experiencia_laboral.nivel_gobierno = this.getNivelGobierno(
           valor
         );
         break;
-      case "datos_experiencia_laboral.poder_ente":
+      case "poder_ente":
         data.datos_experiencia_laboral.poder_ente = this.getPoderEjecutivo(
           valor
         );
         break;
-      case "datos_experiencia_laboral.nombre_institucion":
+      case "nombre_institucion":
         data.datos_experiencia_laboral.nombre_institucion = valor;
         break;
-      case "datos_experiencia_laboral.unidad_administrativa":
+      case "unidad_administrativa":
         data.datos_experiencia_laboral.unidad_administrativa = valor;
         break;
-      case "datos_experiencia_laboral.sector_industria":
+      case "sector_industria":
         data.datos_experiencia_laboral.sector_industria = this.getSectorIndustria(
           valor
         );
         break;
-      case "datos_experiencia_laboral.jerarquia_rango":
+      case "jerarquia_rango":
         data.datos_experiencia_laboral.jerarquia_rango = valor;
         break;
 
-      case "datos_experiencia_laboral.cargo_puesto":
+      case "cargo_puesto":
         data.datos_experiencia_laboral.cargo_puesto = valor;
         break;
-      case "datos_experiencia_laboral.fecha_ingreso":
+      case "fecha_ingreso":
         data.datos_experiencia_laboral.fecha_ingreso = valor;
         break;
-      case "datos_experiencia_laboral.fecha_salida":
+      case "fecha_salida":
         data.datos_experiencia_laboral.fecha_salida = valor;
         break;
-      case "datos_experiencia_laboral.funciones_principales.codigo":
+      case "funciones_principales.codigo":
         data.datos_experiencia_laboral.funciones_principales[0].codigo = valor;
         break;
       /////////////////////////////  direccion  /////////////////////////////////////
@@ -1764,7 +1900,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataDependientesEconomicos = field => event => {
@@ -1772,18 +1908,18 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "datos_dependientes_economicos.tipo_relacion":
+      case "tipo_relacion":
         data.datos_dependientes_economicos.tipo_relacion = this.getTipoRelacion(
           valor
         );
         break;
-      case "datos_dependientes_economicos.nombre_personal.nombres":
+      case "nombre_personal.nombres":
         data.datos_dependientes_economicos.nombre_personal.nombres = valor;
         break;
-      case "datos_dependientes_economicos.nombre_personal.primer_apellido":
+      case "nombre_personal.primer_apellido":
         data.datos_dependientes_economicos.nombre_personal.primer_apellido = valor;
         break;
-      case "datos_dependientes_economicos.nombre_personal.segundo_apellido":
+      case "nombre_personal.segundo_apellido":
         data.datos_dependientes_economicos.nombre_personal.segundo_apellido = valor;
         break;
       case "nacionalidades":
@@ -1890,7 +2026,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataEmpresasSociedadesAsociaciones = field => event => {
@@ -1899,109 +2035,86 @@ class Index extends Component {
 
     switch (field) {
       case "actividad_economica":
-        data.empresas_sociedades_asociaciones.actividad_economica = valor;
-        break;
-      case "domicilio":
-        data.empresas_sociedades_asociaciones.domicilio = valor;
-        break;
-      case "domicilio.cp":
-        data.empresas_sociedades_asociaciones.domicilio.cp = valor;
-        break;
-      case "domicilio.entidad_federativa":
-        data.empresas_sociedades_asociaciones.domicilio.entidad_federativa = valor;
-        break;
-      case "domicilio.entidad_federativa.cve_ent":
-        data.empresas_sociedades_asociaciones.domicilio.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio.entidad_federativa.nom_ent":
-        data.empresas_sociedades_asociaciones.domicilio.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio.localidad":
-        data.empresas_sociedades_asociaciones.domicilio.localidad = valor;
-        break;
-      case "domicilio.localidad.cve_loc":
-        data.empresas_sociedades_asociaciones.domicilio.localidad.cve_loc = valor;
-        break;
-      case "domicilio.localidad.nom_loc":
-        data.empresas_sociedades_asociaciones.domicilio.localidad.nom_loc = valor;
-        break;
-      case "domicilio.municipio":
-        data.empresas_sociedades_asociaciones.domicilio.municipio = valor;
-        break;
-      case "domicilio.municipio.cve_mun":
-        data.empresas_sociedades_asociaciones.domicilio.municipio.cve_mun = valor;
-        break;
-      case "domicilio.municipio.nom_mun":
-        data.empresas_sociedades_asociaciones.domicilio.municipio.nom_mun = valor;
-        break;
-      case "domicilio.numExt":
-        data.empresas_sociedades_asociaciones.domicilio.numExt = valor;
-        break;
-      case "domicilio.numInt":
-        data.empresas_sociedades_asociaciones.domicilio.numInt = valor;
-        break;
-      case "domicilio.pais":
-        data.empresas_sociedades_asociaciones.domicilio.pais = valor;
-        break;
-      case "domicilio.pais.codigo":
-        data.empresas_sociedades_asociaciones.domicilio.pais.codigo = valor;
-        break;
-      case "domicilio.pais.valor":
-        data.empresas_sociedades_asociaciones.domicilio.pais.valor = valor;
-        break;
-      case "domicilio.vialidad":
-        data.empresas_sociedades_asociaciones.domicilio.vialidad = valor;
-        break;
-      case "domicilio.vialidad.nom_vial":
-        data.empresas_sociedades_asociaciones.domicilio.vialidad.nom_vial = valor;
-        break;
-      case "domicilio.vialidad.tipo_vial":
-        data.empresas_sociedades_asociaciones.domicilio.vialidad.tipo_vial = valor;
+        data.datos_empresas_sociedades_asociaciones.actividad_economica = !data
+          .datos_empresas_sociedades_asociaciones.actividad_economica;
         break;
       case "fecha_constitucion":
-        data.empresas_sociedades_asociaciones.fecha_constitucion = valor;
+        data.datos_empresas_sociedades_asociaciones.fecha_constitucion = valor;
         break;
       case "id":
-        data.empresas_sociedades_asociaciones.id = valor;
+        data.datos_empresas_sociedades_asociaciones.id = valor;
         break;
       case "nombre_empresa_sociedad_asociacion":
-        data.empresas_sociedades_asociaciones.nombre_empresa_sociedad_asociacion = valor;
+        data.datos_empresas_sociedades_asociaciones.nombre_empresa_sociedad_asociacion = valor;
         break;
       case "numero_registro":
-        data.empresas_sociedades_asociaciones.numero_registro = valor;
+        data.datos_empresas_sociedades_asociaciones.numero_registro = valor;
         break;
       case "pais_registro":
-        data.empresas_sociedades_asociaciones.pais_registro = valor;
-        break;
-      case "pais_registro.codigo":
-        data.empresas_sociedades_asociaciones.pais_registro.codigo = valor;
-        break;
-      case "pais_registro.valor":
-        data.empresas_sociedades_asociaciones.pais_registro.valor = valor;
+        data.datos_empresas_sociedades_asociaciones.pais_registro = this.getCiudad(
+          valor
+        );
         break;
       case "porcentaje_participacion":
-        data.empresas_sociedades_asociaciones.porcentaje_participacion = valor;
+        data.datos_empresas_sociedades_asociaciones.porcentaje_participacion = valor;
         break;
       case "rfc":
-        data.empresas_sociedades_asociaciones.rfc = valor;
+        data.datos_empresas_sociedades_asociaciones.rfc = valor;
         break;
       case "rol":
-        data.empresas_sociedades_asociaciones.rol = valor;
+        data.datos_empresas_sociedades_asociaciones.rol = valor;
         break;
       case "sector_industria":
-        data.empresas_sociedades_asociaciones.sector_industria = valor;
+        data.datos_empresas_sociedades_asociaciones.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
-      case "sector_industria.codigo":
-        data.empresas_sociedades_asociaciones.sector_industria.codigo = valor;
+      /////////////////////////////  DOMICILIO  /////////////////////////////////////
+      case "pais":
+        data.datos_empresas_sociedades_asociaciones.domicilio.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "sector_industria.valor":
-        data.empresas_sociedades_asociaciones.sector_industria.valor = valor;
+      case "entidad_federativa":
+        data.datos_empresas_sociedades_asociaciones.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
         break;
+      case "municipio":
+        data.datos_empresas_sociedades_asociaciones.domicilio.municipio = this.getMunicipios(
+          valor
+        );
 
+        this.updateLocalidades(
+          this.state.datos_empresas_sociedades_asociaciones.domicilio
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_empresas_sociedades_asociaciones.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_empresas_sociedades_asociaciones.domicilio.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_empresas_sociedades_asociaciones.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_empresas_sociedades_asociaciones.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_empresas_sociedades_asociaciones.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_empresas_sociedades_asociaciones.domicilio.numInt = valor;
+        break;
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataMembresias = field => event => {
@@ -2009,107 +2122,75 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "domicilio":
-        data.membresias.domicilio = valor;
-        break;
-      case "domicilio.cp":
-        data.membresias.domicilio.cp = valor;
-        break;
-      case "domicilio.entidad_federativa":
-        data.membresias.domicilio.entidad_federativa = valor;
-        break;
-      case "domicilio.entidad_federativa.cve_ent":
-        data.membresias.domicilio.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio.entidad_federativa.nom_ent":
-        data.membresias.domicilio.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio.localidad":
-        data.membresias.domicilio.localidad = valor;
-        break;
-      case "domicilio.localidad.cve_loc":
-        data.membresias.domicilio.localidad.cve_loc = valor;
-        break;
-      case "domicilio.localidad.nom_loc":
-        data.membresias.domicilio.localidad.nom_loc = valor;
-        break;
-      case "domicilio.municipio":
-        data.membresias.domicilio.municipio = valor;
-        break;
-      case "domicilio.municipio.cve_mun":
-        data.membresias.domicilio.municipio.cve_mun = valor;
-        break;
-      case "domicilio.municipio.nom_mun":
-        data.membresias.domicilio.municipio.nom_mun = valor;
-        break;
-      case "domicilio.numExt":
-        data.membresias.domicilio.numExt = valor;
-        break;
-      case "domicilio.numInt":
-        data.membresias.domicilio.numInt = valor;
-        break;
-      case "domicilio.pais":
-        data.membresias.domicilio.pais = valor;
-        break;
-      case "domicilio.pais.codigo":
-        data.membresias.domicilio.pais.codigo = valor;
-        break;
-      case "domicilio.pais.valor":
-        data.membresias.domicilio.pais.valor = valor;
-        break;
-      case "domicilio.vialidad":
-        data.membresias.domicilio.vialidad = valor;
-        break;
-      case "domicilio.vialidad.nom_vial":
-        data.membresias.domicilio.vialidad.nom_vial = valor;
-        break;
-      case "domicilio.vialidad.tipo_vial":
-        data.membresias.domicilio.vialidad.tipo_vial = valor;
-        break;
       case "fecha_inicio":
-        data.membresias.fecha_inicio = valor;
+        data.datos_membresias.fecha_inicio = valor;
         break;
       case "id":
-        data.membresias.id = valor;
+        data.datos_membresias.id = valor;
         break;
       case "naturaleza_membresia":
-        data.membresias.naturaleza_membresia = valor;
+        data.datos_membresias.naturaleza_membresia = this.getNaturalezaMembresia(
+          valor
+        );
         break;
       case "nombre_institucion":
-        data.membresias.nombre_institucion = valor;
+        data.datos_membresias.nombre_institucion = valor;
         break;
       case "observaciones":
-        data.membresias.observaciones = valor;
+        data.datos_membresias.observaciones = valor;
         break;
       case "pagado":
-        data.membresias.pagado = valor;
+        data.datos_membresias.pagado = !data.datos_membresias.pagado;
         break;
       case "puesto_rol":
-        data.membresias.puesto_rol = valor;
+        data.datos_membresias.puesto_rol = valor;
         break;
       case "sector_industria":
-        data.membresias.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.membresias.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.membresias.sector_industria.valor = valor;
+        data.datos_membresias.sector_industria = this.getSectorIndustria(valor);
         break;
       case "tipo_institucion":
-        data.membresias.tipo_institucion = valor;
+        data.datos_membresias.tipo_institucion = this.getTipoInstitucion(valor);
         break;
-      case "tipo_institucion.codigo":
-        data.membresias.tipo_institucion.codigo = valor;
+      /////////////////////////////  DOMICILIO  /////////////////////////////////////
+      case "pais":
+        data.datos_membresias.domicilio.pais = this.getCiudad(valor);
         break;
-      case "tipo_institucion.valor":
-        data.membresias.tipo_institucion.valor = valor;
+      case "entidad_federativa":
+        data.datos_membresias.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_membresias.domicilio.municipio = this.getMunicipios(valor);
+
+        this.updateLocalidades(
+          this.state.datos_membresias.domicilio.entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_membresias.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_membresias.domicilio.localidad = this.getLocalidad(valor);
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_membresias.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_membresias.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_membresias.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_membresias.domicilio.numInt = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataApoyosBeneficiosPublicos = field => event => {
@@ -2118,46 +2199,38 @@ class Index extends Component {
 
     switch (field) {
       case "es_beneficiario":
-        data.apoyos_beneficios_publicos.es_beneficiario = valor;
+        data.datos_apoyos_beneficios_publicos.es_beneficiario = !data
+          .datos_apoyos_beneficios_publicos.es_beneficiario;
         break;
       case "id":
-        data.apoyos_beneficios_publicos.id = valor;
+        data.datos_apoyos_beneficios_publicos.id = valor;
         break;
       case "institucion_otorgante":
-        data.apoyos_beneficios_publicos.institucion_otorgante = valor;
+        data.datos_apoyos_beneficios_publicos.institucion_otorgante = valor;
         break;
       case "nivel_orden_gobierno":
-        data.apoyos_beneficios_publicos.nivel_orden_gobierno = valor;
-        break;
-      case "nivel_orden_gobierno.codigo":
-        data.apoyos_beneficios_publicos.nivel_orden_gobierno.codigo = valor;
-        break;
-      case "nivel_orden_gobierno.valor":
-        data.apoyos_beneficios_publicos.nivel_orden_gobierno.valor = valor;
+        data.datos_apoyos_beneficios_publicos.nivel_orden_gobierno = this.getNivelGobierno(
+          valor
+        );
         break;
       case "observaciones":
-        data.apoyos_beneficios_publicos.observaciones = valor;
+        data.datos_apoyos_beneficios_publicos.observaciones = valor;
         break;
       case "programa":
-        data.apoyos_beneficios_publicos.programa = valor;
+        data.datos_apoyos_beneficios_publicos.programa = valor;
         break;
       case "tipo_apoyo":
-        data.apoyos_beneficios_publicos.tipo_apoyo = valor;
-        break;
-      case "tipo_apoyo.codigo":
-        data.apoyos_beneficios_publicos.tipo_apoyo.codigo = valor;
-        break;
-      case "tipo_apoyo.valor":
-        data.apoyos_beneficios_publicos.tipo_apoyo.valor = valor;
+        data.datos_apoyos_beneficios_publicos.tipo_apoyo = this.getTipoApoyo(
+          valor
+        );
         break;
       case "valor_anual_apoyo":
-        data.apoyos_beneficios_publicos.valor_anual_apoyo = valor;
+        data.datos_apoyos_beneficios_publicos.valor_anual_apoyo = valor;
         break;
-
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataRepresentacionActiva = field => event => {
@@ -2166,55 +2239,47 @@ class Index extends Component {
 
     switch (field) {
       case "curp_parte":
-        data.representacion_activa.curp_parte = valor;
+        data.datos_representacion_activa.curp_parte = valor;
         break;
       case "fecha_inicio":
-        data.representacion_activa.fecha_inicio = valor;
+        data.datos_representacion_activa.fecha_inicio = valor;
         break;
       case "fecha_nacimiento_parte":
-        data.representacion_activa.fecha_nacimiento_parte = valor;
+        data.datos_representacion_activa.fecha_nacimiento_parte = valor;
         break;
       case "id":
-        data.representacion_activa.id = valor;
+        data.datos_representacion_activa.id = valor;
         break;
       case "nombre_parte_representada":
-        data.representacion_activa.nombre_parte_representada = valor;
+        data.datos_representacion_activa.nombre_parte_representada = valor;
         break;
       case "observaciones":
-        data.representacion_activa.observaciones = valor;
+        data.datos_representacion_activa.observaciones = valor;
         break;
       case "ocupacion_profesion_parte":
-        data.representacion_activa.ocupacion_profesion_parte = valor;
+        data.datos_representacion_activa.ocupacion_profesion_parte = valor;
         break;
       case "pagado":
-        data.representacion_activa.pagado = valor;
+        data.datos_representacion_activa.pagado = !data
+          .datos_representacion_activa.pagado;
         break;
       case "rfc_parte":
-        data.representacion_activa.rfc_parte = valor;
+        data.datos_representacion_activa.rfc_parte = valor;
         break;
       case "sector_industria":
-        data.representacion_activa.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.representacion_activa.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.representacion_activa.sector_industria.valor = valor;
+        data.datos_representacion_activa.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_representacion":
-        data.representacion_activa.tipo_representacion = valor;
-        break;
-      case "tipo_representacion.codigo":
-        data.representacion_activa.tipo_representacion.codigo = valor;
-        break;
-      case "tipo_representacion.valor":
-        data.representacion_activa.tipo_representacion.valor = valor;
+        // data.datos_representacion_activa.tipo_representacion = this.getTipoRepresentacion(valor);
+        data.datos_representacion_activa.tipo_representacion = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataRepresentacionPasiva = field => event => {
@@ -2222,65 +2287,50 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "curp_representante":
-        data.representacion_pasiva.curp_representante = valor;
+      case "curp":
+        data.datos_representacion_pasiva.curp = valor;
         break;
       case "fecha_inicio_representacion":
-        data.representacion_pasiva.fecha_inicio_representacion = valor;
+        data.datos_representacion_pasiva.fecha_inicio_representacion = valor;
         break;
-      case "fecha_nacimiento_representante":
-        data.representacion_pasiva.fecha_nacimiento_representante = valor;
+      case "fecha_nacimiento":
+        data.datos_representacion_pasiva.fecha_nacimiento = valor;
         break;
       case "id":
-        data.representacion_pasiva.id = valor;
+        data.datos_representacion_pasiva.id = valor;
         break;
       case "nacionalidades_representante":
-        data.representacion_pasiva.nacionalidades_representante = valor;
+        data.datos_representacion_pasiva.nacionalidades_representante = valor;
         break;
-      case "nacionalidades_representante.codigo":
-        data.representacion_pasiva.nacionalidades_representante.codigo = valor;
-        break;
-      case "nacionalidades_representante.valor":
-        data.representacion_pasiva.nacionalidades_representante.valor = valor;
-        break;
-      case "nombre_representante":
-        data.representacion_pasiva.nombre_representante = valor;
+      case "nombre":
+        data.datos_representacion_pasiva.nombre = valor;
         break;
       case "observaciones":
-        data.representacion_pasiva.observaciones = valor;
+        data.datos_representacion_pasiva.observaciones = valor;
         break;
       case "ocupacion_profesion":
-        data.representacion_pasiva.ocupacion_profesion = valor;
+        data.datos_representacion_pasiva.ocupacion_profesion = valor;
         break;
-      case "rfc_representante":
-        data.representacion_pasiva.rfc_representante = valor;
+      case "rfc":
+        data.datos_representacion_pasiva.rfc = valor;
         break;
       case "sector_industria":
-        data.representacion_pasiva.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.representacion_pasiva.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.representacion_pasiva.sector_industria.valor = valor;
+        data.datos_representacion_pasiva.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tiene_intereses":
-        data.representacion_pasiva.tiene_intereses = valor;
+        data.datos_representacion_pasiva.tiene_intereses = !data
+          .datos_representacion_pasiva.tiene_intereses;
         break;
       case "tipo_representacion":
-        data.representacion_pasiva.tipo_representacion = valor;
-        break;
-      case "tipo_representacion.codigo":
-        data.representacion_pasiva.tipo_representacion.codigo = valor;
-        break;
-      case "tipo_representacion.valor":
-        data.representacion_pasiva.tipo_representacion.valor = valor;
+        data.datos_representacion_pasiva.tipo_representacion.valor = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataSociosComerciales = field => event => {
@@ -2289,73 +2339,58 @@ class Index extends Component {
 
     switch (field) {
       case "antiguedad_vinculo":
-        data.socios_comerciales.antiguedad_vinculo = valor;
-        break;
-      case "curp_socio":
-        data.socios_comerciales.curp_socio = valor;
-        break;
-      case "fecha_nacimiento_socio":
-        data.socios_comerciales.fecha_nacimiento_socio = valor;
-        break;
-      case "id":
-        data.socios_comerciales.id = valor;
-        break;
-      case "lugar_nacimiento_socio":
-        data.socios_comerciales.lugar_nacimiento_socio = valor;
-        break;
-      case "lugar_nacimiento_socio.entidad":
-        data.socios_comerciales.lugar_nacimiento_socio.entidad = valor;
-        break;
-      case "lugar_nacimiento_socio.entidad.cve_ent":
-        data.socios_comerciales.lugar_nacimiento_socio.entidad.cve_ent = valor;
-        break;
-      case "lugar_nacimiento_socio.entidad.nom_ent":
-        data.socios_comerciales.lugar_nacimiento_socio.entidad.nom_ent = valor;
-        break;
-      case "lugar_nacimiento_socio.pais":
-        data.socios_comerciales.lugar_nacimiento_socio.pais = valor;
-        break;
-      case "lugar_nacimiento_socio.pais.codigo":
-        data.socios_comerciales.lugar_nacimiento_socio.pais.codigo = valor;
-        break;
-      case "lugar_nacimiento_socio.pais.valor":
-        data.socios_comerciales.lugar_nacimiento_socio.pais.valor = valor;
-        break;
-      case "nombre_actividad":
-        data.socios_comerciales.nombre_actividad = valor;
-        break;
-      case "nombre_socio":
-        data.socios_comerciales.nombre_socio = valor;
-        break;
-      case "observaciones":
-        data.socios_comerciales.observaciones = valor;
-        break;
-      case "porcentaje_participacion":
-        data.socios_comerciales.porcentaje_participacion = valor;
+        data.datos_socios_comerciales.antiguedad_vinculo = valor;
         break;
       case "rfc_entidad":
-        data.socios_comerciales.rfc_entidad = valor;
+        data.datos_socios_comerciales.rfc_entidad = valor;
         break;
-      case "rfc_socio":
-        data.socios_comerciales.rfc_socio = valor;
+      case "fecha_nacimiento":
+        data.datos_socios_comerciales.fecha_nacimiento = valor;
+        break;
+      case "id":
+        data.datos_socios_comerciales.id = valor;
+        break;
+      case "lugar_nacimiento.entidad":
+        data.datos_socios_comerciales.lugar_nacimiento.entidad = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "lugar_nacimiento.pais":
+        data.datos_socios_comerciales.lugar_nacimiento.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "nombre_actividad":
+        data.datos_socios_comerciales.nombre_actividad = valor;
+        break;
+      case "nombre":
+        data.datos_socios_comerciales.nombre = valor;
+        break;
+      case "observaciones":
+        data.datos_socios_comerciales.observaciones = valor;
+        break;
+      case "porcentaje_participacion":
+        data.datos_socios_comerciales.porcentaje_participacion = valor;
+        break;
+      case "rfc":
+        data.datos_socios_comerciales.rfc = valor;
+        break;
+      case "curp":
+        data.datos_socios_comerciales.curp = valor;
         break;
       case "sector_industria":
-        data.socios_comerciales.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.socios_comerciales.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.socios_comerciales.sector_industria.valor = valor;
+        data.datos_socios_comerciales.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_vinculo":
-        data.socios_comerciales.tipo_vinculo = valor;
+        data.datos_socios_comerciales.tipo_vinculo = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataClientesPrincipales = field => event => {
@@ -2363,167 +2398,130 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "domicilio_cliente":
-        data.clientes_principales.domicilio_cliente = valor;
-        break;
-      case "domicilio_cliente.cp":
-        data.clientes_principales.domicilio_cliente.cp = valor;
-        break;
-      case "domicilio_cliente.entidad_federativa":
-        data.clientes_principales.domicilio_cliente.entidad_federativa = valor;
-        break;
-      case "domicilio_cliente.entidad_federativa.cve_ent":
-        data.clientes_principales.domicilio_cliente.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_cliente.entidad_federativa.nom_ent":
-        data.clientes_principales.domicilio_cliente.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_cliente.localidad":
-        data.clientes_principales.domicilio_cliente.localidad = valor;
-        break;
-      case "domicilio_cliente.localidad.cve_loc":
-        data.clientes_principales.domicilio_cliente.localidad.cve_loc = valor;
-        break;
-      case "domicilio_cliente.localidad.nom_loc":
-        data.clientes_principales.domicilio_cliente.localidad.nom_loc = valor;
-        break;
-      case "domicilio_cliente.municipio":
-        data.clientes_principales.domicilio_cliente.municipio = valor;
-        break;
-      case "domicilio_cliente.municipio.cve_mun":
-        data.clientes_principales.domicilio_cliente.municipio.cve_mun = valor;
-        break;
-      case "domicilio_cliente.municipio.nom_mun":
-        data.clientes_principales.domicilio_cliente.municipio.nom_mun = valor;
-        break;
-      case "domicilio_cliente.numExt":
-        data.clientes_principales.domicilio_cliente.numExt = valor;
-        break;
-      case "domicilio_cliente.numInt":
-        data.clientes_principales.domicilio_cliente.numInt = valor;
-        break;
-      case "domicilio_cliente.pais":
-        data.clientes_principales.domicilio_cliente.pais = valor;
-        break;
-      case "domicilio_cliente.pais.codigo":
-        data.clientes_principales.domicilio_cliente.pais.codigo = valor;
-        break;
-      case "domicilio_cliente.pais.valor":
-        data.clientes_principales.domicilio_cliente.pais.valor = valor;
-        break;
-      case "domicilio_cliente.vialidad":
-        data.clientes_principales.domicilio_cliente.vialidad = valor;
-        break;
-      case "domicilio_cliente.vialidad.nom_vial":
-        data.clientes_principales.domicilio_cliente.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_cliente.vialidad.tipo_vial":
-        data.clientes_principales.domicilio_cliente.vialidad.tipo_vial = valor;
-        break;
       case "dueno_encargado":
-        data.clientes_principales.dueno_encargado = valor;
+        data.datos_clientes_principales.dueno_encargado = valor;
         break;
       case "id":
-        data.clientes_principales.id = valor;
+        data.datos_clientes_principales.id = valor;
         break;
-      case "nombre_cliente":
-        data.clientes_principales.nombre_cliente = valor;
+      case "nombre":
+        data.datos_clientes_principales.nombre = valor;
         break;
       case "nombre_negocio":
-        data.clientes_principales.nombre_negocio = valor;
+        data.datos_clientes_principales.nombre_negocio = valor;
         break;
       case "numero_registro":
-        data.clientes_principales.numero_registro = valor;
+        data.datos_clientes_principales.numero_registro = valor;
         break;
       case "observaciones":
-        data.clientes_principales.observaciones = valor;
+        data.datos_clientes_principales.observaciones = valor;
         break;
-      case "porcentaje_facturacion":
-        data.clientes_principales.porcentaje_facturacion = valor;
+      case "porcentaje_participacion":
+        data.datos_clientes_principales.porcentaje_participacion = valor;
         break;
-      case "rfc_cliente":
-        data.clientes_principales.rfc_cliente = valor;
+      case "rfc":
+        data.datos_clientes_principales.rfc = valor;
         break;
       case "sector_industria":
-        data.clientes_principales.sector_industria = valor;
+        data.datos_clientes_principales.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
-      case "sector_industria.codigo":
-        data.clientes_principales.sector_industria.codigo = valor;
+      /////////////////////////////  DOMICILIO  /////////////////////////////////////
+      case "pais":
+        data.datos_clientes_principales.domicilio.pais = this.getCiudad(valor);
         break;
-      case "sector_industria.valor":
-        data.clientes_principales.sector_industria.valor = valor;
+      case "entidad_federativa":
+        data.datos_clientes_principales.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
         break;
+      case "municipio":
+        data.datos_clientes_principales.domicilio.municipio = this.getMunicipios(
+          valor
+        );
 
+        this.updateLocalidades(
+          this.state.datos_clientes_principales.domicilio.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_clientes_principales.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_clientes_principales.domicilio.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_clientes_principales.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_clientes_principales.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_clientes_principales.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_clientes_principales.domicilio.numInt = valor;
+        break;
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
-  setDataOtrasPartes = field => event => {
+  setDataOtrasPartesRelacionadas = field => event => {
     let valor = event.target.value;
     let data = this.state;
 
     switch (field) {
       case "curp":
-        data.otras_partes.curp = valor;
+        data.datos_otras_partes.curp = valor;
         break;
       case "fecha_inicio_relacion":
-        data.otras_partes.fecha_inicio_relacion = valor;
+        data.datos_otras_partes.fecha_inicio_relacion = valor;
         break;
       case "fecha_nacimiento":
-        data.otras_partes.fecha_nacimiento = valor;
+        data.datos_otras_partes.fecha_nacimiento = valor;
         break;
       case "id":
-        data.otras_partes.id = valor;
+        data.datos_otras_partes.id = valor;
         break;
       case "nacionalidades":
-        data.otras_partes.nacionalidades = valor;
-        break;
-      case "nacionalidades.codigo":
-        data.otras_partes.nacionalidades.codigo = valor;
-        break;
-      case "nacionalidades.valor":
-        data.otras_partes.nacionalidades.valor = valor;
+        data.datos_otras_partes.nacionalidades = valor;
         break;
       case "nombre_denominacion_parte":
-        data.otras_partes.nombre_denominacion_parte = valor;
+        data.datos_otras_partes.nombre_denominacion_parte = valor;
         break;
       case "observaciones":
-        data.otras_partes.observaciones = valor;
+        data.datos_otras_partes.observaciones = valor;
         break;
       case "ocupacion":
-        data.otras_partes.ocupacion = valor;
+        data.datos_otras_partes.ocupacion = valor;
         break;
       case "rfc":
-        data.otras_partes.rfc = valor;
+        data.datos_otras_partes.rfc = valor;
         break;
       case "sector_industria":
-        data.otras_partes.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.otras_partes.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.otras_partes.sector_industria.valor = valor;
+        data.datos_otras_partes.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tiene_interes":
-        data.otras_partes.tiene_interes = valor;
+        data.datos_otras_partes.tiene_interes = !data.datos_otras_partes
+          .tiene_interes;
         break;
       case "tipo_relacion":
-        data.otras_partes.tipo_relacion = valor;
-        break;
-      case "tipo_relacion.codigo":
-        data.otras_partes.tipo_relacion.codigo = valor;
-        break;
-      case "tipo_relacion.valor":
-        data.otras_partes.tipo_relacion.valor = valor;
+        data.datos_otras_partes.tipo_relacion = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataBeneficiosGratuitos = field => event => {
@@ -2532,40 +2530,30 @@ class Index extends Component {
 
     switch (field) {
       case "id":
-        data.beneficios_gratuitos.id = valor;
+        data.datos_beneficios_gratuitos.id = valor;
         break;
       case "observaciones":
-        data.beneficios_gratuitos.observaciones = valor;
+        data.datos_beneficios_gratuitos.observaciones = valor;
         break;
       case "origen_beneficio":
-        data.beneficios_gratuitos.origen_beneficio = valor;
+        data.datos_beneficios_gratuitos.origen_beneficio = valor;
         break;
       case "sector_industria":
-        data.beneficios_gratuitos.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.beneficios_gratuitos.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.beneficios_gratuitos.sector_industria.valor = valor;
+        data.datos_beneficios_gratuitos.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_beneficio":
-        data.beneficios_gratuitos.tipo_beneficio = valor;
-        break;
-      case "tipo_beneficio.codigo":
-        data.beneficios_gratuitos.tipo_beneficio.codigo = valor;
-        break;
-      case "tipo_beneficio.valor":
-        data.beneficios_gratuitos.tipo_beneficio.valor = valor;
+        data.datos_beneficios_gratuitos.tipo_beneficio = valor;
         break;
       case "valor_beneficio":
-        data.beneficios_gratuitos.valor_beneficio = valor;
+        data.datos_beneficios_gratuitos.valor_beneficio = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataSueldosSalariosPublicos = field => event => {
@@ -2574,52 +2562,43 @@ class Index extends Component {
 
     switch (field) {
       case "ente_publico":
-        data.sueldos_salarios_publicos.ente_publico = valor;
+        data.datos_sueldos_salarios_publicos.ente_publico = this.getEntePublico(
+          valor
+        );
         break;
       case "id":
-        data.sueldos_salarios_publicos.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual = valor;
+        data.datos_sueldos_salarios_publicos.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.valor":
-        data.sueldos_salarios_publicos.ingreso_bruto_anual.valor = valor;
+        data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.valor = valor;
         break;
       case "observaciones":
-        data.sueldos_salarios_publicos.observaciones = valor;
+        data.datos_sueldos_salarios_publicos.observaciones = valor;
         break;
       case "rfc":
-        data.sueldos_salarios_publicos.rfc = valor;
+        data.datos_sueldos_salarios_publicos.rfc = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataSueldosSalariosOtrosEmpleos = field => event => {
@@ -2628,133 +2607,99 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.sueldos_salarios_otros_empleos.curp = valor;
+        data.datos_sueldos_salarios_otros_empleos.curp = valor;
         break;
       case "descripcion_actividad_servicio":
-        data.sueldos_salarios_otros_empleos.descripcion_actividad_servicio = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.cp":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.cp = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.entidad_federativa":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.entidad_federativa = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.localidad":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.localidad = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.localidad.cve_loc":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.localidad.cve_loc = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.localidad.nom_loc":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.localidad.nom_loc = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.municipio":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.municipio = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.municipio.cve_mun":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.municipio.cve_mun = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.municipio.nom_mun":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.municipio.nom_mun = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.numExt":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.numExt = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.numInt":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.numInt = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.pais":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.pais = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.pais.codigo":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.pais.codigo = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.pais.valor":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.pais.valor = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.vialidad":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.vialidad = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.vialidad.nom_vial":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.vialidad.tipo_vial":
-        data.sueldos_salarios_otros_empleos.domicilio_persona_recibe_ingreso.vialidad.tipo_vial = valor;
+        data.datos_sueldos_salarios_otros_empleos.descripcion_actividad_servicio = valor;
         break;
       case "id":
-        data.sueldos_salarios_otros_empleos.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual = valor;
+        data.datos_sueldos_salarios_otros_empleos.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal = valor;
+        data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.sueldos_salarios_otros_empleos.ingreso_bruto_anual.valor = valor;
+      case "ingreso_bruto_anual":
+        data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion_razon_social":
-        data.sueldos_salarios_otros_empleos.nombre_denominacion_razon_social = valor;
+        data.datos_sueldos_salarios_otros_empleos.nombre_denominacion_razon_social = valor;
         break;
       case "observaciones":
-        data.sueldos_salarios_otros_empleos.observaciones = valor;
+        data.datos_sueldos_salarios_otros_empleos.observaciones = valor;
         break;
       case "rfc":
-        data.sueldos_salarios_otros_empleos.rfc = valor;
+        data.datos_sueldos_salarios_otros_empleos.rfc = valor;
         break;
       case "sector_industria":
-        data.sueldos_salarios_otros_empleos.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.sueldos_salarios_otros_empleos.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.sueldos_salarios_otros_empleos.sector_industria.valor = valor;
+        data.datos_sueldos_salarios_otros_empleos.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_actividad_servicio":
-        data.sueldos_salarios_otros_empleos.tipo_actividad_servicio = valor;
+        data.datos_sueldos_salarios_otros_empleos.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.sueldos_salarios_otros_empleos.tipo_actividad_servicio.codigo = valor;
+      /////////////////////////////  domicilio_persona_paga  /////////////////////////////////////
+      case "pais":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.valor":
-        data.sueldos_salarios_otros_empleos.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.cp = valor;
+        break;
+      case "localidad":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.numInt = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataActividadProfesional = field => event => {
@@ -2763,133 +2708,91 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.actividad_profesional.curp = valor;
+        data.datos_actividad_profesional.curp = valor;
         break;
       case "descripcion_actividad_servicio":
-        data.actividad_profesional.descripcion_actividad_servicio = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.cp":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.cp = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.entidad_federativa":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.entidad_federativa = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.localidad":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.localidad = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.localidad.cve_loc":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.localidad.cve_loc = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.localidad.nom_loc":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.localidad.nom_loc = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.municipio":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.municipio = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.municipio.cve_mun":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.municipio.cve_mun = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.municipio.nom_mun":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.municipio.nom_mun = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.numExt":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.numExt = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.numInt":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.numInt = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.pais":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.pais = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.pais.codigo":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.pais.codigo = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.pais.valor":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.pais.valor = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.vialidad":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.vialidad = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.vialidad.nom_vial":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_persona_recibe_ingreso.vialidad.tipo_vial":
-        data.actividad_profesional.domicilio_persona_recibe_ingreso.vialidad.tipo_vial = valor;
+        data.datos_actividad_profesional.descripcion_actividad_servicio = valor;
         break;
       case "id":
-        data.actividad_profesional.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.actividad_profesional.ingreso_bruto_anual = valor;
+        data.datos_actividad_profesional.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.actividad_profesional.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_actividad_profesional.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.actividad_profesional.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_actividad_profesional.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.actividad_profesional.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.actividad_profesional.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.actividad_profesional.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_actividad_profesional.ingreso_bruto_anual.moneda = this.getMoneda(valor);
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.actividad_profesional.ingreso_bruto_anual.unidad_temporal = valor;
+        data.datos_actividad_profesional.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(valor);
         break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.actividad_profesional.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.actividad_profesional.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.actividad_profesional.ingreso_bruto_anual.valor = valor;
+      case "ingreso_bruto_anual":
+        data.datos_actividad_profesional.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion_razon_social":
-        data.actividad_profesional.nombre_denominacion_razon_social = valor;
+        data.datos_actividad_profesional.nombre_denominacion_razon_social = valor;
         break;
       case "observaciones":
-        data.actividad_profesional.observaciones = valor;
+        data.datos_actividad_profesional.observaciones = valor;
         break;
       case "rfc":
-        data.actividad_profesional.rfc = valor;
+        data.datos_actividad_profesional.rfc = valor;
         break;
       case "sector_industria":
-        data.actividad_profesional.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.actividad_profesional.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.actividad_profesional.sector_industria.valor = valor;
+        data.datos_actividad_profesional.sector_industria = valor;
         break;
       case "tipo_actividad_servicio":
-        data.actividad_profesional.tipo_actividad_servicio = valor;
+        data.datos_actividad_profesional.tipo_actividad_servicio = this.getTipoActividad(valor);
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.actividad_profesional.tipo_actividad_servicio.codigo = valor;
+        /////////////////////////////  domicilio_persona_paga  /////////////////////////////////////
+      case "pais":
+        data.datos_actividad_profesional.domicilio_persona_paga.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.valor":
-        data.actividad_profesional.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_actividad_profesional.domicilio_persona_paga.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_actividad_profesional.domicilio_persona_paga.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_actividad_profesional.domicilio_persona_paga.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_actividad_profesional.domicilio_persona_paga.cp = valor;
+        break;
+      case "localidad":
+        data.datos_actividad_profesional.domicilio_persona_paga.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_actividad_profesional.domicilio_persona_paga.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_actividad_profesional.domicilio_persona_paga.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_actividad_profesional.domicilio_persona_paga.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_actividad_profesional.domicilio_persona_paga.numInt = valor;
         break;
 
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataActividadEmpresarial = field => event => {
@@ -3024,7 +2927,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataActividadEconomicaMenor = field => event => {
@@ -3159,7 +3062,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataArrendamiento = field => event => {
@@ -3294,7 +3197,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataIntereses = field => event => {
@@ -3429,7 +3332,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
   setDataPremios = field => event => {
     let valor = event.target.value;
@@ -3563,7 +3466,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataEnajenacionBienes = field => event => {
@@ -3698,7 +3601,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataBienesInmuebles = field => event => {
@@ -3884,7 +3787,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataBienesMueblesRegistables = field => event => {
@@ -4022,7 +3925,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataBienesMueblesNoRegistables = field => event => {
@@ -4115,7 +4018,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataInversionesCuentasValores = field => event => {
@@ -4298,7 +4201,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataEfectivoMetales = field => event => {
@@ -4358,7 +4261,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataFideicomisos = field => event => {
@@ -4646,7 +4549,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataBienesIntangibles = field => event => {
@@ -4757,7 +4660,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataCuentasPorCobrar = field => event => {
@@ -4868,7 +4771,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataUsoEspeciePropiedadTercero = field => event => {
@@ -4997,7 +4900,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataUsoEspeciePropiedadTercero = field => event => {
@@ -5126,7 +5029,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataDeudas = field => event => {
@@ -5309,7 +5212,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   setDataOtrasObligaciones = field => event => {
@@ -5483,7 +5386,7 @@ class Index extends Component {
       default:
     }
 
-    this.setState(data, () => {});
+    this.setState(data);
   };
 
   componentDidMount() {
@@ -5600,12 +5503,6 @@ class Index extends Component {
       .then(res => res.json())
       .then(catRelacionDeclarante =>
         this.setState({ catRelacionDeclarante: catRelacionDeclarante })
-      );
-
-    fetch(config.apiHost + "catTiposMonedas")
-      .then(res => res.json())
-      .then(catTiposMonedas =>
-        this.setState({ catTiposMonedas: catTiposMonedas })
       );
 
     fetch(config.apiHost + "catMedidasPlazos")
@@ -5734,12 +5631,19 @@ class Index extends Component {
               </Button>
             )}
           </Grid>
+          <Grid item xs={2} style={{ textAlign: "right", padding: "20px" }}>
+            <br />
+
+            <Button variant="contained" size="small" onClick={this.show}>
+              SHOW
+            </Button>
+          </Grid>
           <Grid item xs={12} style={{ textAlign: "center", padding: "20px" }}>
             {this.state.show}
           </Grid>
           {this.state.show === 1 && (
             <Grid item xs={12}>
-              <Formulario
+              <InformacionGeneral
                 data={this.state}
                 handleChange={this.setDataInformacionPersonal}
               />
@@ -5757,9 +5661,6 @@ class Index extends Component {
             <EncargoActual
               data={this.state}
               handleChange={this.setDataEncargoActual}
-              nivelGobierno={this.state.nivelGobierno}
-              poderEjecutivo={this.state.poderEjecutivo}
-              sectorIndustria={this.state.sectorIndustria}
             />
           )}
 
@@ -5847,7 +5748,7 @@ class Index extends Component {
           {this.state.show === 13 && (
             <OtrasPartesRelacionadas
               data={this.state}
-              handleChange={this.setDataOtrasPartes}
+              handleChange={this.setDataOtrasPartesRelacionadas}
               addClick={this.addClickOtrasPartesRelacionadas}
               removeClick={this.removeClickOtrasPartesRelacionadas}
             />
@@ -5863,20 +5764,20 @@ class Index extends Component {
           )}
 
           {this.state.show === 15 && (
-            <SalariosPublicos
+            <SueldosSalariosPublicos
               data={this.state}
               handleChange={this.setDataSueldosSalariosPublicos}
-              addClick={this.addClickSalariosPublicos}
-              removeClick={this.removeClickSalariosPublicos}
+              addClick={this.addClickSueldosSalariosPublicos}
+              removeClick={this.removeClickSueldosSalariosPublicos}
             />
           )}
 
           {this.state.show === 16 && (
-            <SalariosEmpleos
+            <SueldosSalariosOtrosEmpleos
               data={this.state}
               handleChange={this.setDataSueldosSalariosOtrosEmpleos}
-              addClick={this.addClickSalariosEmpleos}
-              removeClick={this.removeClickSalariosEmpleos}
+              addClick={this.addClickSueldosSalariosOtrosEmpleos}
+              removeClick={this.removeClickSueldosSalariosOtrosEmpleos}
             />
           )}
 

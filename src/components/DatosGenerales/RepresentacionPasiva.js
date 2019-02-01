@@ -75,16 +75,29 @@ function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Representación activa
+          Representación pasiva
         </Typography>
         <Grid container spacing={24}>
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Tipo de representación"
+              className={classes.textField}
+              value={data.datos_representacion_pasiva.tipo_representacion.valor}
+              onChange={handleChange("tipo_representacion")}
+              margin="normal"
+            />
+          </Grid>
+          {/*
           <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_representacion">
                 Tipo de representación
               </InputLabel>
               <Select
-                value={data.datos_representacion_pasiva.tipo_representacion.codigo}
+                value={
+                  data.datos_representacion_pasiva.tipo_representacion.codigo
+                }
                 onChange={handleChange("tipo_representacion")}
                 inputProps={{
                   name: "tipo_representacion",
@@ -102,12 +115,14 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
+          */}
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Nombre completo"
               className={classes.textField}
               value={data.datos_representacion_pasiva.nombre}
+              onChange={handleChange("nombre")}
               margin="normal"
             />
           </Grid>
@@ -116,7 +131,10 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de inicio"
               className={classes.textField}
-              value={data.datos_representacion_pasiva.fecha_inicio_representacion}
+              value={
+                data.datos_representacion_pasiva.fecha_inicio_representacion
+              }
+              onChange={handleChange("fecha_inicio_representacion")}
               margin="normal"
             />
           </Grid>
@@ -144,13 +162,13 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="CURP"
               className={classes.textField}
               value={data.datos_representacion_pasiva.curp}
+              onChange={handleChange("curp")}
               margin="normal"
             />
           </Grid>
@@ -160,6 +178,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_representacion_pasiva.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -169,6 +188,7 @@ function SimpleCard(props) {
               label="Fecha de nacimiento"
               className={classes.textField}
               value={data.datos_representacion_pasiva.fecha_nacimiento}
+              onChange={handleChange("fecha_nacimiento")}
               margin="normal"
             />
           </Grid>
@@ -178,6 +198,7 @@ function SimpleCard(props) {
               label="Ocupación/Profesión"
               className={classes.textField}
               value={data.datos_representacion_pasiva.ocupacion_profesion}
+              onChange={handleChange("ocupacion_profesion")}
               margin="normal"
             />
           </Grid>
@@ -187,6 +208,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_representacion_pasiva.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />
@@ -196,7 +218,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_representacion_pasiva.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -210,7 +232,6 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-
           <Grid item xs={12}>
             <br />
             <FormControlLabel
@@ -218,6 +239,7 @@ function SimpleCard(props) {
                 <Checkbox
                   checked={data.datos_representacion_pasiva.tiene_intereses}
                   value="Habita el domicilio del declarante"
+                  onChange={handleChange("tiene_intereses")}
                   color="primary"
                 />
               }

@@ -72,6 +72,7 @@ function SimpleCard(props) {
               label="Tipo de beneficio"
               className={classes.textField}
               value={data.datos_beneficios_gratuitos.tipo_beneficio}
+              onChange={handleChange("tipo_beneficio")}
               margin="normal"
             />
           </Grid>
@@ -81,6 +82,7 @@ function SimpleCard(props) {
               label="Origen del beneficio"
               className={classes.textField}
               value={data.datos_beneficios_gratuitos.origen_beneficio}
+              onChange={handleChange("origen_beneficio")}
               margin="normal"
             />
           </Grid>
@@ -89,7 +91,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_beneficios_gratuitos.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -109,6 +111,7 @@ function SimpleCard(props) {
               label="Valor del beneficio"
               className={classes.textField}
               value={data.datos_beneficios_gratuitos.valor_beneficio}
+              onChange={handleChange("valor_beneficio")}
               margin="normal"
             />
           </Grid>
@@ -119,6 +122,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_beneficios_gratuitos.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />

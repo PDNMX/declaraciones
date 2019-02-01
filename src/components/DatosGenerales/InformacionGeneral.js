@@ -200,7 +200,7 @@ function SimpleCard(props) {
               id="fecha_nacimiento"
               label="Fecha de nacimiento"
               type="date"
-              defaultValue={moment(data.fecha_nacimiento).format("DD/MM/YYYY")}
+              defaultValue={moment(data.fecha_nacimiento,"YYYY-MM-DD")}
               format={"DD-MM-YYYY"}
               className={classes.select}
               onChange={handleChange("fecha_nacimiento")}
