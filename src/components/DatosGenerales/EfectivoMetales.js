@@ -92,18 +92,20 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
+              <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.datos_efectivo_metales.tipo_moneda.codigo}
+                value={
+                  data.datos_efectivo_metales.tipo_moneda.codigo
+                }
                 onChange={handleChange("tipo_moneda")}
                 inputProps={{
-                  name: "tipo_moneda",
-                  id: "tipo_moneda"
+                  name: "moneda",
+                  id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem key={tipoMoneda.codigoNumerico+tipoMoneda.entidad} value={tipoMoneda.codigo}>
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
@@ -114,8 +116,8 @@ function SimpleCard(props) {
               id="grado"
               label="Monto "
               className={classes.textField}
-              value={data.datos_efectivo_metales.monto}
-              margin="normal"
+              value={data.datos_efectivo_metales.monto_moneda}
+              onChange={handleChange("monto_moneda")} margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
@@ -143,7 +145,7 @@ function SimpleCard(props) {
               label="Unidades"
               className={classes.textField}
               value={data.datos_efectivo_metales.unidades}
-              margin="normal"
+              onChange={handleChange("unidades")} margin="normal"
             />
           </Grid>
           <Grid item xs={3}>
@@ -151,8 +153,8 @@ function SimpleCard(props) {
               id="grado"
               label="Monto en pesos"
               className={classes.textField}
-              value={data.datos_efectivo_metales.monto_pesos}
-              margin="normal"
+              value={data.datos_efectivo_metales.monto_metal}
+              onChange={handleChange("monto_metal")} margin="normal"
             />
           </Grid>
 
@@ -187,7 +189,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_efectivo_metales.observaciones_comentarios}
-              margin="normal"
+              onChange={handleChange("observaciones_comentarios")} margin="normal"
               multiline={true}
             />
           </Grid>

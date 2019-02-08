@@ -183,7 +183,7 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_encargo_actual.sector_industria.codigo}
+                value={data.sector_industria.codigo}
                 onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",

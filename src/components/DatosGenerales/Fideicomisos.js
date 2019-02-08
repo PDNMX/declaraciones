@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import Tabla from "./TablaFideicomisos";
+import Partes from "./FideicomisoPartes";
 
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -39,12 +40,12 @@ const styles = theme => ({
     fontSize: 18
   },
   textField: {
-    width: "100%"
+    width: "90%"
   },
   select: {
     //minWidth: 335,
     marginTop: 15,
-    width: "100%"
+    width: "90%"
   },
   button: {
     margin: theme.spacing.unit,
@@ -65,8 +66,8 @@ function SimpleCard(props) {
         <Typography variant="h5" gutterBottom>
           Fideicomisos
         </Typography>
-        <Grid container spacing={24}>
-          <Grid item xs={2}>
+        <Grid container className={classes.root} spacing={0}>
+          <Grid item xs={3}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_operacion">
                 Tipo de operación
@@ -99,7 +100,7 @@ function SimpleCard(props) {
               margin="normal"
             />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_fideicomiso">
                 Tipo de fideicomiso
@@ -191,7 +192,10 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje propiedad/Derechos fiduciarios"
               className={classes.textField}
-              value={data.datos_fideicomisos.porcentaje_propiedad_derechos_fiduciarios}
+              value={
+                data.datos_fideicomisos
+                  .porcentaje_propiedad_derechos_fiduciarios
+              }
               margin="normal"
             />
           </Grid>
@@ -261,7 +265,29 @@ function SimpleCard(props) {
             />
           </Grid>
 
-          <Grid item xs={2}>
+          <Partes
+            data={data.datos_fideicomisos.fideicomitente}
+            catalogos={data}
+            tipo={"fideicomitente"}
+            handleChange={handleChange}
+          />
+
+          <Partes
+            data={data.datos_fideicomisos.fideicomisario}
+            catalogos={data}
+            tipo={"fideicomisario"}
+            handleChange={handleChange}
+          />
+
+          <Partes
+            data={data.datos_fideicomisos.fiduciario}
+            catalogos={data}
+            tipo={"fiduciario"}
+            handleChange={handleChange}
+          />
+        </Grid>
+        <Grid container className={classes.root} spacing={0}>
+          <Grid item xs={3}>
             <Button
               variant="contained"
               color="primary"
@@ -272,7 +298,7 @@ function SimpleCard(props) {
             </Button>
           </Grid>
         </Grid>
-        <Grid container spacing={24}>
+        <Grid container className={classes.root} spacing={0}>
           <Tabla data={data.fideicomisos} buttonClick={removeClick} />
         </Grid>
       </CardContent>
