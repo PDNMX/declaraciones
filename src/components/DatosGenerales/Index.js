@@ -137,7 +137,7 @@ class Index extends Component {
   // state = data;
 
   show = () => {
-    console.log(this.state.datos_actividad_profesional);
+    console.log(this.state.datos_otras_obligaciones);
   };
 
   anyTextChange = (obj, name) => event => {
@@ -214,7 +214,9 @@ class Index extends Component {
   };
 
   getEntidadFederativa = cve_ent => {
-    let info = this.state.entidades.filter(x => x.cve_ent === cve_ent);
+    let info = this.state.catEntidadesFederativas.filter(
+      x => x.cve_ent === cve_ent
+    );
     this.updateMunicipios(cve_ent);
 
     return {
@@ -243,6 +245,48 @@ class Index extends Component {
 
   getCiudad = codigo => {
     let info = this.state.ciudades.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoMetal = codigo => {
+    let info = this.state.catTiposMetales.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoAcreedor = codigo => {
+    let info = this.state.catTiposAcredores.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoAdeudo = codigo => {
+    let info = this.state.catTiposAdeudos.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoEspecificoInversion = codigo => {
+    let info = this.state.catTiposEspecificosInversion.filter(
+      x => x.codigo === codigo
+    );
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoInversion = codigo => {
+    let info = this.state.catTiposInversiones.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -325,6 +369,58 @@ class Index extends Component {
 
   getTipoActividad = codigo => {
     let info = this.state.catTiposActividades.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoBien = codigo => {
+    let info = this.state.catTiposBienes.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getFormaAdquision = codigo => {
+    let info = this.state.catFormaAdquision.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoBienInmueble = codigo => {
+    let info = this.state.catTiposBienesInmuebles.filter(
+      x => x.codigo === codigo
+    );
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getRelacionDeclarante = codigo => {
+    let info = this.state.catRelacionDeclarante.filter(
+      x => x.codigo === codigo
+    );
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoOperacion = codigo => {
+    let info = this.state.catTipoOperacion.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTitularBien = codigo => {
+    let info = this.state.catTitularesBienes.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -1425,141 +1521,6 @@ class Index extends Component {
     });
   }
 
-  setDataOtrosIngresos = field => event => {
-    let valor = event.target.value;
-    let data = this.state;
-
-    switch (field) {
-      case "curp":
-        data.otros_ingresos.curp = valor;
-        break;
-      case "descripcion_actividad":
-        data.otros_ingresos.descripcion_actividad = valor;
-        break;
-      case "domicilio_actividad":
-        data.otros_ingresos.domicilio_actividad = valor;
-        break;
-      case "domicilio_actividad.cp":
-        data.otros_ingresos.domicilio_actividad.cp = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa":
-        data.otros_ingresos.domicilio_actividad.entidad_federativa = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa.cve_ent":
-        data.otros_ingresos.domicilio_actividad.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa.nom_ent":
-        data.otros_ingresos.domicilio_actividad.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_actividad.localidad":
-        data.otros_ingresos.domicilio_actividad.localidad = valor;
-        break;
-      case "domicilio_actividad.localidad.cve_loc":
-        data.otros_ingresos.domicilio_actividad.localidad.cve_loc = valor;
-        break;
-      case "domicilio_actividad.localidad.nom_loc":
-        data.otros_ingresos.domicilio_actividad.localidad.nom_loc = valor;
-        break;
-      case "domicilio_actividad.municipio":
-        data.otros_ingresos.domicilio_actividad.municipio = valor;
-        break;
-      case "domicilio_actividad.municipio.cve_mun":
-        data.otros_ingresos.domicilio_actividad.municipio.cve_mun = valor;
-        break;
-      case "domicilio_actividad.municipio.nom_mun":
-        data.otros_ingresos.domicilio_actividad.municipio.nom_mun = valor;
-        break;
-      case "domicilio_actividad.numExt":
-        data.otros_ingresos.domicilio_actividad.numExt = valor;
-        break;
-      case "domicilio_actividad.numInt":
-        data.otros_ingresos.domicilio_actividad.numInt = valor;
-        break;
-      case "domicilio_actividad.pais":
-        data.otros_ingresos.domicilio_actividad.pais = valor;
-        break;
-      case "domicilio_actividad.pais.codigo":
-        data.otros_ingresos.domicilio_actividad.pais.codigo = valor;
-        break;
-      case "domicilio_actividad.pais.valor":
-        data.otros_ingresos.domicilio_actividad.pais.valor = valor;
-        break;
-      case "domicilio_actividad.vialidad":
-        data.otros_ingresos.domicilio_actividad.vialidad = valor;
-        break;
-      case "domicilio_actividad.vialidad.nom_vial":
-        data.otros_ingresos.domicilio_actividad.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_actividad.vialidad.tipo_vial":
-        data.otros_ingresos.domicilio_actividad.vialidad.tipo_vial = valor;
-        break;
-      case "id":
-        data.otros_ingresos.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.otros_ingresos.ingreso_bruto_anual = valor;
-        break;
-      case "ingreso_bruto_anual.duracion_frecuencia":
-        data.otros_ingresos.ingreso_bruto_anual.duracion_frecuencia = valor;
-        break;
-      case "ingreso_bruto_anual.fecha_transaccion":
-        data.otros_ingresos.ingreso_bruto_anual.fecha_transaccion = valor;
-        break;
-      case "ingreso_bruto_anual.moneda":
-        data.otros_ingresos.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.otros_ingresos.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.otros_ingresos.ingreso_bruto_anual.moneda.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal":
-        data.otros_ingresos.ingreso_bruto_anual.unidad_temporal = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.otros_ingresos.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.otros_ingresos.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.otros_ingresos.ingreso_bruto_anual.valor = valor;
-        break;
-      case "nombre_denominacion":
-        data.otros_ingresos.nombre_denominacion = valor;
-        break;
-      case "observaciones":
-        data.otros_ingresos.observaciones = valor;
-        break;
-      case "rfc":
-        data.otros_ingresos.rfc = valor;
-        break;
-      case "sector_industria":
-        data.otros_ingresos.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.otros_ingresos.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.otros_ingresos.sector_industria.valor = valor;
-        break;
-      case "tipo_actividad":
-        data.otros_ingresos.tipo_actividad = valor;
-        break;
-      case "tipo_actividad.codigo":
-        data.otros_ingresos.tipo_actividad.codigo = valor;
-        break;
-      case "tipo_actividad.valor":
-        data.otros_ingresos.tipo_actividad.valor = valor;
-        break;
-
-      default:
-    }
-
-    this.setState(data);
-  };
-
   setDataDatosCurriculares = field => event => {
     let valor = event.target.value;
     let data = this.state;
@@ -1601,6 +1562,7 @@ class Index extends Component {
         data.datos_curriculares_grados_academicos.cedula_profesional = valor;
         break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -1711,6 +1673,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -1806,6 +1769,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -1898,6 +1862,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2024,6 +1989,7 @@ class Index extends Component {
         data.datos_dependientes_economicos.domicilio.numInt = valor;
         break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2112,6 +2078,7 @@ class Index extends Component {
         data.datos_empresas_sociedades_asociaciones.domicilio.numInt = valor;
         break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2188,6 +2155,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2228,6 +2196,7 @@ class Index extends Component {
         data.datos_apoyos_beneficios_publicos.valor_anual_apoyo = valor;
         break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2277,6 +2246,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2328,6 +2298,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2388,6 +2359,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2468,6 +2440,7 @@ class Index extends Component {
         data.datos_clientes_principales.domicilio.numInt = valor;
         break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2519,6 +2492,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2551,6 +2525,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2596,6 +2571,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2697,6 +2673,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2723,10 +2700,14 @@ class Index extends Component {
         data.datos_actividad_profesional.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.datos_actividad_profesional.ingreso_bruto_anual.moneda = this.getMoneda(valor);
+        data.datos_actividad_profesional.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.datos_actividad_profesional.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(valor);
+        data.datos_actividad_profesional.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
       case "ingreso_bruto_anual":
         data.datos_actividad_profesional.ingreso_bruto_anual.valor = valor;
@@ -2741,12 +2722,16 @@ class Index extends Component {
         data.datos_actividad_profesional.rfc = valor;
         break;
       case "sector_industria":
-        data.datos_actividad_profesional.sector_industria = valor;
+        data.datos_actividad_profesional.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_actividad_servicio":
-        data.datos_actividad_profesional.tipo_actividad_servicio = this.getTipoActividad(valor);
+        data.datos_actividad_profesional.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-        /////////////////////////////  domicilio_persona_paga  /////////////////////////////////////
+      /////////////////////////////  domicilio_persona_paga  /////////////////////////////////////
       case "pais":
         data.datos_actividad_profesional.domicilio_persona_paga.pais = this.getCiudad(
           valor
@@ -2763,8 +2748,8 @@ class Index extends Component {
         );
 
         this.updateLocalidades(
-          this.state.datos_actividad_profesional.domicilio_persona_paga.entidad_federativa
-            .cve_ent,
+          this.state.datos_actividad_profesional.domicilio_persona_paga
+            .entidad_federativa.cve_ent,
           valor
         );
         break;
@@ -2790,6 +2775,7 @@ class Index extends Component {
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2801,130 +2787,99 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.actividad_empresarial.curp = valor;
+        data.datos_actividad_empresarial.curp = valor;
         break;
       case "descripcion_actividad_servicio":
-        data.actividad_empresarial.descripcion_actividad_servicio = valor;
-        break;
-      case "domicilio_actividad_empresarial":
-        data.actividad_empresarial.domicilio_actividad_empresarial = valor;
-        break;
-      case "domicilio_actividad_empresarial.cp":
-        data.actividad_empresarial.domicilio_actividad_empresarial.cp = valor;
-        break;
-      case "domicilio_actividad_empresarial.entidad_federativa":
-        data.actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa = valor;
-        break;
-      case "domicilio_actividad_empresarial.entidad_federativa.cve_ent":
-        data.actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_actividad_empresarial.entidad_federativa.nom_ent":
-        data.actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_actividad_empresarial.localidad":
-        data.actividad_empresarial.domicilio_actividad_empresarial.localidad = valor;
-        break;
-      case "domicilio_actividad_empresarial.localidad.cve_loc":
-        data.actividad_empresarial.domicilio_actividad_empresarial.localidad.cve_loc = valor;
-        break;
-      case "domicilio_actividad_empresarial.localidad.nom_loc":
-        data.actividad_empresarial.domicilio_actividad_empresarial.localidad.nom_loc = valor;
-        break;
-      case "domicilio_actividad_empresarial.municipio":
-        data.actividad_empresarial.domicilio_actividad_empresarial.municipio = valor;
-        break;
-      case "domicilio_actividad_empresarial.municipio.cve_mun":
-        data.actividad_empresarial.domicilio_actividad_empresarial.municipio.cve_mun = valor;
-        break;
-      case "domicilio_actividad_empresarial.municipio.nom_mun":
-        data.actividad_empresarial.domicilio_actividad_empresarial.municipio.nom_mun = valor;
-        break;
-      case "domicilio_actividad_empresarial.numExt":
-        data.actividad_empresarial.domicilio_actividad_empresarial.numExt = valor;
-        break;
-      case "domicilio_actividad_empresarial.numInt":
-        data.actividad_empresarial.domicilio_actividad_empresarial.numInt = valor;
-        break;
-      case "domicilio_actividad_empresarial.pais":
-        data.actividad_empresarial.domicilio_actividad_empresarial.pais = valor;
-        break;
-      case "domicilio_actividad_empresarial.pais.codigo":
-        data.actividad_empresarial.domicilio_actividad_empresarial.pais.codigo = valor;
-        break;
-      case "domicilio_actividad_empresarial.pais.valor":
-        data.actividad_empresarial.domicilio_actividad_empresarial.pais.valor = valor;
-        break;
-      case "domicilio_actividad_empresarial.vialidad":
-        data.actividad_empresarial.domicilio_actividad_empresarial.vialidad = valor;
-        break;
-      case "domicilio_actividad_empresarial.vialidad.nom_vial":
-        data.actividad_empresarial.domicilio_actividad_empresarial.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_actividad_empresarial.vialidad.tipo_vial":
-        data.actividad_empresarial.domicilio_actividad_empresarial.vialidad.tipo_vial = valor;
+        data.datos_actividad_empresarial.descripcion_actividad_servicio = valor;
         break;
       case "id":
-        data.actividad_empresarial.id = valor;
+        data.datos_actividad_empresarial.id = valor;
         break;
       case "ingreso_bruto_anual":
-        data.actividad_empresarial.ingreso_bruto_anual = valor;
+        data.datos_actividad_empresarial.ingreso_bruto_anual.valor = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.actividad_empresarial.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_actividad_empresarial.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.actividad_empresarial.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_actividad_empresarial.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.actividad_empresarial.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.actividad_empresarial.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.actividad_empresarial.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_actividad_empresarial.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.actividad_empresarial.ingreso_bruto_anual.unidad_temporal = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.actividad_empresarial.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.actividad_empresarial.ingreso_bruto_anual.unidad_temporal.valor = valor;
+        data.datos_actividad_empresarial.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.valor":
-        data.actividad_empresarial.ingreso_bruto_anual.valor = valor;
+        data.datos_actividad_empresarial.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion_razon_social":
-        data.actividad_empresarial.nombre_denominacion_razon_social = valor;
+        data.datos_actividad_empresarial.nombre_denominacion_razon_social = valor;
         break;
       case "observaciones":
-        data.actividad_empresarial.observaciones = valor;
+        data.datos_actividad_empresarial.observaciones = valor;
         break;
       case "rfc":
-        data.actividad_empresarial.rfc = valor;
+        data.datos_actividad_empresarial.rfc = valor;
         break;
       case "sector_industria":
-        data.actividad_empresarial.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.actividad_empresarial.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.actividad_empresarial.sector_industria.valor = valor;
+        data.datos_actividad_empresarial.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_actividad_servicio":
-        data.actividad_empresarial.tipo_actividad_servicio = valor;
+        data.datos_actividad_empresarial.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.actividad_empresarial.tipo_actividad_servicio.codigo = valor;
+      /////////////////////////////  domicilio_actividad_empresarial  /////////////////////////////////////
+      case "pais":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.valor":
-        data.actividad_empresarial.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
         break;
+      case "municipio":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.municipio = this.getMunicipios(
+          valor
+        );
 
+        this.updateLocalidades(
+          this.state.datos_actividad_empresarial.domicilio_actividad_empresarial
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.cp = valor;
+        break;
+      case "localidad":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.numInt = valor;
+        break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -2936,130 +2891,97 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.actividad_economica_menor.curp = valor;
+        data.datos_actividad_economica_menor.curp = valor;
         break;
       case "descripcion_actividad_servicio":
-        data.actividad_economica_menor.descripcion_actividad_servicio = valor;
-        break;
-      case "domicilio_actividad":
-        data.actividad_economica_menor.domicilio_actividad = valor;
-        break;
-      case "domicilio_actividad.cp":
-        data.actividad_economica_menor.domicilio_actividad.cp = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa":
-        data.actividad_economica_menor.domicilio_actividad.entidad_federativa = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa.cve_ent":
-        data.actividad_economica_menor.domicilio_actividad.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa.nom_ent":
-        data.actividad_economica_menor.domicilio_actividad.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_actividad.localidad":
-        data.actividad_economica_menor.domicilio_actividad.localidad = valor;
-        break;
-      case "domicilio_actividad.localidad.cve_loc":
-        data.actividad_economica_menor.domicilio_actividad.localidad.cve_loc = valor;
-        break;
-      case "domicilio_actividad.localidad.nom_loc":
-        data.actividad_economica_menor.domicilio_actividad.localidad.nom_loc = valor;
-        break;
-      case "domicilio_actividad.municipio":
-        data.actividad_economica_menor.domicilio_actividad.municipio = valor;
-        break;
-      case "domicilio_actividad.municipio.cve_mun":
-        data.actividad_economica_menor.domicilio_actividad.municipio.cve_mun = valor;
-        break;
-      case "domicilio_actividad.municipio.nom_mun":
-        data.actividad_economica_menor.domicilio_actividad.municipio.nom_mun = valor;
-        break;
-      case "domicilio_actividad.numExt":
-        data.actividad_economica_menor.domicilio_actividad.numExt = valor;
-        break;
-      case "domicilio_actividad.numInt":
-        data.actividad_economica_menor.domicilio_actividad.numInt = valor;
-        break;
-      case "domicilio_actividad.pais":
-        data.actividad_economica_menor.domicilio_actividad.pais = valor;
-        break;
-      case "domicilio_actividad.pais.codigo":
-        data.actividad_economica_menor.domicilio_actividad.pais.codigo = valor;
-        break;
-      case "domicilio_actividad.pais.valor":
-        data.actividad_economica_menor.domicilio_actividad.pais.valor = valor;
-        break;
-      case "domicilio_actividad.vialidad":
-        data.actividad_economica_menor.domicilio_actividad.vialidad = valor;
-        break;
-      case "domicilio_actividad.vialidad.nom_vial":
-        data.actividad_economica_menor.domicilio_actividad.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_actividad.vialidad.tipo_vial":
-        data.actividad_economica_menor.domicilio_actividad.vialidad.tipo_vial = valor;
+        data.datos_actividad_economica_menor.descripcion_actividad_servicio = valor;
         break;
       case "id":
-        data.actividad_economica_menor.id = valor;
+        data.datos_actividad_economica_menor.id = valor;
         break;
       case "ingreso_bruto_anual":
-        data.actividad_economica_menor.ingreso_bruto_anual = valor;
+        data.datos_actividad_economica_menor.ingreso_bruto_anual.valor = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.actividad_economica_menor.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_actividad_economica_menor.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.actividad_economica_menor.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_actividad_economica_menor.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.actividad_economica_menor.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.actividad_economica_menor.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.actividad_economica_menor.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_actividad_economica_menor.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.actividad_economica_menor.ingreso_bruto_anual.unidad_temporal = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.actividad_economica_menor.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.actividad_economica_menor.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.actividad_economica_menor.ingreso_bruto_anual.valor = valor;
+        data.datos_actividad_economica_menor.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
       case "nombre_denominacion_razon_social":
-        data.actividad_economica_menor.nombre_denominacion_razon_social = valor;
+        data.datos_actividad_economica_menor.nombre_denominacion_razon_social = valor;
         break;
       case "observaciones":
-        data.actividad_economica_menor.observaciones = valor;
+        data.datos_actividad_economica_menor.observaciones = valor;
         break;
       case "rfc":
-        data.actividad_economica_menor.rfc = valor;
+        data.datos_actividad_economica_menor.rfc = valor;
         break;
       case "sector_industria":
-        data.actividad_economica_menor.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.actividad_economica_menor.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.actividad_economica_menor.sector_industria.valor = valor;
+        data.datos_actividad_economica_menor.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_actividad_servicio":
-        data.actividad_economica_menor.tipo_actividad_servicio = valor;
+        data.datos_actividad_economica_menor.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.actividad_economica_menor.tipo_actividad_servicio.codigo = valor;
+      /////////////////////////////  domicilio_actividad  /////////////////////////////////////
+      case "pais":
+        data.datos_actividad_economica_menor.domicilio_actividad.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.valor":
-        data.actividad_economica_menor.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_actividad_economica_menor.domicilio_actividad.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_actividad_economica_menor.domicilio_actividad.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_actividad_economica_menor.domicilio_actividad
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_actividad_economica_menor.domicilio_actividad.cp = valor;
+        break;
+      case "localidad":
+        data.datos_actividad_economica_menor.domicilio_actividad.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_actividad_economica_menor.domicilio_actividad.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_actividad_economica_menor.domicilio_actividad.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_actividad_economica_menor.domicilio_actividad.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_actividad_economica_menor.domicilio_actividad.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3071,130 +2993,98 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.arrendamiento.curp = valor;
+        data.datos_arrendamiento.curp = valor;
         break;
       case "descripcion_actividad_servicio":
-        data.arrendamiento.descripcion_actividad_servicio = valor;
-        break;
-      case "domicilio_actividad":
-        data.arrendamiento.domicilio_actividad = valor;
-        break;
-      case "domicilio_actividad.cp":
-        data.arrendamiento.domicilio_actividad.cp = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa":
-        data.arrendamiento.domicilio_actividad.entidad_federativa = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa.cve_ent":
-        data.arrendamiento.domicilio_actividad.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_actividad.entidad_federativa.nom_ent":
-        data.arrendamiento.domicilio_actividad.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_actividad.localidad":
-        data.arrendamiento.domicilio_actividad.localidad = valor;
-        break;
-      case "domicilio_actividad.localidad.cve_loc":
-        data.arrendamiento.domicilio_actividad.localidad.cve_loc = valor;
-        break;
-      case "domicilio_actividad.localidad.nom_loc":
-        data.arrendamiento.domicilio_actividad.localidad.nom_loc = valor;
-        break;
-      case "domicilio_actividad.municipio":
-        data.arrendamiento.domicilio_actividad.municipio = valor;
-        break;
-      case "domicilio_actividad.municipio.cve_mun":
-        data.arrendamiento.domicilio_actividad.municipio.cve_mun = valor;
-        break;
-      case "domicilio_actividad.municipio.nom_mun":
-        data.arrendamiento.domicilio_actividad.municipio.nom_mun = valor;
-        break;
-      case "domicilio_actividad.numExt":
-        data.arrendamiento.domicilio_actividad.numExt = valor;
-        break;
-      case "domicilio_actividad.numInt":
-        data.arrendamiento.domicilio_actividad.numInt = valor;
-        break;
-      case "domicilio_actividad.pais":
-        data.arrendamiento.domicilio_actividad.pais = valor;
-        break;
-      case "domicilio_actividad.pais.codigo":
-        data.arrendamiento.domicilio_actividad.pais.codigo = valor;
-        break;
-      case "domicilio_actividad.pais.valor":
-        data.arrendamiento.domicilio_actividad.pais.valor = valor;
-        break;
-      case "domicilio_actividad.vialidad":
-        data.arrendamiento.domicilio_actividad.vialidad = valor;
-        break;
-      case "domicilio_actividad.vialidad.nom_vial":
-        data.arrendamiento.domicilio_actividad.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_actividad.vialidad.tipo_vial":
-        data.arrendamiento.domicilio_actividad.vialidad.tipo_vial = valor;
+        data.datos_arrendamiento.descripcion_actividad_servicio = valor;
         break;
       case "id":
-        data.arrendamiento.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.arrendamiento.ingreso_bruto_anual = valor;
+        data.datos_arrendamiento.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.arrendamiento.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_arrendamiento.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.arrendamiento.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_arrendamiento.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.arrendamiento.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.arrendamiento.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.arrendamiento.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_arrendamiento.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.arrendamiento.ingreso_bruto_anual.unidad_temporal = valor;
+        data.datos_arrendamiento.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.arrendamiento.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.arrendamiento.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.arrendamiento.ingreso_bruto_anual.valor = valor;
+      case "ingreso_bruto_anual":
+        data.datos_arrendamiento.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion_razon_social":
-        data.arrendamiento.nombre_denominacion_razon_social = valor;
+        data.datos_arrendamiento.nombre_denominacion_razon_social = valor;
         break;
       case "observaciones":
-        data.arrendamiento.observaciones = valor;
+        data.datos_arrendamiento.observaciones = valor;
         break;
       case "rfc":
-        data.arrendamiento.rfc = valor;
+        data.datos_arrendamiento.rfc = valor;
         break;
       case "sector_industria":
-        data.arrendamiento.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.arrendamiento.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.arrendamiento.sector_industria.valor = valor;
+        data.datos_arrendamiento.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_actividad_servicio":
-        data.arrendamiento.tipo_actividad_servicio = valor;
+        data.datos_arrendamiento.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.arrendamiento.tipo_actividad_servicio.codigo = valor;
+
+      /////////////////////////////  domicilio_actividad  /////////////////////////////////////
+      case "pais":
+        data.datos_arrendamiento.domicilio_actividad.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.valor":
-        data.arrendamiento.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_arrendamiento.domicilio_actividad.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_arrendamiento.domicilio_actividad.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_arrendamiento.domicilio_actividad.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_arrendamiento.domicilio_actividad.cp = valor;
+        break;
+      case "localidad":
+        data.datos_arrendamiento.domicilio_actividad.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_arrendamiento.domicilio_actividad.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_arrendamiento.domicilio_actividad.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_arrendamiento.domicilio_actividad.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_arrendamiento.domicilio_actividad.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3206,130 +3096,86 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.intereses.curp = valor;
+        data.datos_intereses.curp = valor;
         break;
       case "descripcion_actividad_servicio":
-        data.intereses.descripcion_actividad_servicio = valor;
-        break;
-      case "domicilio":
-        data.intereses.domicilio = valor;
-        break;
-      case "domicilio.cp":
-        data.intereses.domicilio.cp = valor;
-        break;
-      case "domicilio.entidad_federativa":
-        data.intereses.domicilio.entidad_federativa = valor;
-        break;
-      case "domicilio.entidad_federativa.cve_ent":
-        data.intereses.domicilio.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio.entidad_federativa.nom_ent":
-        data.intereses.domicilio.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio.localidad":
-        data.intereses.domicilio.localidad = valor;
-        break;
-      case "domicilio.localidad.cve_loc":
-        data.intereses.domicilio.localidad.cve_loc = valor;
-        break;
-      case "domicilio.localidad.nom_loc":
-        data.intereses.domicilio.localidad.nom_loc = valor;
-        break;
-      case "domicilio.municipio":
-        data.intereses.domicilio.municipio = valor;
-        break;
-      case "domicilio.municipio.cve_mun":
-        data.intereses.domicilio.municipio.cve_mun = valor;
-        break;
-      case "domicilio.municipio.nom_mun":
-        data.intereses.domicilio.municipio.nom_mun = valor;
-        break;
-      case "domicilio.numExt":
-        data.intereses.domicilio.numExt = valor;
-        break;
-      case "domicilio.numInt":
-        data.intereses.domicilio.numInt = valor;
-        break;
-      case "domicilio.pais":
-        data.intereses.domicilio.pais = valor;
-        break;
-      case "domicilio.pais.codigo":
-        data.intereses.domicilio.pais.codigo = valor;
-        break;
-      case "domicilio.pais.valor":
-        data.intereses.domicilio.pais.valor = valor;
-        break;
-      case "domicilio.vialidad":
-        data.intereses.domicilio.vialidad = valor;
-        break;
-      case "domicilio.vialidad.nom_vial":
-        data.intereses.domicilio.vialidad.nom_vial = valor;
-        break;
-      case "domicilio.vialidad.tipo_vial":
-        data.intereses.domicilio.vialidad.tipo_vial = valor;
+        data.datos_intereses.descripcion_actividad_servicio = valor;
         break;
       case "id":
-        data.intereses.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.intereses.ingreso_bruto_anual = valor;
+        data.datos_intereses.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.intereses.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_intereses.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.intereses.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_intereses.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.intereses.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.intereses.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.intereses.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_intereses.ingreso_bruto_anual.moneda = this.getMoneda(valor);
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.intereses.ingreso_bruto_anual.unidad_temporal = valor;
+        data.datos_intereses.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.intereses.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.intereses.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.intereses.ingreso_bruto_anual.valor = valor;
+      case "ingreso_bruto_anual":
+        data.datos_intereses.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion_razon_social":
-        data.intereses.nombre_denominacion_razon_social = valor;
+        data.datos_intereses.nombre_denominacion_razon_social = valor;
         break;
       case "observaciones":
-        data.intereses.observaciones = valor;
+        data.datos_intereses.observaciones = valor;
         break;
       case "rfc":
-        data.intereses.rfc = valor;
+        data.datos_intereses.rfc = valor;
         break;
       case "sector_industria":
-        data.intereses.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.intereses.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.intereses.sector_industria.valor = valor;
+        data.datos_intereses.sector_industria = this.getSectorIndustria(valor);
         break;
       case "tipo_actividad_servicio":
-        data.intereses.tipo_actividad_servicio = valor;
+        data.datos_intereses.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.intereses.tipo_actividad_servicio.codigo = valor;
+      /////////////////////////////  domicilio  /////////////////////////////////////
+      case "pais":
+        data.datos_intereses.domicilio.pais = this.getCiudad(valor);
         break;
-      case "tipo_actividad_servicio.valor":
-        data.intereses.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_intereses.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_intereses.domicilio.municipio = this.getMunicipios(valor);
+
+        this.updateLocalidades(
+          this.state.datos_intereses.domicilio.entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_intereses.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_intereses.domicilio.localidad = this.getLocalidad(valor);
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_intereses.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_intereses.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_intereses.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_intereses.domicilio.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3340,130 +3186,87 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.premios.curp = valor;
+        data.datos_premios.curp = valor;
         break;
-      case "descripcion_actividad":
-        data.premios.descripcion_actividad = valor;
-        break;
-      case "domicilio":
-        data.premios.domicilio = valor;
-        break;
-      case "domicilio.cp":
-        data.premios.domicilio.cp = valor;
-        break;
-      case "domicilio.entidad_federativa":
-        data.premios.domicilio.entidad_federativa = valor;
-        break;
-      case "domicilio.entidad_federativa.cve_ent":
-        data.premios.domicilio.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio.entidad_federativa.nom_ent":
-        data.premios.domicilio.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio.localidad":
-        data.premios.domicilio.localidad = valor;
-        break;
-      case "domicilio.localidad.cve_loc":
-        data.premios.domicilio.localidad.cve_loc = valor;
-        break;
-      case "domicilio.localidad.nom_loc":
-        data.premios.domicilio.localidad.nom_loc = valor;
-        break;
-      case "domicilio.municipio":
-        data.premios.domicilio.municipio = valor;
-        break;
-      case "domicilio.municipio.cve_mun":
-        data.premios.domicilio.municipio.cve_mun = valor;
-        break;
-      case "domicilio.municipio.nom_mun":
-        data.premios.domicilio.municipio.nom_mun = valor;
-        break;
-      case "domicilio.numExt":
-        data.premios.domicilio.numExt = valor;
-        break;
-      case "domicilio.numInt":
-        data.premios.domicilio.numInt = valor;
-        break;
-      case "domicilio.pais":
-        data.premios.domicilio.pais = valor;
-        break;
-      case "domicilio.pais.codigo":
-        data.premios.domicilio.pais.codigo = valor;
-        break;
-      case "domicilio.pais.valor":
-        data.premios.domicilio.pais.valor = valor;
-        break;
-      case "domicilio.vialidad":
-        data.premios.domicilio.vialidad = valor;
-        break;
-      case "domicilio.vialidad.nom_vial":
-        data.premios.domicilio.vialidad.nom_vial = valor;
-        break;
-      case "domicilio.vialidad.tipo_vial":
-        data.premios.domicilio.vialidad.tipo_vial = valor;
+      case "descripcion_premio":
+        data.datos_premios.descripcion_premio = valor;
         break;
       case "id":
-        data.premios.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.premios.ingreso_bruto_anual = valor;
+        data.datos_premios.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.premios.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_premios.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.premios.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_premios.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.premios.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.premios.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.premios.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_premios.ingreso_bruto_anual.moneda = this.getMoneda(valor);
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.premios.ingreso_bruto_anual.unidad_temporal = valor;
+        data.datos_premios.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.premios.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.premios.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.premios.ingreso_bruto_anual.valor = valor;
+      case "ingreso_bruto_anual":
+        data.datos_premios.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion":
-        data.premios.nombre_denominacion = valor;
+        data.datos_premios.nombre_denominacion = valor;
         break;
       case "observaciones":
-        data.premios.observaciones = valor;
+        data.datos_premios.observaciones = valor;
         break;
       case "rfc":
-        data.premios.rfc = valor;
+        data.datos_premios.rfc = valor;
         break;
       case "sector_industria":
-        data.premios.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.premios.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.premios.sector_industria.valor = valor;
+        data.datos_premios.sector_industria = this.getSectorIndustria(valor);
         break;
       case "tipo_actividad_servicio":
-        data.premios.tipo_actividad_servicio = valor;
+        data.datos_premios.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.premios.tipo_actividad_servicio.codigo = valor;
+
+      /////////////////////////////  domicilio  /////////////////////////////////////
+      case "pais":
+        data.datos_premios.domicilio.pais = this.getCiudad(valor);
         break;
-      case "tipo_actividad_servicio.valor":
-        data.premios.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_premios.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_premios.domicilio.municipio = this.getMunicipios(valor);
+
+        this.updateLocalidades(
+          this.state.datos_premios.domicilio.entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_premios.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_premios.domicilio.localidad = this.getLocalidad(valor);
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_premios.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_premios.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_premios.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_premios.domicilio.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3475,130 +3278,202 @@ class Index extends Component {
 
     switch (field) {
       case "curp":
-        data.enajenacion_bienes.curp = valor;
+        data.datos_enajenacion_bienes.curp = valor;
         break;
       case "descripcion_bien":
-        data.enajenacion_bienes.descripcion_bien = valor;
+        data.datos_enajenacion_bienes.descripcion_bien = valor;
         break;
-      case "domicilio_bien_enajenado":
-        data.enajenacion_bienes.domicilio_bien_enajenado = valor;
-        break;
-      case "domicilio_bien_enajenado.cp":
-        data.enajenacion_bienes.domicilio_bien_enajenado.cp = valor;
-        break;
-      case "domicilio_bien_enajenado.entidad_federativa":
-        data.enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa = valor;
-        break;
-      case "domicilio_bien_enajenado.entidad_federativa.cve_ent":
-        data.enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_bien_enajenado.entidad_federativa.nom_ent":
-        data.enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_bien_enajenado.localidad":
-        data.enajenacion_bienes.domicilio_bien_enajenado.localidad = valor;
-        break;
-      case "domicilio_bien_enajenado.localidad.cve_loc":
-        data.enajenacion_bienes.domicilio_bien_enajenado.localidad.cve_loc = valor;
-        break;
-      case "domicilio_bien_enajenado.localidad.nom_loc":
-        data.enajenacion_bienes.domicilio_bien_enajenado.localidad.nom_loc = valor;
-        break;
-      case "domicilio_bien_enajenado.municipio":
-        data.enajenacion_bienes.domicilio_bien_enajenado.municipio = valor;
-        break;
-      case "domicilio_bien_enajenado.municipio.cve_mun":
-        data.enajenacion_bienes.domicilio_bien_enajenado.municipio.cve_mun = valor;
-        break;
-      case "domicilio_bien_enajenado.municipio.nom_mun":
-        data.enajenacion_bienes.domicilio_bien_enajenado.municipio.nom_mun = valor;
-        break;
-      case "domicilio_bien_enajenado.numExt":
-        data.enajenacion_bienes.domicilio_bien_enajenado.numExt = valor;
-        break;
-      case "domicilio_bien_enajenado.numInt":
-        data.enajenacion_bienes.domicilio_bien_enajenado.numInt = valor;
-        break;
-      case "domicilio_bien_enajenado.pais":
-        data.enajenacion_bienes.domicilio_bien_enajenado.pais = valor;
-        break;
-      case "domicilio_bien_enajenado.pais.codigo":
-        data.enajenacion_bienes.domicilio_bien_enajenado.pais.codigo = valor;
-        break;
-      case "domicilio_bien_enajenado.pais.valor":
-        data.enajenacion_bienes.domicilio_bien_enajenado.pais.valor = valor;
-        break;
-      case "domicilio_bien_enajenado.vialidad":
-        data.enajenacion_bienes.domicilio_bien_enajenado.vialidad = valor;
-        break;
-      case "domicilio_bien_enajenado.vialidad.nom_vial":
-        data.enajenacion_bienes.domicilio_bien_enajenado.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_bien_enajenado.vialidad.tipo_vial":
-        data.enajenacion_bienes.domicilio_bien_enajenado.vialidad.tipo_vial = valor;
+
+      case "tipo_bien":
+        data.datos_enajenacion_bienes.tipo_bien = this.getTipoBien(valor);
         break;
       case "id":
-        data.enajenacion_bienes.id = valor;
-        break;
-      case "ingreso_bruto_anual":
-        data.enajenacion_bienes.ingreso_bruto_anual = valor;
+        data.datos_enajenacion_bienes.id = valor;
         break;
       case "ingreso_bruto_anual.duracion_frecuencia":
-        data.enajenacion_bienes.ingreso_bruto_anual.duracion_frecuencia = valor;
+        data.datos_enajenacion_bienes.ingreso_bruto_anual.duracion_frecuencia = valor;
         break;
       case "ingreso_bruto_anual.fecha_transaccion":
-        data.enajenacion_bienes.ingreso_bruto_anual.fecha_transaccion = valor;
+        data.datos_enajenacion_bienes.ingreso_bruto_anual.fecha_transaccion = valor;
         break;
       case "ingreso_bruto_anual.moneda":
-        data.enajenacion_bienes.ingreso_bruto_anual.moneda = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.codigo":
-        data.enajenacion_bienes.ingreso_bruto_anual.moneda.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.moneda.moneda":
-        data.enajenacion_bienes.ingreso_bruto_anual.moneda.moneda = valor;
+        data.datos_enajenacion_bienes.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
-        data.enajenacion_bienes.ingreso_bruto_anual.unidad_temporal = valor;
+        data.datos_enajenacion_bienes.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "ingreso_bruto_anual.unidad_temporal.codigo":
-        data.enajenacion_bienes.ingreso_bruto_anual.unidad_temporal.codigo = valor;
-        break;
-      case "ingreso_bruto_anual.unidad_temporal.valor":
-        data.enajenacion_bienes.ingreso_bruto_anual.unidad_temporal.valor = valor;
-        break;
-      case "ingreso_bruto_anual.valor":
-        data.enajenacion_bienes.ingreso_bruto_anual.valor = valor;
+      case "ingreso_bruto_anual":
+        data.datos_enajenacion_bienes.ingreso_bruto_anual.valor = valor;
         break;
       case "nombre_denominacion":
-        data.enajenacion_bienes.nombre_denominacion = valor;
+        data.datos_enajenacion_bienes.nombre_denominacion = valor;
         break;
       case "observaciones":
-        data.enajenacion_bienes.observaciones = valor;
+        data.datos_enajenacion_bienes.observaciones = valor;
         break;
       case "rfc":
-        data.enajenacion_bienes.rfc = valor;
+        data.datos_enajenacion_bienes.rfc = valor;
         break;
       case "sector_industria":
-        data.enajenacion_bienes.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.enajenacion_bienes.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.enajenacion_bienes.sector_industria.valor = valor;
+        data.datos_enajenacion_bienes.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_actividad_servicio":
-        data.enajenacion_bienes.tipo_actividad_servicio = valor;
+        data.datos_enajenacion_bienes.tipo_actividad_servicio = this.getTipoActividad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.codigo":
-        data.enajenacion_bienes.tipo_actividad_servicio.codigo = valor;
+
+      /////////////////////////////  domicilio_bien_enajenado  /////////////////////////////////////
+      case "pais":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "tipo_actividad_servicio.valor":
-        data.enajenacion_bienes.tipo_actividad_servicio.valor = valor;
+      case "entidad_federativa":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_enajenacion_bienes.domicilio_bien_enajenado
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.cp = valor;
+        break;
+      case "localidad":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.numInt = valor;
+        break;
+      default:
+        console.log(field);
+    }
+
+    this.setState(data);
+  };
+
+  setDataOtrosIngresos = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      case "curp":
+        data.datos_otros_ingresos.curp = valor;
+        break;
+      case "descripcion_actividad":
+        data.datos_otros_ingresos.descripcion_actividad = valor;
+        break;
+      case "id":
+        data.datos_otros_ingresos.id = valor;
+        break;
+      case "ingreso_bruto_anual.duracion_frecuencia":
+        data.datos_otros_ingresos.ingreso_bruto_anual.duracion_frecuencia = valor;
+        break;
+      case "ingreso_bruto_anual.fecha_transaccion":
+        data.datos_otros_ingresos.ingreso_bruto_anual.fecha_transaccion = valor;
+        break;
+      case "ingreso_bruto_anual.moneda":
+        data.datos_otros_ingresos.ingreso_bruto_anual.moneda = this.getMoneda(
+          valor
+        );
+        break;
+      case "ingreso_bruto_anual.unidad_temporal":
+        data.datos_otros_ingresos.ingreso_bruto_anual.unidad_temporal = this.getMedidasPlazo(
+          valor
+        );
+        break;
+      case "ingreso_bruto_anual":
+        data.datos_otros_ingresos.ingreso_bruto_anual.valor = valor;
+        break;
+      case "nombre_denominacion":
+        data.datos_otros_ingresos.nombre_denominacion = valor;
+        break;
+      case "observaciones":
+        data.datos_otros_ingresos.observaciones = valor;
+        break;
+      case "rfc":
+        data.datos_otros_ingresos.rfc = valor;
+        break;
+      case "sector_industria":
+        data.datos_otros_ingresos.sector_industria = this.getSectorIndustria(
+          valor
+        );
+        break;
+      case "tipo_actividad":
+        data.datos_otros_ingresos.tipo_actividad = this.getTipoActividad(valor);
+        break;
+
+      /////////////////////////////  domicilio_actividad  /////////////////////////////////////
+      case "pais":
+        data.datos_otros_ingresos.domicilio_actividad.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "entidad_federativa":
+        data.datos_otros_ingresos.domicilio_actividad.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_otros_ingresos.domicilio_actividad.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_otros_ingresos.domicilio_actividad.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_otros_ingresos.domicilio_actividad.cp = valor;
+        break;
+      case "localidad":
+        data.datos_otros_ingresos.domicilio_actividad.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_otros_ingresos.domicilio_actividad.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_otros_ingresos.domicilio_actividad.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_otros_ingresos.domicilio_actividad.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_otros_ingresos.domicilio_actividad.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3610,181 +3485,141 @@ class Index extends Component {
 
     switch (field) {
       case "curp_quien_adquirio":
-        data.bienes_inmuebles.curp_quien_adquirio = valor;
-        break;
-      case "domicilio_bien":
-        data.bienes_inmuebles.domicilio_bien = valor;
-        break;
-      case "domicilio_bien.cp":
-        data.bienes_inmuebles.domicilio_bien.cp = valor;
-        break;
-      case "domicilio_bien.entidad_federativa":
-        data.bienes_inmuebles.domicilio_bien.entidad_federativa = valor;
-        break;
-      case "domicilio_bien.entidad_federativa.cve_ent":
-        data.bienes_inmuebles.domicilio_bien.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_bien.entidad_federativa.nom_ent":
-        data.bienes_inmuebles.domicilio_bien.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_bien.localidad":
-        data.bienes_inmuebles.domicilio_bien.localidad = valor;
-        break;
-      case "domicilio_bien.localidad.cve_loc":
-        data.bienes_inmuebles.domicilio_bien.localidad.cve_loc = valor;
-        break;
-      case "domicilio_bien.localidad.nom_loc":
-        data.bienes_inmuebles.domicilio_bien.localidad.nom_loc = valor;
-        break;
-      case "domicilio_bien.municipio":
-        data.bienes_inmuebles.domicilio_bien.municipio = valor;
-        break;
-      case "domicilio_bien.municipio.cve_mun":
-        data.bienes_inmuebles.domicilio_bien.municipio.cve_mun = valor;
-        break;
-      case "domicilio_bien.municipio.nom_mun":
-        data.bienes_inmuebles.domicilio_bien.municipio.nom_mun = valor;
-        break;
-      case "domicilio_bien.numExt":
-        data.bienes_inmuebles.domicilio_bien.numExt = valor;
-        break;
-      case "domicilio_bien.numInt":
-        data.bienes_inmuebles.domicilio_bien.numInt = valor;
-        break;
-      case "domicilio_bien.pais":
-        data.bienes_inmuebles.domicilio_bien.pais = valor;
-        break;
-      case "domicilio_bien.pais.codigo":
-        data.bienes_inmuebles.domicilio_bien.pais.codigo = valor;
-        break;
-      case "domicilio_bien.pais.valor":
-        data.bienes_inmuebles.domicilio_bien.pais.valor = valor;
-        break;
-      case "domicilio_bien.vialidad":
-        data.bienes_inmuebles.domicilio_bien.vialidad = valor;
-        break;
-      case "domicilio_bien.vialidad.nom_vial":
-        data.bienes_inmuebles.domicilio_bien.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_bien.vialidad.tipo_vial":
-        data.bienes_inmuebles.domicilio_bien.vialidad.tipo_vial = valor;
+        data.datos_bienes_inmuebles.curp_quien_adquirio = valor;
         break;
       case "fecha_adquisicion":
-        data.bienes_inmuebles.fecha_adquisicion = valor;
+        data.datos_bienes_inmuebles.fecha_adquisicion = valor;
         break;
       case "forma_adquisicion":
-        data.bienes_inmuebles.forma_adquisicion = valor;
-        break;
-      case "forma_adquisicion.codigo":
-        data.bienes_inmuebles.forma_adquisicion.codigo = valor;
-        break;
-      case "forma_adquisicion.valor":
-        data.bienes_inmuebles.forma_adquisicion.valor = valor;
+        data.datos_bienes_inmuebles.forma_adquisicion = this.getFormaAdquision(
+          valor
+        );
         break;
       case "id":
-        data.bienes_inmuebles.id = valor;
+        data.datos_bienes_inmuebles.id = valor;
         break;
       case "identificacion_bien":
-        data.bienes_inmuebles.identificacion_bien = valor;
+        data.datos_bienes_inmuebles.identificacion_bien = valor;
         break;
       case "identificacion_bien.fecha_contrato":
-        data.bienes_inmuebles.identificacion_bien.fecha_contrato = valor;
+        data.datos_bienes_inmuebles.identificacion_bien.fecha_contrato = valor;
         break;
       case "identificacion_bien.folio_real":
-        data.bienes_inmuebles.identificacion_bien.folio_real = valor;
+        data.datos_bienes_inmuebles.identificacion_bien.folio_real = valor;
         break;
       case "identificacion_bien.numero_escritura_publica":
-        data.bienes_inmuebles.identificacion_bien.numero_escritura_publica = valor;
+        data.datos_bienes_inmuebles.identificacion_bien.numero_escritura_publica = valor;
         break;
       case "identificacion_bien.numero_registro_publico":
-        data.bienes_inmuebles.identificacion_bien.numero_registro_publico = valor;
+        data.datos_bienes_inmuebles.identificacion_bien.numero_registro_publico = valor;
         break;
       case "nombre_copropietario":
-        data.bienes_inmuebles.nombre_copropietario = valor;
+        data.datos_bienes_inmuebles.nombre_copropietario = valor;
         break;
       case "nombre_copropietario.nombres":
-        data.bienes_inmuebles.nombre_copropietario.nombres = valor;
+        data.datos_bienes_inmuebles.nombre_copropietario.nombres = valor;
         break;
       case "nombre_copropietario.primer_apellido":
-        data.bienes_inmuebles.nombre_copropietario.primer_apellido = valor;
+        data.datos_bienes_inmuebles.nombre_copropietario.primer_apellido = valor;
         break;
       case "nombre_copropietario.segundo_apellido":
-        data.bienes_inmuebles.nombre_copropietario.segundo_apellido = valor;
+        data.datos_bienes_inmuebles.nombre_copropietario.segundo_apellido = valor;
         break;
       case "nombre_denominacion_quien_adquirio":
-        data.bienes_inmuebles.nombre_denominacion_quien_adquirio = valor;
+        data.datos_bienes_inmuebles.nombre_denominacion_quien_adquirio = valor;
         break;
       case "observaciones":
-        data.bienes_inmuebles.observaciones = valor;
+        data.datos_bienes_inmuebles.observaciones = valor;
         break;
       case "porcentaje_propiedad":
-        data.bienes_inmuebles.porcentaje_propiedad = valor;
-        break;
-      case "precio_adquisicion":
-        data.bienes_inmuebles.precio_adquisicion = valor;
+        data.datos_bienes_inmuebles.porcentaje_propiedad = valor;
         break;
       case "precio_adquisicion.moneda":
-        data.bienes_inmuebles.precio_adquisicion.moneda = valor;
+        data.datos_bienes_inmuebles.precio_adquisicion.moneda = this.getMoneda(
+          valor
+        );
         break;
-      case "precio_adquisicion.moneda.codigo":
-        data.bienes_inmuebles.precio_adquisicion.moneda.codigo = valor;
-        break;
-      case "precio_adquisicion.moneda.moneda":
-        data.bienes_inmuebles.precio_adquisicion.moneda.moneda = valor;
-        break;
-      case "precio_adquisicion.valor":
-        data.bienes_inmuebles.precio_adquisicion.valor = valor;
+      case "precio_adquisicion":
+        data.datos_bienes_inmuebles.precio_adquisicion.valor = valor;
         break;
       case "relacion_persona_adquirio":
-        data.bienes_inmuebles.relacion_persona_adquirio = valor;
-        break;
-      case "relacion_persona_adquirio.codigo":
-        data.bienes_inmuebles.relacion_persona_adquirio.codigo = valor;
-        break;
-      case "relacion_persona_adquirio.valor":
-        data.bienes_inmuebles.relacion_persona_adquirio.valor = valor;
+        data.datos_bienes_inmuebles.relacion_persona_adquirio = this.getRelacionDeclarante(
+          valor
+        );
         break;
       case "rfc_quien_adquirio":
-        data.bienes_inmuebles.rfc_quien_adquirio = valor;
+        data.datos_bienes_inmuebles.rfc_quien_adquirio = valor;
         break;
       case "sector_industria":
-        data.bienes_inmuebles.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.bienes_inmuebles.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.bienes_inmuebles.sector_industria.valor = valor;
+        data.datos_bienes_inmuebles.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "superficie_construccion":
-        data.bienes_inmuebles.superficie_construccion = valor;
+        data.datos_bienes_inmuebles.superficie_construccion = valor;
         break;
       case "superficie_terreno":
-        data.bienes_inmuebles.superficie_terreno = valor;
+        data.datos_bienes_inmuebles.superficie_terreno = valor;
         break;
       case "tipo_bien":
-        data.bienes_inmuebles.tipo_bien = valor;
-        break;
-      case "tipo_bien.codigo":
-        data.bienes_inmuebles.tipo_bien.codigo = valor;
-        break;
-      case "tipo_bien.valor":
-        data.bienes_inmuebles.tipo_bien.valor = valor;
+        data.datos_bienes_inmuebles.tipo_bien = this.getTipoBien(valor);
         break;
       case "tipo_operacion":
-        data.bienes_inmuebles.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.bienes_inmuebles.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.bienes_inmuebles.tipo_operacion.valor = valor;
+        data.datos_bienes_inmuebles.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
       case "valor_catastral":
-        data.bienes_inmuebles.valor_catastral = valor;
+        data.datos_bienes_inmuebles.valor_catastral = valor;
+        break;
+
+      case "titular":
+        data.datos_bienes_inmuebles.titular = this.getTitularBien(valor);
+        break;
+
+      /////////////////////////////  domicilio_bien  /////////////////////////////////////
+      case "pais":
+        data.datos_bienes_inmuebles.domicilio_bien.pais = this.getCiudad(valor);
+        break;
+      case "entidad_federativa":
+        data.datos_bienes_inmuebles.domicilio_bien.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_bienes_inmuebles.domicilio_bien.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_bienes_inmuebles.domicilio_bien.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_bienes_inmuebles.domicilio_bien.cp = valor;
+        break;
+      case "localidad":
+        data.datos_bienes_inmuebles.domicilio_bien.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_bienes_inmuebles.domicilio_bien.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_bienes_inmuebles.domicilio_bien.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_bienes_inmuebles.domicilio_bien.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_bienes_inmuebles.domicilio_bien.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3796,133 +3631,92 @@ class Index extends Component {
 
     switch (field) {
       case "fecha_adquisicion":
-        data.bienes_muebles_registrables.fecha_adquisicion = valor;
+        data.datos_bienes_muebles_registrables.fecha_adquisicion = valor;
         break;
       case "forma_adquisicion":
-        data.bienes_muebles_registrables.forma_adquisicion = valor;
-        break;
-      case "forma_adquisicion.codigo":
-        data.bienes_muebles_registrables.forma_adquisicion.codigo = valor;
-        break;
-      case "forma_adquisicion.valor":
-        data.bienes_muebles_registrables.forma_adquisicion.valor = valor;
+        data.datos_bienes_muebles_registrables.forma_adquisicion = this.getFormaAdquision(
+          valor
+        );
         break;
       case "id":
-        data.bienes_muebles_registrables.id = valor;
-        break;
-      case "lugar_registro":
-        data.bienes_muebles_registrables.lugar_registro = valor;
+        data.datos_bienes_muebles_registrables.id = valor;
         break;
       case "lugar_registro.entidad":
-        data.bienes_muebles_registrables.lugar_registro.entidad = valor;
-        break;
-      case "lugar_registro.entidad.cve_ent":
-        data.bienes_muebles_registrables.lugar_registro.entidad.cve_ent = valor;
-        break;
-      case "lugar_registro.entidad.nom_ent":
-        data.bienes_muebles_registrables.lugar_registro.entidad.nom_ent = valor;
+        data.datos_bienes_muebles_registrables.lugar_registro.entidad = this.getEntidadFederativa(
+          valor
+        );
         break;
       case "lugar_registro.pais":
-        data.bienes_muebles_registrables.lugar_registro.pais = valor;
-        break;
-      case "lugar_registro.pais.codigo":
-        data.bienes_muebles_registrables.lugar_registro.pais.codigo = valor;
-        break;
-      case "lugar_registro.pais.valor":
-        data.bienes_muebles_registrables.lugar_registro.pais.valor = valor;
+        data.datos_bienes_muebles_registrables.lugar_registro.pais = this.getCiudad(
+          valor
+        );
         break;
       case "marca":
-        data.bienes_muebles_registrables.marca = valor;
+        data.datos_bienes_muebles_registrables.marca = valor;
         break;
       case "modelo":
-        data.bienes_muebles_registrables.modelo = valor;
+        data.datos_bienes_muebles_registrables.modelo = valor;
         break;
       case "nombre_denominacion_adquirio":
-        data.bienes_muebles_registrables.nombre_denominacion_adquirio = valor;
+        data.datos_bienes_muebles_registrables.nombre_denominacion_adquirio = valor;
         break;
       case "nombres_copropietarios":
-        data.bienes_muebles_registrables.nombres_copropietarios = valor;
+        data.datos_bienes_muebles_registrables.nombres_copropietarios = valor;
         break;
       case "numero_registro_vehicular":
-        data.bienes_muebles_registrables.numero_registro_vehicular = valor;
+        data.datos_bienes_muebles_registrables.numero_registro_vehicular = valor;
         break;
       case "numero_serie":
-        data.bienes_muebles_registrables.numero_serie = valor;
+        data.datos_bienes_muebles_registrables.numero_serie = valor;
         break;
       case "observaciones":
-        data.bienes_muebles_registrables.observaciones = valor;
+        data.datos_bienes_muebles_registrables.observaciones = valor;
         break;
       case "porcentaje_propiedad":
-        data.bienes_muebles_registrables.porcentaje_propiedad = valor;
-        break;
-      case "precio_adquisicion":
-        data.bienes_muebles_registrables.precio_adquisicion = valor;
+        data.datos_bienes_muebles_registrables.porcentaje_propiedad = valor;
         break;
       case "precio_adquisicion.moneda":
-        data.bienes_muebles_registrables.precio_adquisicion.moneda = valor;
+        data.datos_bienes_muebles_registrables.precio_adquisicion.moneda = this.getMoneda(
+          valor
+        );
         break;
-      case "precio_adquisicion.moneda.codigo":
-        data.bienes_muebles_registrables.precio_adquisicion.moneda.codigo = valor;
-        break;
-      case "precio_adquisicion.moneda.moneda":
-        data.bienes_muebles_registrables.precio_adquisicion.moneda.moneda = valor;
-        break;
-      case "precio_adquisicion.valor":
-        data.bienes_muebles_registrables.precio_adquisicion.valor = valor;
+      case "precio_adquisicion":
+        data.datos_bienes_muebles_registrables.precio_adquisicion.valor = valor;
         break;
       case "relacion_persona_quien_adquirio":
-        data.bienes_muebles_registrables.relacion_persona_quien_adquirio = valor;
-        break;
-      case "relacion_persona_quien_adquirio.codigo":
-        data.bienes_muebles_registrables.relacion_persona_quien_adquirio.codigo = valor;
-        break;
-      case "relacion_persona_quien_adquirio.valor":
-        data.bienes_muebles_registrables.relacion_persona_quien_adquirio.valor = valor;
+        data.datos_bienes_muebles_registrables.relacion_persona_quien_adquirio = this.getRelacionDeclarante(
+          valor
+        );
         break;
       case "rfc_quien_adquirio":
-        data.bienes_muebles_registrables.rfc_quien_adquirio = valor;
+        data.datos_bienes_muebles_registrables.rfc_quien_adquirio = valor;
         break;
       case "sector_industria":
-        data.bienes_muebles_registrables.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.bienes_muebles_registrables.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.bienes_muebles_registrables.sector_industria.valor = valor;
+        data.datos_bienes_muebles_registrables.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "submarca":
-        data.bienes_muebles_registrables.submarca = valor;
+        data.datos_bienes_muebles_registrables.submarca = valor;
         break;
-      case "tipo_bien_mueble":
-        data.bienes_muebles_registrables.tipo_bien_mueble = valor;
-        break;
-      case "tipo_bien_mueble.codigo":
-        data.bienes_muebles_registrables.tipo_bien_mueble.codigo = valor;
-        break;
-      case "tipo_bien_mueble.valor":
-        data.bienes_muebles_registrables.tipo_bien_mueble.valor = valor;
+      case "tipo_bien_inmueble":
+        data.datos_bienes_muebles_registrables.tipo_bien_mueble = this.getTipoBienInmueble(
+          valor
+        );
         break;
       case "tipo_operacion":
-        data.bienes_muebles_registrables.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.bienes_muebles_registrables.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.bienes_muebles_registrables.tipo_operacion.valor = valor;
+        data.datos_bienes_muebles_registrables.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
       case "titular_bien":
-        data.bienes_muebles_registrables.titular_bien = valor;
-        break;
-      case "titular_bien.codigo":
-        data.bienes_muebles_registrables.titular_bien.codigo = valor;
-        break;
-      case "titular_bien.valor":
-        data.bienes_muebles_registrables.titular_bien.valor = valor;
+        data.datos_bienes_muebles_registrables.titular_bien = this.getTitularBien(
+          valor
+        );
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -3934,88 +3728,62 @@ class Index extends Component {
 
     switch (field) {
       case "descripcion":
-        data.bienes_muebles_no_registrables.descripcion = valor;
+        data.datos_bienes_muebles_no_registrables.descripcion = valor;
         break;
       case "fecha_adquisicion":
-        data.bienes_muebles_no_registrables.fecha_adquisicion = valor;
+        data.datos_bienes_muebles_no_registrables.fecha_adquisicion = valor;
         break;
       case "forma_adquisicion":
-        data.bienes_muebles_no_registrables.forma_adquisicion = valor;
-        break;
-      case "forma_adquisicion.codigo":
-        data.bienes_muebles_no_registrables.forma_adquisicion.codigo = valor;
-        break;
-      case "forma_adquisicion.valor":
-        data.bienes_muebles_no_registrables.forma_adquisicion.valor = valor;
+        data.datos_bienes_muebles_no_registrables.forma_adquisicion = this.getFormaAdquision(
+          valor
+        );
         break;
       case "id":
-        data.bienes_muebles_no_registrables.id = valor;
+        data.datos_bienes_muebles_no_registrables.id = valor;
         break;
       case "nombre_denominacion_adquirio":
-        data.bienes_muebles_no_registrables.nombre_denominacion_adquirio = valor;
+        data.datos_bienes_muebles_no_registrables.nombre_denominacion_adquirio = valor;
         break;
       case "nombres_copropietarios":
-        data.bienes_muebles_no_registrables.nombres_copropietarios = valor;
+        data.datos_bienes_muebles_no_registrables.nombres_copropietarios = valor;
         break;
       case "observaciones":
-        data.bienes_muebles_no_registrables.observaciones = valor;
+        data.datos_bienes_muebles_no_registrables.observaciones = valor;
         break;
       case "porcentaje_propiedad":
-        data.bienes_muebles_no_registrables.porcentaje_propiedad = valor;
-        break;
-      case "precio_adquisicion":
-        data.bienes_muebles_no_registrables.precio_adquisicion = valor;
+        data.datos_bienes_muebles_no_registrables.porcentaje_propiedad = valor;
         break;
       case "precio_adquisicion.moneda":
-        data.bienes_muebles_no_registrables.precio_adquisicion.moneda = valor;
+        data.datos_bienes_muebles_no_registrables.precio_adquisicion.moneda = this.getMoneda(
+          valor
+        );
         break;
-      case "precio_adquisicion.moneda.codigo":
-        data.bienes_muebles_no_registrables.precio_adquisicion.moneda.codigo = valor;
-        break;
-      case "precio_adquisicion.moneda.moneda":
-        data.bienes_muebles_no_registrables.precio_adquisicion.moneda.moneda = valor;
-        break;
-      case "precio_adquisicion.valor":
-        data.bienes_muebles_no_registrables.precio_adquisicion.valor = valor;
+      case "precio_adquisicion":
+        data.datos_bienes_muebles_no_registrables.precio_adquisicion.valor = valor;
         break;
       case "relacion_quien_adquirio":
-        data.bienes_muebles_no_registrables.relacion_quien_adquirio = valor;
-        break;
-      case "relacion_quien_adquirio.codigo":
-        data.bienes_muebles_no_registrables.relacion_quien_adquirio.codigo = valor;
-        break;
-      case "relacion_quien_adquirio.valor":
-        data.bienes_muebles_no_registrables.relacion_quien_adquirio.valor = valor;
+        data.datos_bienes_muebles_no_registrables.relacion_quien_adquirio = this.getTipoRelacion(
+          valor
+        );
         break;
       case "tipo_bien":
-        data.bienes_muebles_no_registrables.tipo_bien = valor;
-        break;
-      case "tipo_bien.codigo":
-        data.bienes_muebles_no_registrables.tipo_bien.codigo = valor;
-        break;
-      case "tipo_bien.valor":
-        data.bienes_muebles_no_registrables.tipo_bien.valor = valor;
+        data.datos_bienes_muebles_no_registrables.tipo_bien = this.getTipoBien(
+          valor
+        );
         break;
       case "tipo_operacion":
-        data.bienes_muebles_no_registrables.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.bienes_muebles_no_registrables.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.bienes_muebles_no_registrables.tipo_operacion.valor = valor;
+        data.datos_bienes_muebles_no_registrables.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
       case "titular_bien":
-        data.bienes_muebles_no_registrables.titular_bien = valor;
-        break;
-      case "titular_bien.codigo":
-        data.bienes_muebles_no_registrables.titular_bien.codigo = valor;
-        break;
-      case "titular_bien.valor":
-        data.bienes_muebles_no_registrables.titular_bien.valor = valor;
+        data.datos_bienes_muebles_no_registrables.titular_bien = this.getTitularBien(
+          valor
+        );
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -4026,179 +3794,130 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "domicilio_institucion":
-        data.inversiones_cuentas_valores.domicilio_institucion = valor;
-        break;
-      case "domicilio_institucion.cp":
-        data.inversiones_cuentas_valores.domicilio_institucion.cp = valor;
-        break;
-      case "domicilio_institucion.entidad_federativa":
-        data.inversiones_cuentas_valores.domicilio_institucion.entidad_federativa = valor;
-        break;
-      case "domicilio_institucion.entidad_federativa.cve_ent":
-        data.inversiones_cuentas_valores.domicilio_institucion.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_institucion.entidad_federativa.nom_ent":
-        data.inversiones_cuentas_valores.domicilio_institucion.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_institucion.localidad":
-        data.inversiones_cuentas_valores.domicilio_institucion.localidad = valor;
-        break;
-      case "domicilio_institucion.localidad.cve_loc":
-        data.inversiones_cuentas_valores.domicilio_institucion.localidad.cve_loc = valor;
-        break;
-      case "domicilio_institucion.localidad.nom_loc":
-        data.inversiones_cuentas_valores.domicilio_institucion.localidad.nom_loc = valor;
-        break;
-      case "domicilio_institucion.municipio":
-        data.inversiones_cuentas_valores.domicilio_institucion.municipio = valor;
-        break;
-      case "domicilio_institucion.municipio.cve_mun":
-        data.inversiones_cuentas_valores.domicilio_institucion.municipio.cve_mun = valor;
-        break;
-      case "domicilio_institucion.municipio.nom_mun":
-        data.inversiones_cuentas_valores.domicilio_institucion.municipio.nom_mun = valor;
-        break;
-      case "domicilio_institucion.numExt":
-        data.inversiones_cuentas_valores.domicilio_institucion.numExt = valor;
-        break;
-      case "domicilio_institucion.numInt":
-        data.inversiones_cuentas_valores.domicilio_institucion.numInt = valor;
-        break;
-      case "domicilio_institucion.pais":
-        data.inversiones_cuentas_valores.domicilio_institucion.pais = valor;
-        break;
-      case "domicilio_institucion.pais.codigo":
-        data.inversiones_cuentas_valores.domicilio_institucion.pais.codigo = valor;
-        break;
-      case "domicilio_institucion.pais.valor":
-        data.inversiones_cuentas_valores.domicilio_institucion.pais.valor = valor;
-        break;
-      case "domicilio_institucion.vialidad":
-        data.inversiones_cuentas_valores.domicilio_institucion.vialidad = valor;
-        break;
-      case "domicilio_institucion.vialidad.nom_vial":
-        data.inversiones_cuentas_valores.domicilio_institucion.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_institucion.vialidad.tipo_vial":
-        data.inversiones_cuentas_valores.domicilio_institucion.vialidad.tipo_vial = valor;
-        break;
       case "fecha_inicio":
-        data.inversiones_cuentas_valores.fecha_inicio = valor;
+        data.datos_inversiones_cuentas_valores.fecha_inicio = valor;
         break;
       case "forma_adquisicion":
-        data.inversiones_cuentas_valores.forma_adquisicion = valor;
-        break;
-      case "forma_adquisicion.codigo":
-        data.inversiones_cuentas_valores.forma_adquisicion.codigo = valor;
-        break;
-      case "forma_adquisicion.valor":
-        data.inversiones_cuentas_valores.forma_adquisicion.valor = valor;
+        data.datos_inversiones_cuentas_valores.forma_adquisicion = this.getFormaAdquision(
+          valor
+        );
         break;
       case "id":
-        data.inversiones_cuentas_valores.id = valor;
+        data.datos_inversiones_cuentas_valores.id = valor;
         break;
       case "monto_original":
-        data.inversiones_cuentas_valores.monto_original = valor;
+        data.datos_inversiones_cuentas_valores.monto_original = valor;
         break;
       case "nacional_extranjero":
-        data.inversiones_cuentas_valores.nacional_extranjero = valor;
-        break;
-      case "nacional_extranjero.codigo":
-        data.inversiones_cuentas_valores.nacional_extranjero.codigo = valor;
-        break;
-      case "nacional_extranjero.valor":
-        data.inversiones_cuentas_valores.nacional_extranjero.valor = valor;
+        data.datos_inversiones_cuentas_valores.nacional_extranjero = this.getCiudad(
+          valor
+        );
         break;
       case "nombre_institucion":
-        data.inversiones_cuentas_valores.nombre_institucion = valor;
+        data.datos_inversiones_cuentas_valores.nombre_institucion = valor;
         break;
       case "numero_cuenta":
-        data.inversiones_cuentas_valores.numero_cuenta = valor;
+        data.datos_inversiones_cuentas_valores.numero_cuenta = valor;
         break;
       case "observaciones":
-        data.inversiones_cuentas_valores.observaciones = valor;
+        data.datos_inversiones_cuentas_valores.observaciones = valor;
         break;
       case "plazo":
-        data.inversiones_cuentas_valores.plazo = valor;
+        data.datos_inversiones_cuentas_valores.plazo = valor;
         break;
       case "porcentaje_inversion":
-        data.inversiones_cuentas_valores.porcentaje_inversion = valor;
+        data.datos_inversiones_cuentas_valores.porcentaje_inversion = valor;
         break;
       case "rfc_institucion":
-        data.inversiones_cuentas_valores.rfc_institucion = valor;
+        data.datos_inversiones_cuentas_valores.rfc_institucion = valor;
         break;
       case "saldo_anual":
-        data.inversiones_cuentas_valores.saldo_anual = valor;
+        data.datos_inversiones_cuentas_valores.saldo_anual = valor;
         break;
       case "sector_industria":
-        data.inversiones_cuentas_valores.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.inversiones_cuentas_valores.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.inversiones_cuentas_valores.sector_industria.valor = valor;
+        data.datos_inversiones_cuentas_valores.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tasa_interes":
-        data.inversiones_cuentas_valores.tasa_interes = valor;
+        data.datos_inversiones_cuentas_valores.tasa_interes = valor;
         break;
       case "tipo_especifico_inversion":
-        data.inversiones_cuentas_valores.tipo_especifico_inversion = valor;
-        break;
-      case "tipo_especifico_inversion.codigo":
-        data.inversiones_cuentas_valores.tipo_especifico_inversion.codigo = valor;
-        break;
-      case "tipo_especifico_inversion.valor":
-        data.inversiones_cuentas_valores.tipo_especifico_inversion.valor = valor;
+        data.datos_inversiones_cuentas_valores.tipo_especifico_inversion = this.getTipoEspecificoInversion(
+          valor
+        );
         break;
       case "tipo_inversion":
-        data.inversiones_cuentas_valores.tipo_inversion = valor;
-        break;
-      case "tipo_inversion.codigo":
-        data.inversiones_cuentas_valores.tipo_inversion.codigo = valor;
-        break;
-      case "tipo_inversion.valor":
-        data.inversiones_cuentas_valores.tipo_inversion.valor = valor;
+        data.datos_inversiones_cuentas_valores.tipo_inversion = this.getTipoInversion(
+          valor
+        );
         break;
       case "tipo_moneda":
-        data.inversiones_cuentas_valores.tipo_moneda = valor;
-        break;
-      case "tipo_moneda.codigo":
-        data.inversiones_cuentas_valores.tipo_moneda.codigo = valor;
-        break;
-      case "tipo_moneda.moneda":
-        data.inversiones_cuentas_valores.tipo_moneda.moneda = valor;
+        data.datos_inversiones_cuentas_valores.tipo_moneda = this.getMoneda(
+          valor
+        );
         break;
       case "tipo_operacion":
-        data.inversiones_cuentas_valores.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.inversiones_cuentas_valores.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.inversiones_cuentas_valores.tipo_operacion.valor = valor;
+        data.datos_inversiones_cuentas_valores.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
       case "titular_bien":
-        data.inversiones_cuentas_valores.titular_bien = valor;
-        break;
-      case "titular_bien.codigo":
-        data.inversiones_cuentas_valores.titular_bien.codigo = valor;
-        break;
-      case "titular_bien.valor":
-        data.inversiones_cuentas_valores.titular_bien.valor = valor;
+        data.datos_inversiones_cuentas_valores.titular_bien = this.getTitularBien(
+          valor
+        );
         break;
       case "unidad_medida_plazo":
-        data.inversiones_cuentas_valores.unidad_medida_plazo = valor;
+        data.datos_inversiones_cuentas_valores.unidad_medida_plazo = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "unidad_medida_plazo.codigo":
-        data.inversiones_cuentas_valores.unidad_medida_plazo.codigo = valor;
+
+      /////////////////////////////  domicilio_institucion  /////////////////////////////////////
+      case "pais":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "unidad_medida_plazo.valor":
-        data.inversiones_cuentas_valores.unidad_medida_plazo.valor = valor;
+      case "entidad_federativa":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_inversiones_cuentas_valores.domicilio_institucion
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.cp = valor;
+        break;
+      case "localidad":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -4210,55 +3929,38 @@ class Index extends Component {
 
     switch (field) {
       case "forma_adquisicion":
-        data.efectivo_metales.forma_adquisicion = valor;
-        break;
-      case "forma_adquisicion.codigo":
-        data.efectivo_metales.forma_adquisicion.codigo = valor;
-        break;
-      case "forma_adquisicion.valor":
-        data.efectivo_metales.forma_adquisicion.valor = valor;
+        data.datos_efectivo_metales.forma_adquisicion = this.getFormaAdquision(
+          valor
+        );
         break;
       case "id":
-        data.efectivo_metales.id = valor;
+        data.datos_efectivo_metales.id = valor;
         break;
-      case "monto":
-        data.efectivo_metales.monto = valor;
+      case "monto_moneda":
+        data.datos_efectivo_metales.monto_moneda = valor;
         break;
       case "observaciones_comentarios":
-        data.efectivo_metales.observaciones_comentarios = valor;
+        data.datos_efectivo_metales.observaciones_comentarios = valor;
         break;
       case "tipo_metal":
-        data.efectivo_metales.tipo_metal = valor;
-        break;
-      case "tipo_metal.codigo":
-        data.efectivo_metales.tipo_metal.codigo = valor;
-        break;
-      case "tipo_metal.valor":
-        data.efectivo_metales.tipo_metal.valor = valor;
+        data.datos_efectivo_metales.tipo_metal = this.getTipoMetal(valor);
         break;
       case "tipo_moneda":
-        data.efectivo_metales.tipo_moneda = valor;
-        break;
-      case "tipo_moneda.codigo":
-        data.efectivo_metales.tipo_moneda.codigo = valor;
-        break;
-      case "tipo_moneda.moneda":
-        data.efectivo_metales.tipo_moneda.moneda = valor;
+        data.datos_efectivo_metales.tipo_moneda = this.getMoneda(valor);
         break;
       case "tipo_operacion":
-        data.efectivo_metales.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.efectivo_metales.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.efectivo_metales.tipo_operacion.valor = valor;
+        data.datos_efectivo_metales.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
       case "unidades":
-        data.efectivo_metales.unidades = valor;
+        data.datos_efectivo_metales.unidades = valor;
         break;
-
+      case "monto_metal":
+        data.datos_efectivo_metales.monto_metal = valor;
+        break;
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -4269,203 +3971,41 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "curp_fideicomisario":
-        data.fideicomisos.curp_fideicomisario = valor;
+      case "id":
+        data.fideicomisos.id = valor;
         break;
-      case "curp_fideicomitente":
-        data.fideicomisos.curp_fideicomitente = valor;
+      case "tipo_operacion":
+        data.fideicomisos.tipo_operacion = this.getTipoOperacion(valor);
         break;
-      case "curp_fiduciario":
-        data.fideicomisos.curp_fiduciario = valor;
+      case "identificador_fideicomiso":
+        data.fideicomisos.identificador_fideicomiso = valor;
         break;
-      case "domicilio_fideicomisario":
-        data.fideicomisos.domicilio_fideicomisario = valor;
+      case "tipo_fideicomiso":
+        data.fideicomisos.tipo_fideicomiso = valor;
         break;
-      case "domicilio_fideicomisario.cp":
-        data.fideicomisos.domicilio_fideicomisario.cp = valor;
+      case "objetivo":
+        data.fideicomisos.objetivo = valor;
         break;
-      case "domicilio_fideicomisario.entidad_federativa":
-        data.fideicomisos.domicilio_fideicomisario.entidad_federativa = valor;
-        break;
-      case "domicilio_fideicomisario.entidad_federativa.cve_ent":
-        data.fideicomisos.domicilio_fideicomisario.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_fideicomisario.entidad_federativa.nom_ent":
-        data.fideicomisos.domicilio_fideicomisario.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_fideicomisario.localidad":
-        data.fideicomisos.domicilio_fideicomisario.localidad = valor;
-        break;
-      case "domicilio_fideicomisario.localidad.cve_loc":
-        data.fideicomisos.domicilio_fideicomisario.localidad.cve_loc = valor;
-        break;
-      case "domicilio_fideicomisario.localidad.nom_loc":
-        data.fideicomisos.domicilio_fideicomisario.localidad.nom_loc = valor;
-        break;
-      case "domicilio_fideicomisario.municipio":
-        data.fideicomisos.domicilio_fideicomisario.municipio = valor;
-        break;
-      case "domicilio_fideicomisario.municipio.cve_mun":
-        data.fideicomisos.domicilio_fideicomisario.municipio.cve_mun = valor;
-        break;
-      case "domicilio_fideicomisario.municipio.nom_mun":
-        data.fideicomisos.domicilio_fideicomisario.municipio.nom_mun = valor;
-        break;
-      case "domicilio_fideicomisario.numExt":
-        data.fideicomisos.domicilio_fideicomisario.numExt = valor;
-        break;
-      case "domicilio_fideicomisario.numInt":
-        data.fideicomisos.domicilio_fideicomisario.numInt = valor;
-        break;
-      case "domicilio_fideicomisario.pais":
-        data.fideicomisos.domicilio_fideicomisario.pais = valor;
-        break;
-      case "domicilio_fideicomisario.pais.codigo":
-        data.fideicomisos.domicilio_fideicomisario.pais.codigo = valor;
-        break;
-      case "domicilio_fideicomisario.pais.valor":
-        data.fideicomisos.domicilio_fideicomisario.pais.valor = valor;
-        break;
-      case "domicilio_fideicomisario.vialidad":
-        data.fideicomisos.domicilio_fideicomisario.vialidad = valor;
-        break;
-      case "domicilio_fideicomisario.vialidad.nom_vial":
-        data.fideicomisos.domicilio_fideicomisario.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_fideicomisario.vialidad.tipo_vial":
-        data.fideicomisos.domicilio_fideicomisario.vialidad.tipo_vial = valor;
-        break;
-      case "domicilio_fideicomitente":
-        data.fideicomisos.domicilio_fideicomitente = valor;
-        break;
-      case "domicilio_fideicomitente.cp":
-        data.fideicomisos.domicilio_fideicomitente.cp = valor;
-        break;
-      case "domicilio_fideicomitente.entidad_federativa":
-        data.fideicomisos.domicilio_fideicomitente.entidad_federativa = valor;
-        break;
-      case "domicilio_fideicomitente.entidad_federativa.cve_ent":
-        data.fideicomisos.domicilio_fideicomitente.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_fideicomitente.entidad_federativa.nom_ent":
-        data.fideicomisos.domicilio_fideicomitente.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_fideicomitente.localidad":
-        data.fideicomisos.domicilio_fideicomitente.localidad = valor;
-        break;
-      case "domicilio_fideicomitente.localidad.cve_loc":
-        data.fideicomisos.domicilio_fideicomitente.localidad.cve_loc = valor;
-        break;
-      case "domicilio_fideicomitente.localidad.nom_loc":
-        data.fideicomisos.domicilio_fideicomitente.localidad.nom_loc = valor;
-        break;
-      case "domicilio_fideicomitente.municipio":
-        data.fideicomisos.domicilio_fideicomitente.municipio = valor;
-        break;
-      case "domicilio_fideicomitente.municipio.cve_mun":
-        data.fideicomisos.domicilio_fideicomitente.municipio.cve_mun = valor;
-        break;
-      case "domicilio_fideicomitente.municipio.nom_mun":
-        data.fideicomisos.domicilio_fideicomitente.municipio.nom_mun = valor;
-        break;
-      case "domicilio_fideicomitente.numExt":
-        data.fideicomisos.domicilio_fideicomitente.numExt = valor;
-        break;
-      case "domicilio_fideicomitente.numInt":
-        data.fideicomisos.domicilio_fideicomitente.numInt = valor;
-        break;
-      case "domicilio_fideicomitente.pais":
-        data.fideicomisos.domicilio_fideicomitente.pais = valor;
-        break;
-      case "domicilio_fideicomitente.pais.codigo":
-        data.fideicomisos.domicilio_fideicomitente.pais.codigo = valor;
-        break;
-      case "domicilio_fideicomitente.pais.valor":
-        data.fideicomisos.domicilio_fideicomitente.pais.valor = valor;
-        break;
-      case "domicilio_fideicomitente.vialidad":
-        data.fideicomisos.domicilio_fideicomitente.vialidad = valor;
-        break;
-      case "domicilio_fideicomitente.vialidad.nom_vial":
-        data.fideicomisos.domicilio_fideicomitente.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_fideicomitente.vialidad.tipo_vial":
-        data.fideicomisos.domicilio_fideicomitente.vialidad.tipo_vial = valor;
-        break;
-      case "domicilio_fiduciario":
-        data.fideicomisos.domicilio_fiduciario = valor;
-        break;
-      case "domicilio_fiduciario.cp":
-        data.fideicomisos.domicilio_fiduciario.cp = valor;
-        break;
-      case "domicilio_fiduciario.entidad_federativa":
-        data.fideicomisos.domicilio_fiduciario.entidad_federativa = valor;
-        break;
-      case "domicilio_fiduciario.entidad_federativa.cve_ent":
-        data.fideicomisos.domicilio_fiduciario.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_fiduciario.entidad_federativa.nom_ent":
-        data.fideicomisos.domicilio_fiduciario.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_fiduciario.localidad":
-        data.fideicomisos.domicilio_fiduciario.localidad = valor;
-        break;
-      case "domicilio_fiduciario.localidad.cve_loc":
-        data.fideicomisos.domicilio_fiduciario.localidad.cve_loc = valor;
-        break;
-      case "domicilio_fiduciario.localidad.nom_loc":
-        data.fideicomisos.domicilio_fiduciario.localidad.nom_loc = valor;
-        break;
-      case "domicilio_fiduciario.municipio":
-        data.fideicomisos.domicilio_fiduciario.municipio = valor;
-        break;
-      case "domicilio_fiduciario.municipio.cve_mun":
-        data.fideicomisos.domicilio_fiduciario.municipio.cve_mun = valor;
-        break;
-      case "domicilio_fiduciario.municipio.nom_mun":
-        data.fideicomisos.domicilio_fiduciario.municipio.nom_mun = valor;
-        break;
-      case "domicilio_fiduciario.numExt":
-        data.fideicomisos.domicilio_fiduciario.numExt = valor;
-        break;
-      case "domicilio_fiduciario.numInt":
-        data.fideicomisos.domicilio_fiduciario.numInt = valor;
-        break;
-      case "domicilio_fiduciario.pais":
-        data.fideicomisos.domicilio_fiduciario.pais = valor;
-        break;
-      case "domicilio_fiduciario.pais.codigo":
-        data.fideicomisos.domicilio_fiduciario.pais.codigo = valor;
-        break;
-      case "domicilio_fiduciario.pais.valor":
-        data.fideicomisos.domicilio_fiduciario.pais.valor = valor;
-        break;
-      case "domicilio_fiduciario.vialidad":
-        data.fideicomisos.domicilio_fiduciario.vialidad = valor;
-        break;
-      case "domicilio_fiduciario.vialidad.nom_vial":
-        data.fideicomisos.domicilio_fiduciario.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_fiduciario.vialidad.tipo_vial":
-        data.fideicomisos.domicilio_fiduciario.vialidad.tipo_vial = valor;
+      case "numero_registro":
+        data.fideicomisos.numero_registro = valor;
         break;
       case "fecha_creacion":
         data.fideicomisos.fecha_creacion = valor;
         break;
-      case "fecha_nacimiento_constitucion_fideicomisario":
-        data.fideicomisos.fecha_nacimiento_constitucion_fideicomisario = valor;
+      case "vigencia":
+        data.fideicomisos.vigencia = valor;
         break;
-      case "fecha_nacimiento_constitucion_fideicomitente":
-        data.fideicomisos.fecha_nacimiento_constitucion_fideicomitente = valor;
+      case "residencia":
+        data.fideicomisos.residencia = valor;
         break;
-      case "fecha_nacimiento_constitucion_fiduciario":
-        data.fideicomisos.fecha_nacimiento_constitucion_fiduciario = valor;
+      case "valor":
+        data.fideicomisos.valor = valor;
         break;
-      case "id":
-        data.fideicomisos.id = valor;
+      case "moneda":
+        data.fideicomisos.moneda = valor;
         break;
-      case "identificador_fideicomiso":
-        data.fideicomisos.identificador_fideicomiso = valor;
+      case "porcentaje_propiedad_derechos_fiduciarios":
+        data.fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;
         break;
       case "ingreso_monetario_obtenido":
         data.fideicomisos.ingreso_monetario_obtenido = valor;
@@ -4473,80 +4013,12 @@ class Index extends Component {
       case "institucion_fiduciaria":
         data.fideicomisos.institucion_fiduciaria = valor;
         break;
-      case "moneda":
-        data.fideicomisos.moneda = valor;
-        break;
-      case "moneda.codigo":
-        data.fideicomisos.moneda.codigo = valor;
-        break;
-      case "moneda.moneda":
-        data.fideicomisos.moneda.moneda = valor;
-        break;
-      case "nombre_fideicomisario":
-        data.fideicomisos.nombre_fideicomisario = valor;
-        break;
-      case "nombre_fideicomitente":
-        data.fideicomisos.nombre_fideicomitente = valor;
-        break;
-      case "nombre_fiduciario":
-        data.fideicomisos.nombre_fiduciario = valor;
-        break;
-      case "numero_registro":
-        data.fideicomisos.numero_registro = valor;
-        break;
-      case "objetivo":
-        data.fideicomisos.objetivo = valor;
-        break;
       case "observaciones":
         data.fideicomisos.observaciones = valor;
         break;
-      case "porcentaje_propiedad_derechos_fiduciarios":
-        data.fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;
-        break;
-      case "residencia":
-        data.fideicomisos.residencia = valor;
-        break;
-      case "residencia.codigo":
-        data.fideicomisos.residencia.codigo = valor;
-        break;
-      case "residencia.valor":
-        data.fideicomisos.residencia.valor = valor;
-        break;
-      case "rfc_fideicomitente":
-        data.fideicomisos.rfc_fideicomitente = valor;
-        break;
-      case "rfc_fideicomsario":
-        data.fideicomisos.rfc_fideicomsario = valor;
-        break;
-      case "rfc_fiduciario":
-        data.fideicomisos.rfc_fiduciario = valor;
-        break;
-      case "tipo_fideicomiso":
-        data.fideicomisos.tipo_fideicomiso = valor;
-        break;
-      case "tipo_fideicomiso.codigo":
-        data.fideicomisos.tipo_fideicomiso.codigo = valor;
-        break;
-      case "tipo_fideicomiso.valor":
-        data.fideicomisos.tipo_fideicomiso.valor = valor;
-        break;
-      case "tipo_operacion":
-        data.fideicomisos.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.fideicomisos.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.fideicomisos.tipo_operacion.valor = valor;
-        break;
-      case "valor":
-        data.fideicomisos.valor = valor;
-        break;
-      case "vigencia":
-        data.fideicomisos.vigencia = valor;
-        break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -4558,106 +4030,72 @@ class Index extends Component {
 
     switch (field) {
       case "descripcion":
-        data.bienes_intangibles.descripcion = valor;
+        data.datos_bienes_intangibles.descripcion = valor;
         break;
       case "ente_publico_encargado":
-        data.bienes_intangibles.ente_publico_encargado = valor;
-        break;
-      case "ente_publico_encargado.nombres":
-        data.bienes_intangibles.ente_publico_encargado.nombres = valor;
-        break;
-      case "ente_publico_encargado.primer_apellido":
-        data.bienes_intangibles.ente_publico_encargado.primer_apellido = valor;
-        break;
-      case "ente_publico_encargado.segundo_apellido":
-        data.bienes_intangibles.ente_publico_encargado.segundo_apellido = valor;
+        data.datos_bienes_intangibles.ente_publico_encargado = valor;
         break;
       case "fecha_registro":
-        data.bienes_intangibles.fecha_registro = valor;
+        data.datos_bienes_intangibles.fecha_registro = valor;
         break;
       case "fecha_vencimiento":
-        data.bienes_intangibles.fecha_vencimiento = valor;
+        data.datos_bienes_intangibles.fecha_vencimiento = valor;
         break;
       case "forma_adquisicion":
-        data.bienes_intangibles.forma_adquisicion = valor;
-        break;
-      case "forma_adquisicion.codigo":
-        data.bienes_intangibles.forma_adquisicion.codigo = valor;
-        break;
-      case "forma_adquisicion.valor":
-        data.bienes_intangibles.forma_adquisicion.valor = valor;
+        data.datos_bienes_intangibles.forma_adquisicion = this.getFormaAdquision(
+          valor
+        );
         break;
       case "id":
-        data.bienes_intangibles.id = valor;
+        data.datos_bienes_intangibles.id = valor;
         break;
       case "nombre_copropietario":
-        data.bienes_intangibles.nombre_copropietario = valor;
+        data.datos_bienes_intangibles.nombre_copropietario = valor;
         break;
       case "numero_registro":
-        data.bienes_intangibles.numero_registro = valor;
+        data.datos_bienes_intangibles.numero_registro = valor;
         break;
       case "observaciones":
-        data.bienes_intangibles.observaciones = valor;
+        data.datos_bienes_intangibles.observaciones = valor;
         break;
       case "porcentaje_copropiedad":
-        data.bienes_intangibles.porcentaje_copropiedad = valor;
+        data.datos_bienes_intangibles.porcentaje_copropiedad = valor;
         break;
       case "porcentaje_propiedad_copropietario":
-        data.bienes_intangibles.porcentaje_propiedad_copropietario = valor;
-        break;
-      case "precio_adquisicion":
-        data.bienes_intangibles.precio_adquisicion = valor;
+        data.datos_bienes_intangibles.porcentaje_propiedad_copropietario = valor;
         break;
       case "precio_adquisicion.moneda":
-        data.bienes_intangibles.precio_adquisicion.moneda = valor;
+        data.datos_bienes_intangibles.precio_adquisicion.moneda = this.getMoneda(
+          valor
+        );
         break;
-      case "precio_adquisicion.moneda.codigo":
-        data.bienes_intangibles.precio_adquisicion.moneda.codigo = valor;
-        break;
-      case "precio_adquisicion.moneda.moneda":
-        data.bienes_intangibles.precio_adquisicion.moneda.moneda = valor;
-        break;
-      case "precio_adquisicion.valor":
-        data.bienes_intangibles.precio_adquisicion.valor = valor;
-        break;
-      case "precio_total_copropiedad":
-        data.bienes_intangibles.precio_total_copropiedad = valor;
+      case "precio_adquisicion":
+        data.datos_bienes_intangibles.precio_adquisicion.valor = valor;
         break;
       case "precio_total_copropiedad.moneda":
-        data.bienes_intangibles.precio_total_copropiedad.moneda = valor;
+        data.datos_bienes_intangibles.precio_total_copropiedad.moneda = this.getMoneda(
+          valor
+        );
         break;
-      case "precio_total_copropiedad.moneda.codigo":
-        data.bienes_intangibles.precio_total_copropiedad.moneda.codigo = valor;
-        break;
-      case "precio_total_copropiedad.moneda.moneda":
-        data.bienes_intangibles.precio_total_copropiedad.moneda.moneda = valor;
-        break;
-      case "precio_total_copropiedad.valor":
-        data.bienes_intangibles.precio_total_copropiedad.valor = valor;
+      case "precio_total_copropiedad":
+        data.datos_bienes_intangibles.precio_total_copropiedad.valor = valor;
         break;
       case "propietario_registrado":
-        data.bienes_intangibles.propietario_registrado = valor;
+        data.datos_bienes_intangibles.propietario_registrado = valor;
         break;
       case "sector_industria":
-        data.bienes_intangibles.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.bienes_intangibles.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.bienes_intangibles.sector_industria.valor = valor;
+        data.datos_bienes_intangibles.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_operacion":
-        data.bienes_intangibles.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.bienes_intangibles.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.bienes_intangibles.tipo_operacion.valor = valor;
+        data.datos_bienes_intangibles.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -4668,107 +4106,90 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "domicilio_prestatarios":
-        data.cuentas_por_cobrar.domicilio_prestatarios = valor;
-        break;
-      case "domicilio_prestatarios.cp":
-        data.cuentas_por_cobrar.domicilio_prestatarios.cp = valor;
-        break;
-      case "domicilio_prestatarios.entidad_federativa":
-        data.cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa = valor;
-        break;
-      case "domicilio_prestatarios.entidad_federativa.cve_ent":
-        data.cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_prestatarios.entidad_federativa.nom_ent":
-        data.cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_prestatarios.localidad":
-        data.cuentas_por_cobrar.domicilio_prestatarios.localidad = valor;
-        break;
-      case "domicilio_prestatarios.localidad.cve_loc":
-        data.cuentas_por_cobrar.domicilio_prestatarios.localidad.cve_loc = valor;
-        break;
-      case "domicilio_prestatarios.localidad.nom_loc":
-        data.cuentas_por_cobrar.domicilio_prestatarios.localidad.nom_loc = valor;
-        break;
-      case "domicilio_prestatarios.municipio":
-        data.cuentas_por_cobrar.domicilio_prestatarios.municipio = valor;
-        break;
-      case "domicilio_prestatarios.municipio.cve_mun":
-        data.cuentas_por_cobrar.domicilio_prestatarios.municipio.cve_mun = valor;
-        break;
-      case "domicilio_prestatarios.municipio.nom_mun":
-        data.cuentas_por_cobrar.domicilio_prestatarios.municipio.nom_mun = valor;
-        break;
-      case "domicilio_prestatarios.numExt":
-        data.cuentas_por_cobrar.domicilio_prestatarios.numExt = valor;
-        break;
-      case "domicilio_prestatarios.numInt":
-        data.cuentas_por_cobrar.domicilio_prestatarios.numInt = valor;
-        break;
-      case "domicilio_prestatarios.pais":
-        data.cuentas_por_cobrar.domicilio_prestatarios.pais = valor;
-        break;
-      case "domicilio_prestatarios.pais.codigo":
-        data.cuentas_por_cobrar.domicilio_prestatarios.pais.codigo = valor;
-        break;
-      case "domicilio_prestatarios.pais.valor":
-        data.cuentas_por_cobrar.domicilio_prestatarios.pais.valor = valor;
-        break;
-      case "domicilio_prestatarios.vialidad":
-        data.cuentas_por_cobrar.domicilio_prestatarios.vialidad = valor;
-        break;
-      case "domicilio_prestatarios.vialidad.nom_vial":
-        data.cuentas_por_cobrar.domicilio_prestatarios.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_prestatarios.vialidad.tipo_vial":
-        data.cuentas_por_cobrar.domicilio_prestatarios.vialidad.tipo_vial = valor;
-        break;
       case "fecha_prestamo":
-        data.cuentas_por_cobrar.fecha_prestamo = valor;
+        data.datos_cuentas_por_cobrar.fecha_prestamo = valor;
         break;
       case "fecha_vencimiento":
-        data.cuentas_por_cobrar.fecha_vencimiento = valor;
+        data.datos_cuentas_por_cobrar.fecha_vencimiento = valor;
         break;
       case "id":
-        data.cuentas_por_cobrar.id = valor;
+        data.datos_cuentas_por_cobrar.id = valor;
         break;
       case "monto_original_prestamo":
-        data.cuentas_por_cobrar.monto_original_prestamo = valor;
+        data.datos_cuentas_por_cobrar.monto_original_prestamo = valor;
         break;
       case "nombre_copropietario":
-        data.cuentas_por_cobrar.nombre_copropietario = valor;
+        data.datos_cuentas_por_cobrar.nombre_copropietario = valor;
         break;
       case "nombre_prestatario":
-        data.cuentas_por_cobrar.nombre_prestatario = valor;
+        data.datos_cuentas_por_cobrar.nombre_prestatario = valor;
         break;
       case "numero_registro":
-        data.cuentas_por_cobrar.numero_registro = valor;
+        data.datos_cuentas_por_cobrar.numero_registro = valor;
         break;
       case "observaciones":
-        data.cuentas_por_cobrar.observaciones = valor;
+        data.datos_cuentas_por_cobrar.observaciones = valor;
         break;
       case "porcentaje_copropiedad":
-        data.cuentas_por_cobrar.porcentaje_copropiedad = valor;
+        data.datos_cuentas_por_cobrar.porcentaje_copropiedad = valor;
         break;
       case "saldo_pendiente":
-        data.cuentas_por_cobrar.saldo_pendiente = valor;
+        data.datos_cuentas_por_cobrar.saldo_pendiente = valor;
         break;
       case "sector_industria":
-        data.cuentas_por_cobrar.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.cuentas_por_cobrar.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.cuentas_por_cobrar.sector_industria.valor = valor;
+        data.datos_cuentas_por_cobrar.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tasa_interes":
-        data.cuentas_por_cobrar.tasa_interes = valor;
+        data.datos_cuentas_por_cobrar.tasa_interes = valor;
+        break;
+
+      /////////////////////////////  domicilio_prestatarios  /////////////////////////////////////
+      case "pais":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "entidad_federativa":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_cuentas_por_cobrar.domicilio_prestatarios
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.cp = valor;
+        break;
+      case "localidad":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_cuentas_por_cobrar.domicilio_prestatarios.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -4780,253 +4201,90 @@ class Index extends Component {
 
     switch (field) {
       case "curp_tercero_propietario":
-        data.uso_especie_propiedad_tercero.curp_tercero_propietario = valor;
-        break;
-      case "domicilio_persona":
-        data.uso_especie_propiedad_tercero.domicilio_persona = valor;
-        break;
-      case "domicilio_persona.cp":
-        data.uso_especie_propiedad_tercero.domicilio_persona.cp = valor;
-        break;
-      case "domicilio_persona.entidad_federativa":
-        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = valor;
-        break;
-      case "domicilio_persona.entidad_federativa.cve_ent":
-        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_persona.entidad_federativa.nom_ent":
-        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_persona.localidad":
-        data.uso_especie_propiedad_tercero.domicilio_persona.localidad = valor;
-        break;
-      case "domicilio_persona.localidad.cve_loc":
-        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.cve_loc = valor;
-        break;
-      case "domicilio_persona.localidad.nom_loc":
-        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.nom_loc = valor;
-        break;
-      case "domicilio_persona.municipio":
-        data.uso_especie_propiedad_tercero.domicilio_persona.municipio = valor;
-        break;
-      case "domicilio_persona.municipio.cve_mun":
-        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.cve_mun = valor;
-        break;
-      case "domicilio_persona.municipio.nom_mun":
-        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.nom_mun = valor;
-        break;
-      case "domicilio_persona.numExt":
-        data.uso_especie_propiedad_tercero.domicilio_persona.numExt = valor;
-        break;
-      case "domicilio_persona.numInt":
-        data.uso_especie_propiedad_tercero.domicilio_persona.numInt = valor;
-        break;
-      case "domicilio_persona.pais":
-        data.uso_especie_propiedad_tercero.domicilio_persona.pais = valor;
-        break;
-      case "domicilio_persona.pais.codigo":
-        data.uso_especie_propiedad_tercero.domicilio_persona.pais.codigo = valor;
-        break;
-      case "domicilio_persona.pais.valor":
-        data.uso_especie_propiedad_tercero.domicilio_persona.pais.valor = valor;
-        break;
-      case "domicilio_persona.vialidad":
-        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad = valor;
-        break;
-      case "domicilio_persona.vialidad.nom_vial":
-        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_persona.vialidad.tipo_vial":
-        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.tipo_vial = valor;
+        data.datos_uso_especie_propiedad_tercero.curp_tercero_propietario = valor;
         break;
       case "fecha_inicio":
-        data.uso_especie_propiedad_tercero.fecha_inicio = valor;
+        data.datos_uso_especie_propiedad_tercero.fecha_inicio = valor;
         break;
       case "id":
-        data.uso_especie_propiedad_tercero.id = valor;
+        data.datos_uso_especie_propiedad_tercero.id = valor;
         break;
       case "nombre_tercero_propietario":
-        data.uso_especie_propiedad_tercero.nombre_tercero_propietario = valor;
+        data.datos_uso_especie_propiedad_tercero.nombre_tercero_propietario = valor;
         break;
       case "observaciones":
-        data.uso_especie_propiedad_tercero.observaciones = valor;
+        data.datos_uso_especie_propiedad_tercero.observaciones = valor;
         break;
       case "relacion_persona":
-        data.uso_especie_propiedad_tercero.relacion_persona = valor;
-        break;
-      case "relacion_persona.codigo":
-        data.uso_especie_propiedad_tercero.relacion_persona.codigo = valor;
-        break;
-      case "relacion_persona.valor":
-        data.uso_especie_propiedad_tercero.relacion_persona.valor = valor;
+        data.datos_uso_especie_propiedad_tercero.relacion_persona = this.getRelacionDeclarante(
+          valor
+        );
         break;
       case "rfc_tercero_propietario":
-        data.uso_especie_propiedad_tercero.rfc_tercero_propietario = valor;
+        data.datos_uso_especie_propiedad_tercero.rfc_tercero_propietario = valor;
         break;
       case "sector_industria":
-        data.uso_especie_propiedad_tercero.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.uso_especie_propiedad_tercero.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.uso_especie_propiedad_tercero.sector_industria.valor = valor;
+        data.datos_uso_especie_propiedad_tercero.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tipo_bien":
-        data.uso_especie_propiedad_tercero.tipo_bien = valor;
-        break;
-      case "tipo_bien.codigo":
-        data.uso_especie_propiedad_tercero.tipo_bien.codigo = valor;
-        break;
-      case "tipo_bien.valor":
-        data.uso_especie_propiedad_tercero.tipo_bien.valor = valor;
-        break;
-      case "valor_mercado":
-        data.uso_especie_propiedad_tercero.valor_mercado = valor;
+        data.datos_uso_especie_propiedad_tercero.tipo_bien = valor;
         break;
       case "valor_mercado.moneda":
-        data.uso_especie_propiedad_tercero.valor_mercado.moneda = valor;
+        data.datos_uso_especie_propiedad_tercero.valor_mercado.moneda = this.getMoneda(
+          valor
+        );
         break;
-      case "valor_mercado.moneda.codigo":
-        data.uso_especie_propiedad_tercero.valor_mercado.moneda.codigo = valor;
+      case "valor_mercado":
+        data.datos_uso_especie_propiedad_tercero.valor_mercado.valor = valor;
         break;
-      case "valor_mercado.moneda.moneda":
-        data.uso_especie_propiedad_tercero.valor_mercado.moneda.moneda = valor;
+
+      /////////////////////////////  domicilio_persona  /////////////////////////////////////
+      case "pais":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "valor_mercado.valor":
-        data.uso_especie_propiedad_tercero.valor_mercado.valor = valor;
+      case "entidad_federativa":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_uso_especie_propiedad_tercero.domicilio_persona
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.cp = valor;
+        break;
+      case "localidad":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.numInt = valor;
         break;
 
       default:
-    }
-
-    this.setState(data);
-  };
-
-  setDataUsoEspeciePropiedadTercero = field => event => {
-    let valor = event.target.value;
-    let data = this.state;
-
-    switch (field) {
-      case "curp_tercero_propietario":
-        data.uso_especie_propiedad_tercero.curp_tercero_propietario = valor;
-        break;
-      case "domicilio_persona":
-        data.uso_especie_propiedad_tercero.domicilio_persona = valor;
-        break;
-      case "domicilio_persona.cp":
-        data.uso_especie_propiedad_tercero.domicilio_persona.cp = valor;
-        break;
-      case "domicilio_persona.entidad_federativa":
-        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = valor;
-        break;
-      case "domicilio_persona.entidad_federativa.cve_ent":
-        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_persona.entidad_federativa.nom_ent":
-        data.uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_persona.localidad":
-        data.uso_especie_propiedad_tercero.domicilio_persona.localidad = valor;
-        break;
-      case "domicilio_persona.localidad.cve_loc":
-        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.cve_loc = valor;
-        break;
-      case "domicilio_persona.localidad.nom_loc":
-        data.uso_especie_propiedad_tercero.domicilio_persona.localidad.nom_loc = valor;
-        break;
-      case "domicilio_persona.municipio":
-        data.uso_especie_propiedad_tercero.domicilio_persona.municipio = valor;
-        break;
-      case "domicilio_persona.municipio.cve_mun":
-        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.cve_mun = valor;
-        break;
-      case "domicilio_persona.municipio.nom_mun":
-        data.uso_especie_propiedad_tercero.domicilio_persona.municipio.nom_mun = valor;
-        break;
-      case "domicilio_persona.numExt":
-        data.uso_especie_propiedad_tercero.domicilio_persona.numExt = valor;
-        break;
-      case "domicilio_persona.numInt":
-        data.uso_especie_propiedad_tercero.domicilio_persona.numInt = valor;
-        break;
-      case "domicilio_persona.pais":
-        data.uso_especie_propiedad_tercero.domicilio_persona.pais = valor;
-        break;
-      case "domicilio_persona.pais.codigo":
-        data.uso_especie_propiedad_tercero.domicilio_persona.pais.codigo = valor;
-        break;
-      case "domicilio_persona.pais.valor":
-        data.uso_especie_propiedad_tercero.domicilio_persona.pais.valor = valor;
-        break;
-      case "domicilio_persona.vialidad":
-        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad = valor;
-        break;
-      case "domicilio_persona.vialidad.nom_vial":
-        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_persona.vialidad.tipo_vial":
-        data.uso_especie_propiedad_tercero.domicilio_persona.vialidad.tipo_vial = valor;
-        break;
-      case "fecha_inicio":
-        data.uso_especie_propiedad_tercero.fecha_inicio = valor;
-        break;
-      case "id":
-        data.uso_especie_propiedad_tercero.id = valor;
-        break;
-      case "nombre_tercero_propietario":
-        data.uso_especie_propiedad_tercero.nombre_tercero_propietario = valor;
-        break;
-      case "observaciones":
-        data.uso_especie_propiedad_tercero.observaciones = valor;
-        break;
-      case "relacion_persona":
-        data.uso_especie_propiedad_tercero.relacion_persona = valor;
-        break;
-      case "relacion_persona.codigo":
-        data.uso_especie_propiedad_tercero.relacion_persona.codigo = valor;
-        break;
-      case "relacion_persona.valor":
-        data.uso_especie_propiedad_tercero.relacion_persona.valor = valor;
-        break;
-      case "rfc_tercero_propietario":
-        data.uso_especie_propiedad_tercero.rfc_tercero_propietario = valor;
-        break;
-      case "sector_industria":
-        data.uso_especie_propiedad_tercero.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.uso_especie_propiedad_tercero.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.uso_especie_propiedad_tercero.sector_industria.valor = valor;
-        break;
-      case "tipo_bien":
-        data.uso_especie_propiedad_tercero.tipo_bien = valor;
-        break;
-      case "tipo_bien.codigo":
-        data.uso_especie_propiedad_tercero.tipo_bien.codigo = valor;
-        break;
-      case "tipo_bien.valor":
-        data.uso_especie_propiedad_tercero.tipo_bien.valor = valor;
-        break;
-      case "valor_mercado":
-        data.uso_especie_propiedad_tercero.valor_mercado = valor;
-        break;
-      case "valor_mercado.moneda":
-        data.uso_especie_propiedad_tercero.valor_mercado.moneda = valor;
-        break;
-      case "valor_mercado.moneda.codigo":
-        data.uso_especie_propiedad_tercero.valor_mercado.moneda.codigo = valor;
-        break;
-      case "valor_mercado.moneda.moneda":
-        data.uso_especie_propiedad_tercero.valor_mercado.moneda.moneda = valor;
-        break;
-      case "valor_mercado.valor":
-        data.uso_especie_propiedad_tercero.valor_mercado.valor = valor;
-        break;
-
-      default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -5037,179 +4295,115 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "domicilio_acreedor":
-        data.deudas.domicilio_acreedor = valor;
-        break;
-      case "domicilio_acreedor.cp":
-        data.deudas.domicilio_acreedor.cp = valor;
-        break;
-      case "domicilio_acreedor.entidad_federativa":
-        data.deudas.domicilio_acreedor.entidad_federativa = valor;
-        break;
-      case "domicilio_acreedor.entidad_federativa.cve_ent":
-        data.deudas.domicilio_acreedor.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_acreedor.entidad_federativa.nom_ent":
-        data.deudas.domicilio_acreedor.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_acreedor.localidad":
-        data.deudas.domicilio_acreedor.localidad = valor;
-        break;
-      case "domicilio_acreedor.localidad.cve_loc":
-        data.deudas.domicilio_acreedor.localidad.cve_loc = valor;
-        break;
-      case "domicilio_acreedor.localidad.nom_loc":
-        data.deudas.domicilio_acreedor.localidad.nom_loc = valor;
-        break;
-      case "domicilio_acreedor.municipio":
-        data.deudas.domicilio_acreedor.municipio = valor;
-        break;
-      case "domicilio_acreedor.municipio.cve_mun":
-        data.deudas.domicilio_acreedor.municipio.cve_mun = valor;
-        break;
-      case "domicilio_acreedor.municipio.nom_mun":
-        data.deudas.domicilio_acreedor.municipio.nom_mun = valor;
-        break;
-      case "domicilio_acreedor.numExt":
-        data.deudas.domicilio_acreedor.numExt = valor;
-        break;
-      case "domicilio_acreedor.numInt":
-        data.deudas.domicilio_acreedor.numInt = valor;
-        break;
-      case "domicilio_acreedor.pais":
-        data.deudas.domicilio_acreedor.pais = valor;
-        break;
-      case "domicilio_acreedor.pais.codigo":
-        data.deudas.domicilio_acreedor.pais.codigo = valor;
-        break;
-      case "domicilio_acreedor.pais.valor":
-        data.deudas.domicilio_acreedor.pais.valor = valor;
-        break;
-      case "domicilio_acreedor.vialidad":
-        data.deudas.domicilio_acreedor.vialidad = valor;
-        break;
-      case "domicilio_acreedor.vialidad.nom_vial":
-        data.deudas.domicilio_acreedor.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_acreedor.vialidad.tipo_vial":
-        data.deudas.domicilio_acreedor.vialidad.tipo_vial = valor;
-        break;
       case "fecha_adeudo":
-        data.deudas.fecha_adeudo = valor;
+        data.datos_deudas.fecha_adeudo = valor;
         break;
       case "garantia":
-        data.deudas.garantia = valor;
+        data.datos_deudas.garantia = valor;
         break;
       case "id":
-        data.deudas.id = valor;
+        data.datos_deudas.id = valor;
         break;
       case "identificador_deuda":
-        data.deudas.identificador_deuda = valor;
+        data.datos_deudas.identificador_deuda = valor;
         break;
       case "monto_original":
-        data.deudas.monto_original = valor;
+        data.datos_deudas.monto_original = valor;
         break;
       case "montos_abonados":
-        data.deudas.montos_abonados = valor;
+        data.datos_deudas.montos_abonados = valor;
         break;
       case "nacional_extranjero":
-        data.deudas.nacional_extranjero = valor;
-        break;
-      case "nacional_extranjero.codigo":
-        data.deudas.nacional_extranjero.codigo = valor;
-        break;
-      case "nacional_extranjero.valor":
-        data.deudas.nacional_extranjero.valor = valor;
+        data.datos_deudas.nacional_extranjero = this.getCiudad(valor);
         break;
       case "nombre_acreedor":
-        data.deudas.nombre_acreedor = valor;
+        data.datos_deudas.nombre_acreedor = valor;
         break;
       case "nombre_garante":
-        data.deudas.nombre_garante = valor;
+        data.datos_deudas.nombre_garante = valor;
         break;
       case "observaciones":
-        data.deudas.observaciones = valor;
+        data.datos_deudas.observaciones = valor;
         break;
       case "plazo_adeudo":
-        data.deudas.plazo_adeudo = valor;
+        data.datos_deudas.plazo_adeudo = valor;
         break;
       case "porcentaje_adeudo_titular":
-        data.deudas.porcentaje_adeudo_titular = valor;
+        data.datos_deudas.porcentaje_adeudo_titular = valor;
         break;
       case "rfc_acreedor":
-        data.deudas.rfc_acreedor = valor;
+        data.datos_deudas.rfc_acreedor = valor;
         break;
       case "saldo_pendiente":
-        data.deudas.saldo_pendiente = valor;
+        data.datos_deudas.saldo_pendiente = valor;
         break;
       case "sector_industria":
-        data.deudas.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.deudas.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.deudas.sector_industria.valor = valor;
+        data.datos_deudas.sector_industria = this.getSectorIndustria(valor);
         break;
       case "tasa_interes":
-        data.deudas.tasa_interes = valor;
+        data.datos_deudas.tasa_interes = valor;
         break;
       case "tipo_acreedor":
-        data.deudas.tipo_acreedor = valor;
-        break;
-      case "tipo_acreedor.codigo":
-        data.deudas.tipo_acreedor.codigo = valor;
-        break;
-      case "tipo_acreedor.valor":
-        data.deudas.tipo_acreedor.valor = valor;
+        data.datos_deudas.tipo_acreedor = this.getTipoAcreedor(valor);
         break;
       case "tipo_adeudo":
-        data.deudas.tipo_adeudo = valor;
-        break;
-      case "tipo_adeudo.codigo":
-        data.deudas.tipo_adeudo.codigo = valor;
-        break;
-      case "tipo_adeudo.valor":
-        data.deudas.tipo_adeudo.valor = valor;
+        data.datos_deudas.tipo_adeudo = this.getTipoAdeudo(valor);
         break;
       case "tipo_moneda":
-        data.deudas.tipo_moneda = valor;
-        break;
-      case "tipo_moneda.codigo":
-        data.deudas.tipo_moneda.codigo = valor;
-        break;
-      case "tipo_moneda.moneda":
-        data.deudas.tipo_moneda.moneda = valor;
+        data.datos_deudas.tipo_moneda = this.getMoneda(valor);
         break;
       case "tipo_operacion":
-        data.deudas.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.deudas.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.deudas.tipo_operacion.valor = valor;
+        data.datos_deudas.tipo_operacion = this.getTipoOperacion(valor);
         break;
       case "titularidad_deuda":
-        data.deudas.titularidad_deuda = valor;
-        break;
-      case "titularidad_deuda.codigo":
-        data.deudas.titularidad_deuda.codigo = valor;
-        break;
-      case "titularidad_deuda.valor":
-        data.deudas.titularidad_deuda.valor = valor;
+        data.datos_deudas.titularidad_deuda = this.getTitularBien(valor);
         break;
       case "unidad_medida_adeudo":
-        data.deudas.unidad_medida_adeudo = valor;
+        data.datos_deudas.unidad_medida_adeudo = this.getMedidasPlazo(valor);
         break;
-      case "unidad_medida_adeudo.codigo":
-        data.deudas.unidad_medida_adeudo.codigo = valor;
+
+      /////////////////////////////  domicilio_acreedor  /////////////////////////////////////
+      case "pais":
+        data.datos_deudas.domicilio_acreedor.pais = this.getCiudad(valor);
         break;
-      case "unidad_medida_adeudo.valor":
-        data.deudas.unidad_medida_adeudo.valor = valor;
+      case "entidad_federativa":
+        data.datos_deudas.domicilio_acreedor.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_deudas.domicilio_acreedor.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_deudas.domicilio_acreedor.entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_deudas.domicilio_acreedor.cp = valor;
+        break;
+      case "localidad":
+        data.datos_deudas.domicilio_acreedor.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_deudas.domicilio_acreedor.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_deudas.domicilio_acreedor.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_deudas.domicilio_acreedor.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_deudas.domicilio_acreedor.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);
@@ -5220,170 +4414,129 @@ class Index extends Component {
     let data = this.state;
 
     switch (field) {
-      case "domicilio_acreedor":
-        data.otras_obligaciones.domicilio_acreedor = valor;
-        break;
-      case "domicilio_acreedor.cp":
-        data.otras_obligaciones.domicilio_acreedor.cp = valor;
-        break;
-      case "domicilio_acreedor.entidad_federativa":
-        data.otras_obligaciones.domicilio_acreedor.entidad_federativa = valor;
-        break;
-      case "domicilio_acreedor.entidad_federativa.cve_ent":
-        data.otras_obligaciones.domicilio_acreedor.entidad_federativa.cve_ent = valor;
-        break;
-      case "domicilio_acreedor.entidad_federativa.nom_ent":
-        data.otras_obligaciones.domicilio_acreedor.entidad_federativa.nom_ent = valor;
-        break;
-      case "domicilio_acreedor.localidad":
-        data.otras_obligaciones.domicilio_acreedor.localidad = valor;
-        break;
-      case "domicilio_acreedor.localidad.cve_loc":
-        data.otras_obligaciones.domicilio_acreedor.localidad.cve_loc = valor;
-        break;
-      case "domicilio_acreedor.localidad.nom_loc":
-        data.otras_obligaciones.domicilio_acreedor.localidad.nom_loc = valor;
-        break;
-      case "domicilio_acreedor.municipio":
-        data.otras_obligaciones.domicilio_acreedor.municipio = valor;
-        break;
-      case "domicilio_acreedor.municipio.cve_mun":
-        data.otras_obligaciones.domicilio_acreedor.municipio.cve_mun = valor;
-        break;
-      case "domicilio_acreedor.municipio.nom_mun":
-        data.otras_obligaciones.domicilio_acreedor.municipio.nom_mun = valor;
-        break;
-      case "domicilio_acreedor.numExt":
-        data.otras_obligaciones.domicilio_acreedor.numExt = valor;
-        break;
-      case "domicilio_acreedor.numInt":
-        data.otras_obligaciones.domicilio_acreedor.numInt = valor;
-        break;
-      case "domicilio_acreedor.pais":
-        data.otras_obligaciones.domicilio_acreedor.pais = valor;
-        break;
-      case "domicilio_acreedor.pais.codigo":
-        data.otras_obligaciones.domicilio_acreedor.pais.codigo = valor;
-        break;
-      case "domicilio_acreedor.pais.valor":
-        data.otras_obligaciones.domicilio_acreedor.pais.valor = valor;
-        break;
-      case "domicilio_acreedor.vialidad":
-        data.otras_obligaciones.domicilio_acreedor.vialidad = valor;
-        break;
-      case "domicilio_acreedor.vialidad.nom_vial":
-        data.otras_obligaciones.domicilio_acreedor.vialidad.nom_vial = valor;
-        break;
-      case "domicilio_acreedor.vialidad.tipo_vial":
-        data.otras_obligaciones.domicilio_acreedor.vialidad.tipo_vial = valor;
-        break;
       case "fecha_obligacion":
-        data.otras_obligaciones.fecha_obligacion = valor;
+        data.datos_otras_obligaciones.fecha_obligacion = valor;
         break;
       case "garantia":
-        data.otras_obligaciones.garantia = valor;
+        data.datos_otras_obligaciones.garantia = valor;
         break;
       case "id":
-        data.otras_obligaciones.id = valor;
+        data.datos_otras_obligaciones.id = valor;
         break;
       case "identificador_obligacion":
-        data.otras_obligaciones.identificador_obligacion = valor;
+        data.datos_otras_obligaciones.identificador_obligacion = valor;
         break;
       case "monto_original":
-        data.otras_obligaciones.monto_original = valor;
+        data.datos_otras_obligaciones.monto_original = valor;
         break;
       case "montos_abonados":
-        data.otras_obligaciones.montos_abonados = valor;
+        data.datos_otras_obligaciones.montos_abonados = valor;
         break;
       case "nacional_extranjero":
-        data.otras_obligaciones.nacional_extranjero = valor;
-        break;
-      case "nacional_extranjero.codigo":
-        data.otras_obligaciones.nacional_extranjero.codigo = valor;
-        break;
-      case "nacional_extranjero.valor":
-        data.otras_obligaciones.nacional_extranjero.valor = valor;
+        data.datos_otras_obligaciones.nacional_extranjero = this.getCiudad(
+          valor
+        );
         break;
       case "nombre_acreedor":
-        data.otras_obligaciones.nombre_acreedor = valor;
+        data.datos_otras_obligaciones.nombre_acreedor = valor;
         break;
       case "observaciones":
-        data.otras_obligaciones.observaciones = valor;
+        data.datos_otras_obligaciones.observaciones = valor;
         break;
       case "plazo_obligacion":
-        data.otras_obligaciones.plazo_obligacion = valor;
+        data.datos_otras_obligaciones.plazo_obligacion = valor;
         break;
       case "porcentaje_obligacion_titular":
-        data.otras_obligaciones.porcentaje_obligacion_titular = valor;
+        data.datos_otras_obligaciones.porcentaje_obligacion_titular = valor;
         break;
       case "rfc_acreedor":
-        data.otras_obligaciones.rfc_acreedor = valor;
+        data.datos_otras_obligaciones.rfc_acreedor = valor;
         break;
       case "saldo_pendiente":
-        data.otras_obligaciones.saldo_pendiente = valor;
+        data.datos_otras_obligaciones.saldo_pendiente = valor;
         break;
       case "sector_industria":
-        data.otras_obligaciones.sector_industria = valor;
-        break;
-      case "sector_industria.codigo":
-        data.otras_obligaciones.sector_industria.codigo = valor;
-        break;
-      case "sector_industria.valor":
-        data.otras_obligaciones.sector_industria.valor = valor;
+        data.datos_otras_obligaciones.sector_industria = this.getSectorIndustria(
+          valor
+        );
         break;
       case "tasa_interes":
-        data.otras_obligaciones.tasa_interes = valor;
+        data.datos_otras_obligaciones.tasa_interes = valor;
         break;
       case "tipo_acreedor":
-        data.otras_obligaciones.tipo_acreedor = valor;
-        break;
-      case "tipo_acreedor.codigo":
-        data.otras_obligaciones.tipo_acreedor.codigo = valor;
-        break;
-      case "tipo_acreedor.valor":
-        data.otras_obligaciones.tipo_acreedor.valor = valor;
+        data.datos_otras_obligaciones.tipo_acreedor = this.getTipoAcreedor(
+          valor
+        );
         break;
       case "tipo_moneda":
-        data.otras_obligaciones.tipo_moneda = valor;
-        break;
-      case "tipo_moneda.codigo":
-        data.otras_obligaciones.tipo_moneda.codigo = valor;
-        break;
-      case "tipo_moneda.moneda":
-        data.otras_obligaciones.tipo_moneda.moneda = valor;
+        data.datos_otras_obligaciones.tipo_moneda = this.getMoneda(valor);
         break;
       case "tipo_obligacion":
-        data.otras_obligaciones.tipo_obligacion = valor;
+        data.datos_otras_obligaciones.tipo_obligacion = this.getTipoAdeudo(
+          valor
+        );
         break;
       case "tipo_operacion":
-        data.otras_obligaciones.tipo_operacion = valor;
-        break;
-      case "tipo_operacion.codigo":
-        data.otras_obligaciones.tipo_operacion.codigo = valor;
-        break;
-      case "tipo_operacion.valor":
-        data.otras_obligaciones.tipo_operacion.valor = valor;
+        data.datos_otras_obligaciones.tipo_operacion = this.getTipoOperacion(
+          valor
+        );
         break;
       case "titularidad_obligacion":
-        data.otras_obligaciones.titularidad_obligacion = valor;
-        break;
-      case "titularidad_obligacion.codigo":
-        data.otras_obligaciones.titularidad_obligacion.codigo = valor;
-        break;
-      case "titularidad_obligacion.valor":
-        data.otras_obligaciones.titularidad_obligacion.valor = valor;
+        data.datos_otras_obligaciones.titularidad_obligacion = this.getTitularBien(
+          valor
+        );
         break;
       case "unidad_medida_plazo":
-        data.otras_obligaciones.unidad_medida_plazo = valor;
+        data.datos_otras_obligaciones.unidad_medida_plazo = this.getMedidasPlazo(
+          valor
+        );
         break;
-      case "unidad_medida_plazo.codigo":
-        data.otras_obligaciones.unidad_medida_plazo.codigo = valor;
+
+      /////////////////////////////  domicilio_acreedor  /////////////////////////////////////
+      case "pais":
+        data.datos_otras_obligaciones.domicilio_acreedor.pais = this.getCiudad(
+          valor
+        );
         break;
-      case "unidad_medida_plazo.valor":
-        data.otras_obligaciones.unidad_medida_plazo.valor = valor;
+      case "entidad_federativa":
+        data.datos_otras_obligaciones.domicilio_acreedor.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_otras_obligaciones.domicilio_acreedor.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_otras_obligaciones.domicilio_acreedor
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_otras_obligaciones.domicilio_acreedor.cp = valor;
+        break;
+      case "localidad":
+        data.datos_otras_obligaciones.domicilio_acreedor.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_otras_obligaciones.domicilio_acreedor.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_otras_obligaciones.domicilio_acreedor.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_otras_obligaciones.domicilio_acreedor.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_otras_obligaciones.domicilio_acreedor.numInt = valor;
         break;
 
       default:
+        console.log(field);
     }
 
     this.setState(data);

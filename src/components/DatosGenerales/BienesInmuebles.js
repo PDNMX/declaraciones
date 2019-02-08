@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaBienesInmuebles";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -54,7 +55,6 @@ const styles = theme => ({
     display: "none"
   }
 });
-
 
 function SimpleCard(props) {
   const { classes, data, handleChange, addClick, removeClick } = props;
@@ -116,6 +116,7 @@ function SimpleCard(props) {
               label="Superficie del terreno"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.superficie_terreno}
+              onChange={handleChange("superficie_terreno")}
               margin="normal"
             />
           </Grid>
@@ -125,6 +126,7 @@ function SimpleCard(props) {
               label="Superficie de construcción"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.superficie_construccion}
+              onChange={handleChange("superficie_construccion")}
               margin="normal"
             />
           </Grid>
@@ -153,6 +155,7 @@ function SimpleCard(props) {
               label="Porcentaje de propiedad"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.porcentaje_propiedad}
+              onChange={handleChange("porcentaje_propiedad")}
               margin="normal"
             />
           </Grid>
@@ -161,7 +164,8 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre del copropietario"
               className={classes.textField}
-              value={data.datos_bienes_inmuebles.nombre_copropietario.nombre}
+              value={data.datos_bienes_inmuebles.nombre_copropietario.nombres}
+              onChange={handleChange("nombre_copropietario.nombres")}
               margin="normal"
             />
           </Grid>
@@ -171,7 +175,13 @@ function SimpleCard(props) {
               id="grado"
               label="Numero de escritura pública"
               className={classes.textField}
-              value={data.datos_bienes_inmuebles.identificacion_bien.numero_escritura_publica}
+              value={
+                data.datos_bienes_inmuebles.identificacion_bien
+                  .numero_escritura_publica
+              }
+              onChange={handleChange(
+                "identificacion_bien.numero_escritura_publica"
+              )}
               margin="normal"
             />
           </Grid>
@@ -180,7 +190,13 @@ function SimpleCard(props) {
               id="grado"
               label="Numero de registro público"
               className={classes.textField}
-              value={data.datos_bienes_inmuebles.identificacion_bien.numero_registro_publico}
+              value={
+                data.datos_bienes_inmuebles.identificacion_bien
+                  .numero_registro_publico
+              }
+              onChange={handleChange(
+                "identificacion_bien.numero_registro_publico"
+              )}
               margin="normal"
             />
           </Grid>
@@ -190,6 +206,7 @@ function SimpleCard(props) {
               label="Folio real"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.identificacion_bien.folio_real}
+              onChange={handleChange("identificacion_bien.folio_real")}
               margin="normal"
             />
           </Grid>
@@ -198,7 +215,10 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de contrato"
               className={classes.textField}
-              value={data.datos_bienes_inmuebles.identificacion_bien.fecha_contrato}
+              value={
+                data.datos_bienes_inmuebles.identificacion_bien.fecha_contrato
+              }
+              onChange={handleChange("identificacion_bien.fecha_contrato")}
               margin="normal"
             />
           </Grid>
@@ -231,7 +251,10 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre, denominación o razón social de quien se adquirió el inmueble"
               className={classes.textField}
-              value={data.datos_bienes_inmuebles.nombre_denominacion_quien_adquirio}
+              value={
+                data.datos_bienes_inmuebles.nombre_denominacion_quien_adquirio
+              }
+              onChange={handleChange("nombre_denominacion_quien_adquirio")}
               margin="normal"
             />
           </Grid>
@@ -241,6 +264,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.rfc_quien_adquirio}
+              onChange={handleChange("rfc_quien_adquirio")}
               margin="normal"
             />
           </Grid>
@@ -250,6 +274,7 @@ function SimpleCard(props) {
               label="CURP"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.curp_quien_adquirio}
+              onChange={handleChange("curp_quien_adquirio")}
               margin="normal"
             />
           </Grid>
@@ -257,8 +282,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="relacion">Relación</InputLabel>
               <Select
-                value={data.datos_bienes_inmuebles.relacion_persona_adquirio.codigo}
-                onChange={handleChange("relacion")}
+                value={
+                  data.datos_bienes_inmuebles.relacion_persona_adquirio.codigo
+                }
+                onChange={handleChange("relacion_persona_adquirio")}
                 inputProps={{
                   name: "relacion",
                   id: "relacion"
@@ -280,7 +307,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_bienes_inmuebles.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -300,6 +327,7 @@ function SimpleCard(props) {
               label="Fecha de adquisición"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.fecha_adquisicion}
+              onChange={handleChange("fecha_adquisicion")}
               margin="normal"
             />
           </Grid>
@@ -309,23 +337,27 @@ function SimpleCard(props) {
               label="Precio de adquisición"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.precio_adquisicion.valor}
+              onChange={handleChange("precio_adquisicion")}
               margin="normal"
             />
-          </Grid>
+          </Grid> 
           <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.datos_bienes_inmuebles.precio_adquisicion.moneda.codigo}
-                onChange={handleChange("moneda")}
+                value={
+                  data.datos_bienes_inmuebles.precio_adquisicion.moneda
+                    .codigo
+                }
+                onChange={handleChange("precio_adquisicion.moneda")}
                 inputProps={{
                   name: "moneda",
                   id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem key={tipoMoneda.codigoNumerico+tipoMoneda.entidad} value={tipoMoneda.codigo}>
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
@@ -337,6 +369,7 @@ function SimpleCard(props) {
               label="Valor catastral"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.valor_catastral}
+              onChange={handleChange("valor_catastral")}
               margin="normal"
             />
           </Grid>
@@ -347,8 +380,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_bienes_inmuebles.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_bienes_inmuebles.domicilio_bien}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

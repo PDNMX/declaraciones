@@ -2,7 +2,7 @@ import moment from "moment";
 
 export var data = {
   debug: false,
-  show: 17,
+  show: 30,
   message: "",
   type: "",
   nacionalidad: [],
@@ -4398,7 +4398,10 @@ export var example = {
         nombre_denominacion: "Loteria Nacional",
         rfc: "GOAP780710RH7",
         curp: "BEML920313HMCLNS09",
-        tipo_bien: "Inmueble",
+        tipo_bien:{
+          codigo: "BAR",
+          valor: "Barco"
+        },
         sector_industria: {
           codigo: "SFS",
           valor: "Servicios de salud y asistencia social"
@@ -4596,8 +4599,8 @@ export var example = {
           valor: "Incorporación"
         },
         tipo_bien_mueble: {
-          codigo: "VEH",
-          valor: "Vehículo"
+          codigo: "EDIF",
+          valor: "Edificio"
         },
         marca: "NISSAN",
         submarca: "RS-122234",
@@ -4785,128 +4788,128 @@ export var example = {
         observaciones_comentarios: "Esto es una observación"
       }
     ],
-    fideicomisos: [
+    "fideicomisos": [
       {
-        id: 123,
-        tipo_operacion: {
-          codigo: "INCP",
-          valor: "Incorporación"
+        "id": 123,
+        "tipo_operacion": {
+          "codigo": "SCAMB",
+          "valor": "Sin cambio"
         },
-        identificador_fideicomiso: "93232",
-        tipo_fideicomiso: {
-          codigo: "GARNT",
-          valor: "Garantía"
+        "identificador_fideicomiso": "93232",
+        "tipo_fideicomiso": {
+          "codigo": "GARNT",
+          "valor": "Garantía"
         },
-        objetivo: "Objetivo del fideicomiso",
-        numero_registro: "788544abc",
-        fecha_creacion: "2010-07-26",
-        vigencia: "2010-07-26",
-        residencia: {
-          valor: "México",
-          codigo: "MX"
+        "objetivo": "Objetivo del fideicomiso",
+        "numero_registro": "788544abc",
+        "fecha_creacion": "2010-07-26",
+        "vigencia": "2010-07-26",
+        "residencia": {
+          "valor": "México",
+          "codigo": "MX"
         },
-        valor: 78555555,
-        moneda: {
-          codigo: "MXN",
-          moneda: "MXN"
+        "valor": 78555555,
+        "moneda": {
+          "codigo": "MXN",
+          "moneda": "MXN"
         },
-        porcentaje_propiedad_derechos_fiduciarios: 70,
-        ingreso_monetario_obtenido: 56666,
-        institucion_fiduciaria: "Banco de México",
-        fideicomitente: {
-          nombre: "Banco Robmen1",
-          rfc: "GOAP780710RH7",
-          curp: "BEML920313HMCLNS09",
-          domicilio: {
-            pais: {
-              valor: "México",
-              codigo: "MX"
+        "porcentaje_propiedad_derechos_fiduciarios": 70,
+        "ingreso_monetario_obtenido": 56666,
+        "institucion_fiduciaria": "Banco de México",
+        "fideicomitente": {
+          "nombre": "Banco Robmen1",
+          "rfc": "GOAP780710RH7",
+          "curp": "BEML920313HMCLNS09",
+          "domicilio": {
+            "pais": {
+              "valor": "México",
+              "codigo": "MX"
             },
-            entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+            "entidad_federativa": {
+              "nom_ent": "México",
+              "cve_ent": "15"
             },
-            municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+            "municipio": {
+              "nom_mun": "Ecatepec de Morelos",
+              "cve_mun": "033"
             },
-            cp: "55018",
-            localidad: {
-              nom_loc: "Ecatepec de Morelos",
-              cve_loc: "0001"
+            "cp": "55018",
+            "localidad": {
+              "nom_loc": "Ecatepec de Morelos",
+              "cve_loc": "0001"
             },
-            vialidad: {
-              tipo_vial: "CALLE",
-              nom_vial: "El Rosal"
+            "vialidad": {
+              "tipo_vial": "CALLE",
+              "nom_vial": "El Rosal"
             },
-            numExt: "24",
-            numInt: "48"
+            "numExt": "24",
+            "numInt": "48"
           },
-          fecha_constitucion: "2010-07-26"
+          "fecha_constitucion": "2010-07-26"
         },
-        fideicomisario: {
-          nombre: "Banco Robmen1",
-          rfc: "GOAP780710RH7",
-          curp: "BEML920313HMCLNS09",
-          domicilio: {
-            pais: {
-              valor: "México",
-              codigo: "MX"
+        "fideicomisario": {
+          "nombre": "Banco Robmen1",
+          "rfc": "GOAP780710RH7",
+          "curp": "BEML920313HMCLNS09",
+          "domicilio": {
+            "pais": {
+              "valor": "México",
+              "codigo": "MX"
             },
-            entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+            "entidad_federativa": {
+              "nom_ent": "México",
+              "cve_ent": "15"
             },
-            municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+            "municipio": {
+              "nom_mun": "Ecatepec de Morelos",
+              "cve_mun": "033"
             },
-            cp: "55018",
-            localidad: {
-              nom_loc: "Ecatepec de Morelos",
-              cve_loc: "0001"
+            "cp": "55018",
+            "localidad": {
+              "nom_loc": "Ecatepec de Morelos",
+              "cve_loc": "0001"
             },
-            vialidad: {
-              tipo_vial: "CALLE",
-              nom_vial: "El Rosal"
+            "vialidad": {
+              "tipo_vial": "CALLE",
+              "nom_vial": "El Rosal"
             },
-            numExt: "24",
-            numInt: "48"
+            "numExt": "24",
+            "numInt": "48"
           },
-          fecha_constitucion: "2010-07-26"
+          "fecha_constitucion": "2010-07-26"
         },
-        fiduciario: {
-          nombre: "Banco Robmen1",
-          rfc: "GOAP780710RH7",
-          curp: "BEML920313HMCLNS09",
-          domicilio: {
-            pais: {
-              valor: "México",
-              codigo: "MX"
+        "fiduciario": {
+          "nombre": "Banco Robmen1",
+          "rfc": "GOAP780710RH7",
+          "curp": "BEML920313HMCLNS09",
+          "domicilio": {
+            "pais": {
+              "valor": "México",
+              "codigo": "MX"
             },
-            entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+            "entidad_federativa": {
+              "nom_ent": "México",
+              "cve_ent": "15"
             },
-            municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+            "municipio": {
+              "nom_mun": "Ecatepec de Morelos",
+              "cve_mun": "033"
             },
-            cp: "55018",
-            localidad: {
-              nom_loc: "Ecatepec de Morelos",
-              cve_loc: "0001"
+            "cp": "55018",
+            "localidad": {
+              "nom_loc": "Ecatepec de Morelos",
+              "cve_loc": "0001"
             },
-            vialidad: {
-              tipo_vial: "CALLE",
-              nom_vial: "El Rosal"
+            "vialidad": {
+              "tipo_vial": "CALLE",
+              "nom_vial": "El Rosal"
             },
-            numExt: "24",
-            numInt: "48"
+            "numExt": "24",
+            "numInt": "48"
           },
-          fecha_constitucion: "2010-07-26"
+          "fecha_constitucion": "2010-07-26"
         },
-        observaciones: "Esto es una observación"
+        "observaciones": "Esto es una observación"
       }
     ],
     bienes_intangibles: [
@@ -4997,10 +5000,7 @@ export var example = {
     uso_especie_propiedad_tercero: [
       {
         id: 123,
-        tipo_bien: {
-          codigo: "VEH",
-          valor: "Vehículo"
-        },
+        tipo_bien: "Vehículo",
         valor_mercado: {
           valor: 4000,
           moneda: {
