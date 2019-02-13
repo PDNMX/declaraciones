@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import Direccion from "./Direccion";
-import Tabla from "./TablaActividadProfesional";
+import Tabla from "./TablaSalariosEmpleos";
 
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -64,7 +64,7 @@ function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Actividad profesional
+          Sueldos y salarios por otros empleos
         </Typography>
         <Grid container spacing={24}>
           <Grid item xs={3}>
@@ -73,7 +73,7 @@ function SimpleCard(props) {
               label="Nombre, denominación o razón social"
               className={classes.textField}
               value={
-                data.datos_actividad_profesional
+                data.datos_sueldos_salarios_otros_empleos
                   .nombre_denominacion_razon_social
               }
               onChange={handleChange("nombre_denominacion_razon_social")}
@@ -85,7 +85,7 @@ function SimpleCard(props) {
               id="grado"
               label="RFC"
               className={classes.textField}
-              value={data.datos_actividad_profesional.rfc}
+              value={data.datos_sueldos_salarios_otros_empleos.rfc}
               onChange={handleChange("rfc")}
               margin="normal"
             />
@@ -95,7 +95,7 @@ function SimpleCard(props) {
               id="grado"
               label="CURP"
               className={classes.textField}
-              value={data.datos_actividad_profesional.curp}
+              value={data.datos_sueldos_salarios_otros_empleos.curp}
               onChange={handleChange("curp")}
               margin="normal"
             />
@@ -104,7 +104,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_actividad_profesional.sector_industria.codigo}
+                value={
+                  data.datos_sueldos_salarios_otros_empleos.sector_industria
+                    .codigo
+                }
                 onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
@@ -126,8 +129,8 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={
-                  data.datos_actividad_profesional.tipo_actividad_servicio
-                    .codigo
+                  data.datos_sueldos_salarios_otros_empleos
+                    .tipo_actividad_servicio.codigo
                 }
                 onChange={handleChange("tipo_actividad_servicio")}
                 inputProps={{
@@ -152,7 +155,8 @@ function SimpleCard(props) {
               label="Descripción de la actividad"
               className={classes.textField}
               value={
-                data.datos_actividad_profesional.descripcion_actividad_servicio
+                data.datos_sueldos_salarios_otros_empleos
+                  .descripcion_actividad_servicio
               }
               onChange={handleChange("descripcion_actividad_servicio")}
               margin="normal"
@@ -163,7 +167,9 @@ function SimpleCard(props) {
               id="grado"
               label="Ingreso bruto anual recibido por el encargo público"
               className={classes.textField}
-              value={data.datos_actividad_profesional.ingreso_bruto_anual.valor}
+              value={
+                data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.valor
+              }
               onChange={handleChange("ingreso_bruto_anual")}
               margin="normal"
             />
@@ -173,8 +179,8 @@ function SimpleCard(props) {
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
                 value={
-                  data.datos_actividad_profesional.ingreso_bruto_anual.moneda
-                    .codigo
+                  data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual
+                    .moneda.codigo
                 }
                 onChange={handleChange("ingreso_bruto_anual.moneda")}
                 inputProps={{
@@ -195,7 +201,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
                 value={
-                  data.datos_actividad_profesional.ingreso_bruto_anual
+                  data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual
                     .unidad_temporal.codigo
                 }
                 onChange={handleChange("ingreso_bruto_anual.unidad_temporal")}
@@ -218,7 +224,7 @@ function SimpleCard(props) {
               label="Duración"
               className={classes.textField}
               value={
-                data.datos_actividad_profesional.ingreso_bruto_anual
+                data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual
                   .duracion_frecuencia
               }
               onChange={handleChange("ingreso_bruto_anual.duracion_frecuencia")}
@@ -231,7 +237,7 @@ function SimpleCard(props) {
               label="Fecha de pago"
               className={classes.textField}
               value={
-                data.datos_actividad_profesional.ingreso_bruto_anual
+                data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual
                   .fecha_transaccion
               }
               onChange={handleChange("ingreso_bruto_anual.fecha_transaccion")}
@@ -243,16 +249,15 @@ function SimpleCard(props) {
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.datos_actividad_profesional.observaciones}
+              value={data.datos_sueldos_salarios_otros_empleos.observaciones}
               onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />
           </Grid>
-
           <Grid item xs={12}>
             <Direccion
-              data={data.datos_actividad_profesional.domicilio_persona_paga}
+              data={data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga}
               ciudades={data.ciudades}
               entidades={data.entidades}
               municipios={data.municipios}
@@ -261,6 +266,7 @@ function SimpleCard(props) {
               handleChange={handleChange}
             />
           </Grid>
+
 
           <Grid item xs={2}>
             <Button
@@ -274,7 +280,10 @@ function SimpleCard(props) {
           </Grid>
         </Grid>
         <Grid container spacing={24}>
-          <Tabla data={data.actividad_profesional} buttonClick={removeClick} />
+          <Tabla
+            data={data.sueldos_salarios_otros_empleos}
+            buttonClick={removeClick}
+          />
         </Grid>
       </CardContent>
     </Card>

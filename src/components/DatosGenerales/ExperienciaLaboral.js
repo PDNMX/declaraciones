@@ -73,7 +73,7 @@ function SimpleCard(props) {
               <InputLabel>Ambito</InputLabel>
               <Select
                 value={data.datos_experiencia_laboral.ambito.codigo}
-                onChange={handleChange("datos_experiencia_laboral.ambito")}
+                onChange={handleChange("ambito")}
               >
                 {data.ambitos.map(ambito => (
                   <MenuItem key={ambito.codigo} value={ambito.codigo}>
@@ -89,7 +89,7 @@ function SimpleCard(props) {
               <Select
                 value={data.datos_experiencia_laboral.nivel_gobierno.codigo}
                 onChange={handleChange(
-                  "datos_experiencia_laboral.nivel_gobierno"
+                  "nivel_gobierno"
                 )}
               >
                 {data.nivelGobierno.map(dato => (
@@ -106,7 +106,7 @@ function SimpleCard(props) {
               <InputLabel>Poder Juridico</InputLabel>
               <Select
                 value={data.datos_experiencia_laboral.poder_ente.codigo}
-                onChange={handleChange("datos_experiencia_laboral.poder_ente")}
+                onChange={handleChange("poder_ente")}
               >
                 {data.poderEjecutivo.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
@@ -122,7 +122,7 @@ function SimpleCard(props) {
               className={classes.textField}
               value={data.datos_experiencia_laboral.nombre_institucion}
               onChange={handleChange(
-                "datos_experiencia_laboral.nombre_institucion"
+                "nombre_institucion"
               )}
               margin="normal"
             />
@@ -133,7 +133,7 @@ function SimpleCard(props) {
               className={classes.textField}
               value={data.datos_experiencia_laboral.unidad_administrativa}
               onChange={handleChange(
-                "datos_experiencia_laboral.unidad_administrativa"
+                "unidad_administrativa"
               )}
               margin="normal"
             />
@@ -144,7 +144,7 @@ function SimpleCard(props) {
               <Select
                 value={data.datos_experiencia_laboral.sector_industria.codigo}
                 onChange={handleChange(
-                  "datos_experiencia_laboral.sector_industria"
+                  "sector_industria"
                 )}
               >
                 {data.sectorIndustria.map(dato => (
@@ -161,7 +161,7 @@ function SimpleCard(props) {
               className={classes.textField}
               value={data.datos_experiencia_laboral.jerarquia_rango}
               onChange={handleChange(
-                "datos_experiencia_laboral.jerarquia_rango"
+                "jerarquia_rango"
               )}
               margin="normal"
             />
@@ -171,7 +171,7 @@ function SimpleCard(props) {
               label="Cargo/Puesto"
               className={classes.textField}
               value={data.datos_experiencia_laboral.cargo_puesto}
-              onChange={handleChange("datos_experiencia_laboral.cargo_puesto")}
+              onChange={handleChange("cargo_puesto")}
               margin="normal"
             />
           </Grid>
@@ -180,7 +180,7 @@ function SimpleCard(props) {
               label="Fecha de ingreso"
               className={classes.textField}
               value={data.datos_experiencia_laboral.fecha_ingreso}
-              onChange={handleChange("datos_experiencia_laboral.fecha_ingreso")}
+              onChange={handleChange("fecha_ingreso")}
               margin="normal"
             />
           </Grid>
@@ -189,7 +189,7 @@ function SimpleCard(props) {
               label="Fecha de salida"
               className={classes.textField}
               value={data.datos_experiencia_laboral.fecha_salida}
-              onChange={handleChange("datos_experiencia_laboral.fecha_salida")}
+              onChange={handleChange("fecha_salida")}
               margin="normal"
             />
           </Grid>

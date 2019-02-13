@@ -58,9 +58,7 @@ function SimpleCard(props) {
               label="Grado académico obtenido"
               className={classes.textField}
               value={data.datos_curriculares_grados_academicos.grado_obtenido}
-              onChange={handleChange(
-                "datos_curriculares_grados_academicos.grado_obtenido"
-              )}
+              onChange={handleChange("grado_obtenido")}
               margin="normal"
             />
           </Grid>
@@ -71,9 +69,7 @@ function SimpleCard(props) {
               value={
                 data.datos_curriculares_grados_academicos.institucion_educativa
               }
-              onChange={handleChange(
-                "datos_curriculares_grados_academicos.institucion_educativa"
-              )}
+              onChange={handleChange("institucion_educativa")}
               margin="normal"
             />
           </Grid>
@@ -85,9 +81,7 @@ function SimpleCard(props) {
                   data.datos_curriculares_grados_academicos
                     .lugar_institucion_educativa.pais.codigo
                 }
-                onChange={handleChange(
-                  "datos_curriculares_grados_academicos.lugar_institucion_educativa.pais"
-                )}
+                onChange={handleChange("lugar_institucion_educativa.pais")}
               >
                 {data.ciudades.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
@@ -105,11 +99,9 @@ function SimpleCard(props) {
                 <Select
                   value={
                     data.datos_curriculares_grados_academicos
-                      .lugar_institucion_educativa.entidad.cve_ent
+                      .lugar_institucion_educativa.entidad_federativa.cve_ent
                   }
-                  onChange={handleChange(
-                    "datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad"
-                  )}
+                  onChange={handleChange("lugar_institucion_educativa.entidad_federativa")}
                 >
                   {data.entidades.map(dato => (
                     <MenuItem key={dato.cve_ent} value={dato.cve_ent}>
@@ -125,9 +117,7 @@ function SimpleCard(props) {
               label="Carrera"
               className={classes.textField}
               value={data.datos_curriculares_grados_academicos.carrera}
-              onChange={handleChange(
-                "datos_curriculares_grados_academicos.carrera"
-              )}
+              onChange={handleChange("carrera")}
               margin="normal"
             />
           </Grid>
@@ -136,9 +126,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Estatus</InputLabel>
               <Select
                 value={data.datos_curriculares_grados_academicos.estatus.codigo}
-                onChange={handleChange(
-                  "datos_curriculares_grados_academicos.estatus"
-                )}
+                onChange={handleChange("estatus")}
               >
                 {data.estatusEstudio.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
@@ -153,9 +141,7 @@ function SimpleCard(props) {
               label="Año de Conclusión"
               className={classes.textField}
               value={data.datos_curriculares_grados_academicos.ano_conclusion}
-              onChange={handleChange(
-                "datos_curriculares_grados_academicos.ano_conclusion"
-              )}
+              onChange={handleChange("ano_conclusion")}
               margin="normal"
             />
           </Grid>
@@ -167,9 +153,7 @@ function SimpleCard(props) {
                   data.datos_curriculares_grados_academicos.documento_obtenido
                     .codigo
                 }
-                onChange={handleChange(
-                  "datos_curriculares_grados_academicos.documento_obtenido"
-                )}
+                onChange={handleChange("documento_obtenido")}
               >
                 {data.documentoObtenido.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
@@ -186,9 +170,7 @@ function SimpleCard(props) {
               value={
                 data.datos_curriculares_grados_academicos.cedula_profesional
               }
-              onChange={handleChange(
-                "datos_curriculares_grados_academicos.cedula_profesional"
-              )}
+              onChange={handleChange("cedula_profesional")}
               margin="normal"
             />
           </Grid>

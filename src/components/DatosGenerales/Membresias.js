@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaMembresias";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -96,6 +97,7 @@ function SimpleCard(props) {
               label="Nombre de la institución"
               className={classes.textField}
               value={data.datos_membresias.nombre_institucion}
+              onChange={handleChange("nombre_institucion")}
               margin="normal"
             />
           </Grid>
@@ -128,7 +130,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_membresias.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -148,6 +150,7 @@ function SimpleCard(props) {
               label="Puesto/Rol"
               className={classes.textField}
               value={data.datos_membresias.puesto_rol}
+              onChange={handleChange("puesto_rol")}
               margin="normal"
             />
           </Grid>
@@ -157,6 +160,7 @@ function SimpleCard(props) {
               label="Fecha de inicio"
               className={classes.textField}
               value={data.datos_membresias.fecha_inicio}
+              onChange={handleChange("fecha_inicio")}
               margin="normal"
             />
           </Grid>
@@ -167,6 +171,7 @@ function SimpleCard(props) {
                 <Checkbox
                   checked={data.datos_membresias.pagado}
                   value="Habita el domicilio del declarante"
+                  onChange={handleChange("pagado")}
                   color="primary"
                 />
               }
@@ -180,8 +185,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_membresias.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_membresias.domicilio}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

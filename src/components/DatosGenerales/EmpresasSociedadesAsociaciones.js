@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaEmpresasSociedadesAsociaciones";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -29,8 +30,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // data picker
 // import moment from "moment";
-
-// import Direccion from "./Direccion";
 
 const styles = theme => ({
   card: {
@@ -73,19 +72,26 @@ function SimpleCard(props) {
               id="grado"
               label="Nombre de la empresa, sociedad o asociación"
               className={classes.textField}
-              value={data.datos_empresas_sociedades_asociaciones.nombre_empresa_sociedad_asociacion}
+              value={
+                data.datos_empresas_sociedades_asociaciones
+                  .nombre_empresa_sociedad_asociacion
+              }
+              onChange={handleChange("nombre_empresa_sociedad_asociacion")}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="pais">País</InputLabel>
+              <InputLabel htmlFor="pais_registro">País</InputLabel>
               <Select
-                value={data.datos_empresas_sociedades_asociaciones.pais_registro.codigo}
-                onChange={handleChange("pais")}
+                value={
+                  data.datos_empresas_sociedades_asociaciones.pais_registro
+                    .codigo
+                }
+                onChange={handleChange("pais_registro")}
                 inputProps={{
-                  name: "pais",
-                  id: "pais"
+                  name: "pais_registro",
+                  id: "pais_registro"
                 }}
               >
                 {data.ciudades.map(ciudad => (
@@ -101,7 +107,10 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de constitución"
               className={classes.textField}
-              value={data.datos_empresas_sociedades_asociaciones.fecha_constitucion}
+              value={
+                data.datos_empresas_sociedades_asociaciones.fecha_constitucion
+              }
+              onChange={handleChange("fecha_constitucion")}
               margin="normal"
             />
           </Grid>
@@ -110,7 +119,10 @@ function SimpleCard(props) {
               id="grado"
               label="Numero de registro"
               className={classes.textField}
-              value={data.datos_empresas_sociedades_asociaciones.numero_registro}
+              value={
+                data.datos_empresas_sociedades_asociaciones.numero_registro
+              }
+              onChange={handleChange("numero_registro")}
               margin="normal"
             />
           </Grid>
@@ -120,6 +132,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_empresas_sociedades_asociaciones.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -129,6 +142,7 @@ function SimpleCard(props) {
               label="Rol en la empresa, sociedad o asociación"
               className={classes.textField}
               value={data.datos_empresas_sociedades_asociaciones.rol}
+              onChange={handleChange("rol")}
               margin="normal"
             />
           </Grid>
@@ -137,8 +151,12 @@ function SimpleCard(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={data.datos_empresas_sociedades_asociaciones.actividad_economica}
+                  checked={
+                    data.datos_empresas_sociedades_asociaciones
+                      .actividad_economica
+                  }
                   value="Habita el domicilio del declarante"
+                  onChange={handleChange("actividad_economica")}
                   color="primary"
                 />
               }
@@ -149,8 +167,11 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_empresas_sociedades_asociaciones.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                value={
+                  data.datos_empresas_sociedades_asociaciones.sector_industria
+                    .codigo
+                }
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -169,26 +190,25 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje de participación"
               className={classes.textField}
-              value={data.datos_empresas_sociedades_asociaciones.porcentaje_participacion}
+              value={
+                data.datos_empresas_sociedades_asociaciones
+                  .porcentaje_participacion
+              }
+              onChange={handleChange("porcentaje_participacion")}
               margin="normal"
             />
           </Grid>
-
-          {
-            /*
-            <Grid item xs={12}>
-              <Direccion
-                data={data.empresas_sociedades_asociaciones.domicilio}
-                ciudades={data.ciudades}
-                entidades={data.entidades}
-                municipios={data.municipios}
-                localidades={data.localidades}
-                tipovialidad={data.tipovialidad}
-                handleChange={handleChange}
-              />
-            </Grid>
-            */
-          }
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_empresas_sociedades_asociaciones.domicilio}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
+            />
+          </Grid>
 
           <Grid item xs={2}>
             <Button

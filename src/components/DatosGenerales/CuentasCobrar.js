@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaCuentasCobrar";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -72,6 +73,7 @@ function SimpleCard(props) {
               label="Nombre del prestatario"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.nombre_prestatario}
+              onChange={handleChange("nombre_prestatario")}
               margin="normal"
             />
           </Grid>
@@ -81,6 +83,7 @@ function SimpleCard(props) {
               label="Número de registro"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.numero_registro}
+              onChange={handleChange("numero_registro")}
               margin="normal"
             />
           </Grid>
@@ -89,7 +92,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_cuentas_por_cobrar.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -109,6 +112,7 @@ function SimpleCard(props) {
               label="Fecha del préstamo"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.fecha_prestamo}
+              onChange={handleChange("fecha_prestamo")}
               margin="normal"
             />
           </Grid>
@@ -118,6 +122,7 @@ function SimpleCard(props) {
               label="Monto original del préstamo"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.monto_original_prestamo}
+              onChange={handleChange("monto_original_prestamo")}
               margin="normal"
             />
           </Grid>
@@ -127,6 +132,7 @@ function SimpleCard(props) {
               label="Tasa de interés"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.tasa_interes}
+              onChange={handleChange("tasa_interes")}
               margin="normal"
             />
           </Grid>
@@ -136,6 +142,7 @@ function SimpleCard(props) {
               label="Saldo pendiente"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.saldo_pendiente}
+              onChange={handleChange("saldo_pendiente")}
               margin="normal"
             />
           </Grid>
@@ -145,6 +152,7 @@ function SimpleCard(props) {
               label="Fecha de vencimiento"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.fecha_vencimiento}
+              onChange={handleChange("fecha_vencimiento")}
               margin="normal"
             />
           </Grid>
@@ -154,6 +162,7 @@ function SimpleCard(props) {
               label="Porcentaje de propiedad en caso de copropiedad"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.porcentaje_copropiedad}
+              onChange={handleChange("porcentaje_copropiedad")}
               margin="normal"
             />
           </Grid>
@@ -163,6 +172,7 @@ function SimpleCard(props) {
               label="Nombre del copropietario"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.nombre_copropietario}
+              onChange={handleChange("nombre_copropietario")}
               margin="normal"
             />
           </Grid>
@@ -173,8 +183,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_cuentas_por_cobrar.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_cuentas_por_cobrar.domicilio_prestatarios}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

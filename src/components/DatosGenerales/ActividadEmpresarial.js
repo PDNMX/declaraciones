@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaActividadEmpresarial";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -72,7 +73,7 @@ function SimpleCard(props) {
               label="Nombre, denominación o razón social"
               className={classes.textField}
               value={data.datos_actividad_empresarial.nombre_denominacion_razon_social}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("nombre_denominacion_razon_social")}
               margin="normal"
             />
           </Grid>
@@ -82,7 +83,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_actividad_empresarial.rfc}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -92,7 +93,7 @@ function SimpleCard(props) {
               label="CURP"
               className={classes.textField}
               value={data.datos_actividad_empresarial.curp}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("curp")}
               margin="normal"
             />
           </Grid>
@@ -101,7 +102,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_actividad_empresarial.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -122,7 +123,7 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.datos_actividad_empresarial.tipo_actividad_servicio.codigo}
-                onChange={handleChange("tipo_actividad")}
+                onChange={handleChange("tipo_actividad_servicio")}
                 inputProps={{
                   name: "tipo_actividad",
                   id: "tipo_actividad"
@@ -145,7 +146,7 @@ function SimpleCard(props) {
               label="Descripción de la actividad"
               className={classes.textField}
               value={data.datos_actividad_empresarial.descripcion_actividad_servicio}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("descripcion_actividad_servicio")}
               margin="normal"
             />
           </Grid>
@@ -155,7 +156,7 @@ function SimpleCard(props) {
               label="Ingreso bruto anual recibido por el encargo público"
               className={classes.textField}
               value={data.datos_actividad_empresarial.ingreso_bruto_anual.valor}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("ingreso_bruto_anual")}
               margin="normal"
             />
           </Grid>
@@ -163,27 +164,36 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.datos_actividad_empresarial.ingreso_bruto_anual.moneda.codigo}
-                onChange={handleChange("moneda")}
+                value={
+                  data.datos_actividad_empresarial.ingreso_bruto_anual.moneda
+                    .codigo
+                }
+                onChange={handleChange("ingreso_bruto_anual.moneda")}
                 inputProps={{
                   name: "moneda",
                   id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem key={tipoMoneda.codigoNumerico+tipoMoneda.entidad} value={tipoMoneda.codigo}>
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Grid>
+
+
+
+
+
+
           <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
                 value={data.datos_actividad_empresarial.ingreso_bruto_anual.unidad_temporal.codigo}
-                onChange={handleChange("frecuencia")}
+                onChange={handleChange("ingreso_bruto_anual.unidad_temporal")}
                 inputProps={{
                   name: "frecuencia",
                   id: "frecuencia"
@@ -203,7 +213,7 @@ function SimpleCard(props) {
               label="Duración"
               className={classes.textField}
               value={data.datos_actividad_empresarial.ingreso_bruto_anual.duracion_frecuencia}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("ingreso_bruto_anual.duracion_frecuencia")}
               margin="normal"
             />
           </Grid>
@@ -213,7 +223,7 @@ function SimpleCard(props) {
               label="Fecha de pago"
               className={classes.textField}
               value={data.datos_actividad_empresarial.ingreso_bruto_anual.fecha_transaccion}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("ingreso_bruto_anual.fecha_transaccion")}
               margin="normal"
             />
           </Grid>
@@ -223,9 +233,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_actividad_empresarial.observaciones}
-              onChange={handleChange("datos_encargo_actual.sector_industria")}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_actividad_empresarial.domicilio_actividad_empresarial}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

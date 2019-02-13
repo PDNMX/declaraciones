@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaOtrasObligaciones";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -25,7 +26,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 // data picker
 // import moment from "moment";
@@ -140,6 +142,7 @@ function SimpleCard(props) {
               label="Número de cuenta, contrato o identificador de la obligación"
               className={classes.textField}
               value={data.datos_otras_obligaciones.identificador_obligacion}
+              onChange={handleChange("identificador_obligacion")}
               margin="normal"
             />
           </Grid>
@@ -150,15 +153,15 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.datos_otras_obligaciones.nacional_extranjero.codigo}
-                onChange={handleChange("estado_civil")}
+                onChange={handleChange("nacional_extranjero")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
-                  <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
-                    {estadocivil.valor}
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    {ciudad.valor}
                   </MenuItem>
                 ))}
               </Select>
@@ -170,6 +173,7 @@ function SimpleCard(props) {
               label="Nombre, denominación o razón social del acreedor"
               className={classes.textField}
               value={data.datos_otras_obligaciones.nombre_acreedor}
+              onChange={handleChange("nombre_acreedor")}
               margin="normal"
             />
           </Grid>
@@ -179,6 +183,7 @@ function SimpleCard(props) {
               label="RFC del acreedor"
               className={classes.textField}
               value={data.datos_otras_obligaciones.rfc_acreedor}
+              onChange={handleChange("rfc_acreedor")}
               margin="normal"
             />
           </Grid>
@@ -187,7 +192,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_otras_obligaciones.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -207,6 +212,7 @@ function SimpleCard(props) {
               label="Fecha en la que se generó el obligación"
               className={classes.textField}
               value={data.datos_otras_obligaciones.fecha_obligacion}
+              onChange={handleChange("fecha_obligacion")}
               margin="normal"
             />
           </Grid>
@@ -216,23 +222,27 @@ function SimpleCard(props) {
               label="Monto original de la obligación"
               className={classes.textField}
               value={data.datos_otras_obligaciones.monto_original}
+              onChange={handleChange("monto_original")}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
+              <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
                 value={data.datos_otras_obligaciones.tipo_moneda.codigo}
                 onChange={handleChange("tipo_moneda")}
                 inputProps={{
-                  name: "tipo_moneda",
-                  id: "tipo_moneda"
+                  name: "moneda",
+                  id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem
+                    key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
+                    value={tipoMoneda.codigo}
+                  >
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
@@ -244,6 +254,7 @@ function SimpleCard(props) {
               label="Tasa de interés"
               className={classes.textField}
               value={data.datos_otras_obligaciones.tasa_interes}
+              onChange={handleChange("tasa_interes")}
               margin="normal"
             />
           </Grid>
@@ -253,6 +264,7 @@ function SimpleCard(props) {
               label="Saldo pendiente"
               className={classes.textField}
               value={data.datos_otras_obligaciones.saldo_pendiente}
+              onChange={handleChange("saldo_pendiente")}
               margin="normal"
             />
           </Grid>
@@ -262,6 +274,7 @@ function SimpleCard(props) {
               label="Montos abonados a favor de la deuda"
               className={classes.textField}
               value={data.datos_otras_obligaciones.montos_abonados}
+              onChange={handleChange("montos_abonados")}
               margin="normal"
             />
           </Grid>
@@ -271,6 +284,7 @@ function SimpleCard(props) {
               label="Plazo de la obligación"
               className={classes.textField}
               value={data.datos_otras_obligaciones.plazo_obligacion}
+              onChange={handleChange("plazo_obligacion")}
               margin="normal"
             />
           </Grid>
@@ -299,8 +313,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="titular">Titular</InputLabel>
               <Select
-                value={data.datos_otras_obligaciones.titularidad_obligacion.codigo}
-                onChange={handleChange("titular")}
+                value={
+                  data.datos_otras_obligaciones.titularidad_obligacion.codigo
+                }
+                onChange={handleChange("titularidad_obligacion")}
                 inputProps={{
                   name: "titular",
                   id: "titular"
@@ -319,17 +335,25 @@ function SimpleCard(props) {
               id="grado"
               label="Porcentaje de la obligación del titular"
               className={classes.textField}
-              value={data.datos_otras_obligaciones.porcentaje_obligacion_titular}
+              value={
+                data.datos_otras_obligaciones.porcentaje_obligacion_titular
+              }
+              onChange={handleChange("porcentaje_obligacion_titular")}
               margin="normal"
             />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
+          </Grid>          
+          <Grid item xs={4}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.datos_otras_obligaciones.garantia}
+                  value="true"
+                  onChange={handleChange("garantia")}
+                  color="primary"
+                />
+              }
               label="¿Se otorgó garantía?"
-              className={classes.textField}
-              value={data.datos_otras_obligaciones.garantia}
-              margin="normal"
             />
           </Grid>
 
@@ -339,8 +363,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_otras_obligaciones.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_otras_obligaciones.domicilio_acreedor}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

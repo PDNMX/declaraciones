@@ -74,7 +74,7 @@ function CustomizedTable(props) {
               <TableRow className={classes.row} key={index}>
                 <CustomTableCell>{index}-{item.tipo_operacion.valor}</CustomTableCell>
                 <CustomTableCell>{item.tipo_acreedor.valor}</CustomTableCell>
-                <CustomTableCell>{item.tipo_obligacion}</CustomTableCell>
+                <CustomTableCell>{item.tipo_obligacion.valor}</CustomTableCell>
                 <CustomTableCell>{item.identificador_obligacion}</CustomTableCell>
                 <CustomTableCell>{item.nacional_extranjero.valor}</CustomTableCell>
                 <CustomTableCell>{item.nombre_acreedor}</CustomTableCell>
