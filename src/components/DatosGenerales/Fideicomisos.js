@@ -57,7 +57,16 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const { classes, data, handleChange, addClick, removeClick } = props;
+  const {
+    classes,
+    data,
+    handleChange,
+    addClick,
+    removeClick,
+    setDataDireccionFideicomitente,
+    setDataDireccionFideicomisario,
+    setDataDireccionFiduciario
+  } = props;
 
   // console.log(data);
   return (
@@ -97,6 +106,7 @@ function SimpleCard(props) {
               label="Nombre o identificador del fideicomiso"
               className={classes.textField}
               value={data.datos_fideicomisos.identificador_fideicomiso}
+              onChange={handleChange("identificador_fideicomiso")}
               margin="normal"
             />
           </Grid>
@@ -130,6 +140,7 @@ function SimpleCard(props) {
               label="Objetivo del fideicomiso"
               className={classes.textField}
               value={data.datos_fideicomisos.objetivo}
+              onChange={handleChange("objetivo")}
               margin="normal"
             />
           </Grid>
@@ -139,6 +150,7 @@ function SimpleCard(props) {
               label="Número de registro o identificador"
               className={classes.textField}
               value={data.datos_fideicomisos.numero_registro}
+              onChange={handleChange("numero_registro")}
               margin="normal"
             />
           </Grid>
@@ -148,6 +160,7 @@ function SimpleCard(props) {
               label="Fecha de creación del fideicomiso"
               className={classes.textField}
               value={data.datos_fideicomisos.fecha_creacion}
+              onChange={handleChange("fecha_creacion")}
               margin="normal"
             />
           </Grid>
@@ -157,17 +170,30 @@ function SimpleCard(props) {
               label="Vigencia del fideicomiso"
               className={classes.textField}
               value={data.datos_fideicomisos.vigencia}
+              onChange={handleChange("vigencia")}
               margin="normal"
             />
           </Grid>
           <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Residencia del fideicomiso"
-              className={classes.textField}
-              value={data.datos_fideicomisos.residencia.codigo}
-              margin="normal"
-            />
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="residencia">
+                Residencia del fideicomiso
+              </InputLabel>
+              <Select
+                value={data.datos_fideicomisos.residencia.codigo}
+                onChange={handleChange("residencia")}
+                inputProps={{
+                  name: "residencia",
+                  id: "residencia"
+                }}
+              >
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    {ciudad.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={3}>
             <TextField
@@ -175,18 +201,34 @@ function SimpleCard(props) {
               label="Valor del fideicomiso"
               className={classes.textField}
               value={data.datos_fideicomisos.valor}
+              onChange={handleChange("valor")}
               margin="normal"
             />
           </Grid>
+
           <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Moneda del fideicomiso"
-              className={classes.textField}
-              value={data.datos_fideicomisos.moneda.codigo}
-              margin="normal"
-            />
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="moneda">Moneda del fideicomiso</InputLabel>
+              <Select
+                value={data.datos_fideicomisos.moneda.codigo}
+                onChange={handleChange("moneda")}
+                inputProps={{
+                  name: "moneda",
+                  id: "moneda"
+                }}
+              >
+                {data.catTiposMonedas.map(tipoMoneda => (
+                  <MenuItem
+                    key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
+                    value={tipoMoneda.codigo}
+                  >
+                    {tipoMoneda.moneda}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
+
           <Grid item xs={3}>
             <TextField
               id="grado"
@@ -196,6 +238,9 @@ function SimpleCard(props) {
                 data.datos_fideicomisos
                   .porcentaje_propiedad_derechos_fiduciarios
               }
+              onChange={handleChange(
+                "porcentaje_propiedad_derechos_fiduciarios"
+              )}
               margin="normal"
             />
           </Grid>
@@ -205,6 +250,7 @@ function SimpleCard(props) {
               label="Ingreso monetario que obtiene del fideicomiso"
               className={classes.textField}
               value={data.datos_fideicomisos.ingreso_monetario_obtenido}
+              onChange={handleChange("ingreso_monetario_obtenido")}
               margin="normal"
             />
           </Grid>
@@ -214,54 +260,8 @@ function SimpleCard(props) {
               label="Institución fiduciaria"
               className={classes.textField}
               value={data.datos_fideicomisos.institucion_fiduciaria}
+              onChange={handleChange("institucion_fiduciaria")}
               margin="normal"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Nombre, denominación o razón social del fideicomitente, fideicomisario, fiduciario"
-              className={classes.textField}
-              value={data.datos_fideicomisos.fideicomitente.nombre}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="RFC del fideicomitente, fideicomisario, fiduciario"
-              className={classes.textField}
-              value={data.datos_fideicomisos.fideicomitente.rfc}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="CURP del fideicomitente, fideicomisario, fiduciario"
-              className={classes.textField}
-              value={data.datos_fideicomisos.fideicomitente.curp}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Fecha de nacimiento o de constitución del fideicomitente, fideicomisario, fiduciario"
-              className={classes.textField}
-              value={data.datos_fideicomisos.fideicomitente.fecha_constitucion}
-              margin="normal"
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Observaciones"
-              className={classes.textField}
-              value={data.datos_fideicomisos.observaciones}
-              margin="normal"
-              multiline={true}
             />
           </Grid>
 
@@ -270,6 +270,7 @@ function SimpleCard(props) {
             catalogos={data}
             tipo={"fideicomitente"}
             handleChange={handleChange}
+            handleDireccion={setDataDireccionFideicomitente}
           />
 
           <Partes
@@ -277,6 +278,7 @@ function SimpleCard(props) {
             catalogos={data}
             tipo={"fideicomisario"}
             handleChange={handleChange}
+            handleDireccion={setDataDireccionFideicomisario}
           />
 
           <Partes
@@ -284,7 +286,20 @@ function SimpleCard(props) {
             catalogos={data}
             tipo={"fiduciario"}
             handleChange={handleChange}
+            handleDireccion={setDataDireccionFiduciario}
           />
+
+          <Grid item xs={3}>
+            <TextField
+              id="grado"
+              label="Observaciones"
+              className={classes.textField}
+              value={data.datos_fideicomisos.observaciones}
+              onChange={handleChange("observaciones")}
+              margin="normal"
+              multiline={true}
+            />
+          </Grid>
         </Grid>
         <Grid container className={classes.root} spacing={0}>
           <Grid item xs={3}>

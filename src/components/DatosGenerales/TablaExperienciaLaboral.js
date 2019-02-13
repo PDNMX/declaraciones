@@ -73,7 +73,7 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.cargo_puesto}</CustomTableCell>
                 <CustomTableCell>{item.fecha_ingreso}</CustomTableCell>
                 <CustomTableCell>{item.fecha_salida}</CustomTableCell>
-                <CustomTableCell>{item.funciones_principales}</CustomTableCell>
+                <CustomTableCell></CustomTableCell>
                 <CustomTableCell>{item.direccion.pais.valor}</CustomTableCell>
                 <CustomTableCell>
                   <Button

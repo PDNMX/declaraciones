@@ -301,11 +301,11 @@ function SimpleCard(props) {
                 <Checkbox
                   checked={
                     data.datos_dependientes_economicos
-                      .desarrolla_cabildeo_sector_declarante
+                      .desarrolla_cabildeo_sector_declarante.respuesta
                   }
                   value="true"
                   onChange={handleChange(
-                    "desarrolla_cabildeo_sector_declarante"
+                    "desarrolla_cabildeo_sector_declarante.respuesta"
                   )}
                   color="primary"
                 />
@@ -313,6 +313,22 @@ function SimpleCard(props) {
               label="¿Desarrolla el familiar o dependiente actividades de cabildeo en el mismo sector/industria al que pertenece el empleo oficial del Declarante?"
             />
           </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Observaciones/Comentarios de actividades de cabildeo del familiar/dependiente"
+              className={classes.textField}
+              value={
+                data.datos_dependientes_economicos
+                  .desarrolla_cabildeo_sector_declarante.observaciones
+              }
+              onChange={handleChange(
+                "desarrolla_cabildeo_sector_declarante.observaciones"
+              )}
+              margin="normal"
+              multiline={true}
+            />
+          </Grid>
+
           <Grid item xs={12}>
             <br />
             <FormControlLabel

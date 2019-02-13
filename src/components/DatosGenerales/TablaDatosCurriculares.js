@@ -68,7 +68,7 @@ function CustomizedTable(props) {
                   {grado.lugar_institucion_educativa.pais.valor}
                 </CustomTableCell>
                 <CustomTableCell>
-                  {grado.lugar_institucion_educativa.entidad.nom_ent}
+                  {grado.lugar_institucion_educativa.entidad_federativa.nom_ent}
                 </CustomTableCell>
                 <CustomTableCell>{grado.carrera}</CustomTableCell>
                 <CustomTableCell>{grado.estatus.valor}</CustomTableCell>

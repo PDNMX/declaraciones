@@ -20,9 +20,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
 /*Multiselect*/
-import Input from "@material-ui/core/Input";
+// import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
-import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -56,16 +56,16 @@ const styles = theme => ({
 });
 
 // estilos para los select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-};
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 250
+//     }
+//   }
+// };
 
 function SimpleCard(props) {
   const { classes, data, handleChange, addClick, removeClick } = props;
@@ -78,26 +78,14 @@ function SimpleCard(props) {
           Representación activa
         </Typography>
         <Grid container spacing={24}>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Tipo de representación"
-              className={classes.textField}
-              value={data.datos_representacion_activa.tipo_representacion}
-              onChange={handleChange("tipo_representacion")}
-              margin="normal"
-            />
-          </Grid>
-
-          {/*
-            <Grid item xs={2}>
+          <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_representacion">
                 Tipo de representación
               </InputLabel>
               <Select
                 value={
-                  data.datos_representacion_activa.tipo_representacion
+                  data.datos_representacion_activa.tipo_representacion.codigo
                 }
                 onChange={handleChange("tipo_representacion")}
                 inputProps={{
@@ -108,7 +96,7 @@ function SimpleCard(props) {
                 {data.catTiposRepresentaciones.map(tipoRepresentacion => (
                   <MenuItem
                     key={tipoRepresentacion.codigo}
-                    value={tipoRepresentacion.valor}
+                    value={tipoRepresentacion.codigo}
                   >
                     {tipoRepresentacion.valor}
                   </MenuItem>
@@ -116,31 +104,6 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-          */}
-          {/*<Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="select-multiple-checkbox">
-                Nacionalidades
-              </InputLabel>
-              <Select
-                multiple
-                value={data.datos_representacion_activa.nacionalidad}
-                onChange={handleChange("nacionalidades")}
-                input={<Input id="select-multiple-checkbox" />}
-                renderValue={selected => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {data.ciudades.map(ciudad => (
-                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
-                    <Checkbox
-                      checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
-                    />
-                    <ListItemText primary={ciudad.valor} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>*/}
           <Grid item xs={3}>
             <TextField
               id="grado"

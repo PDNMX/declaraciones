@@ -26,7 +26,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 // data picker
 // import moment from "moment";
@@ -334,14 +335,18 @@ function SimpleCard(props) {
               margin="normal"
             />
           </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
+          <Grid item xs={4}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.datos_deudas.garantia}
+                  value="true"
+                  onChange={handleChange("garantia")}
+                  color="primary"
+                />
+              }
               label="¿Se otorgó garantía?"
-              className={classes.textField}
-              value={data.datos_deudas.garantia}
-              onChange={handleChange("garantia")}
-              margin="normal"
             />
           </Grid>
           <Grid item xs={3}>

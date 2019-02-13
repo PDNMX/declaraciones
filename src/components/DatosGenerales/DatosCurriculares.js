@@ -99,9 +99,9 @@ function SimpleCard(props) {
                 <Select
                   value={
                     data.datos_curriculares_grados_academicos
-                      .lugar_institucion_educativa.entidad.cve_ent
+                      .lugar_institucion_educativa.entidad_federativa.cve_ent
                   }
-                  onChange={handleChange("lugar_institucion_educativa.entidad")}
+                  onChange={handleChange("lugar_institucion_educativa.entidad_federativa")}
                 >
                   {data.entidades.map(dato => (
                     <MenuItem key={dato.cve_ent} value={dato.cve_ent}>

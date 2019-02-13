@@ -78,15 +78,31 @@ function SimpleCard(props) {
           Otras partes relacionadas
         </Typography>
         <Grid container spacing={24}>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Tipo de relación con el Titular"
-              className={classes.textField}
-              value={data.datos_otras_partes.tipo_relacion}
-              onChange={handleChange("tipo_relacion")}
-              margin="normal"
-            />
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="tipo_relacion">
+                Tipo de relación con el Titular
+              </InputLabel>
+              <Select
+                value={
+                  data.datos_otras_partes.tipo_relacion.codigo
+                }
+                onChange={handleChange("tipo_relacion")}
+                inputProps={{
+                  name: "tipo_relacion",
+                  id: "tipo_relacion"
+                }}
+              >
+                {data.catRelacionDeclarante.map(tipoRepresentacion => (
+                  <MenuItem
+                    key={tipoRepresentacion.codigo}
+                    value={tipoRepresentacion.codigo}
+                  >
+                    {tipoRepresentacion.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
 
           <Grid item xs={3}>

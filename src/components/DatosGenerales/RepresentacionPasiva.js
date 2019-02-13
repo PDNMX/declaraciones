@@ -78,17 +78,6 @@ function SimpleCard(props) {
           Representación pasiva
         </Typography>
         <Grid container spacing={24}>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Tipo de representación"
-              className={classes.textField}
-              value={data.datos_representacion_pasiva.tipo_representacion.valor}
-              onChange={handleChange("tipo_representacion")}
-              margin="normal"
-            />
-          </Grid>
-          {/*
           <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="tipo_representacion">
@@ -115,7 +104,6 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
-          */}
           <Grid item xs={3}>
             <TextField
               id="grado"

@@ -10,7 +10,9 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { data, clean, example } from "./data";
+import { data } from "./data";
+import { example } from "./data_example";
+import { clean } from "./data_clean";
 
 import Menu from "../Menu";
 import InformacionGeneral from "./InformacionGeneral";
@@ -69,75 +71,78 @@ var loggedIn = sessionStorage.getItem("logged");
 class Index extends Component {
   constructor(props) {
     super(props);
+
+    let info = clean;
+
     this.state = data;
 
     this.state.informacion_general =
-      example.informacion_personal.informacion_general;
+      info.informacion_personal.informacion_general;
     this.state.datos_curriculares_grados_academicos =
-      example.informacion_personal.datos_curriculares.grados_academicos[0];
+      info.informacion_personal.datos_curriculares.grados_academicos[0];
     this.state.datos_encargo_actual =
-      example.informacion_personal.datos_encargo_actual;
+      info.informacion_personal.datos_encargo_actual;
     this.state.datos_experiencia_laboral =
-      example.informacion_personal.experiencia_laboral[0];
+      info.informacion_personal.experiencia_laboral[0];
     this.state.datos_dependientes_economicos =
-      example.informacion_personal.dependientes_economicos[0];
+      info.informacion_personal.dependientes_economicos[0];
 
     this.state.datos_empresas_sociedades_asociaciones =
-      example.intereses.empresas_sociedades_asociaciones[0];
-    this.state.datos_membresias = example.intereses.membresias[0];
+      info.intereses.empresas_sociedades_asociaciones[0];
+    this.state.datos_membresias = info.intereses.membresias[0];
     this.state.datos_apoyos_beneficios_publicos =
-      example.intereses.apoyos_beneficios_publicos[0];
+      info.intereses.apoyos_beneficios_publicos[0];
     this.state.datos_representacion_activa =
-      example.intereses.representacion_activa[0];
+      info.intereses.representacion_activa[0];
     this.state.datos_representacion_pasiva =
-      example.intereses.representacion_pasiva[0];
-    this.state.datos_socios_comerciales =
-      example.intereses.socios_comerciales[0];
+      info.intereses.representacion_pasiva[0];
+    this.state.datos_socios_comerciales = info.intereses.socios_comerciales[0];
     this.state.datos_clientes_principales =
-      example.intereses.clientes_principales[0];
-    this.state.datos_otras_partes = example.intereses.otras_partes[0];
+      info.intereses.clientes_principales[0];
+    this.state.datos_otras_partes = info.intereses.otras_partes[0];
     this.state.datos_beneficios_gratuitos =
-      example.intereses.beneficios_gratuitos[0];
+      info.intereses.beneficios_gratuitos[0];
 
     this.state.datos_sueldos_salarios_publicos =
-      example.ingresos.sueldos_salarios_publicos[0];
+      info.ingresos.sueldos_salarios_publicos[0];
     this.state.datos_sueldos_salarios_otros_empleos =
-      example.ingresos.sueldos_salarios_otros_empleos[0];
+      info.ingresos.sueldos_salarios_otros_empleos[0];
     this.state.datos_actividad_profesional =
-      example.ingresos.actividad_profesional[0];
+      info.ingresos.actividad_profesional[0];
     this.state.datos_actividad_empresarial =
-      example.ingresos.actividad_empresarial[0];
+      info.ingresos.actividad_empresarial[0];
     this.state.datos_actividad_economica_menor =
-      example.ingresos.actividad_economica_menor[0];
-    this.state.datos_arrendamiento = example.ingresos.arrendamiento[0];
-    this.state.datos_intereses = example.ingresos.intereses[0];
-    this.state.datos_premios = example.ingresos.premios[0];
-    this.state.datos_enajenacion_bienes =
-      example.ingresos.enajenacion_bienes[0];
-    this.state.datos_otros_ingresos = example.ingresos.otros_ingresos[0];
+      info.ingresos.actividad_economica_menor[0];
+    this.state.datos_arrendamiento = info.ingresos.arrendamiento[0];
+    this.state.datos_intereses = info.ingresos.intereses[0];
+    this.state.datos_premios = info.ingresos.premios[0];
+    this.state.datos_enajenacion_bienes = info.ingresos.enajenacion_bienes[0];
+    this.state.datos_otros_ingresos = info.ingresos.otros_ingresos[0];
 
-    this.state.datos_bienes_inmuebles = example.activos.bienes_inmuebles[0];
+    this.state.datos_bienes_inmuebles = info.activos.bienes_inmuebles[0];
     this.state.datos_bienes_muebles_registrables =
-      example.activos.bienes_muebles_registrables[0];
+      info.activos.bienes_muebles_registrables[0];
     this.state.datos_bienes_muebles_no_registrables =
-      example.activos.bienes_muebles_no_registrables[0];
+      info.activos.bienes_muebles_no_registrables[0];
     this.state.datos_inversiones_cuentas_valores =
-      example.activos.inversiones_cuentas_valores[0];
-    this.state.datos_efectivo_metales = example.activos.efectivo_metales[0];
-    this.state.datos_fideicomisos = example.activos.fideicomisos[0];
-    this.state.datos_bienes_intangibles = example.activos.bienes_intangibles[0];
-    this.state.datos_cuentas_por_cobrar = example.activos.cuentas_por_cobrar[0];
+      info.activos.inversiones_cuentas_valores[0];
+    this.state.datos_efectivo_metales = info.activos.efectivo_metales[0];
+    this.state.datos_fideicomisos = info.activos.fideicomisos[0];
+    this.state.datos_bienes_intangibles = info.activos.bienes_intangibles[0];
+    this.state.datos_cuentas_por_cobrar = info.activos.cuentas_por_cobrar[0];
     this.state.datos_uso_especie_propiedad_tercero =
-      example.activos.uso_especie_propiedad_tercero[0];
+      info.activos.uso_especie_propiedad_tercero[0];
 
-    this.state.datos_deudas = example.pasivos.deudas[0];
-    this.state.datos_otras_obligaciones = example.pasivos.otras_obligaciones[0];
+    this.state.datos_deudas = info.pasivos.deudas[0];
+    this.state.datos_otras_obligaciones = info.pasivos.otras_obligaciones[0];
+
+    //clean  form
   }
 
-  // state = data;
+  state = data;
 
   show = () => {
-    console.log(this.state.datos_otras_obligaciones);
+    console.log(this.state.datos_curriculares_grados_academicos);
   };
 
   anyTextChange = (obj, name) => event => {
@@ -431,6 +436,7 @@ class Index extends Component {
     let info = this.state.catTiposRepresentaciones.filter(
       x => x.codigo === codigo
     );
+
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -441,6 +447,14 @@ class Index extends Component {
     let info = this.state.catDependencias.filter(x => x.valor === valor);
     return {
       // codigo: info[0].codigo,
+      valor: info[0].valor
+    };
+  };
+
+  getTipoFideicomiso = codigo => {
+    let info = this.state.catTiposFideicomisos.filter(x => x.codigo === codigo);
+    return {
+      codigo: info[0].codigo,
       valor: info[0].valor
     };
   };
@@ -459,7 +473,7 @@ class Index extends Component {
     let info = this.state.catTiposMonedas.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
-      valor: info[0].moneda
+      moneda: info[0].moneda
     };
   };
 
@@ -849,7 +863,10 @@ class Index extends Component {
       {},
       this.state.datos_curriculares_grados_academicos
     );
-    let info = Object.assign({}, clean.datos_curriculares_grados_academicos);
+    let info = Object.assign(
+      {},
+      clean.informacion_personal.datos_curriculares.grados_academicos[0]
+    );
 
     this.setState(
       {
@@ -867,7 +884,10 @@ class Index extends Component {
 
   addClickExperienciaLaborar = () => {
     let data = Object.assign({}, this.state.datos_experiencia_laboral);
-    let info = Object.assign({}, clean.datos_experiencia_laboral);
+    let info = Object.assign(
+      {},
+      clean.informacion_personal.experiencia_laboral[0]
+    );
 
     this.setState(
       {
@@ -892,7 +912,10 @@ class Index extends Component {
 
   addClickDependientesEconomicos = () => {
     let data = Object.assign({}, this.state.datos_dependientes_economicos);
-    let info = Object.assign({}, clean.datos_dependientes_economicos);
+    let info = Object.assign(
+      {},
+      clean.informacion_personal.dependientes_economicos[0]
+    );
 
     this.setState(
       {
@@ -920,7 +943,10 @@ class Index extends Component {
       {},
       this.state.datos_empresas_sociedades_asociaciones
     );
-    let info = Object.assign({}, clean.datos_empresas_sociedades_asociaciones);
+    let info = Object.assign(
+      {},
+      clean.intereses.empresas_sociedades_asociaciones[0]
+    );
 
     this.setState(
       {
@@ -938,7 +964,7 @@ class Index extends Component {
 
   addClickMembresias = () => {
     let data = Object.assign({}, this.state.datos_membresias);
-    let info = Object.assign({}, clean.datos_membresias);
+    let info = Object.assign({}, clean.intereses.membresias[0]);
 
     this.setState(
       {
@@ -953,7 +979,7 @@ class Index extends Component {
 
   addClickApoyosPublicos = () => {
     let data = Object.assign({}, this.state.datos_apoyos_beneficios_publicos);
-    let info = Object.assign({}, clean.datos_apoyos_beneficios_publicos);
+    let info = Object.assign({}, clean.intereses.apoyos_beneficios_publicos[0]);
 
     this.setState(
       {
@@ -971,7 +997,7 @@ class Index extends Component {
 
   addClickRepresentacionActiva = () => {
     let data = Object.assign({}, this.state.datos_representacion_activa);
-    let info = Object.assign({}, clean.datos_representacion_activa);
+    let info = Object.assign({}, clean.intereses.representacion_activa[0]);
 
     this.setState(
       {
@@ -986,7 +1012,7 @@ class Index extends Component {
 
   addClickRepresentacionPasiva = () => {
     let data = Object.assign({}, this.state.datos_representacion_pasiva);
-    let info = Object.assign({}, clean.datos_representacion_pasiva);
+    let info = Object.assign({}, clean.intereses.representacion_pasiva[0]);
 
     this.setState(
       {
@@ -1001,7 +1027,7 @@ class Index extends Component {
 
   addClickSociosComerciales = () => {
     let data = Object.assign({}, this.state.datos_socios_comerciales);
-    let info = Object.assign({}, clean.datos_socios_comerciales);
+    let info = Object.assign({}, clean.intereses.socios_comerciales[0]);
 
     this.setState(
       {
@@ -1016,7 +1042,7 @@ class Index extends Component {
 
   addClickClientesPrincipales = () => {
     let data = Object.assign({}, this.state.datos_clientes_principales);
-    let info = Object.assign({}, clean.datos_clientes_principales);
+    let info = Object.assign({}, clean.intereses.clientes_principales[0]);
 
     this.setState(
       {
@@ -1031,7 +1057,7 @@ class Index extends Component {
 
   addClickOtrasPartesRelacionadas = () => {
     let data = Object.assign({}, this.state.datos_otras_partes);
-    let info = Object.assign({}, clean.datos_otras_partes);
+    let info = Object.assign({}, clean.intereses.otras_partes[0]);
 
     this.setState(
       {
@@ -1046,7 +1072,7 @@ class Index extends Component {
 
   addClickBeneficiosGratuitos = () => {
     let data = Object.assign({}, this.state.datos_beneficios_gratuitos);
-    let info = Object.assign({}, clean.datos_beneficios_gratuitos);
+    let info = Object.assign({}, clean.intereses.beneficios_gratuitos[0]);
 
     this.setState(
       {
@@ -1061,7 +1087,7 @@ class Index extends Component {
 
   addClickSueldosSalariosPublicos = () => {
     let data = Object.assign({}, this.state.datos_sueldos_salarios_publicos);
-    let info = Object.assign({}, clean.datos_sueldos_salarios_publicos);
+    let info = Object.assign({}, clean.ingresos.sueldos_salarios_publicos[0]);
 
     this.setState(
       {
@@ -1082,7 +1108,10 @@ class Index extends Component {
       {},
       this.state.datos_sueldos_salarios_otros_empleos
     );
-    let info = Object.assign({}, clean.datos_sueldos_salarios_otros_empleos);
+    let info = Object.assign(
+      {},
+      clean.ingresos.sueldos_salarios_otros_empleos[0]
+    );
 
     this.setState(
       {
@@ -1100,7 +1129,7 @@ class Index extends Component {
 
   addClickActividadProfesional = () => {
     let data = Object.assign({}, this.state.datos_actividad_profesional);
-    let info = Object.assign({}, clean.datos_actividad_profesional);
+    let info = Object.assign({}, clean.ingresos.actividad_profesional[0]);
 
     this.setState(
       {
@@ -1115,7 +1144,7 @@ class Index extends Component {
 
   addClickActividadEmpresarial = () => {
     let data = Object.assign({}, this.state.datos_actividad_empresarial);
-    let info = Object.assign({}, clean.datos_actividad_empresarial);
+    let info = Object.assign({}, clean.ingresos.actividad_empresarial[0]);
 
     this.setState(
       {
@@ -1130,7 +1159,7 @@ class Index extends Component {
 
   addClickActividadMenor = () => {
     let data = Object.assign({}, this.state.datos_actividad_economica_menor);
-    let info = Object.assign({}, clean.datos_actividad_economica_menor);
+    let info = Object.assign({}, clean.ingresos.actividad_economica_menor[0]);
 
     this.setState(
       {
@@ -1148,7 +1177,7 @@ class Index extends Component {
 
   addClickArrendamiento = () => {
     let data = Object.assign({}, this.state.datos_arrendamiento);
-    let info = Object.assign({}, clean.datos_arrendamiento);
+    let info = Object.assign({}, clean.ingresos.arrendamiento[0]);
 
     this.setState(
       {
@@ -1163,7 +1192,7 @@ class Index extends Component {
 
   addClickIntereses = () => {
     let data = Object.assign({}, this.state.datos_intereses);
-    let info = Object.assign({}, clean.datos_intereses);
+    let info = Object.assign({}, clean.ingresos.intereses[0]);
 
     this.setState(
       {
@@ -1178,7 +1207,7 @@ class Index extends Component {
 
   addClickPremios = () => {
     let data = Object.assign({}, this.state.datos_premios);
-    let info = Object.assign({}, clean.datos_premios);
+    let info = Object.assign({}, clean.ingresos.premios[0]);
 
     this.setState(
       {
@@ -1193,7 +1222,7 @@ class Index extends Component {
 
   addClickEnajenacionBienes = () => {
     let data = Object.assign({}, this.state.datos_enajenacion_bienes);
-    let info = Object.assign({}, clean.datos_enajenacion_bienes);
+    let info = Object.assign({}, clean.ingresos.enajenacion_bienes[0]);
 
     this.setState(
       {
@@ -1208,7 +1237,7 @@ class Index extends Component {
 
   addClickOtrosIngresos = () => {
     let data = Object.assign({}, this.state.datos_otros_ingresos);
-    let info = Object.assign({}, clean.datos_otros_ingresos);
+    let info = Object.assign({}, clean.ingresos.otros_ingresos[0]);
 
     this.setState(
       {
@@ -1223,7 +1252,7 @@ class Index extends Component {
 
   addClickBienesInmuebles = () => {
     let data = Object.assign({}, this.state.datos_bienes_inmuebles);
-    let info = Object.assign({}, clean.datos_bienes_inmuebles);
+    let info = Object.assign({}, clean.activos.bienes_inmuebles[0]);
 
     this.setState(
       {
@@ -1238,7 +1267,7 @@ class Index extends Component {
 
   addClickBienesMueblesRegistrables = () => {
     let data = Object.assign({}, this.state.datos_bienes_muebles_registrables);
-    let info = Object.assign({}, clean.datos_bienes_muebles_registrables);
+    let info = Object.assign({}, clean.activos.bienes_muebles_registrables[0]);
 
     this.setState(
       {
@@ -1259,7 +1288,10 @@ class Index extends Component {
       {},
       this.state.datos_bienes_muebles_no_registrables
     );
-    let info = Object.assign({}, clean.datos_bienes_muebles_no_registrables);
+    let info = Object.assign(
+      {},
+      clean.activos.bienes_muebles_no_registrables[0]
+    );
 
     this.setState(
       {
@@ -1277,7 +1309,7 @@ class Index extends Component {
 
   addClickInversiones = () => {
     let data = Object.assign({}, this.state.datos_inversiones_cuentas_valores);
-    let info = Object.assign({}, clean.datos_inversiones_cuentas_valores);
+    let info = Object.assign({}, clean.activos.inversiones_cuentas_valores[0]);
 
     this.setState(
       {
@@ -1295,7 +1327,7 @@ class Index extends Component {
 
   addClickEfectivoMetales = () => {
     let data = Object.assign({}, this.state.datos_efectivo_metales);
-    let info = Object.assign({}, clean.datos_efectivo_metales);
+    let info = Object.assign({}, clean.activos.efectivo_metales[0]);
 
     this.setState(
       {
@@ -1310,7 +1342,7 @@ class Index extends Component {
 
   addClickFideicomisos = () => {
     let data = Object.assign({}, this.state.datos_fideicomisos);
-    let info = Object.assign({}, clean.datos_fideicomisos);
+    let info = Object.assign({}, clean.activos.fideicomisos[0]);
 
     this.setState(
       {
@@ -1325,7 +1357,7 @@ class Index extends Component {
 
   addClickBienesIntangibles = () => {
     let data = Object.assign({}, this.state.datos_bienes_intangibles);
-    let info = Object.assign({}, clean.datos_bienes_intangibles);
+    let info = Object.assign({}, clean.activos.bienes_intangibles[0]);
 
     this.setState(
       {
@@ -1340,7 +1372,7 @@ class Index extends Component {
 
   addClickCuentasCobrar = () => {
     let data = Object.assign({}, this.state.datos_cuentas_por_cobrar);
-    let info = Object.assign({}, clean.datos_cuentas_por_cobrar);
+    let info = Object.assign({}, clean.activos.cuentas_por_cobrar[0]);
 
     this.setState(
       {
@@ -1358,7 +1390,10 @@ class Index extends Component {
       {},
       this.state.datos_uso_especie_propiedad_tercero
     );
-    let info = Object.assign({}, clean.datos_uso_especie_propiedad_tercero);
+    let info = Object.assign(
+      {},
+      clean.activos.uso_especie_propiedad_tercero[0]
+    );
 
     this.setState(
       {
@@ -1376,7 +1411,7 @@ class Index extends Component {
 
   addClickDeudas = () => {
     let data = Object.assign({}, this.state.datos_deudas);
-    let info = Object.assign({}, clean.datos_deudas);
+    let info = Object.assign({}, clean.pasivos.deudas[0]);
 
     this.setState(
       {
@@ -1391,7 +1426,7 @@ class Index extends Component {
 
   addClickOtrasObligaciones = () => {
     let data = Object.assign({}, this.state.datos_otras_obligaciones);
-    let info = Object.assign({}, clean.datos_otras_obligaciones);
+    let info = Object.assign({}, clean.pasivos.otras_obligaciones[0]);
 
     this.setState(
       {
@@ -1537,8 +1572,8 @@ class Index extends Component {
           valor
         );
         break;
-      case "lugar_institucion_educativa.entidad":
-        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad = this.getEntidadFederativa(
+      case "lugar_institucion_educativa.entidad_federativa":
+        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad_federativa = this.getEntidadFederativa(
           valor
         );
         break;
@@ -1939,9 +1974,14 @@ class Index extends Component {
           .datos_dependientes_economicos
           .tiene_intereses_mismo_sector_declarante;
         break;
-      case "desarrolla_cabildeo_sector_declarante":
-        data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante = !data
-          .datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante;
+      case "desarrolla_cabildeo_sector_declarante.respuesta":
+        data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante.respuesta = !data
+          .datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante
+          .respueta;
+        break;
+
+      case "desarrolla_cabildeo_sector_declarante.observaciones":
+        data.datos_dependientes_economicos.desarrolla_cabildeo_sector_declarante.observaciones = valor;
         break;
       case "observaciones":
         data.datos_dependientes_economicos.observaciones = valor;
@@ -2241,8 +2281,10 @@ class Index extends Component {
         );
         break;
       case "tipo_representacion":
-        // data.datos_representacion_activa.tipo_representacion = this.getTipoRepresentacion(valor);
-        data.datos_representacion_activa.tipo_representacion = valor;
+        data.datos_representacion_activa.tipo_representacion = this.getTipoRepresentacion(
+          valor
+        );
+        // data.datos_representacion_activa.tipo_representacion = valor;
         break;
 
       default:
@@ -2488,7 +2530,7 @@ class Index extends Component {
           .tiene_interes;
         break;
       case "tipo_relacion":
-        data.datos_otras_partes.tipo_relacion = valor;
+        data.datos_otras_partes.tipo_relacion = this.getTipoRelacion(valor);
         break;
 
       default:
@@ -3972,49 +4014,90 @@ class Index extends Component {
 
     switch (field) {
       case "id":
-        data.fideicomisos.id = valor;
+        data.datos_fideicomisos.id = valor;
         break;
       case "tipo_operacion":
-        data.fideicomisos.tipo_operacion = this.getTipoOperacion(valor);
+        data.datos_fideicomisos.tipo_operacion = this.getTipoOperacion(valor);
         break;
       case "identificador_fideicomiso":
-        data.fideicomisos.identificador_fideicomiso = valor;
+        data.datos_fideicomisos.identificador_fideicomiso = valor;
         break;
       case "tipo_fideicomiso":
-        data.fideicomisos.tipo_fideicomiso = valor;
+        data.datos_fideicomisos.tipo_fideicomiso = this.getTipoFideicomiso(
+          valor
+        );
         break;
       case "objetivo":
-        data.fideicomisos.objetivo = valor;
+        data.datos_fideicomisos.objetivo = valor;
         break;
       case "numero_registro":
-        data.fideicomisos.numero_registro = valor;
+        data.datos_fideicomisos.numero_registro = valor;
         break;
       case "fecha_creacion":
-        data.fideicomisos.fecha_creacion = valor;
+        data.datos_fideicomisos.fecha_creacion = valor;
         break;
       case "vigencia":
-        data.fideicomisos.vigencia = valor;
+        data.datos_fideicomisos.vigencia = valor;
         break;
       case "residencia":
-        data.fideicomisos.residencia = valor;
+        data.datos_fideicomisos.residencia = this.getCiudad(valor);
         break;
       case "valor":
-        data.fideicomisos.valor = valor;
+        data.datos_fideicomisos.valor = valor;
         break;
       case "moneda":
-        data.fideicomisos.moneda = valor;
+        data.datos_fideicomisos.moneda = this.getMoneda(valor);
         break;
       case "porcentaje_propiedad_derechos_fiduciarios":
-        data.fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;
+        data.datos_fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;
         break;
       case "ingreso_monetario_obtenido":
-        data.fideicomisos.ingreso_monetario_obtenido = valor;
+        data.datos_fideicomisos.ingreso_monetario_obtenido = valor;
         break;
       case "institucion_fiduciaria":
-        data.fideicomisos.institucion_fiduciaria = valor;
+        data.datos_fideicomisos.institucion_fiduciaria = valor;
         break;
       case "observaciones":
-        data.fideicomisos.observaciones = valor;
+        data.datos_fideicomisos.observaciones = valor;
+        break;
+
+      case "fideicomitente.nombre":
+        data.datos_fideicomisos.fideicomitente.nombre = valor;
+        break;
+      case "fideicomitente.rfc":
+        data.datos_fideicomisos.fideicomitente.rfc = valor;
+        break;
+      case "fideicomitente.curp":
+        data.datos_fideicomisos.fideicomitente.curp = valor;
+        break;
+      case "fideicomitente.fecha_constitucion":
+        data.datos_fideicomisos.fideicomitente.fecha_constitucion = valor;
+        break;
+
+      case "fideicomisario.nombre":
+        data.datos_fideicomisos.fideicomisario.nombre = valor;
+        break;
+      case "fideicomisario.rfc":
+        data.datos_fideicomisos.fideicomisario.rfc = valor;
+        break;
+      case "fideicomisario.curp":
+        data.datos_fideicomisos.fideicomisario.curp = valor;
+        break;
+      case "fideicomisario.fecha_constitucion":
+        data.datos_fideicomisos.fideicomisario.fecha_constitucion = valor;
+        break;
+
+      case "fiduciario.nombre":
+        data.datos_fideicomisos.fiduciario.nombre = valor;
+        break;
+      case "fiduciario.rfc":
+        data.datos_fideicomisos.fiduciario.rfc = valor;
+        break;
+      case "fiduciario.curp":
+        data.datos_fideicomisos.fiduciario.curp = valor;
+        break;
+      case "fiduciario.fecha_constitucion":
+        data.datos_fideicomisos.fiduciario.fecha_constitucion = valor;
         break;
 
       default:
@@ -4024,6 +4107,170 @@ class Index extends Component {
     this.setState(data);
   };
 
+  setDataDireccionFideicomitente = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      /////////////////////////////  domicilio  /////////////////////////////////////
+      case "pais":
+        data.datos_fideicomisos.fideicomitente.domicilio.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "entidad_federativa":
+        data.datos_fideicomisos.fideicomitente.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_fideicomisos.fideicomitente.domicilio.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_fideicomisos.fideicomitente.domicilio
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_fideicomisos.fideicomitente.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_fideicomisos.fideicomitente.domicilio.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_fideicomisos.fideicomitente.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_fideicomisos.fideicomitente.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_fideicomisos.fideicomitente.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_fideicomisos.fideicomitente.domicilio.numInt = valor;
+        break;
+
+      default:
+        console.log(field);
+    }
+
+    this.setState(data);
+  };
+
+  setDataDireccionFideicomisario = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      /////////////////////////////  domicilio  /////////////////////////////////////
+      case "pais":
+        data.datos_fideicomisos.fideicomisario.domicilio.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "entidad_federativa":
+        data.datos_fideicomisos.fideicomisario.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_fideicomisos.fideicomisario.domicilio.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_fideicomisos.fideicomisario.domicilio
+            .entidad_federativa.cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_fideicomisos.fideicomisario.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_fideicomisos.fideicomisario.domicilio.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_fideicomisos.fideicomisario.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_fideicomisos.fideicomisario.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_fideicomisos.fideicomisario.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_fideicomisos.fideicomisario.domicilio.numInt = valor;
+        break;
+
+      default:
+        console.log(field);
+    }
+
+    this.setState(data);
+  };
+
+  setDataDireccionFiduciario = field => event => {
+    let valor = event.target.value;
+    let data = this.state;
+
+    switch (field) {
+      /////////////////////////////  domicilio  /////////////////////////////////////
+      case "pais":
+        data.datos_fideicomisos.fiduciario.domicilio.pais = this.getCiudad(
+          valor
+        );
+        break;
+      case "entidad_federativa":
+        data.datos_fideicomisos.fiduciario.domicilio.entidad_federativa = this.getEntidadFederativa(
+          valor
+        );
+        break;
+      case "municipio":
+        data.datos_fideicomisos.fiduciario.domicilio.municipio = this.getMunicipios(
+          valor
+        );
+
+        this.updateLocalidades(
+          this.state.datos_fideicomisos.fiduciario.domicilio.entidad_federativa
+            .cve_ent,
+          valor
+        );
+        break;
+      case "cp":
+        data.datos_fideicomisos.fiduciario.domicilio.cp = valor;
+        break;
+      case "localidad":
+        data.datos_fideicomisos.fiduciario.domicilio.localidad = this.getLocalidad(
+          valor
+        );
+        break;
+      case "vialidad.tipo_vial":
+        data.datos_fideicomisos.fiduciario.domicilio.vialidad.tipo_vial = valor;
+        break;
+      case "vialidad.nom_vial":
+        data.datos_fideicomisos.fiduciario.domicilio.vialidad.nom_vial = valor;
+        break;
+      case "numExt":
+        data.datos_fideicomisos.fiduciario.domicilio.numExt = valor;
+        break;
+      case "numInt":
+        data.datos_fideicomisos.fiduciario.domicilio.numInt = valor;
+        break;
+
+      default:
+        console.log(field);
+    }
+
+    this.setState(data);
+  };
   setDataBienesIntangibles = field => event => {
     let valor = event.target.value;
     let data = this.state;
@@ -4299,7 +4546,7 @@ class Index extends Component {
         data.datos_deudas.fecha_adeudo = valor;
         break;
       case "garantia":
-        data.datos_deudas.garantia = valor;
+        data.datos_deudas.garantia = !data.datos_deudas.garantia;
         break;
       case "id":
         data.datos_deudas.id = valor;
@@ -4418,7 +4665,8 @@ class Index extends Component {
         data.datos_otras_obligaciones.fecha_obligacion = valor;
         break;
       case "garantia":
-        data.datos_otras_obligaciones.garantia = valor;
+        data.datos_otras_obligaciones.garantia = !data.datos_otras_obligaciones
+          .garantia;
         break;
       case "id":
         data.datos_otras_obligaciones.id = valor;
@@ -4784,16 +5032,24 @@ class Index extends Component {
               </Button>
             )}
           </Grid>
-          <Grid item xs={2} style={{ textAlign: "right", padding: "20px" }}>
-            <br />
+          {false && (
+            <div>
+              <Grid item xs={2} style={{ textAlign: "right", padding: "20px" }}>
+                <br />
 
-            <Button variant="contained" size="small" onClick={this.show}>
-              SHOW
-            </Button>
-          </Grid>
-          <Grid item xs={12} style={{ textAlign: "center", padding: "20px" }}>
-            {this.state.show}
-          </Grid>
+                <Button variant="contained" size="small" onClick={this.show}>
+                  SHOW
+                </Button>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                style={{ textAlign: "center", padding: "20px" }}
+              >
+                {this.state.show}
+              </Grid>
+            </div>
+          )}
           {this.state.show === 1 && (
             <Grid item xs={12}>
               <InformacionGeneral
@@ -5057,6 +5313,13 @@ class Index extends Component {
               handleChange={this.setDataFideicomisos}
               addClick={this.addClickFideicomisos}
               removeClick={this.removeClickFideicomisos}
+              setDataDireccionFideicomitente={
+                this.setDataDireccionFideicomitente
+              }
+              setDataDireccionFideicomisario={
+                this.setDataDireccionFideicomisario
+              }
+              setDataDireccionFiduciario={this.setDataDireccionFiduciario}
             />
           )}
 
