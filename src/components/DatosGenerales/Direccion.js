@@ -41,7 +41,7 @@ function FullWidthGrid(props) {
     <Grid container className={classes.root} spacing={0}>
       <Grid item xs={3}>
         <FormControl className={classes.select}>
-          <InputLabel htmlFor="pais">País</InputLabel>
+          <InputLabel htmlFor="pais">País de Residencia</InputLabel>
           <Select value={data.pais.codigo} onChange={handleChange("pais")}>
             {ciudades.map(ciudad => (
               <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
@@ -123,7 +123,7 @@ function FullWidthGrid(props) {
       {data.pais.codigo === "MX" && (
         <Grid item xs={3}>
           <FormControl className={classes.select}>
-            <InputLabel htmlFor="vialidad">Tipo de vía</InputLabel>
+            <InputLabel htmlFor="vialidad">Tipo de vialidad</InputLabel>
             <Select
               value={data.vialidad.tipo_vial}
               onChange={handleChange("vialidad.tipo_vial")}
@@ -145,7 +145,7 @@ function FullWidthGrid(props) {
         <Grid item xs={3}>
           <TextField
             id="standard-name"
-            label="Nombre de la vía"
+            label="Nombre de la vialidad"
             className={classes.textField}
             value={data.vialidad.nom_vial}
             onChange={handleChange("vialidad.nom_vial")}
