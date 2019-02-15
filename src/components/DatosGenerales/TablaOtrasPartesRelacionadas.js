@@ -61,7 +61,7 @@ function CustomizedTable(props) {
           {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
-                <CustomTableCell>{index}-{item.tipo_relacion}</CustomTableCell>
+                <CustomTableCell>{index}-{item.tipo_relacion.valor}</CustomTableCell>
                 <CustomTableCell>{item.nombre_denominacion_parte}</CustomTableCell>
                 <CustomTableCell>{item.fecha_inicio_relacion}</CustomTableCell>
                 <CustomTableCell>{item.nacionalidades[0].valor}</CustomTableCell>

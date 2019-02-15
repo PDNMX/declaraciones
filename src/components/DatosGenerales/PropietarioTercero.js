@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaPropietarioTercero";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -71,7 +72,8 @@ function SimpleCard(props) {
               id="grado"
               label="Tipo de bien o servicio"
               className={classes.textField}
-              value={data.datos_uso_especie_propiedad_tercero.tipo_bien.codigo}
+              value={data.datos_uso_especie_propiedad_tercero.tipo_bien}
+              onChange={handleChange("tipo_bien")}
               margin="normal"
             />
           </Grid>
@@ -80,16 +82,49 @@ function SimpleCard(props) {
               id="grado"
               label="Valor de mercado aproximado"
               className={classes.textField}
-              value={data.datos_uso_especie_propiedad_tercero.valor_mercado.valor}
+              value={
+                data.datos_uso_especie_propiedad_tercero.valor_mercado.valor
+              }
+              onChange={handleChange("valor_mercado")}
               margin="normal"
             />
           </Grid>
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="moneda">Moneda</InputLabel>
+              <Select
+                value={
+                  data.datos_uso_especie_propiedad_tercero.valor_mercado.moneda
+                    .codigo
+                }
+                onChange={handleChange("valor_mercado.moneda")}
+                inputProps={{
+                  name: "moneda",
+                  id: "moneda"
+                }}
+              >
+                {data.catTiposMonedas.map(tipoMoneda => (
+                  <MenuItem
+                    key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
+                    value={tipoMoneda.codigo}
+                  >
+                    {tipoMoneda.moneda}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Nombre, denominación o razón social"
               className={classes.textField}
-              value={data.datos_uso_especie_propiedad_tercero.nombre_tercero_propietario}
+              value={
+                data.datos_uso_especie_propiedad_tercero
+                  .nombre_tercero_propietario
+              }
+              onChange={handleChange("nombre_tercero_propietario")}
               margin="normal"
             />
           </Grid>
@@ -98,7 +133,10 @@ function SimpleCard(props) {
               id="grado"
               label="RFC del tercero propietario"
               className={classes.textField}
-              value={data.datos_uso_especie_propiedad_tercero.rfc_tercero_propietario}
+              value={
+                data.datos_uso_especie_propiedad_tercero.rfc_tercero_propietario
+              }
+              onChange={handleChange("rfc_tercero_propietario")}
               margin="normal"
             />
           </Grid>
@@ -107,7 +145,11 @@ function SimpleCard(props) {
               id="grado"
               label="CURP del tercero propietario"
               className={classes.textField}
-              value={data.datos_uso_especie_propiedad_tercero.curp_tercero_propietario}
+              value={
+                data.datos_uso_especie_propiedad_tercero
+                  .curp_tercero_propietario
+              }
+              onChange={handleChange("curp_tercero_propietario")}
               margin="normal"
             />
           </Grid>
@@ -116,8 +158,11 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="relacion">Relación</InputLabel>
               <Select
-                value={data.datos_uso_especie_propiedad_tercero.relacion_persona.codigo}
-                onChange={handleChange("relacion")}
+                value={
+                  data.datos_uso_especie_propiedad_tercero.relacion_persona
+                    .codigo
+                }
+                onChange={handleChange("relacion_persona")}
                 inputProps={{
                   name: "relacion",
                   id: "relacion"
@@ -139,8 +184,11 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
-                value={data.datos_uso_especie_propiedad_tercero.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                value={
+                  data.datos_uso_especie_propiedad_tercero.sector_industria
+                    .codigo
+                }
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -161,6 +209,7 @@ function SimpleCard(props) {
               label="Fecha de inicio"
               className={classes.textField}
               value={data.datos_uso_especie_propiedad_tercero.fecha_inicio}
+              onChange={handleChange("fecha_inicio")}
               margin="normal"
             />
           </Grid>
@@ -171,8 +220,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_uso_especie_propiedad_tercero.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_uso_especie_propiedad_tercero.domicilio_persona}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

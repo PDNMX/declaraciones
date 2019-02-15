@@ -60,7 +60,7 @@ function CustomizedTable(props) {
             return (
               <TableRow className={classes.row} key={index}>
                 <CustomTableCell>{index}-{item.nombre_negocio}</CustomTableCell>
-                <CustomTableCell>{item.numero_Registro}</CustomTableCell>
+                <CustomTableCell>{item.numero_registro}</CustomTableCell>
                 <CustomTableCell>{item.dueno_encargado}</CustomTableCell>
                 <CustomTableCell>{item.nombre}</CustomTableCell>
                 <CustomTableCell>{item.rfc}</CustomTableCell>

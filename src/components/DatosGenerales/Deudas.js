@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaDeudas";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -25,7 +26,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import ListItemText from "@material-ui/core/ListItemText";
 /*Multiselect*/
 
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 // data picker
 // import moment from "moment";
@@ -137,6 +139,7 @@ function SimpleCard(props) {
               label="Número de cuenta, contrato o identificador de la deuda"
               className={classes.textField}
               value={data.datos_deudas.identificador_deuda}
+              onChange={handleChange("identificador_deuda")}
               margin="normal"
             />
           </Grid>
@@ -147,13 +150,13 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.datos_deudas.nacional_extranjero.codigo}
-                onChange={handleChange("estado_civil")}
+                onChange={handleChange("nacional_extranjero")}
                 inputProps={{
                   name: "estado_civil",
                   id: "estado_civil"
                 }}
               >
-                {data.estadosciviles.map(estadocivil => (
+                {data.ciudades.map(estadocivil => (
                   <MenuItem key={estadocivil.codigo} value={estadocivil.codigo}>
                     {estadocivil.valor}
                   </MenuItem>
@@ -167,6 +170,7 @@ function SimpleCard(props) {
               label="Nombre, denominación o razón social del acreedor"
               className={classes.textField}
               value={data.datos_deudas.nombre_acreedor}
+              onChange={handleChange("nombre_acreedor")}
               margin="normal"
             />
           </Grid>
@@ -176,6 +180,7 @@ function SimpleCard(props) {
               label="RFC del acreedor"
               className={classes.textField}
               value={data.datos_deudas.rfc_acreedor}
+              onChange={handleChange("rfc_acreedor")}
               margin="normal"
             />
           </Grid>
@@ -184,7 +189,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_deudas.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -204,6 +209,7 @@ function SimpleCard(props) {
               label="Fecha en la que se generó el adeudo"
               className={classes.textField}
               value={data.datos_deudas.fecha_adeudo}
+              onChange={handleChange("fecha_adeudo")}
               margin="normal"
             />
           </Grid>
@@ -213,23 +219,27 @@ function SimpleCard(props) {
               label="Monto original del adeudo"
               className={classes.textField}
               value={data.datos_deudas.monto_original}
+              onChange={handleChange("monto_original")}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_moneda">Tipo de moneda</InputLabel>
+              <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
                 value={data.datos_deudas.tipo_moneda.codigo}
                 onChange={handleChange("tipo_moneda")}
                 inputProps={{
-                  name: "tipo_moneda",
-                  id: "tipo_moneda"
+                  name: "moneda",
+                  id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem
+                    key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
+                    value={tipoMoneda.codigo}
+                  >
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
@@ -241,6 +251,7 @@ function SimpleCard(props) {
               label="Tasa de interés"
               className={classes.textField}
               value={data.datos_deudas.tasa_interes}
+              onChange={handleChange("tasa_interes")}
               margin="normal"
             />
           </Grid>
@@ -250,6 +261,7 @@ function SimpleCard(props) {
               label="Saldo pendiente"
               className={classes.textField}
               value={data.datos_deudas.saldo_pendiente}
+              onChange={handleChange("saldo_pendiente")}
               margin="normal"
             />
           </Grid>
@@ -259,6 +271,7 @@ function SimpleCard(props) {
               label="Montos abonados a favor de la deuda"
               className={classes.textField}
               value={data.datos_deudas.montos_abonados}
+              onChange={handleChange("montos_abonados")}
               margin="normal"
             />
           </Grid>
@@ -268,6 +281,7 @@ function SimpleCard(props) {
               label="Plazo del adeudo"
               className={classes.textField}
               value={data.datos_deudas.plazo_adeudo}
+              onChange={handleChange("plazo_adeudo")}
               margin="normal"
             />
           </Grid>
@@ -278,7 +292,7 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.datos_deudas.unidad_medida_adeudo.codigo}
-                onChange={handleChange("unidad_medida_plazo")}
+                onChange={handleChange("unidad_medida_adeudo")}
                 inputProps={{
                   name: "unidad_medida_plazo",
                   id: "unidad_medida_plazo"
@@ -297,7 +311,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="titular">Titular</InputLabel>
               <Select
                 value={data.datos_deudas.titularidad_deuda.codigo}
-                onChange={handleChange("titular")}
+                onChange={handleChange("titularidad_deuda")}
                 inputProps={{
                   name: "titular",
                   id: "titular"
@@ -317,16 +331,22 @@ function SimpleCard(props) {
               label="Porcentaje del adeudo del titular"
               className={classes.textField}
               value={data.datos_deudas.porcentaje_adeudo_titular}
+              onChange={handleChange("porcentaje_adeudo_titular")}
               margin="normal"
             />
           </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
+          <Grid item xs={4}>
+            <br />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={data.datos_deudas.garantia}
+                  value="true"
+                  onChange={handleChange("garantia")}
+                  color="primary"
+                />
+              }
               label="¿Se otorgó garantía?"
-              className={classes.textField}
-              value={data.datos_deudas.garantia}
-              margin="normal"
             />
           </Grid>
           <Grid item xs={3}>
@@ -335,6 +355,7 @@ function SimpleCard(props) {
               label="Nombre, denominación o razón social del garante"
               className={classes.textField}
               value={data.datos_deudas.nombre_garante}
+              onChange={handleChange("nombre_garante")}
               margin="normal"
             />
           </Grid>
@@ -345,8 +366,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_deudas.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_deudas.domicilio_acreedor}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

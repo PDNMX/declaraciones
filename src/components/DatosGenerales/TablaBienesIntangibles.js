@@ -68,7 +68,7 @@ function CustomizedTable(props) {
                 <CustomTableCell>{index}-{item.tipo_operacion.valor}</CustomTableCell>
                 <CustomTableCell>{item.propietario_registrado}</CustomTableCell>
                 <CustomTableCell>{item.descripcion}</CustomTableCell>
-                <CustomTableCell>{item.ente_publico_encargado.nombres}</CustomTableCell>
+                <CustomTableCell>{item.ente_publico_encargado}</CustomTableCell>
                 <CustomTableCell>{item.numero_registro}</CustomTableCell>
                 <CustomTableCell>{item.fecha_registro}</CustomTableCell>
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>

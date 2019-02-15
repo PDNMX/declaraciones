@@ -46,7 +46,7 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const { classes, data, handleChange, nivelGobierno, poderEjecutivo } = props;
+  const { classes, data, handleChange } = props;
 
   return (
     <Card className={classes.card}>
@@ -61,7 +61,7 @@ function SimpleCard(props) {
               label="Ente Publico"
               className={classes.textField}
               value={data.datos_encargo_actual.ente_publico}
-              onChange={handleChange("datos_encargo_actual.ente_publico")}
+              onChange={handleChange("ente_publico")}
               margin="normal"
             />
           </Grid>
@@ -71,24 +71,24 @@ function SimpleCard(props) {
               label="Nombre del Empleo"
               className={classes.textField}
               value={data.datos_encargo_actual.empleo_cargo_comision}
-              onChange={handleChange(
-                "datos_encargo_actual.empleo_cargo_comision"
-              )}
+              onChange={handleChange("empleo_cargo_comision")}
               margin="normal"
             />
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Nivel de Gobierno</InputLabel>
+              <InputLabel htmlFor="nivel_gobierno">
+                Nivel de Gobierno
+              </InputLabel>
               <Select
                 value={data.datos_encargo_actual.nivel_gobierno.codigo}
-                onChange={handleChange("datos_encargo_actual.nivel_gobierno")}
+                onChange={handleChange("nivel_gobierno")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "nivel_gobierno",
+                  id: "nivel_gobierno"
                 }}
               >
-                {nivelGobierno.map(dato => (
+                {data.nivelGobierno.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>
@@ -99,16 +99,16 @@ function SimpleCard(props) {
           </Grid>
           <Grid item xs={2}>
             <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Poder Juridico</InputLabel>
+              <InputLabel htmlFor="poder_juridico">Poder Juridico</InputLabel>
               <Select
                 value={data.datos_encargo_actual.poder_juridico.codigo}
-                onChange={handleChange("datos_encargo_actual.poder_juridico")}
+                onChange={handleChange("poder_juridico")}
                 inputProps={{
-                  name: "estado_civil",
-                  id: "estado_civil"
+                  name: "poder_juridico",
+                  id: "poder_juridico"
                 }}
               >
-                {poderEjecutivo.map(dato => (
+                {data.poderEjecutivo.map(dato => (
                   <MenuItem key={dato.codigo} value={dato.codigo}>
                     {dato.valor}
                   </MenuItem>
@@ -122,9 +122,7 @@ function SimpleCard(props) {
               control={
                 <Checkbox
                   checked={data.datos_encargo_actual.contratado_honorarios}
-                  onChange={handleChange(
-                    "datos_encargo_actual.contratado_honorarios"
-                  )}
+                  onChange={handleChange("contratado_honorarios")}
                   color="primary"
                 />
               }
@@ -137,7 +135,7 @@ function SimpleCard(props) {
               label="Nivel de encargo"
               className={classes.textField}
               value={data.datos_encargo_actual.nivel_encargo}
-              onChange={handleChange("datos_encargo_actual.nivel_encargo")}
+              onChange={handleChange("nivel_encargo")}
               margin="normal"
             />
           </Grid>
@@ -147,7 +145,7 @@ function SimpleCard(props) {
               label="Área de adscripción"
               className={classes.textField}
               value={data.datos_encargo_actual.area_adscripcion}
-              onChange={handleChange("datos_encargo_actual.area_adscripcion")}
+              onChange={handleChange("area_adscripcion")}
               margin="normal"
             />
           </Grid>
@@ -157,7 +155,7 @@ function SimpleCard(props) {
               label="Fecha de posesión"
               className={classes.textField}
               value={data.datos_encargo_actual.fecha_posesion}
-              onChange={handleChange("datos_encargo_actual.fecha_posesion")}
+              onChange={handleChange("fecha_posesion")}
               margin="normal"
             />
           </Grid>
@@ -167,9 +165,7 @@ function SimpleCard(props) {
               label="Telefono laboral"
               className={classes.textField}
               value={data.datos_encargo_actual.telefono_laboral.numero}
-              onChange={handleChange(
-                "datos_encargo_actual.telefono_laboral.numero"
-              )}
+              onChange={handleChange("telefono_laboral.numero")}
               margin="normal"
             />
           </Grid>
@@ -179,9 +175,7 @@ function SimpleCard(props) {
               label="Extensión"
               className={classes.textField}
               value={data.datos_encargo_actual.telefono_laboral.extension}
-              onChange={handleChange(
-                "datos_encargo_actual.telefono_laboral.extension"
-              )}
+              onChange={handleChange("telefono_laboral.extension")}
               margin="normal"
             />
           </Grid>
@@ -190,7 +184,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_encargo_actual.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -212,9 +206,7 @@ function SimpleCard(props) {
                   checked={
                     data.datos_encargo_actual.funciones_principales[0].codigo
                   }
-                  onChange={handleChange(
-                    "datos_encargo_actual.funciones_principales.codigo"
-                  )}
+                  onChange={handleChange("funciones_principales.codigo")}
                   value="datos_encargo_actual.funciones_principales.codigo"
                   color="primary"
                 />

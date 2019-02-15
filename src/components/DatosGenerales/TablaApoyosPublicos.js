@@ -61,7 +61,7 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.programa}</CustomTableCell>
                 <CustomTableCell>{item.institucion_otorgante}</CustomTableCell>
                 <CustomTableCell>{item.nivel_orden_gobierno.valor}</CustomTableCell>
-                <CustomTableCell>{item.tipo_apoyo}</CustomTableCell>
+                <CustomTableCell>{item.tipo_apoyo.valor}</CustomTableCell>
                 <CustomTableCell>{item.valor_anual_apoyo}</CustomTableCell>
                 <CustomTableCell>{item.observaciones}</CustomTableCell>
                   <CustomTableCell>

@@ -44,7 +44,6 @@ function CustomizedTable(props) {
         <TableHead>
           <TableRow>
             <CustomTableCell>Tipo de representación activa</CustomTableCell>
-            <CustomTableCell>Nacionalidades</CustomTableCell>
             <CustomTableCell>Nombre completo</CustomTableCell>
             <CustomTableCell>CURP</CustomTableCell>
             <CustomTableCell>RFC</CustomTableCell>
@@ -61,7 +60,6 @@ function CustomizedTable(props) {
             return (
               <TableRow className={classes.row} key={index}>
               <CustomTableCell>{index}-{item.tipo_representacion.valor}</CustomTableCell>
-                <CustomTableCell>{item.nacionalidades[0].valor}</CustomTableCell>
                 <CustomTableCell>{item.nombre_parte_representada}</CustomTableCell>
                 <CustomTableCell>{item.curp_parte}</CustomTableCell>
                 <CustomTableCell>{item.rfc_parte}</CustomTableCell>

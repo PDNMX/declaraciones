@@ -73,6 +73,7 @@ function SimpleCard(props) {
                 <Checkbox
                   checked={data.datos_apoyos_beneficios_publicos.es_beneficiario}
                   value="Habita el domicilio del declarante"
+                  onChange={handleChange("es_beneficiario")}
                   color="primary"
                 />
               }
@@ -85,6 +86,7 @@ function SimpleCard(props) {
               label="Nombre del programa"
               className={classes.textField}
               value={data.datos_apoyos_beneficios_publicos.programa}
+              onChange={handleChange("programa")}
               margin="normal"
             />
           </Grid>
@@ -94,6 +96,7 @@ function SimpleCard(props) {
               label="Institución que otorga el apoyo"
               className={classes.textField}
               value={data.datos_apoyos_beneficios_publicos.institucion_otorgante}
+              onChange={handleChange("institucion_otorgante")}
               margin="normal"
             />
           </Grid>
@@ -105,7 +108,7 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.datos_apoyos_beneficios_publicos.nivel_orden_gobierno.codigo}
-                onChange={handleChange("nivel_gobierno")}
+                onChange={handleChange("nivel_orden_gobierno")}
                 inputProps={{
                   name: "nivel_gobierno",
                   id: "nivel_gobierno"
@@ -147,6 +150,7 @@ function SimpleCard(props) {
               label="Valor anual del apoyo"
               className={classes.textField}
               value={data.datos_apoyos_beneficios_publicos.valor_anual_apoyo}
+              onChange={handleChange("valor_anual_apoyo")}
               margin="normal"
             />
           </Grid>
@@ -157,6 +161,7 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_apoyos_beneficios_publicos.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />

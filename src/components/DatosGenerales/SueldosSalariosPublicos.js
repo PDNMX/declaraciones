@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import Tabla from "./TablaSalariosEmpleos";
+import Tabla from "./TablaSalariosPublicos";
 
 import Grid from "@material-ui/core/Grid/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -63,94 +63,51 @@ function SimpleCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Sueldos y salarios por otros empleos
+          Sueldos y salarios públicos
         </Typography>
         <Grid container spacing={24}>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Nombre, denominación o razón social"
-              className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.nombre_denominacion_razon_social}
-              margin="normal"
-            />
+          <Grid item xs={2}>
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="ente_publico">Ente Público</InputLabel>
+              <Select
+                value={data.datos_sueldos_salarios_publicos.ente_publico.valor}
+                onChange={handleChange("ente_publico")}
+                inputProps={{
+                  name: "ente_publico",
+                  id: "ente_publico"
+                }}
+              >
+                {data.catDependencias.map(entesPublicos => (
+                  <MenuItem
+                    key={entesPublicos.valor}
+                    value={entesPublicos.valor}
+                  >
+                    {entesPublicos.valor}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="RFC"
               className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.rfc}
+              value={data.datos_sueldos_salarios_publicos.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="CURP"
-              className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.curp}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
-              <Select
-                value={data.datos_sueldos_salarios_otros_empleos.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
-                inputProps={{
-                  name: "sector_industria",
-                  id: "sector_industria"
-                }}
-              >
-                {data.sectorIndustria.map(dato => (
-                  <MenuItem key={dato.codigo} value={dato.codigo}>
-                    {dato.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="tipo_actividad">
-                Tipo de actividad
-              </InputLabel>
-              <Select
-                value={data.datos_sueldos_salarios_otros_empleos.tipo_actividad_servicio.codigo}
-                onChange={handleChange("tipo_actividad")}
-                inputProps={{
-                  name: "tipo_actividad",
-                  id: "tipo_actividad"
-                }}
-              >
-                {data.catTiposActividades.map(tipoActividad => (
-                  <MenuItem
-                    key={tipoActividad.codigo}
-                    value={tipoActividad.codigo}
-                  >
-                    {tipoActividad.valor}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={3}>
-            <TextField
-              id="grado"
-              label="Descripción de la actividad"
-              className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.descripcion_actividad_servicio}
-              margin="normal"
-            />
-          </Grid>
+
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Ingreso bruto anual recibido por el encargo público"
               className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual}
+              value={
+                data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.valor
+              }
+              onChange={handleChange("ingreso_bruto_anual.valor")}
               margin="normal"
             />
           </Grid>
@@ -158,16 +115,19 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
-                value={data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.moneda.codigo}
-                onChange={handleChange("moneda")}
+                value={
+                  data.datos_sueldos_salarios_publicos.ingreso_bruto_anual
+                    .moneda.codigo
+                }
+                onChange={handleChange("ingreso_bruto_anual.moneda")}
                 inputProps={{
                   name: "moneda",
                   id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem key={tipoMoneda.codigoNumerico+tipoMoneda.entidad} value={tipoMoneda.codigo}>
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
@@ -177,8 +137,13 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
-                value={data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.unidad_temporal.codigo}
-                onChange={handleChange("frecuencia")}
+                value={
+                  data.datos_sueldos_salarios_publicos.ingreso_bruto_anual
+                    .unidad_temporal.codigo
+                }
+                onChange={handleChange(
+                  "ingreso_bruto_anual.unidad_temporal"
+                )}
                 inputProps={{
                   name: "frecuencia",
                   id: "frecuencia"
@@ -197,7 +162,11 @@ function SimpleCard(props) {
               id="grado"
               label="Duración"
               className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.duracion_frecuencia}
+              value={
+                data.datos_sueldos_salarios_publicos.ingreso_bruto_anual
+                  .duracion_frecuencia
+              }
+              onChange={handleChange("ingreso_bruto_anual.duracion_frecuencia")}
               margin="normal"
             />
           </Grid>
@@ -206,16 +175,22 @@ function SimpleCard(props) {
               id="grado"
               label="Fecha de pago"
               className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.ingreso_bruto_anual.fecha_transaccion}
+              value={
+                data.datos_sueldos_salarios_publicos.ingreso_bruto_anual
+                  .fecha_transaccion
+              }
+              onChange={handleChange("ingreso_bruto_anual.fecha_transaccion")}
               margin="normal"
             />
           </Grid>
+
           <Grid item xs={3}>
             <TextField
               id="grado"
               label="Observaciones"
               className={classes.textField}
-              value={data.datos_sueldos_salarios_otros_empleos.observaciones}
+              value={data.datos_sueldos_salarios_publicos.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
             />
@@ -234,7 +209,7 @@ function SimpleCard(props) {
         </Grid>
         <Grid container spacing={24}>
           <Tabla
-            data={data.sueldos_salarios_otros_empleos}
+            data={data.sueldos_salarios_publicos}
             buttonClick={removeClick}
           />
         </Grid>

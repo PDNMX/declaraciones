@@ -67,7 +67,7 @@ function CustomizedTable(props) {
                 <CustomTableCell>{index}-{item.nombre_denominacion}</CustomTableCell>
                 <CustomTableCell>{item.rfc}</CustomTableCell>
                 <CustomTableCell>{item.curp}</CustomTableCell>
-                <CustomTableCell>{item.tipo_bien}</CustomTableCell>
+                <CustomTableCell>{item.tipo_bien.valor}</CustomTableCell>
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
                 <CustomTableCell>{item.tipo_actividad_servicio.valor}</CustomTableCell>
                 <CustomTableCell>{item.descripcion_bien}</CustomTableCell>

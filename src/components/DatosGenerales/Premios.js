@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaPremios";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -72,6 +73,7 @@ function SimpleCard(props) {
               label="Nombre, denominación o razón social"
               className={classes.textField}
               value={data.datos_premios.nombre_denominacion}
+              onChange={handleChange("nombre_denominacion")}
               margin="normal"
             />
           </Grid>
@@ -81,6 +83,7 @@ function SimpleCard(props) {
               label="RFC"
               className={classes.textField}
               value={data.datos_premios.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -90,6 +93,7 @@ function SimpleCard(props) {
               label="CURP"
               className={classes.textField}
               value={data.datos_premios.curp}
+              onChange={handleChange("curp")}
               margin="normal"
             />
           </Grid>
@@ -98,7 +102,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_premios.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -119,7 +123,7 @@ function SimpleCard(props) {
               </InputLabel>
               <Select
                 value={data.datos_premios.tipo_actividad_servicio.codigo}
-                onChange={handleChange("tipo_actividad")}
+                onChange={handleChange("tipo_actividad_servicio")}
                 inputProps={{
                   name: "tipo_actividad",
                   id: "tipo_actividad"
@@ -142,6 +146,7 @@ function SimpleCard(props) {
               label="Descripción del tipo de premio"
               className={classes.textField}
               value={data.datos_premios.descripcion_premio}
+              onChange={handleChange("descripcion_premio")}
               margin="normal"
             />
           </Grid>
@@ -151,6 +156,7 @@ function SimpleCard(props) {
               label="Ingreso bruto anual recibido por el encargo público"
               className={classes.textField}
               value={data.datos_premios.ingreso_bruto_anual.valor}
+              onChange={handleChange("ingreso_bruto_anual")}
               margin="normal"
             />
           </Grid>
@@ -159,15 +165,18 @@ function SimpleCard(props) {
               <InputLabel htmlFor="moneda">Moneda</InputLabel>
               <Select
                 value={data.datos_premios.ingreso_bruto_anual.moneda.codigo}
-                onChange={handleChange("moneda")}
+                onChange={handleChange("ingreso_bruto_anual.moneda")}
                 inputProps={{
                   name: "moneda",
                   id: "moneda"
                 }}
               >
                 {data.catTiposMonedas.map(tipoMoneda => (
-                  <MenuItem key={tipoMoneda.codigo} value={tipoMoneda.codigo}>
-                    {tipoMoneda.valor}
+                  <MenuItem
+                    key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
+                    value={tipoMoneda.codigo}
+                  >
+                    {tipoMoneda.moneda}
                   </MenuItem>
                 ))}
               </Select>
@@ -177,8 +186,10 @@ function SimpleCard(props) {
             <FormControl className={classes.select}>
               <InputLabel htmlFor="frecuencia">Frecuencia</InputLabel>
               <Select
-                value={data.datos_premios.ingreso_bruto_anual.unidad_temporal.codigo}
-                onChange={handleChange("frecuencia")}
+                value={
+                  data.datos_premios.ingreso_bruto_anual.unidad_temporal.codigo
+                }
+                onChange={handleChange("ingreso_bruto_anual.unidad_temporal")}
                 inputProps={{
                   name: "frecuencia",
                   id: "frecuencia"
@@ -198,6 +209,7 @@ function SimpleCard(props) {
               label="Duración"
               className={classes.textField}
               value={data.datos_premios.ingreso_bruto_anual.duracion_frecuencia}
+              onChange={handleChange("ingreso_bruto_anual.duracion_frecuencia")}
               margin="normal"
             />
           </Grid>
@@ -207,6 +219,7 @@ function SimpleCard(props) {
               label="Fecha de pago"
               className={classes.textField}
               value={data.datos_premios.ingreso_bruto_anual.fecha_transaccion}
+              onChange={handleChange("ingreso_bruto_anual.fecha_transaccion")}
               margin="normal"
             />
           </Grid>
@@ -216,8 +229,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_premios.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_premios.domicilio}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

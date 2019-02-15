@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import Direccion from "./Direccion";
 import Tabla from "./TablaClientesPrincipales";
 
 import Grid from "@material-ui/core/Grid/Grid";
@@ -74,6 +75,7 @@ function SimpleCard(props) {
               label="Nombre o naturaleza del negocio/Actividad lucrativa"
               className={classes.textField}
               value={data.datos_clientes_principales.nombre_negocio}
+              onChange={handleChange("nombre_negocio")}
               margin="normal"
             />
           </Grid>
@@ -82,7 +84,8 @@ function SimpleCard(props) {
               id="grado"
               label="Número de registro"
               className={classes.textField}
-              value={data.datos_clientes_principales.numero_Registro}
+              value={data.datos_clientes_principales.numero_registro}
+              onChange={handleChange("numero_registro")}
               margin="normal"
             />
           </Grid>
@@ -92,6 +95,7 @@ function SimpleCard(props) {
               label="Dueño o encargado del negocio/Actividad lucrativa"
               className={classes.textField}
               value={data.datos_clientes_principales.dueno_encargado}
+              onChange={handleChange("dueno_encargado")}
               margin="normal"
             />
           </Grid>
@@ -101,6 +105,7 @@ function SimpleCard(props) {
               label="Nombre o denominación social del cliente principal del negocio o actividad lucrativa"
               className={classes.textField}
               value={data.datos_clientes_principales.nombre}
+              onChange={handleChange("nombre")}
               margin="normal"
             />
           </Grid>
@@ -110,6 +115,7 @@ function SimpleCard(props) {
               label="RFC del cliente principal"
               className={classes.textField}
               value={data.datos_clientes_principales.rfc}
+              onChange={handleChange("rfc")}
               margin="normal"
             />
           </Grid>
@@ -118,7 +124,7 @@ function SimpleCard(props) {
               <InputLabel htmlFor="estado_civil">Sector/Industria</InputLabel>
               <Select
                 value={data.datos_clientes_principales.sector_industria.codigo}
-                onChange={handleChange("datos_encargo_actual.sector_industria")}
+                onChange={handleChange("sector_industria")}
                 inputProps={{
                   name: "sector_industria",
                   id: "sector_industria"
@@ -138,6 +144,7 @@ function SimpleCard(props) {
               label="Porcentaje de facturación total que representa el cliente"
               className={classes.textField}
               value={data.datos_clientes_principales.porcentaje_participacion}
+              onChange={handleChange("porcentaje_participacion")}
               margin="normal"
             />
           </Grid>
@@ -147,8 +154,21 @@ function SimpleCard(props) {
               label="Observaciones"
               className={classes.textField}
               value={data.datos_clientes_principales.observaciones}
+              onChange={handleChange("observaciones")}
               margin="normal"
               multiline={true}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Direccion
+              data={data.datos_clientes_principales.domicilio}
+              ciudades={data.ciudades}
+              entidades={data.entidades}
+              municipios={data.municipios}
+              localidades={data.localidades}
+              tipovialidad={data.tipovialidad}
+              handleChange={handleChange}
             />
           </Grid>
 

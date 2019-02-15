@@ -68,9 +68,9 @@ function CustomizedTable(props) {
           {data.map((item, index) => {
             return (
               <TableRow className={classes.row} key={index}>
-                <CustomTableCell>{index}-{item.nombres} {item.primer_apellido} {item.segundo_apellido}</CustomTableCell>
+                <CustomTableCell>{index}-{item.nombre_personal.nombres} {item.nombre_personal.primer_apellido} {item.nombre_personal.segundo_apellido}</CustomTableCell>
                 <CustomTableCell>{item.tipo_relacion.valor}</CustomTableCell>
-                <CustomTableCell>{item.nacionalidades[0].valor}</CustomTableCell>
+                <CustomTableCell></CustomTableCell>
                 <CustomTableCell>{item.curp}</CustomTableCell>
                 <CustomTableCell>{item.rfc}</CustomTableCell>
                 <CustomTableCell>{item.fecha_nacimiento}</CustomTableCell>
@@ -83,8 +83,8 @@ function CustomizedTable(props) {
                 <CustomTableCell>{item.sector_industria.valor}</CustomTableCell>
                 <CustomTableCell>{item.proveedor_contratista_gobierno}</CustomTableCell>
                 <CustomTableCell>{item.tiene_intereses_mismo_sector_declarante}</CustomTableCell>
-                <CustomTableCell>{item.desarrolla_cabildeo_sector_declarante}</CustomTableCell>
-                <CustomTableCell>{item.beneficiario_programa_publico[0].nombre_programa}</CustomTableCell>
+                <CustomTableCell>{item.desarrolla_cabildeo_sector_declarante.respuesta===true?item.desarrolla_cabildeo_sector_declarante.observaciones:''}</CustomTableCell>
+                <CustomTableCell></CustomTableCell>
                 <CustomTableCell>{item.observaciones}</CustomTableCell>
                   <CustomTableCell>
                     <Button
