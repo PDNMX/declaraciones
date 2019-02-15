@@ -12,7 +12,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 /*select*/
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
+import Select from 'react-select';
 import MenuItem from "@material-ui/core/MenuItem";
 /*select*/
 
@@ -77,51 +77,55 @@ function SimpleCard(props) {
               value={data.informacion_general.nombres}
               onChange={handleChange("nombres")}
               margin="normal"
+              variant="outlined"
             />
           </Grid>
           <Grid item xs={2}>
             <TextField
               id="standard-name"
-              label="Apellido uno"
+              label="Primer Apellido"
               className={classes.textField}
               value={data.informacion_general.primer_apellido}
               onChange={handleChange("primer_apellido")}
               margin="normal"
+              variant="outlined"
             />
           </Grid>
           <Grid item xs={2}>
             <TextField
               id="standard-name"
-              label="Apellido dos"
+              label="Segundo Apellido"
               className={classes.textField}
               value={data.informacion_general.segundo_apellido}
               onChange={handleChange("segundo_apellido")}
               margin="normal"
+              variant="outlined"
             />
           </Grid>
-
           <Grid item xs={2}>
-            <TextField
-              id="standard-name"
-              label="CURP"
-              className={classes.textField}
-              value={data.informacion_general.curp}
-              onChange={handleChange("curp")}
-              margin="normal"
-            />
+            <FormControl className={classes.select}>
+              <InputLabel htmlFor="select-multiple-checkbox">
+                Nacionalidades
+              </InputLabel>
+              <Select
+                multiple
+                value={data.informacion_general_nacionalidades}
+                onChange={handleChange("nacionalidades")}
+                input={<Input id="select-multiple-checkbox" />}
+                renderValue={selected => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {data.ciudades.map(ciudad => (
+                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
+                    <Checkbox
+                      checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
+                    />
+                    <ListItemText primary={ciudad.valor} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
-
-          <Grid item xs={2}>
-            <TextField
-              id="standard-name"
-              label="RFC"
-              className={classes.textField}
-              value={data.informacion_general.rfc}
-              onChange={handleChange("rfc")}
-              margin="normal"
-            />
-          </Grid>
-
           <Grid item xs={2}>
             <FormControl className={classes.select}>
               <InputLabel htmlFor="pais_nacimiento">
@@ -134,12 +138,12 @@ function SimpleCard(props) {
                   name: "pais_nacimiento",
                   id: "pais_nacimiento"
                 }}
-              >
-                {data.ciudades.map(ciudad => (
+                options={data.ciudades.map(ciudad => (
                   <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
                     {ciudad.valor}
                   </MenuItem>
                 ))}
+              >
               </Select>
             </FormControl>
           </Grid>
@@ -170,31 +174,28 @@ function SimpleCard(props) {
               </Select>
             </FormControl>
           </Grid>
+          <Grid item xs={2}>
+            <TextField
+              id="standard-name"
+              label="CURP"
+              className={classes.textField}
+              value={data.informacion_general.curp}
+              onChange={handleChange("curp")}
+              margin="normal"
+            />
+          </Grid>
 
           <Grid item xs={2}>
-            <FormControl className={classes.select}>
-              <InputLabel htmlFor="select-multiple-checkbox">
-                Nacionalidades
-              </InputLabel>
-              <Select
-                multiple
-                value={data.informacion_general_nacionalidades}
-                onChange={handleChange("nacionalidades")}
-                input={<Input id="select-multiple-checkbox" />}
-                renderValue={selected => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {data.ciudades.map(ciudad => (
-                  <MenuItem key={ciudad.codigo} value={ciudad.codigo}>
-                    <Checkbox
-                      checked={data.nacionalidad.indexOf(ciudad.codigo) > -1}
-                    />
-                    <ListItemText primary={ciudad.valor} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <TextField
+              id="standard-name"
+              label="RFC"
+              className={classes.textField}
+              value={data.informacion_general.rfc}
+              onChange={handleChange("rfc")}
+              margin="normal"
+            />
           </Grid>
+
           <Grid item xs={2}>
             <TextField
               id="fecha_nacimiento"
@@ -208,17 +209,11 @@ function SimpleCard(props) {
                 shrink: true
               }}
             />
-            {/*
-            <DatePicker
-              selected={fecha_nacimiento}
-              onChange={handleChange("fecha_nacimiento")}
-            />
-            */}
           </Grid>
           <Grid item xs={2}>
             <TextField
               id="standard-name"
-              label="Numero identificacion oficial"
+              label="Número de identificación oficial"
               className={classes.textField}
               value={data.informacion_general.numero_identificacion_oficial}
               onChange={handleChange(
