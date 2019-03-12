@@ -411,8 +411,7 @@ export var data = {
   datos_apoyos_beneficios_publicos: {
     id: null,
     es_beneficiario: false,
-    programa:
-      "",
+    programa: "",
     institucion_otorgante: "",
     nivel_orden_gobierno: {
       codigo: "",
