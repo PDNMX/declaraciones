@@ -1,47 +1,118 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 
-const styles = {
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
+
+import ListSubheader from "@material-ui/core/ListSubheader";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Collapse from "@material-ui/core/Collapse";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+
+import routes from "../routes/declaraciones";
+
+const styles = theme => ({
   root: {
-    flexGrow: 1
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
   },
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+  nested: {
+    paddingLeft: theme.spacing.unit * 4
   }
+});
+
+const padres = (ruta, match, handleClick, state) => {
+  return (
+    <ListItem
+      button
+      onClick={handleClick(ruta.path)}
+      selected={match.path === ruta.path}
+    >
+      <ListItemText primary={ruta.name} />
+      {state.path === ruta.path ? <ExpandLess /> : <ExpandMore />}
+    </ListItem>
+  );
 };
 
-function ButtonAppBar(props) {
-  const { classes, loggedIn } = props;
+const hijos = (child, ruta, classes, state, handleClick) => {
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Declaracion
-          </Typography>
-          {loggedIn && (
-            <Button component={Link} to="/logout" color="inherit">
-              Logout
-            </Button>
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Collapse
+      in={state.path === ruta.path}
+      timeout="auto"
+      unmountOnExit
+      key={child.key}
+    >
+      <List component="div" disablePadding>
+        <ListItem button className={classes.nested}>
+          <Link
+            component={RouterLink}
+            underline="none"
+            to={ruta.path + child.path}
+            onClick={handleClick(ruta.path)}
+          >
+            <ListItemText primary={child.name} />
+          </Link>
+        </ListItem>
+      </List>
+    </Collapse>
   );
+};
+class MenuListComposition extends React.Component {
+  constructor(props) {
+    super(props);
+    let position = "/" + props.match.path.split("/")[1] || "";
+
+    // console.log("constructor", position);
+
+    this.state = {
+      path: position
+    };
+  }
+
+  handleClick = actual => event => {
+    // console.log("actual", actual);
+    this.setState({ path: actual }, () => {
+      // console.log("state", this.state);
+    });
+  };
+
+  render() {
+    const { classes, match } = this.props;
+    // console.log("path", match.path);
+    return (
+      <div style={{ margin: 10 }}>
+        <Paper className={classes.paper}>
+          <List
+            component="nav"
+            subheader={<ListSubheader component="div">Secciones</ListSubheader>}
+            className={classes.root}
+          >
+            {routes.map(ruta => {
+              return (
+                <div key={ruta.key}>
+                  {padres(ruta, match, this.handleClick, this.state)}
+                  {ruta.childs.map(child => {
+                    return hijos(
+                      child,
+                      ruta,
+                      classes,
+                      this.state,
+                      this.handleClick
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </List>
+        </Paper>
+      </div>
+    );
+  }
 }
 
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(MenuListComposition);
