@@ -1,24 +1,18 @@
-// import Home from "../components/Home";
-import Login from "../components/Login";
-import Logout from "../components/Logout";
-import DatosGenerales from "../components/DatosGenerales/Index";
+import Home from "../components/Home";
+import Login from "../components/Login/";
 
 const routes = [
   {
     path: "/",
-    component: DatosGenerales
+    component: Home,
+    private: true,
+    key: 0
   },
   {
     path: "/login",
-    component: Login
-  },
-  {
-    path: "/logout",
-    component: Logout
-  },
-  {
-    path: "/datosgenerales",
-    component: DatosGenerales
+    component: Login,
+    private: false,
+    key: 1
   }
 ];
 
