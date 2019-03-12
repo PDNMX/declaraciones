@@ -14,7 +14,6 @@ import { data } from "./data";
 import { example } from "./data_example";
 import { clean } from "./data_clean";
 
-import Menu from "../Menu";
 import InformacionGeneral from "./InformacionGeneral";
 import DatosCurriculares from "./DatosCurriculares";
 import EncargoActual from "./EncargoActual";
@@ -51,9 +50,7 @@ import PropietarioTercero from "./PropietarioTercero";
 import Deudas from "./Deudas";
 import OtrasObligaciones from "./OtrasObligaciones";
 
-console.log(process.env.APP_API);
-
-var apiHost = process.env.APP_API || "https://localhost/captura/api/";
+var apiHost = process.env.REACT_APP_API || "https://localhost/captura/api/";
 
 const styles = theme => ({
   root: {
@@ -72,7 +69,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
 
-    let info = clean;
+    let info = example;
 
     this.state = data;
 
@@ -5003,372 +5000,383 @@ class Index extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <Grid container spacing={0}>
-          <Grid item xs={12}>
-            <Menu loggedIn={loggedIn} />
-          </Grid>
-          <Grid item xs={6} style={{ padding: "20px" }}>
-            <br />
-            {this.state.show > 1 && (
-              <Button
-                variant="contained"
-                size="small"
-                onClick={this.handleBack}
-              >
-                Anterior
-              </Button>
+      <Grid item xs={12}>
+        <div className={classes.root}>
+          <Grid container spacing={0}>
+            {false && (
+              <div>
+                <Grid item xs={6} style={{ padding: "20px" }}>
+                  <br />
+                  {this.state.show > 1 && (
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={this.handleBack}
+                    >
+                      Anterior
+                    </Button>
+                  )}
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  style={{ textAlign: "right", padding: "20px" }}
+                >
+                  <br />
+                  {this.state.show < 35 && (
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={this.handleNext}
+                    >
+                      Siguiente
+                    </Button>
+                  )}
+                </Grid>
+              </div>
             )}
-          </Grid>
-          <Grid item xs={6} style={{ textAlign: "right", padding: "20px" }}>
-            <br />
-            {this.state.show < 35 && (
-              <Button
-                variant="contained"
-                size="small"
-                onClick={this.handleNext}
-              >
-                Siguiente
-              </Button>
-            )}
-          </Grid>
-          {false && (
-            <div>
-              <Grid item xs={2} style={{ textAlign: "right", padding: "20px" }}>
-                <br />
+            {false && (
+              <div>
+                <Grid
+                  item
+                  xs={2}
+                  style={{ textAlign: "right", padding: "20px" }}
+                >
+                  <br />
 
-                <Button variant="contained" size="small" onClick={this.show}>
-                  SHOW
-                </Button>
+                  <Button variant="contained" size="small" onClick={this.show}>
+                    SHOW
+                  </Button>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  style={{ textAlign: "center", padding: "20px" }}
+                >
+                  {this.state.show}
+                </Grid>
+              </div>
+            )}
+            {this.state.show === 1 && (
+              <Grid item xs={12}>
+                <InformacionGeneral
+                  data={this.state}
+                  handleChange={this.setDataInformacionPersonal}
+                />
               </Grid>
-              <Grid
-                item
-                xs={12}
-                style={{ textAlign: "center", padding: "20px" }}
-              >
-                {this.state.show}
-              </Grid>
-            </div>
-          )}
-          {this.state.show === 1 && (
-            <Grid item xs={12}>
-              <InformacionGeneral
+            )}
+            {this.state.show === 2 && (
+              <DatosCurriculares
                 data={this.state}
-                handleChange={this.setDataInformacionPersonal}
+                handleChange={this.setDataDatosCurriculares}
+                addClick={this.addClickDatosCurriculares}
+                removeClick={this.removeClickDatosCurriculares}
               />
-            </Grid>
-          )}
-          {this.state.show === 2 && (
-            <DatosCurriculares
-              data={this.state}
-              handleChange={this.setDataDatosCurriculares}
-              addClick={this.addClickDatosCurriculares}
-              removeClick={this.removeClickDatosCurriculares}
-            />
-          )}
-          {this.state.show === 3 && (
-            <EncargoActual
-              data={this.state}
-              handleChange={this.setDataEncargoActual}
-            />
-          )}
+            )}
+            {this.state.show === 3 && (
+              <EncargoActual
+                data={this.state}
+                handleChange={this.setDataEncargoActual}
+              />
+            )}
 
-          {this.state.show === 4 && (
-            <ExperienciaLaboral
-              data={this.state}
-              handleChange={this.setDataExperienciaLaboral}
-              addClick={this.addClickExperienciaLaborar}
-              removeClick={this.removeClickExperienciaLaborar}
-            />
-          )}
+            {this.state.show === 4 && (
+              <ExperienciaLaboral
+                data={this.state}
+                handleChange={this.setDataExperienciaLaboral}
+                addClick={this.addClickExperienciaLaborar}
+                removeClick={this.removeClickExperienciaLaborar}
+              />
+            )}
 
-          {this.state.show === 5 && (
-            <DependientesEconomicos
-              data={this.state}
-              handleChange={this.setDataDependientesEconomicos}
-              addClick={this.addClickDependientesEconomicos}
-              removeClick={this.removeClickDependientesEconomicos}
-            />
-          )}
+            {this.state.show === 5 && (
+              <DependientesEconomicos
+                data={this.state}
+                handleChange={this.setDataDependientesEconomicos}
+                addClick={this.addClickDependientesEconomicos}
+                removeClick={this.removeClickDependientesEconomicos}
+              />
+            )}
 
-          {this.state.show === 6 && (
-            <EmpresasSociedadesAsociaciones
-              data={this.state}
-              handleChange={this.setDataEmpresasSociedadesAsociaciones}
-              addClick={this.addClickEmpresasSociedadesAsociaciones}
-              removeClick={this.removeClickEmpresasSociedadesAsociaciones}
-            />
-          )}
+            {this.state.show === 6 && (
+              <EmpresasSociedadesAsociaciones
+                data={this.state}
+                handleChange={this.setDataEmpresasSociedadesAsociaciones}
+                addClick={this.addClickEmpresasSociedadesAsociaciones}
+                removeClick={this.removeClickEmpresasSociedadesAsociaciones}
+              />
+            )}
 
-          {this.state.show === 7 && (
-            <Membresias
-              data={this.state}
-              handleChange={this.setDataMembresias}
-              addClick={this.addClickMembresias}
-              removeClick={this.removeClickMembresias}
-            />
-          )}
+            {this.state.show === 7 && (
+              <Membresias
+                data={this.state}
+                handleChange={this.setDataMembresias}
+                addClick={this.addClickMembresias}
+                removeClick={this.removeClickMembresias}
+              />
+            )}
 
-          {this.state.show === 8 && (
-            <ApoyosPublicos
-              data={this.state}
-              handleChange={this.setDataApoyosBeneficiosPublicos}
-              addClick={this.addClickApoyosPublicos}
-              removeClick={this.removeClickApoyosPublicos}
-            />
-          )}
+            {this.state.show === 8 && (
+              <ApoyosPublicos
+                data={this.state}
+                handleChange={this.setDataApoyosBeneficiosPublicos}
+                addClick={this.addClickApoyosPublicos}
+                removeClick={this.removeClickApoyosPublicos}
+              />
+            )}
 
-          {this.state.show === 9 && (
-            <RepresentacionActiva
-              data={this.state}
-              handleChange={this.setDataRepresentacionActiva}
-              addClick={this.addClickRepresentacionActiva}
-              removeClick={this.removeClickRepresentacionActiva}
-            />
-          )}
+            {this.state.show === 9 && (
+              <RepresentacionActiva
+                data={this.state}
+                handleChange={this.setDataRepresentacionActiva}
+                addClick={this.addClickRepresentacionActiva}
+                removeClick={this.removeClickRepresentacionActiva}
+              />
+            )}
 
-          {this.state.show === 10 && (
-            <RepresentacionPasiva
-              data={this.state}
-              handleChange={this.setDataRepresentacionPasiva}
-              addClick={this.addClickRepresentacionPasiva}
-              removeClick={this.removeClickRepresentacionPasiva}
-            />
-          )}
+            {this.state.show === 10 && (
+              <RepresentacionPasiva
+                data={this.state}
+                handleChange={this.setDataRepresentacionPasiva}
+                addClick={this.addClickRepresentacionPasiva}
+                removeClick={this.removeClickRepresentacionPasiva}
+              />
+            )}
 
-          {this.state.show === 11 && (
-            <SociosComerciales
-              data={this.state}
-              handleChange={this.setDataSociosComerciales}
-              addClick={this.addClickSociosComerciales}
-              removeClick={this.removeClickSociosComerciales}
-            />
-          )}
+            {this.state.show === 11 && (
+              <SociosComerciales
+                data={this.state}
+                handleChange={this.setDataSociosComerciales}
+                addClick={this.addClickSociosComerciales}
+                removeClick={this.removeClickSociosComerciales}
+              />
+            )}
 
-          {this.state.show === 12 && (
-            <ClientesPrincipales
-              data={this.state}
-              handleChange={this.setDataClientesPrincipales}
-              addClick={this.addClickClientesPrincipales}
-              removeClick={this.removeClickClientesPrincipales}
-            />
-          )}
+            {this.state.show === 12 && (
+              <ClientesPrincipales
+                data={this.state}
+                handleChange={this.setDataClientesPrincipales}
+                addClick={this.addClickClientesPrincipales}
+                removeClick={this.removeClickClientesPrincipales}
+              />
+            )}
 
-          {this.state.show === 13 && (
-            <OtrasPartesRelacionadas
-              data={this.state}
-              handleChange={this.setDataOtrasPartesRelacionadas}
-              addClick={this.addClickOtrasPartesRelacionadas}
-              removeClick={this.removeClickOtrasPartesRelacionadas}
-            />
-          )}
+            {this.state.show === 13 && (
+              <OtrasPartesRelacionadas
+                data={this.state}
+                handleChange={this.setDataOtrasPartesRelacionadas}
+                addClick={this.addClickOtrasPartesRelacionadas}
+                removeClick={this.removeClickOtrasPartesRelacionadas}
+              />
+            )}
 
-          {this.state.show === 14 && (
-            <BeneficiosGratuitos
-              data={this.state}
-              handleChange={this.setDataBeneficiosGratuitos}
-              addClick={this.addClickBeneficiosGratuitos}
-              removeClick={this.removeClickBeneficiosGratuitos}
-            />
-          )}
+            {this.state.show === 14 && (
+              <BeneficiosGratuitos
+                data={this.state}
+                handleChange={this.setDataBeneficiosGratuitos}
+                addClick={this.addClickBeneficiosGratuitos}
+                removeClick={this.removeClickBeneficiosGratuitos}
+              />
+            )}
 
-          {this.state.show === 15 && (
-            <SueldosSalariosPublicos
-              data={this.state}
-              handleChange={this.setDataSueldosSalariosPublicos}
-              addClick={this.addClickSueldosSalariosPublicos}
-              removeClick={this.removeClickSueldosSalariosPublicos}
-            />
-          )}
+            {this.state.show === 15 && (
+              <SueldosSalariosPublicos
+                data={this.state}
+                handleChange={this.setDataSueldosSalariosPublicos}
+                addClick={this.addClickSueldosSalariosPublicos}
+                removeClick={this.removeClickSueldosSalariosPublicos}
+              />
+            )}
 
-          {this.state.show === 16 && (
-            <SueldosSalariosOtrosEmpleos
-              data={this.state}
-              handleChange={this.setDataSueldosSalariosOtrosEmpleos}
-              addClick={this.addClickSueldosSalariosOtrosEmpleos}
-              removeClick={this.removeClickSueldosSalariosOtrosEmpleos}
-            />
-          )}
+            {this.state.show === 16 && (
+              <SueldosSalariosOtrosEmpleos
+                data={this.state}
+                handleChange={this.setDataSueldosSalariosOtrosEmpleos}
+                addClick={this.addClickSueldosSalariosOtrosEmpleos}
+                removeClick={this.removeClickSueldosSalariosOtrosEmpleos}
+              />
+            )}
 
-          {this.state.show === 17 && (
-            <ActividadProfesional
-              data={this.state}
-              handleChange={this.setDataActividadProfesional}
-              addClick={this.addClickActividadProfesional}
-              removeClick={this.removeClickActividadProfesional}
-            />
-          )}
+            {this.state.show === 17 && (
+              <ActividadProfesional
+                data={this.state}
+                handleChange={this.setDataActividadProfesional}
+                addClick={this.addClickActividadProfesional}
+                removeClick={this.removeClickActividadProfesional}
+              />
+            )}
 
-          {this.state.show === 18 && (
-            <ActividadEmpresarial
-              data={this.state}
-              handleChange={this.setDataActividadEmpresarial}
-              addClick={this.addClickActividadEmpresarial}
-              removeClick={this.removeClickActividadEmpresarial}
-            />
-          )}
+            {this.state.show === 18 && (
+              <ActividadEmpresarial
+                data={this.state}
+                handleChange={this.setDataActividadEmpresarial}
+                addClick={this.addClickActividadEmpresarial}
+                removeClick={this.removeClickActividadEmpresarial}
+              />
+            )}
 
-          {this.state.show === 19 && (
-            <ActividadMenor
-              data={this.state}
-              handleChange={this.setDataActividadEconomicaMenor}
-              addClick={this.addClickActividadMenor}
-              removeClick={this.removeClickActividadMenor}
-            />
-          )}
+            {this.state.show === 19 && (
+              <ActividadMenor
+                data={this.state}
+                handleChange={this.setDataActividadEconomicaMenor}
+                addClick={this.addClickActividadMenor}
+                removeClick={this.removeClickActividadMenor}
+              />
+            )}
 
-          {this.state.show === 20 && (
-            <Arrendamiento
-              data={this.state}
-              handleChange={this.setDataArrendamiento}
-              addClick={this.addClickArrendamiento}
-              removeClick={this.removeClickArrendamiento}
-            />
-          )}
+            {this.state.show === 20 && (
+              <Arrendamiento
+                data={this.state}
+                handleChange={this.setDataArrendamiento}
+                addClick={this.addClickArrendamiento}
+                removeClick={this.removeClickArrendamiento}
+              />
+            )}
 
-          {this.state.show === 21 && (
-            <Intereses
-              data={this.state}
-              handleChange={this.setDataIntereses}
-              addClick={this.addClickIntereses}
-              removeClick={this.removeClickIntereses}
-            />
-          )}
+            {this.state.show === 21 && (
+              <Intereses
+                data={this.state}
+                handleChange={this.setDataIntereses}
+                addClick={this.addClickIntereses}
+                removeClick={this.removeClickIntereses}
+              />
+            )}
 
-          {this.state.show === 22 && (
-            <Premios
-              data={this.state}
-              handleChange={this.setDataPremios}
-              addClick={this.addClickPremios}
-              removeClick={this.removeClickPremios}
-            />
-          )}
+            {this.state.show === 22 && (
+              <Premios
+                data={this.state}
+                handleChange={this.setDataPremios}
+                addClick={this.addClickPremios}
+                removeClick={this.removeClickPremios}
+              />
+            )}
 
-          {this.state.show === 23 && (
-            <EnajenacionBienes
-              data={this.state}
-              handleChange={this.setDataEnajenacionBienes}
-              addClick={this.addClickEnajenacionBienes}
-              removeClick={this.removeClickEnajenacionBienes}
-            />
-          )}
+            {this.state.show === 23 && (
+              <EnajenacionBienes
+                data={this.state}
+                handleChange={this.setDataEnajenacionBienes}
+                addClick={this.addClickEnajenacionBienes}
+                removeClick={this.removeClickEnajenacionBienes}
+              />
+            )}
 
-          {this.state.show === 24 && (
-            <OtrosIngresos
-              data={this.state}
-              handleChange={this.setDataOtrosIngresos}
-              addClick={this.addClickOtrosIngresos}
-              removeClick={this.removeClickOtrosIngresos}
-            />
-          )}
+            {this.state.show === 24 && (
+              <OtrosIngresos
+                data={this.state}
+                handleChange={this.setDataOtrosIngresos}
+                addClick={this.addClickOtrosIngresos}
+                removeClick={this.removeClickOtrosIngresos}
+              />
+            )}
 
-          {this.state.show === 25 && (
-            <BienesInmuebles
-              data={this.state}
-              handleChange={this.setDataBienesInmuebles}
-              addClick={this.addClickBienesInmuebles}
-              removeClick={this.removeClickBienesInmuebles}
-            />
-          )}
+            {this.state.show === 25 && (
+              <BienesInmuebles
+                data={this.state}
+                handleChange={this.setDataBienesInmuebles}
+                addClick={this.addClickBienesInmuebles}
+                removeClick={this.removeClickBienesInmuebles}
+              />
+            )}
 
-          {this.state.show === 26 && (
-            <BienesMueblesRegistrables
-              data={this.state}
-              handleChange={this.setDataBienesMueblesRegistables}
-              addClick={this.addClickBienesMueblesRegistrables}
-              removeClick={this.removeClickBienesMueblesRegistrables}
-            />
-          )}
+            {this.state.show === 26 && (
+              <BienesMueblesRegistrables
+                data={this.state}
+                handleChange={this.setDataBienesMueblesRegistables}
+                addClick={this.addClickBienesMueblesRegistrables}
+                removeClick={this.removeClickBienesMueblesRegistrables}
+              />
+            )}
 
-          {this.state.show === 27 && (
-            <BienesMueblesNoRegistrables
-              data={this.state}
-              handleChange={this.setDataBienesMueblesNoRegistables}
-              addClick={this.addClickBienesMueblesNoRegistrables}
-              removeClick={this.removeClickBienesMueblesNoRegistrables}
-            />
-          )}
+            {this.state.show === 27 && (
+              <BienesMueblesNoRegistrables
+                data={this.state}
+                handleChange={this.setDataBienesMueblesNoRegistables}
+                addClick={this.addClickBienesMueblesNoRegistrables}
+                removeClick={this.removeClickBienesMueblesNoRegistrables}
+              />
+            )}
 
-          {this.state.show === 28 && (
-            <Inversiones
-              data={this.state}
-              handleChange={this.setDataInversionesCuentasValores}
-              addClick={this.addClickInversiones}
-              removeClick={this.removeClickInversiones}
-            />
-          )}
+            {this.state.show === 28 && (
+              <Inversiones
+                data={this.state}
+                handleChange={this.setDataInversionesCuentasValores}
+                addClick={this.addClickInversiones}
+                removeClick={this.removeClickInversiones}
+              />
+            )}
 
-          {this.state.show === 29 && (
-            <EfectivoMetales
-              data={this.state}
-              handleChange={this.setDataEfectivoMetales}
-              addClick={this.addClickEfectivoMetales}
-              removeClick={this.removeClickEfectivoMetales}
-            />
-          )}
+            {this.state.show === 29 && (
+              <EfectivoMetales
+                data={this.state}
+                handleChange={this.setDataEfectivoMetales}
+                addClick={this.addClickEfectivoMetales}
+                removeClick={this.removeClickEfectivoMetales}
+              />
+            )}
 
-          {this.state.show === 30 && (
-            <Fideicomisos
-              data={this.state}
-              handleChange={this.setDataFideicomisos}
-              addClick={this.addClickFideicomisos}
-              removeClick={this.removeClickFideicomisos}
-              setDataDireccionFideicomitente={
-                this.setDataDireccionFideicomitente
-              }
-              setDataDireccionFideicomisario={
-                this.setDataDireccionFideicomisario
-              }
-              setDataDireccionFiduciario={this.setDataDireccionFiduciario}
-            />
-          )}
+            {this.state.show === 30 && (
+              <Fideicomisos
+                data={this.state}
+                handleChange={this.setDataFideicomisos}
+                addClick={this.addClickFideicomisos}
+                removeClick={this.removeClickFideicomisos}
+                setDataDireccionFideicomitente={
+                  this.setDataDireccionFideicomitente
+                }
+                setDataDireccionFideicomisario={
+                  this.setDataDireccionFideicomisario
+                }
+                setDataDireccionFiduciario={this.setDataDireccionFiduciario}
+              />
+            )}
 
-          {this.state.show === 31 && (
-            <BienesIntangibles
-              data={this.state}
-              handleChange={this.setDataBienesIntangibles}
-              addClick={this.addClickBienesIntangibles}
-              removeClick={this.removeClickBienesIntangibles}
-            />
-          )}
+            {this.state.show === 31 && (
+              <BienesIntangibles
+                data={this.state}
+                handleChange={this.setDataBienesIntangibles}
+                addClick={this.addClickBienesIntangibles}
+                removeClick={this.removeClickBienesIntangibles}
+              />
+            )}
 
-          {this.state.show === 32 && (
-            <CuentasCobrar
-              data={this.state}
-              handleChange={this.setDataCuentasPorCobrar}
-              addClick={this.addClickCuentasCobrar}
-              removeClick={this.removeClickCuentasCobrar}
-            />
-          )}
+            {this.state.show === 32 && (
+              <CuentasCobrar
+                data={this.state}
+                handleChange={this.setDataCuentasPorCobrar}
+                addClick={this.addClickCuentasCobrar}
+                removeClick={this.removeClickCuentasCobrar}
+              />
+            )}
 
-          {this.state.show === 33 && (
-            <PropietarioTercero
-              data={this.state}
-              handleChange={this.setDataUsoEspeciePropiedadTercero}
-              addClick={this.addClickPropietarioTercero}
-              removeClick={this.removeClickPropietarioTercero}
-            />
-          )}
+            {this.state.show === 33 && (
+              <PropietarioTercero
+                data={this.state}
+                handleChange={this.setDataUsoEspeciePropiedadTercero}
+                addClick={this.addClickPropietarioTercero}
+                removeClick={this.removeClickPropietarioTercero}
+              />
+            )}
 
-          {this.state.show === 34 && (
-            <Deudas
-              data={this.state}
-              handleChange={this.setDataDeudas}
-              addClick={this.addClickDeudas}
-              removeClick={this.removeClickDeudas}
-            />
-          )}
+            {this.state.show === 34 && (
+              <Deudas
+                data={this.state}
+                handleChange={this.setDataDeudas}
+                addClick={this.addClickDeudas}
+                removeClick={this.removeClickDeudas}
+              />
+            )}
 
-          {this.state.show === 35 && (
-            <OtrasObligaciones
-              data={this.state}
-              handleChange={this.setDataOtrasObligaciones}
-              addClick={this.addClickOtrasObligaciones}
-              removeClick={this.removeClickOtrasObligaciones}
-            />
-          )}
-        </Grid>
-      </div>
+            {this.state.show === 35 && (
+              <OtrasObligaciones
+                data={this.state}
+                handleChange={this.setDataOtrasObligaciones}
+                addClick={this.addClickOtrasObligaciones}
+                removeClick={this.removeClickOtrasObligaciones}
+              />
+            )}
+          </Grid>
+        </div>
+      </Grid>
     );
   }
 }
