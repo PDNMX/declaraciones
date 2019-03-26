@@ -1,4 +1,8 @@
-import Clean from "../components/DatosGenerales/";
+import InformacionPersonal from "../components/Prueba/";
+import MIntereses from "../components/Prueba/";
+import Ingresos from "../components/Prueba/";
+import Activos from "../components/Prueba/";
+import Pasivos from "../components/Prueba/";
 import InformacionGeneral from "../components/InformacionGeneral/";
 import DatosCurriculares from "../components/DatosCurriculares/";
 import DatosEncargoActual from "../components/DatosEncargoActual/";
@@ -39,7 +43,7 @@ const routes = [
   {
     name: "Información personal",
     path: "/informacionpersonal",
-    component: Clean,
+    component: InformacionPersonal,
     private: true,
     key: 10,
     childs: [
@@ -83,7 +87,7 @@ const routes = [
   {
     name: "Intereses",
     path: "/intereses",
-    component: Clean,
+    component: MIntereses,
     private: true,
     key: 20,
     childs: [
@@ -155,7 +159,7 @@ const routes = [
   {
     name: "Ingresos",
     path: "/ingresos",
-    component: Clean,
+    component: Ingresos,
     private: true,
     key: 30,
     childs: [
@@ -234,7 +238,7 @@ const routes = [
   {
     name: "Activos",
     path: "/activos",
-    component: Clean,
+    component: Activos,
     private: true,
     key: 50,
     childs: [
@@ -306,7 +310,7 @@ const routes = [
   {
     name: "Pasivos",
     path: "/pasivos",
-    component: Clean,
+    component: Pasivos,
     private: true,
     key: 60,
     childs: [
