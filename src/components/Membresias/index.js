@@ -1,5 +1,5 @@
 import React from "react";
-import Membresias from "./Membresias";
+import MembresiasForm from "./Membresias";
 import {
   getData,
   catPaises,
@@ -10,8 +10,8 @@ import {
   getLocalidades,
   catLocalidades,
   catTipoVialidad,
-  catTiposInstituciones,
-  catNaturalezaMembresias,
+  catTipoInstitucion,
+  catNaturalezaMembresia,
   catSectorIndustria
 } from "../../Funciones/";
 
@@ -27,31 +27,45 @@ class Membresias extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
-      datos_curriculares_grados_academicos:
-        info.informacion_personal.datos_curriculares.grados_academicos[0],
-      catEntidadesFederativas: [],
+      datos_membresias: info.intereses.membresias[0],
       catPaises: [],
-      catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catEntidadesFederativas: [],
+      catMunicipios: [],
+      catLocalidades: [],
+      catTipoVialidad: [],
+      catTipoInstitucion: [],
+      catNaturalezaMembresia: [],
+      catSectorIndustria: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catTipoInstitucion().then(data => {
+      this.setState({ catTipoInstitucion: data });
+    });
+    catNaturalezaMembresia().then(data => {
+      this.setState({ catNaturalezaMembresia: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
     });
   }
 
@@ -92,7 +106,7 @@ class Membresias extends React.Component {
         break;
       case "tipo_institucion":
         data.datos_membresias.tipo_institucion = getData(
-          catTiposInstituciones,
+          catTipoInstitucion,
           valor
         );
         break;
@@ -174,7 +188,7 @@ class Membresias extends React.Component {
 
   render() {
     return (
-      <Membresias
+      <MembresiasForm
         data={this.state}
         handleChange={this.setDataMembresias}
         addClick={this.addClickMembresias}

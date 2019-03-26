@@ -14,7 +14,6 @@ import {
   getLocalidades,
   catLocalidades,
   catTipoVialidad,
-  catEntidadesFederativas,
   catEstadoCivil,
   catRegimenMatrimonial
 } from "../../Funciones/";
@@ -31,23 +30,16 @@ class InformacionGeneral extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
       informacion_general: info.informacion_personal.informacion_general,
-      catEntidadesFederativas: [],
       catPaises: [],
-      catNacionalidades: [],
-      catEstadoCivil: [],
-      catRegimenMatrimonial: [],
-      nacionalidades: [],
+      catEntidadesFederativas: [],
       catMunicipios: [],
       catLocalidades: [],
-      catTipoVialidad: []
+      catTipoVialidad: [],
+      catEntidadesFederativas: [],
+      catEstadoCivil: [],
+      catRegimenMatrimonial: []
     };
 
     console.log("state constructor", this.state);
@@ -71,11 +63,23 @@ class InformacionGeneral extends React.Component {
         this.setState({ catLocalidades: data });
       }
     );
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
+    catEntidadesFederativas().then(data => {
+      this.setState({ catEntidadesFederativas: data });
+    });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catEntidadesFederativas().then(data => {
+      this.setState({ catEntidadesFederativas: data });
     });
     catEstadoCivil().then(data => {
       this.setState({ catEstadoCivil: data });

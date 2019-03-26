@@ -1,6 +1,6 @@
 import React from "react";
 
-import ActividadProfesional from "./ActividadProfesional";
+import ActividadProfesionalForm from "./ActividadProfesional";
 import {
   getData,
   catPaises,
@@ -13,8 +13,8 @@ import {
   catTipoVialidad,
   catTiposActividades,
   catSectorIndustria,
-  catMedidasPlazos,
-  catMedidasPlazos
+  catMedidaPlazo,
+  catTipoMoneda
 } from "../../Funciones/";
 
 import { example } from "../../DATA/data_example";
@@ -29,31 +29,49 @@ class ActividadProfesional extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
-      datos_curriculares_grados_academicos:
-        info.informacion_personal.datos_curriculares.grados_academicos[0],
-      catEntidadesFederativas: [],
+      datos_actividad_profesional: info.ingresos.actividad_profesional[0],
       catPaises: [],
-      catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catEntidadesFederativas: [],
+      catMunicipios: [],
+      catLocalidades: [],
+      catTipoVialidad: [],
+      catTiposActividades: [],
+      catSectorIndustria: [],
+      catMedidaPlazo: [],
+      catTipoMoneda: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catTiposActividades().then(data => {
+      this.setState({ catTiposActividades: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
+    });
+    catMedidaPlazo().then(data => {
+      this.setState({ catMedidaPlazo: data });
+    });
+    catTipoMoneda().then(data => {
+      this.setState({ catTipoMoneda: data });
     });
   }
 
@@ -194,7 +212,7 @@ class ActividadProfesional extends React.Component {
 
   render() {
     return (
-      <ActividadProfesional
+      <ActividadProfesionalForm
         data={this.state}
         handleChange={this.setDataActividadProfesional}
         addClick={this.addClickActividadProfesional}

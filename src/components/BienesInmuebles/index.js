@@ -1,6 +1,6 @@
 import React from "react";
 
-import BienesInmuebles from "./BienesInmuebles";
+import BienesInmueblesForm from "./BienesInmuebles";
 import {
   getData,
   catPaises,
@@ -12,12 +12,12 @@ import {
   catLocalidades,
   catTipoVialidad,
   catTipoOperacion,
-  catTiposBienes,
-  catTitularesBienes,
+  catTipoBien,
+  catTitularBien,
   catFormaAdquision,
   catRelacionDeclarante,
   catSectorIndustria,
-  catTiposMonedas
+  catTipoMoneda
 } from "../../Funciones/";
 
 import { example } from "../../DATA/data_example";
@@ -32,31 +32,62 @@ class BienesInmuebles extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
+    this.state.datos_bienes_inmuebles = info.activos.bienes_inmuebles[0];
     this.state = {
-      datos_curriculares_grados_academicos:
-        info.informacion_personal.datos_curriculares.grados_academicos[0],
-      catEntidadesFederativas: [],
+      datos_bienes_inmuebles: info.activos.bienes_inmuebles[0],
       catPaises: [],
-      catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catEntidadesFederativas: [],
+      catMunicipios: [],
+      catLocalidades: [],
+      catTipoVialidad: [],
+      catTipoOperacion: [],
+      catTipoBien: [],
+      catTitularBien: [],
+      catFormaAdquision: [],
+      catRelacionDeclarante: [],
+      catSectorIndustria: [],
+      catTipoMoneda: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catTipoOperacion().then(data => {
+      this.setState({ catTipoOperacion: data });
+    });
+    catTipoBien().then(data => {
+      this.setState({ catTipoBien: data });
+    });
+    catTitularBien().then(data => {
+      this.setState({ catTitularBien: data });
+    });
+    catFormaAdquision().then(data => {
+      this.setState({ catFormaAdquision: data });
+    });
+    catRelacionDeclarante().then(data => {
+      this.setState({ catRelacionDeclarante: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
+    });
+    catTipoMoneda().then(data => {
+      this.setState({ catTipoMoneda: data });
     });
   }
 
@@ -147,7 +178,7 @@ class BienesInmuebles extends React.Component {
         data.datos_bienes_inmuebles.superficie_terreno = valor;
         break;
       case "tipo_bien":
-        data.datos_bienes_inmuebles.tipo_bien = getData(catTiposBienes, valor);
+        data.datos_bienes_inmuebles.tipo_bien = getData(catTipoBien, valor);
         break;
       case "tipo_operacion":
         data.datos_bienes_inmuebles.tipo_operacion = getData(
@@ -241,7 +272,7 @@ class BienesInmuebles extends React.Component {
 
   render() {
     return (
-      <BienesInmuebles
+      <BienesInmueblesForm
         data={this.state}
         handleChange={this.setDataBienesInmuebles}
         addClick={this.addClickBienesInmuebles}

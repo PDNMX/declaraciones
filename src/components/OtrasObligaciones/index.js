@@ -1,5 +1,5 @@
 import React from "react";
-import OtrasObligaciones from "./OtrasObligaciones";
+import OtrasObligacionesForm from "./OtrasObligaciones";
 import {
   getData,
   catPaises,
@@ -11,12 +11,12 @@ import {
   catLocalidades,
   catTipoVialidad,
   catTipoOperacion,
-  catTiposAcredores,
-  catTiposAdeudos,
+  catTipoAcreedor,
+  catTipoAdeudo,
   catSectorIndustria,
-  catTiposMonedas,
-  catMedidasPlazos,
-  catTitularesBienes
+  catTipoMoneda,
+  catMedidaPlazo,
+  catTitularBien
 } from "../../Funciones/";
 
 import { example } from "../../DATA/data_example";
@@ -31,31 +31,64 @@ class OtrasObligaciones extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
-      datos_curriculares_grados_academicos:
-        info.informacion_personal.datos_curriculares.grados_academicos[0],
-      catEntidadesFederativas: [],
+      datos_otras_obligaciones: info.pasivos.otras_obligaciones[0],
       catPaises: [],
-      catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catEntidadesFederativas: [],
+      catMunicipios: [],
+      catLocalidades: [],
+      catTipoVialidad: [],
+      catTipoOperacion: [],
+      catTipoAcreedor: [],
+      catTipoAdeudo: [],
+      catSectorIndustria: [],
+      catTipoMoneda: [],
+      catMedidaPlazo: [],
+      catTitularBien: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catTipoOperacion().then(data => {
+      this.setState({ catTipoOperacion: data });
+    });
+    catTipoAcreedor().then(data => {
+      this.setState({ catTipoAcreedor: data });
+    });
+    catTipoAdeudo().then(data => {
+      this.setState({ catTipoAdeudo: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
+    });
+    catTipoMoneda().then(data => {
+      this.setState({ catTipoMoneda: data });
+    });
+    catMedidaPlazo().then(data => {
+      this.setState({ catMedidaPlazo: data });
+    });
+    catTitularBien().then(data => {
+      this.setState({ catTitularBien: data });
+    });
+    catTipoAcreedor().then(data => {
+      this.setState({ catTipoAcreedor: data });
     });
   }
 
@@ -231,7 +264,7 @@ class OtrasObligaciones extends React.Component {
 
   render() {
     return (
-      <OtrasObligaciones
+      <OtrasObligacionesForm
         data={this.state}
         handleChange={this.setDataOtrasObligaciones}
         addClick={this.addClickOtrasObligaciones}

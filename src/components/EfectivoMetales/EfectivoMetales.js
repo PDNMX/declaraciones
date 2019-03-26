@@ -103,7 +103,7 @@ function SimpleCard(props) {
                   id: "moneda"
                 }}
               >
-                {data.catTiposMonedas.map(tipoMoneda => (
+                {data.catTipoMoneda.map(tipoMoneda => (
                   <MenuItem key={tipoMoneda.codigoNumerico+tipoMoneda.entidad} value={tipoMoneda.codigo}>
                     {tipoMoneda.moneda}
                   </MenuItem>
@@ -131,7 +131,7 @@ function SimpleCard(props) {
                   id: "tipo_metal"
                 }}
               >
-                {data.catTiposMetales.map(tipoMetal => (
+                {data.catTipoMetal.map(tipoMetal => (
                   <MenuItem key={tipoMetal.codigo} value={tipoMetal.codigo}>
                     {tipoMetal.valor}
                   </MenuItem>

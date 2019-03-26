@@ -4,10 +4,11 @@ import DatosCurricularesForm from "./DatosCurriculares";
 
 import {
   getData,
-catPaises,
-catEntidadesFederativas,
-catEstatusEstudio,
-catDocumentoObtenido,
+  catPaises,
+  catEntidadesFederativas,
+  getEntidadesFederativas,
+  catEstatusEstudio,
+  catDocumentoObtenido
 } from "../../Funciones/";
 
 import { example } from "../../DATA/data_example";
@@ -22,37 +23,28 @@ class DatosCurriculares extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
       datos_curriculares_grados_academicos:
         info.informacion_personal.datos_curriculares.grados_academicos[0],
-      catEntidadesFederativas: [],
       catPaises: [],
+      catEntidadesFederativas: [],
       catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catDocumentoObtenido: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
-    catEntidadesFederativas().then(data => {
-      this.setState({ catEntidadesFederativas: data });
-    });
     catPaises().then(data => {
       this.setState({ catPaises: data });
     });
-
+    catEntidadesFederativas().then(data => {
+      this.setState({ catEntidadesFederativas: data });
+    });
     catEstatusEstudio().then(data => {
       this.setState({ catEstatusEstudio: data });
     });
-
     catDocumentoObtenido().then(data => {
       this.setState({ catDocumentoObtenido: data });
     });

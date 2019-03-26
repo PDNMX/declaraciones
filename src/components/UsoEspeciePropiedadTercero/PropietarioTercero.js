@@ -103,7 +103,7 @@ function SimpleCard(props) {
                   id: "moneda"
                 }}
               >
-                {data.catTiposMonedas.map(tipoMoneda => (
+                {data.catTipoMoneda.map(tipoMoneda => (
                   <MenuItem
                     key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
                     value={tipoMoneda.codigo}

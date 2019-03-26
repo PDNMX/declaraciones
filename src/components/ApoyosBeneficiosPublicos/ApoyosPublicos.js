@@ -114,7 +114,7 @@ function SimpleCard(props) {
                   id: "nivel_gobierno"
                 }}
               >
-                {data.catNivelesGobierno.map(nivelGobierno => (
+                {data.catNivelGobierno.map(nivelGobierno => (
                   <MenuItem
                     key={nivelGobierno.codigo}
                     value={nivelGobierno.codigo}
@@ -136,7 +136,7 @@ function SimpleCard(props) {
                   id: "tipo_apoyo"
                 }}
               >
-                {data.catTiposApoyos.map(tipoApoyo => (
+                {data.catTipoApoyo.map(tipoApoyo => (
                   <MenuItem key={tipoApoyo.codigo} value={tipoApoyo.codigo}>
                     {tipoApoyo.valor}
                   </MenuItem>

@@ -103,7 +103,7 @@ function SimpleCard(props) {
                   id: "tipo_acreedor"
                 }}
               >
-                {data.catTiposAcredores.map(tipoAcreedor => (
+                {data.catTipoAcreedor.map(tipoAcreedor => (
                   <MenuItem
                     key={tipoAcreedor.codigo}
                     value={tipoAcreedor.codigo}
@@ -127,7 +127,7 @@ function SimpleCard(props) {
                   id: "tipo_obligacion"
                 }}
               >
-                {data.catTiposAdeudos.map(tipoAdeudo => (
+                {data.catTipoAdeudo.map(tipoAdeudo => (
                   <MenuItem key={tipoAdeudo.codigo} value={tipoAdeudo.codigo}>
                     {tipoAdeudo.valor}
                   </MenuItem>
@@ -237,7 +237,7 @@ function SimpleCard(props) {
                   id: "moneda"
                 }}
               >
-                {data.catTiposMonedas.map(tipoMoneda => (
+                {data.catTipoMoneda.map(tipoMoneda => (
                   <MenuItem
                     key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
                     value={tipoMoneda.codigo}
@@ -301,7 +301,7 @@ function SimpleCard(props) {
                   id: "unidad_medida_plazo"
                 }}
               >
-                {data.catMedidasPlazos.map(medidaPlazo => (
+                {data.catMedidaPlazo.map(medidaPlazo => (
                   <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
                     {medidaPlazo.valor}
                   </MenuItem>
@@ -322,7 +322,7 @@ function SimpleCard(props) {
                   id: "titular"
                 }}
               >
-                {data.catTitularesBienes.map(titularBien => (
+                {data.catTitularBien.map(titularBien => (
                   <MenuItem key={titularBien.codigo} value={titularBien.codigo}>
                     {titularBien.valor}
                   </MenuItem>

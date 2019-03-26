@@ -30,37 +30,50 @@ class ExperienciaLaboral extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
       datos_experiencia_laboral:
         info.informacion_personal.experiencia_laboral[0],
-      experiencia_laboral: [],
-      catAmbito: [],
-      catPoderJuridico: [],
-      catNivelGobierno: [],
-      catSectorIndustria: [],
-
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],
       catLocalidades: [],
-      catTipoVialidad: []
+      catTipoVialidad: [],
+      catAmbito: [],
+      catNivelGobierno: [],
+      catPoderJuridico: [],
+      catSectorIndustria: []
     };
 
     console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catAmbito().then(data => {
+      this.setState({ catAmbito: data });
+    });
+    catNivelGobierno().then(data => {
+      this.setState({ catNivelGobierno: data });
+    });
+    catPoderJuridico().then(data => {
+      this.setState({ catPoderJuridico: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
     });
   }
 

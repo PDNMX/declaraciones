@@ -1,6 +1,6 @@
 import React from "react";
 
-import Arrendamiento from "./Arrendamiento";
+import ArrendamientoForm from "./Arrendamiento";
 import {
   getData,
   catPaises,
@@ -13,8 +13,8 @@ import {
   catTipoVialidad,
   catSectorIndustria,
   catTiposActividades,
-  catTiposMonedas,
-  catMedidasPlazos
+  catTipoMoneda,
+  catMedidaPlazo
 } from "../../Funciones/";
 
 import { example } from "../../DATA/data_example";
@@ -29,31 +29,49 @@ class Arrendamiento extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
-      datos_curriculares_grados_academicos:
-        info.informacion_personal.datos_curriculares.grados_academicos[0],
-      catEntidadesFederativas: [],
+      datos_arrendamiento: info.ingresos.arrendamiento[0],
       catPaises: [],
-      catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catEntidadesFederativas: [],
+      catMunicipios: [],
+      catLocalidades: [],
+      catTipoVialidad: [],
+      catSectorIndustria: [],
+      catTiposActividades: [],
+      catTipoMoneda: [],
+      catMedidaPlazo: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
+    });
+    catTiposActividades().then(data => {
+      this.setState({ catTiposActividades: data });
+    });
+    catTipoMoneda().then(data => {
+      this.setState({ catTipoMoneda: data });
+    });
+    catMedidaPlazo().then(data => {
+      this.setState({ catMedidaPlazo: data });
     });
   }
 
@@ -192,7 +210,7 @@ class Arrendamiento extends React.Component {
 
   render() {
     return (
-      <Arrendamiento
+      <ArrendamientoForm
         data={this.state}
         handleChange={this.setDataArrendamiento}
         addClick={this.addClickArrendamiento}

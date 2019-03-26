@@ -31,15 +31,14 @@ class DatosEncargoActual extends React.Component {
 
     this.state = {
       datos_encargo_actual: info.informacion_personal.datos_encargo_actual,
-      catNivelGobierno: [],
-      catPoderJuridico: [],
-      catSectorIndustria: [],
-
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],
       catLocalidades: [],
-      catTipoVialidad: []
+      catTipoVialidad: [],
+      catNivelGobierno: [],
+      catPoderJuridico: [],
+      catSectorIndustria: []
     };
   }
 
@@ -174,6 +173,21 @@ class DatosEncargoActual extends React.Component {
       }
     );
 
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
+    catEntidadesFederativas().then(data => {
+      this.setState({ catEntidadesFederativas: data });
+    });
+    catMunicipios().then(data => {
+      this.setState({ catMunicipios: data });
+    });
+    catLocalidades().then(data => {
+      this.setState({ catLocalidades: data });
+    });
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
     catNivelGobierno().then(data => {
       this.setState({ catNivelGobierno: data });
     });

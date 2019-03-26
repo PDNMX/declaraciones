@@ -10,10 +10,6 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { data } from "./data";
-import { example } from "./data_example";
-import { clean } from "./data_clean";
-
 var apiHost = process.env.REACT_APP_API || "https://localhost/captura/api/";
 
 const styles = theme => ({
@@ -31,68 +27,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
 
-    let info = example;
-
-    this.state = data;
-
-    // this.state.datos_experiencia_laboral =
-    //   info.informacion_personal.experiencia_laboral[0];
-    this.state.datos_dependientes_economicos =
-      info.informacion_personal.dependientes_economicos[0];
-
-    this.state.datos_empresas_sociedades_asociaciones =
-      info.intereses.empresas_sociedades_asociaciones[0];
-    this.state.datos_membresias = info.intereses.membresias[0];
-    this.state.datos_apoyos_beneficios_publicos =
-      info.intereses.apoyos_beneficios_publicos[0];
-    this.state.datos_representacion_activa =
-      info.intereses.representacion_activa[0];
-    this.state.datos_representacion_pasiva =
-      info.intereses.representacion_pasiva[0];
-    this.state.datos_socios_comerciales = info.intereses.socios_comerciales[0];
-    this.state.datos_clientes_principales =
-      info.intereses.clientes_principales[0];
-    this.state.datos_otras_partes = info.intereses.otras_partes[0];
-    this.state.datos_beneficios_gratuitos =
-      info.intereses.beneficios_gratuitos[0];
-
-    this.state.datos_sueldos_salarios_publicos =
-      info.ingresos.sueldos_salarios_publicos[0];
-    this.state.datos_sueldos_salarios_otros_empleos =
-      info.ingresos.sueldos_salarios_otros_empleos[0];
-    this.state.datos_actividad_profesional =
-      info.ingresos.actividad_profesional[0];
-    this.state.datos_actividad_empresarial =
-      info.ingresos.actividad_empresarial[0];
-    this.state.datos_actividad_economica_menor =
-      info.ingresos.actividad_economica_menor[0];
-    this.state.datos_arrendamiento = info.ingresos.arrendamiento[0];
-    this.state.datos_intereses = info.ingresos.intereses[0];
-    this.state.datos_premios = info.ingresos.premios[0];
-    this.state.datos_enajenacion_bienes = info.ingresos.enajenacion_bienes[0];
-    this.state.datos_otros_ingresos = info.ingresos.otros_ingresos[0];
-
-    this.state.datos_bienes_inmuebles = info.activos.bienes_inmuebles[0];
-    this.state.datos_bienes_muebles_registrables =
-      info.activos.bienes_muebles_registrables[0];
-    this.state.datos_bienes_muebles_no_registrables =
-      info.activos.bienes_muebles_no_registrables[0];
-    this.state.datos_inversiones_cuentas_valores =
-      info.activos.inversiones_cuentas_valores[0];
-    this.state.datos_efectivo_metales = info.activos.efectivo_metales[0];
-    this.state.datos_fideicomisos = info.activos.fideicomisos[0];
-    this.state.datos_bienes_intangibles = info.activos.bienes_intangibles[0];
-    this.state.datos_cuentas_por_cobrar = info.activos.cuentas_por_cobrar[0];
-    this.state.datos_uso_especie_propiedad_tercero =
-      info.activos.uso_especie_propiedad_tercero[0];
-
-    this.state.datos_deudas = info.pasivos.deudas[0];
-    this.state.datos_otras_obligaciones = info.pasivos.otras_obligaciones[0];
-
-    //clean  form
   }
-
-  state = data;
 
   show = () => {
     // console.log(this.state.datos_curriculares_grados_academicos);
@@ -248,16 +183,14 @@ class Index extends Component {
         this.setState({ catTipoOperacion: catTipoOperacion })
       );
 
-    fetch(config.apiHost + "catTiposMonedas")
+    fetch(config.apiHost + "catTipoMoneda")
       .then(res => res.json())
-      .then(catTiposMonedas =>
-        this.setState({ catTiposMonedas: catTiposMonedas })
-      );
+      .then(catTipoMoneda => this.setState({ catTipoMoneda: catTipoMoneda }));
 
-    fetch(config.apiHost + "catTiposMetales")
+    fetch(config.apiHost + "catTipoMetal")
       .then(res => res.json())
-      .then(catTiposMetales =>
-        this.setState({ catTiposMetales: catTiposMetales })
+      .then(catTipoMetal =>
+        this.setState({ catTipoMetal: catTipoMetal })
       );
 
     fetch(config.apiHost + "catFormaAdquision")
@@ -266,10 +199,10 @@ class Index extends Component {
         this.setState({ catFormaAdquision: catFormaAdquision })
       );
 
-    fetch(config.apiHost + "catTiposBienesInmuebles")
+    fetch(config.apiHost + "catTipoBienInmuebles")
       .then(res => res.json())
-      .then(catTiposBienesInmuebles =>
-        this.setState({ catTiposBienesInmuebles: catTiposBienesInmuebles })
+      .then(catTipoBienInmuebles =>
+        this.setState({ catTipoBienInmuebles: catTipoBienInmuebles })
       );
 
     fetch(config.apiHost + "catEntidadesFederativas")
@@ -278,10 +211,10 @@ class Index extends Component {
         this.setState({ catEntidadesFederativas: catEntidadesFederativas })
       );
 
-    fetch(config.apiHost + "catTitularesBienes")
+    fetch(config.apiHost + "catTitularBien")
       .then(res => res.json())
-      .then(catTitularesBienes =>
-        this.setState({ catTitularesBienes: catTitularesBienes })
+      .then(catTitularBien =>
+        this.setState({ catTitularBien: catTitularBien })
       );
 
     fetch(config.apiHost + "catRelacionDeclarante")
@@ -290,16 +223,16 @@ class Index extends Component {
         this.setState({ catRelacionDeclarante: catRelacionDeclarante })
       );
 
-    fetch(config.apiHost + "catMedidasPlazos")
+    fetch(config.apiHost + "catMedidaPlazo")
       .then(res => res.json())
-      .then(catMedidasPlazos =>
-        this.setState({ catMedidasPlazos: catMedidasPlazos })
+      .then(catMedidaPlazo =>
+        this.setState({ catMedidaPlazo: catMedidaPlazo })
       );
 
-    fetch(config.apiHost + "catDependencias")
+    fetch(config.apiHost + "catDependencia")
       .then(res => res.json())
-      .then(catDependencias =>
-        this.setState({ catDependencias: catDependencias })
+      .then(catDependencia =>
+        this.setState({ catDependencia: catDependencia })
       );
 
     fetch(config.apiHost + "catTiposActividades")
@@ -308,34 +241,30 @@ class Index extends Component {
         this.setState({ catTiposActividades: catTiposActividades })
       );
 
-    fetch(config.apiHost + "catTiposAcredores")
+    fetch(config.apiHost + "catTipoAcreedor")
       .then(res => res.json())
-      .then(catTiposAcredores =>
-        this.setState({ catTiposAcredores: catTiposAcredores })
+      .then(catTipoAcreedor =>
+        this.setState({ catTipoAcreedor: catTipoAcreedor })
       );
 
-    fetch(config.apiHost + "catTiposAdeudos")
+    fetch(config.apiHost + "catTipoAdeudo")
       .then(res => res.json())
-      .then(catTiposAdeudos =>
-        this.setState({ catTiposAdeudos: catTiposAdeudos })
+      .then(catTipoAdeudo => this.setState({ catTipoAdeudo: catTipoAdeudo }));
+
+    fetch(config.apiHost + "catTipoBien")
+      .then(res => res.json())
+      .then(catTipoBien => this.setState({ catTipoBien: catTipoBien }));
+
+    fetch(config.apiHost + "catNivelGobierno")
+      .then(res => res.json())
+      .then(catNivelGobierno =>
+        this.setState({ catNivelGobierno: catNivelGobierno })
       );
 
-    fetch(config.apiHost + "catTiposBienes")
+    fetch(config.apiHost + "catTipoApoyo")
       .then(res => res.json())
-      .then(catTiposBienes =>
-        this.setState({ catTiposBienes: catTiposBienes })
-      );
-
-    fetch(config.apiHost + "catNivelesGobierno")
-      .then(res => res.json())
-      .then(catNivelesGobierno =>
-        this.setState({ catNivelesGobierno: catNivelesGobierno })
-      );
-
-    fetch(config.apiHost + "catTiposApoyos")
-      .then(res => res.json())
-      .then(catTiposApoyos =>
-        this.setState({ catTiposApoyos: catTiposApoyos })
+      .then(catTipoApoyo =>
+        this.setState({ catTipoApoyo: catTipoApoyo })
       );
 
     fetch(config.apiHost + "catTiposFideicomisos")
@@ -344,24 +273,24 @@ class Index extends Component {
         this.setState({ catTiposFideicomisos: catTiposFideicomisos })
       );
 
-    fetch(config.apiHost + "catTiposInversiones")
+    fetch(config.apiHost + "catTipoInversion")
       .then(res => res.json())
-      .then(catTiposInversiones =>
-        this.setState({ catTiposInversiones: catTiposInversiones })
+      .then(catTipoInversion =>
+        this.setState({ catTipoInversion: catTipoInversion })
       );
 
-    fetch(config.apiHost + "catTiposEspecificosInversion")
+    fetch(config.apiHost + "catTipoEspecificoInversion")
       .then(res => res.json())
-      .then(catTiposEspecificosInversion =>
+      .then(catTipoEspecificoInversion =>
         this.setState({
-          catTiposEspecificosInversion: catTiposEspecificosInversion
+          catTipoEspecificoInversion: catTipoEspecificoInversion
         })
       );
 
-    fetch(config.apiHost + "catTiposInstituciones")
+    fetch(config.apiHost + "catTipoInstitucion")
       .then(res => res.json())
-      .then(catTiposInstituciones =>
-        this.setState({ catTiposInstituciones: catTiposInstituciones })
+      .then(catTipoInstitucion =>
+        this.setState({ catTipoInstitucion: catTipoInstitucion })
       );
 
     fetch(config.apiHost + "catNaturalezaMembresias")
@@ -370,16 +299,14 @@ class Index extends Component {
         this.setState({ catNaturalezaMembresias: catNaturalezaMembresias })
       );
 
-    fetch(config.apiHost + "catTiposAdeudos")
+    fetch(config.apiHost + "catTipoAdeudo")
       .then(res => res.json())
-      .then(catTiposAdeudos =>
-        this.setState({ catTiposAdeudos: catTiposAdeudos })
-      );
+      .then(catTipoAdeudo => this.setState({ catTipoAdeudo: catTipoAdeudo }));
 
-    fetch(config.apiHost + "catTiposRepresentaciones")
+    fetch(config.apiHost + "catTipoRepresentacion")
       .then(res => res.json())
-      .then(catTiposRepresentaciones =>
-        this.setState({ catTiposRepresentaciones: catTiposRepresentaciones })
+      .then(catTipoRepresentacion =>
+        this.setState({ catTipoRepresentacion: catTipoRepresentacion })
       );
   }
 

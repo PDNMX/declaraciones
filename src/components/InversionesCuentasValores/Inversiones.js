@@ -110,7 +110,7 @@ function SimpleCard(props) {
                   id: "tipo_inversion"
                 }}
               >
-                {data.catTiposInversiones.map(tipoInversion => (
+                {data.catTipoInversion.map(tipoInversion => (
                   <MenuItem
                     key={tipoInversion.codigo}
                     value={tipoInversion.codigo}
@@ -137,7 +137,7 @@ function SimpleCard(props) {
                   id: "tipo_especifico_inversion"
                 }}
               >
-                {data.catTiposEspecificosInversion.map(
+                {data.catTipoEspecificoInversion.map(
                   tipoEspecificoInversion => (
                     <MenuItem
                       key={tipoEspecificoInversion.codigo}
@@ -286,7 +286,7 @@ function SimpleCard(props) {
                   id: "moneda"
                 }}
               >
-                {data.catTiposMonedas.map(tipoMoneda => (
+                {data.catTipoMoneda.map(tipoMoneda => (
                   <MenuItem
                     key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
                     value={tipoMoneda.codigo}
@@ -343,7 +343,7 @@ function SimpleCard(props) {
                   id: "unidad_medida_plazo"
                 }}
               >
-                {data.catMedidasPlazos.map(medidaPlazo => (
+                {data.catMedidaPlazo.map(medidaPlazo => (
                   <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
                     {medidaPlazo.valor}
                   </MenuItem>
@@ -364,7 +364,7 @@ function SimpleCard(props) {
                   id: "titular"
                 }}
               >
-                {data.catTitularesBienes.map(titularBien => (
+                {data.catTitularBien.map(titularBien => (
                   <MenuItem key={titularBien.codigo} value={titularBien.codigo}>
                     {titularBien.valor}
                   </MenuItem>

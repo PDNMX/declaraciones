@@ -108,7 +108,7 @@ function SimpleCard(props) {
                   id: "tipo_bien_inmueble"
                 }}
               >
-                {data.catTiposBienesInmuebles.map(tiposBienesInmuebles => (
+                {data.catTipoBienInmuebles.map(tiposBienesInmuebles => (
                   <MenuItem
                     key={tiposBienesInmuebles.codigo}
                     value={tiposBienesInmuebles.codigo}
@@ -222,7 +222,7 @@ function SimpleCard(props) {
                   id: "titular"
                 }}
               >
-                {data.catTitularesBienes.map(titularBien => (
+                {data.catTitularBien.map(titularBien => (
                   <MenuItem key={titularBien.codigo} value={titularBien.codigo}>
                     {titularBien.valor}
                   </MenuItem>
@@ -402,7 +402,7 @@ function SimpleCard(props) {
                   id: "moneda"
                 }}
               >
-                {data.catTiposMonedas.map(tipoMoneda => (
+                {data.catTipoMoneda.map(tipoMoneda => (
                   <MenuItem
                     key={tipoMoneda.codigoNumerico + tipoMoneda.entidad}
                     value={tipoMoneda.codigo}

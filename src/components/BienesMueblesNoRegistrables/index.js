@@ -1,14 +1,16 @@
 import React from "react";
 
-import BienesMueblesNoRegistrables from "./BienesMueblesNoRegistrables";
+import BienesMueblesNoRegistrablesForm from "./BienesMueblesNoRegistrables";
 import {
   getData,
-catTipoOperacion,
-catTiposBienes,
-catTitularesBienes,
-catFormaAdquision,
-catRelacionDeclarante,
-catTiposMonedas,
+  catTipoOperacion,
+  catTipoBien,
+  catTitularBien,
+  catFormaAdquision,
+  catRelacionDeclarante,
+  catTipoMoneda,
+  catEntidadesFederativas,
+  catPaises
 } from "../../Funciones/";
 
 import { example } from "../../DATA/data_example";
@@ -23,26 +25,41 @@ class BienesMueblesNoRegistrables extends React.Component {
     info = clean;
     info = example;
 
-    // this.state = data;
-    // this.state.informacion_general =
-    //   info.informacion_personal.informacion_general;
-    // this.state.entidad_federativa=getSectorIndustria();
-    // let catEntidadesFederativas_data = catEntidadesFederativas();
-
     this.state = {
-      datos_curriculares_grados_academicos:
-        info.informacion_personal.datos_curriculares.grados_academicos[0],
+      datos_bienes_muebles_no_registrables:
+        info.activos.bienes_muebles_no_registrables[0],
+      catTipoOperacion: [],
+      catTipoBien: [],
+      catTitularBien: [],
+      catFormaAdquision: [],
+      catRelacionDeclarante: [],
+      catTipoMoneda: [],
       catEntidadesFederativas: [],
-      catPaises: [],
-      catEstatusEstudio: [],
-      catDocumentoObtenido: [],
-      curriculares_grados_academicos: []
+      catPaises: []
     };
 
     // console.log("state constructor", this.state);
   }
 
   componentDidMount() {
+    catTipoOperacion().then(data => {
+      this.setState({ catTipoOperacion: data });
+    });
+    catTipoBien().then(data => {
+      this.setState({ catTipoBien: data });
+    });
+    catTitularBien().then(data => {
+      this.setState({ catTitularBien: data });
+    });
+    catFormaAdquision().then(data => {
+      this.setState({ catFormaAdquision: data });
+    });
+    catRelacionDeclarante().then(data => {
+      this.setState({ catRelacionDeclarante: data });
+    });
+    catTipoMoneda().then(data => {
+      this.setState({ catTipoMoneda: data });
+    });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
@@ -100,7 +117,7 @@ class BienesMueblesNoRegistrables extends React.Component {
         break;
       case "tipo_bien":
         data.datos_bienes_muebles_no_registrables.tipo_bien = getData(
-          catTiposBienes,
+          catTipoBien,
           valor
         );
         break;
@@ -162,7 +179,7 @@ class BienesMueblesNoRegistrables extends React.Component {
 
   render() {
     return (
-      <BienesMueblesNoRegistrables
+      <BienesMueblesNoRegistrablesForm
         data={this.state}
         handleChange={this.setDataBienesMueblesNoRegistables}
         addClick={this.addClickBienesMueblesNoRegistrables}

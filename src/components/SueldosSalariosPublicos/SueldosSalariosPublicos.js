@@ -77,7 +77,7 @@ function SimpleCard(props) {
                   id: "ente_publico"
                 }}
               >
-                {data.catDependencias.map(entesPublicos => (
+                {data.catDependencia.map(entesPublicos => (
                   <MenuItem
                     key={entesPublicos.valor}
                     value={entesPublicos.valor}
@@ -125,7 +125,7 @@ function SimpleCard(props) {
                   id: "moneda"
                 }}
               >
-                {data.catTiposMonedas.map(tipoMoneda => (
+                {data.catTipoMoneda.map(tipoMoneda => (
                   <MenuItem key={tipoMoneda.codigoNumerico+tipoMoneda.entidad} value={tipoMoneda.codigo}>
                     {tipoMoneda.moneda}
                   </MenuItem>
@@ -149,7 +149,7 @@ function SimpleCard(props) {
                   id: "frecuencia"
                 }}
               >
-                {data.catMedidasPlazos.map(medidaPlazo => (
+                {data.catMedidaPlazo.map(medidaPlazo => (
                   <MenuItem key={medidaPlazo.codigo} value={medidaPlazo.codigo}>
                     {medidaPlazo.valor}
                   </MenuItem>

@@ -80,7 +80,7 @@ function SimpleCard(props) {
                   id: "tipo_institucion"
                 }}
               >
-                {data.catTiposInstituciones.map(tipoInstitucion => (
+                {data.catTipoInstitucion.map(tipoInstitucion => (
                   <MenuItem
                     key={tipoInstitucion.codigo}
                     value={tipoInstitucion.codigo}
