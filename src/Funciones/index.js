@@ -181,12 +181,6 @@ export const catDocumentoObtenido = () => {
     .then(data => data);
 };
 
-
-
-
-
-
-
 export const getData = (data, codigo) => {
   let info = data.filter(x => x.codigo === codigo);
   return {
