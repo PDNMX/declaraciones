@@ -23,8 +23,8 @@ export var example = {
         codigo: "MX"
       },
       entidad_federativa_nacimiento: {
-        nom_ent: "México",
-        cve_ent: "15"
+        nom_agee: "México",
+        cve_agee: "15"
       },
       curp: "BEML920313HMCLNS09",
       rfc: "GOAP780710RH7",
@@ -44,8 +44,8 @@ export var example = {
           codigo: "MX"
         },
         entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
+          nom_agee: "México",
+          cve_agee: "15"
         },
         municipio: {
           nom_mun: "Ecatepec de Morelos",
@@ -85,8 +85,8 @@ export var example = {
               codigo: "MX"
             },
             entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+              nom_agee: "México",
+              cve_agee: "15"
             },
             municipio: {
               nom_mun: "Ecatepec de Morelos",
@@ -128,8 +128,8 @@ export var example = {
           codigo: "MX"
         },
         entidad: {
-          nom_ent: "México",
-          cve_ent: "15"
+          nom_agee: "México",
+          cve_agee: "15"
         }
       },
       direccion_encargo: {
@@ -138,8 +138,8 @@ export var example = {
           codigo: "MX"
         },
         entidad_federativa: {
-          nom_ent: "México",
-          cve_ent: "15"
+          nom_agee: "México",
+          cve_agee: "15"
         },
         municipio: {
           nom_mun: "Ecatepec de Morelos",
@@ -194,8 +194,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -257,8 +257,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -322,8 +322,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -368,8 +368,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -479,8 +479,8 @@ export var example = {
             codigo: "MX"
           },
           entidad: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           }
         },
         fecha_nacimiento: "2010-07-26",
@@ -506,8 +506,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -620,8 +620,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -676,8 +676,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -732,8 +732,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -788,8 +788,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -844,8 +844,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -900,8 +900,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -956,8 +956,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1016,8 +1016,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1072,8 +1072,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1144,8 +1144,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1211,8 +1211,8 @@ export var example = {
             codigo: "MX"
           },
           entidad: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           }
         },
         titular_bien: {
@@ -1317,8 +1317,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1424,8 +1424,8 @@ export var example = {
               codigo: "MX"
             },
             entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+              nom_agee: "México",
+              cve_agee: "15"
             },
             municipio: {
               nom_mun: "Ecatepec de Morelos",
@@ -1455,8 +1455,8 @@ export var example = {
               codigo: "MX"
             },
             entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+              nom_agee: "México",
+              cve_agee: "15"
             },
             municipio: {
               nom_mun: "Ecatepec de Morelos",
@@ -1486,8 +1486,8 @@ export var example = {
               codigo: "MX"
             },
             entidad_federativa: {
-              nom_ent: "México",
-              cve_ent: "15"
+              nom_agee: "México",
+              cve_agee: "15"
             },
             municipio: {
               nom_mun: "Ecatepec de Morelos",
@@ -1562,8 +1562,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1624,8 +1624,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1680,8 +1680,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",
@@ -1755,8 +1755,8 @@ export var example = {
             codigo: "MX"
           },
           entidad_federativa: {
-            nom_ent: "México",
-            cve_ent: "15"
+            nom_agee: "México",
+            cve_agee: "15"
           },
           municipio: {
             nom_mun: "Ecatepec de Morelos",

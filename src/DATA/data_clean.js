@@ -23,8 +23,8 @@ export var clean = {
         codigo: ""
       },
       entidad_federativa_nacimiento: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       curp: "",
       rfc: "",
@@ -44,8 +44,8 @@ export var clean = {
           codigo: ""
         },
         entidad_federativa: {
-          nom_ent: "",
-          cve_ent: ""
+          nom_agee: "",
+          cve_agee: ""
         },
         municipio: {
           nom_mun: "",
@@ -85,8 +85,8 @@ export var clean = {
               codigo: ""
             },
             entidad_federativa: {
-              nom_ent: "",
-              cve_ent: ""
+              nom_agee: "",
+              cve_agee: ""
             },
             municipio: {
               nom_mun: "",
@@ -128,8 +128,8 @@ export var clean = {
           codigo: ""
         },
         entidad: {
-          nom_ent: "",
-          cve_ent: ""
+          nom_agee: "",
+          cve_agee: ""
         }
       },
       direccion_encargo: {
@@ -138,8 +138,8 @@ export var clean = {
           codigo: ""
         },
         entidad_federativa: {
-          nom_ent: "",
-          cve_ent: ""
+          nom_agee: "",
+          cve_agee: ""
         },
         municipio: {
           nom_mun: "",
@@ -194,8 +194,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -257,8 +257,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -322,8 +322,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -368,8 +368,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -478,8 +478,8 @@ export var clean = {
             codigo: ""
           },
           entidad: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           }
         },
         fecha_nacimiento: "",
@@ -505,8 +505,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -619,8 +619,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -675,8 +675,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -731,8 +731,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -787,8 +787,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -843,8 +843,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -899,8 +899,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -955,8 +955,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1015,8 +1015,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1071,8 +1071,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1143,8 +1143,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1210,8 +1210,8 @@ export var clean = {
             codigo: ""
           },
           entidad: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           }
         },
         titular_bien: {
@@ -1316,8 +1316,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1423,8 +1423,8 @@ export var clean = {
               codigo: ""
             },
             entidad_federativa: {
-              nom_ent: "",
-              cve_ent: ""
+              nom_agee: "",
+              cve_agee: ""
             },
             municipio: {
               nom_mun: "",
@@ -1454,8 +1454,8 @@ export var clean = {
               codigo: ""
             },
             entidad_federativa: {
-              nom_ent: "",
-              cve_ent: ""
+              nom_agee: "",
+              cve_agee: ""
             },
             municipio: {
               nom_mun: "",
@@ -1485,8 +1485,8 @@ export var clean = {
               codigo: ""
             },
             entidad_federativa: {
-              nom_ent: "",
-              cve_ent: ""
+              nom_agee: "",
+              cve_agee: ""
             },
             municipio: {
               nom_mun: "",
@@ -1561,8 +1561,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1623,8 +1623,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1679,8 +1679,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
@@ -1754,8 +1754,8 @@ export var clean = {
             codigo: ""
           },
           entidad_federativa: {
-            nom_ent: "",
-            cve_ent: ""
+            nom_agee: "",
+            cve_agee: ""
           },
           municipio: {
             nom_mun: "",
