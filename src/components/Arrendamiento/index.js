@@ -31,6 +31,7 @@ class Arrendamiento extends React.Component {
 
     this.state = {
       datos_arrendamiento: info.ingresos.arrendamiento[0],
+      arrendamiento: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

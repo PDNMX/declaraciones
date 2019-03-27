@@ -29,6 +29,7 @@ class Membresias extends React.Component {
 
     this.state = {
       datos_membresias: info.intereses.membresias[0],
+      membresias: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

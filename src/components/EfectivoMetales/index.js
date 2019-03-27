@@ -24,6 +24,7 @@ class EfectivoMetales extends React.Component {
 
     this.state = {
       datos_efectivo_metales: info.activos.efectivo_metales[0],
+      efectivo_metales: [],
       catTipoOperacion: [],
       catTipoMoneda: [],
       catTipoMetal: [],

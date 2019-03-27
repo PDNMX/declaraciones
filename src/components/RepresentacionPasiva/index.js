@@ -22,6 +22,8 @@ class RepresentacionPasiva extends React.Component {
 
     this.state = {
       datos_representacion_pasiva: info.intereses.representacion_pasiva[0],
+      representacion_pasiva: [],
+      nacionalidad: [],
       catTipoRepresentacion: [],
       catPaises: [],
       catSectorIndustria: [],

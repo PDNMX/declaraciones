@@ -22,6 +22,7 @@ class BeneficiosGratuitos extends React.Component {
 
     this.state = {
       datos_beneficios_gratuitos: info.intereses.beneficios_gratuitos[0],
+      beneficios_gratuitos: [],
       catSectorIndustria: [],
       catEntidadesFederativas: [],
       catPaises: []

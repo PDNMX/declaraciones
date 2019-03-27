@@ -22,6 +22,7 @@ class SociosComerciales extends React.Component {
 
     this.state = {
       datos_socios_comerciales: info.intereses.socios_comerciales[0],
+      socios_comerciales: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catSectorIndustria: []

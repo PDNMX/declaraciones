@@ -30,6 +30,7 @@ class UsoEspeciePropiedadTercero extends React.Component {
     this.state = {
       datos_uso_especie_propiedad_tercero:
         info.activos.uso_especie_propiedad_tercero[0],
+      uso_especie_propiedad_tercero: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

@@ -31,6 +31,7 @@ class ActividadProfesional extends React.Component {
 
     this.state = {
       datos_actividad_profesional: info.ingresos.actividad_profesional[0],
+      actividad_profesional: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

@@ -29,6 +29,7 @@ class Fideicomisos extends React.Component {
 
     this.state = {
       datos_fideicomisos: info.activos.fideicomisos[0],
+      fideicomisos: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],
@@ -36,7 +37,6 @@ class Fideicomisos extends React.Component {
       catTipoVialidad: [],
       catTipoOperacion: [],
       catTipoFideicomiso: [],
-      catPaises: [],
       catTipoMoneda: []
     };
 

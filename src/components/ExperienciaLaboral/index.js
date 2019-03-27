@@ -33,6 +33,7 @@ class ExperienciaLaboral extends React.Component {
     this.state = {
       datos_experiencia_laboral:
         info.informacion_personal.experiencia_laboral[0],
+        experiencia_laboral:[],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

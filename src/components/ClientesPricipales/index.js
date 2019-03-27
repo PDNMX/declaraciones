@@ -28,6 +28,7 @@ class ClientesPrincipales extends React.Component {
 
     this.state = {
       datos_clientes_principales: info.intereses.clientes_principales[0],
+      clientes_principales: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

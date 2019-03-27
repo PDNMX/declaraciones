@@ -114,12 +114,9 @@ function SimpleCard(props) {
                   id: "naturaleza_membresia"
                 }}
               >
-                {data.catNaturalezaMembresias.map(naturalezaMembresia => (
-                  <MenuItem
-                    key={naturalezaMembresia.codigo}
-                    value={naturalezaMembresia.codigo}
-                  >
-                    {naturalezaMembresia.valor}
+                {data.catNaturalezaMembresias.map(data => (
+                  <MenuItem key={data.codigo} value={data.codigo}>
+                    {data.valor}
                   </MenuItem>
                 ))}
               </Select>

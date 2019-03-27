@@ -30,7 +30,7 @@ class ActividadEmpresarial extends React.Component {
 
     this.state = {
       datos_actividad_empresarial: info.ingresos.actividad_empresarial[0],
-
+      actividad_empresarial: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

@@ -32,9 +32,9 @@ class BienesInmuebles extends React.Component {
     info = clean;
     info = example;
 
-    this.state.datos_bienes_inmuebles = info.activos.bienes_inmuebles[0];
     this.state = {
       datos_bienes_inmuebles: info.activos.bienes_inmuebles[0],
+      bienes_inmuebles: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

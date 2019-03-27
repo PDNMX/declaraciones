@@ -28,6 +28,7 @@ class BienesMueblesNoRegistrables extends React.Component {
     this.state = {
       datos_bienes_muebles_no_registrables:
         info.activos.bienes_muebles_no_registrables[0],
+      bienes_muebles_no_registrables: [],
       catTipoOperacion: [],
       catTipoBien: [],
       catTitularBien: [],

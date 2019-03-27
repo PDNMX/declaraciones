@@ -31,6 +31,7 @@ class SueldosSalariosOtrosEmpleos extends React.Component {
     this.state = {
       datos_sueldos_salarios_otros_empleos:
         info.ingresos.sueldos_salarios_otros_empleos[0],
+      sueldos_salarios_otros_empleos: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

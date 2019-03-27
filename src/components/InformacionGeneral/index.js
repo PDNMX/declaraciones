@@ -32,17 +32,17 @@ class InformacionGeneral extends React.Component {
 
     this.state = {
       informacion_general: info.informacion_personal.informacion_general,
+      nacionalidades:[],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],
       catLocalidades: [],
       catTipoVialidad: [],
-      catEntidadesFederativas: [],
       catEstadoCivil: [],
       catRegimenMatrimonial: []
     };
 
-    console.log("state constructor", this.state);
+    // console.log("state constructor", this.state);
   }
 
   componentDidMount() {

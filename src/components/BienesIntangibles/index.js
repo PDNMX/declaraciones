@@ -25,11 +25,11 @@ class BienesIntangibles extends React.Component {
 
     this.state = {
       datos_bienes_intangibles: info.activos.bienes_intangibles[0],
+      bienes_intangibles: [],
       catTipoOperacion: [],
       catSectorIndustria: [],
       catTipoMoneda: [],
       catFormaAdquision: [],
-      catTipoMoneda: [],
       catEntidadesFederativas: [],
       catPaises: []
     };

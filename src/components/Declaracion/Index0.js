@@ -26,7 +26,6 @@ const styles = theme => ({
 class Index extends Component {
   constructor(props) {
     super(props);
-
   }
 
   show = () => {
@@ -187,10 +186,10 @@ class Index extends Component {
       .then(res => res.json())
       .then(catTipoMoneda => this.setState({ catTipoMoneda: catTipoMoneda }));
 
-    fetch(config.apiHost + "catTipoMetal")
+    fetch(config.apiHost + "catTiposMetales")
       .then(res => res.json())
-      .then(catTipoMetal =>
-        this.setState({ catTipoMetal: catTipoMetal })
+      .then(catTiposMetales =>
+        this.setState({ catTiposMetales: catTiposMetales })
       );
 
     fetch(config.apiHost + "catFormaAdquision")
@@ -241,10 +240,10 @@ class Index extends Component {
         this.setState({ catTiposActividades: catTiposActividades })
       );
 
-    fetch(config.apiHost + "catTipoAcreedor")
+    fetch(config.apiHost + "catTiposAcredores")
       .then(res => res.json())
-      .then(catTipoAcreedor =>
-        this.setState({ catTipoAcreedor: catTipoAcreedor })
+      .then(catTiposAcredores =>
+        this.setState({ catTiposAcredores: catTiposAcredores })
       );
 
     fetch(config.apiHost + "catTipoAdeudo")
@@ -255,16 +254,10 @@ class Index extends Component {
       .then(res => res.json())
       .then(catTipoBien => this.setState({ catTipoBien: catTipoBien }));
 
-    fetch(config.apiHost + "catNivelGobierno")
+    fetch(config.apiHost + "catTiposApoyos")
       .then(res => res.json())
-      .then(catNivelGobierno =>
-        this.setState({ catNivelGobierno: catNivelGobierno })
-      );
-
-    fetch(config.apiHost + "catTipoApoyo")
-      .then(res => res.json())
-      .then(catTipoApoyo =>
-        this.setState({ catTipoApoyo: catTipoApoyo })
+      .then(catTiposApoyos =>
+        this.setState({ catTiposApoyos: catTiposApoyos })
       );
 
     fetch(config.apiHost + "catTiposFideicomisos")
@@ -303,10 +296,10 @@ class Index extends Component {
       .then(res => res.json())
       .then(catTipoAdeudo => this.setState({ catTipoAdeudo: catTipoAdeudo }));
 
-    fetch(config.apiHost + "catTipoRepresentacion")
+    fetch(config.apiHost + "catTiposRepresentaciones")
       .then(res => res.json())
-      .then(catTipoRepresentacion =>
-        this.setState({ catTipoRepresentacion: catTipoRepresentacion })
+      .then(catTiposRepresentaciones =>
+        this.setState({ catTiposRepresentaciones: catTiposRepresentaciones })
       );
   }
 

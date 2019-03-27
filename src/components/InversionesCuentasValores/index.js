@@ -35,6 +35,7 @@ class InversionesCuentasValores extends React.Component {
     this.state = {
       datos_inversiones_cuentas_valores:
         info.activos.inversiones_cuentas_valores[0],
+      inversiones_cuentas_valores: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

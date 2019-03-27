@@ -33,6 +33,7 @@ class Deudas extends React.Component {
 
     this.state = {
       datos_deudas: info.pasivos.deudas[0],
+      deudas: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

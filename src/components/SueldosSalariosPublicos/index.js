@@ -24,6 +24,7 @@ class SueldosSalariosPublicos extends React.Component {
     this.state = {
       datos_sueldos_salarios_publicos:
         info.ingresos.sueldos_salarios_publicos[0],
+      sueldos_salarios_publicos: [],
       catDependencia: [],
       catTipoMoneda: [],
       catMedidaPlazo: [],

@@ -33,6 +33,7 @@ class OtrasObligaciones extends React.Component {
 
     this.state = {
       datos_otras_obligaciones: info.pasivos.otras_obligaciones[0],
+      otras_obligaciones: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

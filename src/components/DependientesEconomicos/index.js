@@ -30,6 +30,9 @@ class DependientesEconomicos extends React.Component {
     this.state = {
       datos_dependientes_economicos:
         info.informacion_personal.dependientes_economicos[0],
+      dependientes_economicos: [],
+      dependientes_economicos_nacionlidades: [],
+      nacionalidad: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

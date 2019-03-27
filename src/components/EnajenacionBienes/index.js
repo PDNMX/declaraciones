@@ -31,6 +31,7 @@ class EnajenacionBienes extends React.Component {
 
     this.state = {
       datos_enajenacion_bienes: info.ingresos.enajenacion_bienes[0],
+      enajenacion_bienes: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

@@ -150,8 +150,7 @@ class DatosEncargoActual extends React.Component {
   componentDidMount() {
     let {
       entidad_federativa,
-      municipio,
-      localidad
+      municipio
     } = this.state.datos_encargo_actual.direccion_encargo;
 
     console.log(this.state.datos_encargo_actual.direccion_encargo);

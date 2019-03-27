@@ -30,6 +30,7 @@ class OtrosIngresos extends React.Component {
 
     this.state = {
       datos_otros_ingresos: info.ingresos.otros_ingresos[0],
+      otros_ingresos: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

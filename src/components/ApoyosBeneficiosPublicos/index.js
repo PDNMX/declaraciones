@@ -24,7 +24,7 @@ class ApoyosBeneficiosPublicos extends React.Component {
     this.state = {
       datos_apoyos_beneficios_publicos:
         info.intereses.apoyos_beneficios_publicos[0],
-
+      apoyos_beneficios_publicos: [],
       catEntidadesFederativas: [],
       catPaises: [],
       catNivelGobierno: [],

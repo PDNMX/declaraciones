@@ -28,6 +28,7 @@ class EmpresasSociedadesAsociaciones extends React.Component {
     this.state = {
       datos_empresas_sociedades_asociaciones:
         info.intereses.empresas_sociedades_asociaciones[0],
+      empresas_sociedades_asociaciones: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

@@ -33,7 +33,7 @@ class ActividadEconomicaMenor extends React.Component {
     this.state = {
       datos_actividad_economica_menor:
         info.ingresos.actividad_economica_menor[0],
-
+      actividad_economica_menor: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

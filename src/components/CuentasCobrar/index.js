@@ -27,6 +27,7 @@ class CuentasCobrar extends React.Component {
 
     this.state = {
       datos_cuentas_por_cobrar: info.activos.cuentas_por_cobrar[0],
+      cuentas_por_cobrar: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

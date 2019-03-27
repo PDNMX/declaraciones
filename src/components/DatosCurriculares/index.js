@@ -29,7 +29,8 @@ class DatosCurriculares extends React.Component {
       catPaises: [],
       catEntidadesFederativas: [],
       catEstatusEstudio: [],
-      catDocumentoObtenido: []
+      catDocumentoObtenido: [],
+      curriculares_grados_academicos: [],
     };
 
     // console.log("state constructor", this.state);

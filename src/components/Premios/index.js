@@ -30,6 +30,7 @@ class Premios extends React.Component {
 
     this.state = {
       datos_premios: info.ingresos.premios[0],
+      premios: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

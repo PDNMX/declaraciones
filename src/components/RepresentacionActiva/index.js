@@ -22,6 +22,7 @@ class RepresantacionActiva extends React.Component {
 
     this.state = {
       datos_representacion_activa: info.intereses.representacion_activa[0],
+      representacion_activa: [],
       catTipoRepresentacion: [],
       catSectorIndustria: [],
       catEntidadesFederativas: [],

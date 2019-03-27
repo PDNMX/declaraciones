@@ -30,6 +30,7 @@ class Intereses extends React.Component {
 
     this.state = {
       datos_intereses: info.ingresos.intereses[0],
+      intereses: [],
       catPaises: [],
       catEntidadesFederativas: [],
       catMunicipios: [],

@@ -30,6 +30,7 @@ class BienesMuebles extends React.Component {
     this.state = {
       datos_bienes_muebles_registrables:
         info.activos.bienes_muebles_registrables[0],
+      bienes_muebles_registrables: [],
       catTipoOperacion: [],
       catTipoBienInmueble: [],
       catPaises: [],
@@ -49,6 +50,7 @@ class BienesMuebles extends React.Component {
       this.setState({ catTipoOperacion: data });
     });
     catTipoBienInmueble().then(data => {
+      console.log(data);
       this.setState({ catTipoBienInmueble: data });
     });
     catPaises().then(data => {

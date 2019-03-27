@@ -22,6 +22,8 @@ class OtrasPartesRelacionadas extends React.Component {
 
     this.state = {
       datos_otras_partes: info.intereses.otras_partes[0],
+      otras_partes: [],
+      nacionalidad: [],
       catRelacionDeclarante: [],
       catPaises: [],
       catSectorIndustria: [],
