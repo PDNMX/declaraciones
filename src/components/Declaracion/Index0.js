@@ -141,7 +141,7 @@ class Index extends Component {
 
     // this.updateLocalidades(
     //   this.state.informacion_general.domicilio.entidad_federativa.cve_agee,
-    //   this.state.informacion_general.domicilio.municipio.cve_mun
+    //   this.state.informacion_general.domicilio.municipio.cve_agem
     // );
 
     fetch(config.apiHost + "catTipoVialidad")

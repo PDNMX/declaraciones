@@ -79,12 +79,15 @@ function FullWidthGrid(props) {
           <FormControl className={classes.select}>
             <InputLabel htmlFor="municipio">Municipio</InputLabel>
             <Select
-              value={data.municipio.cve_mun}
+              value={data.municipio.cve_agem}
               onChange={handleChange("municipio")}
             >
               {catMunicipios.map(catMunicipios => (
-                <MenuItem key={catMunicipios.cve_mun} value={catMunicipios.cve_mun}>
-                  {catMunicipios.nom_mun}
+                <MenuItem
+                  key={catMunicipios.cve_agem}
+                  value={catMunicipios.cve_agem}
+                >
+                  {catMunicipios.nom_agem}
                 </MenuItem>
               ))}
             </Select>
@@ -100,7 +103,10 @@ function FullWidthGrid(props) {
               onChange={handleChange("localidad")}
             >
               {catLocalidades.map(catLocalidades => (
-                <MenuItem key={catLocalidades.cve_loc} value={catLocalidades.cve_loc}>
+                <MenuItem
+                  key={catLocalidades.cve_loc}
+                  value={catLocalidades.cve_loc}
+                >
                   {catLocalidades.nom_loc}
                 </MenuItem>
               ))}
@@ -133,7 +139,10 @@ function FullWidthGrid(props) {
               }}
             >
               {catTipoVialidad.map(catTipoVialidad => (
-                <MenuItem key={catTipoVialidad.codigo} value={catTipoVialidad.codigo}>
+                <MenuItem
+                  key={catTipoVialidad.codigo}
+                  value={catTipoVialidad.codigo}
+                >
                   {catTipoVialidad.valor}
                 </MenuItem>
               ))}

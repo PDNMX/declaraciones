@@ -48,8 +48,8 @@ export var clean = {
           cve_agee: ""
         },
         municipio: {
-          nom_mun: "",
-          cve_mun: ""
+          nom_agem: "",
+          cve_agee: ""
         },
         cp: "",
         localidad: {
@@ -89,8 +89,8 @@ export var clean = {
               cve_agee: ""
             },
             municipio: {
-              nom_mun: "",
-              cve_mun: ""
+              nom_agem: "",
+              cve_agee: ""
             }
           },
           carrera: "",
@@ -142,8 +142,8 @@ export var clean = {
           cve_agee: ""
         },
         municipio: {
-          nom_mun: "",
-          cve_mun: ""
+          nom_agem: "",
+          cve_agee: ""
         },
         cp: "",
         localidad: {
@@ -198,8 +198,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -261,8 +261,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -326,8 +326,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -372,8 +372,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -509,8 +509,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -623,8 +623,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -679,8 +679,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -735,8 +735,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -791,8 +791,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -847,8 +847,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -903,8 +903,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -959,8 +959,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1019,8 +1019,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1075,8 +1075,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1147,8 +1147,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1320,8 +1320,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1427,8 +1427,8 @@ export var clean = {
               cve_agee: ""
             },
             municipio: {
-              nom_mun: "",
-              cve_mun: ""
+              nom_agem: "",
+              cve_agee: ""
             },
             cp: "",
             localidad: {
@@ -1458,8 +1458,8 @@ export var clean = {
               cve_agee: ""
             },
             municipio: {
-              nom_mun: "",
-              cve_mun: ""
+              nom_agem: "",
+              cve_agee: ""
             },
             cp: "",
             localidad: {
@@ -1489,8 +1489,8 @@ export var clean = {
               cve_agee: ""
             },
             municipio: {
-              nom_mun: "",
-              cve_mun: ""
+              nom_agem: "",
+              cve_agee: ""
             },
             cp: "",
             localidad: {
@@ -1565,8 +1565,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1627,8 +1627,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1683,8 +1683,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {
@@ -1758,8 +1758,8 @@ export var clean = {
             cve_agee: ""
           },
           municipio: {
-            nom_mun: "",
-            cve_mun: ""
+            nom_agem: "",
+            cve_agee: ""
           },
           cp: "",
           localidad: {

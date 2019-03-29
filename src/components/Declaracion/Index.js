@@ -162,7 +162,7 @@ class Index extends Component {
   };
 
   handleChange = name => event => {
-    const valor = this.state.catPaises.filter(
+    const valor = catPaises.filter(
       x => x.codigo === event.target.value
     );
 
@@ -183,7 +183,7 @@ class Index extends Component {
   };
 
   handleChange = name => event => {
-    const valor = this.state.catEstadoCivil.filter(
+    const valor = catEstadoCivil.filter(
       x => x.codigo === event.target.value
     );
 
@@ -225,17 +225,17 @@ class Index extends Component {
     };
   };
 
-  getMunicipios = cve_mun => {
-    let info = this.state.catMunicipios.filter(x => x.cve_mun === cve_mun);
+  getMunicipios = cve_agee => {
+    let info = catMunicipios.filter(x => x.cve_agee === cve_agee);
 
     return {
-      nom_mun: info[0].nom_mun,
-      cve_mun: info[0].cve_mun
+      nom_agem: info[0].nom_agem,
+      cve_agee: info[0].cve_agee
     };
   };
 
   getLocalidad = cve_loc => {
-    let info = this.state.catLocalidades.filter(x => x.cve_loc === cve_loc);
+    let info = catLocalidades.filter(x => x.cve_loc === cve_loc);
 
     return {
       nom_loc: info[0].nom_loc,
@@ -244,7 +244,7 @@ class Index extends Component {
   };
 
   getCiudad = codigo => {
-    let info = this.state.catPaises.filter(x => x.codigo === codigo);
+    let info = catPaises.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -252,7 +252,7 @@ class Index extends Component {
   };
 
   getTipoMetal = codigo => {
-    let info = this.state.catTipoMetal.filter(x => x.codigo === codigo);
+    let info = catTipoMetal.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -260,7 +260,7 @@ class Index extends Component {
   };
 
   getTipoAcreedor = codigo => {
-    let info = this.state.catTipoAcreedor.filter(x => x.codigo === codigo);
+    let info = catTipoAcreedor.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -268,7 +268,7 @@ class Index extends Component {
   };
 
   getTipoAdeudo = codigo => {
-    let info = this.state.catTipoAdeudo.filter(x => x.codigo === codigo);
+    let info = catTipoAdeudo.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -286,7 +286,7 @@ class Index extends Component {
   };
 
   getTipoInversion = codigo => {
-    let info = this.state.catTipoInversion.filter(x => x.codigo === codigo);
+    let info = catTipoInversion.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -294,7 +294,7 @@ class Index extends Component {
   };
 
   getEstadoCivil = codigo => {
-    let info = this.state.catEstadoCivil.filter(x => x.codigo === codigo);
+    let info = catEstadoCivil.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -310,7 +310,7 @@ class Index extends Component {
   };
 
   getEstatusEstudio = codigo => {
-    let info = this.state.catEstatusEstudio.filter(x => x.codigo === codigo);
+    let info = catEstatusEstudio.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -318,7 +318,7 @@ class Index extends Component {
   };
 
   getDocumuentoObtenido = codigo => {
-    let info = this.state.catDocumentoObtenido.filter(x => x.codigo === codigo);
+    let info = catDocumentoObtenido.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -342,7 +342,7 @@ class Index extends Component {
   };
 
   getSectorIndustria = codigo => {
-    let info = this.state.catSectorIndustria.filter(x => x.codigo === codigo);
+    let info = catSectorIndustria.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -350,7 +350,7 @@ class Index extends Component {
   };
 
   getTipoInstitucion = codigo => {
-    let info = this.state.catTipoInstitucion.filter(
+    let info = catTipoInstitucion.filter(
       x => x.codigo === codigo
     );
     return {
@@ -360,7 +360,7 @@ class Index extends Component {
   };
 
   getTipoApoyo = codigo => {
-    let info = this.state.catTipoApoyo.filter(x => x.codigo === codigo);
+    let info = catTipoApoyo.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -368,7 +368,7 @@ class Index extends Component {
   };
 
   getTipoActividad = codigo => {
-    let info = this.state.catTiposActividades.filter(x => x.codigo === codigo);
+    let info = catTiposActividades.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -376,7 +376,7 @@ class Index extends Component {
   };
 
   getTipoBien = codigo => {
-    let info = this.state.catTipoBien.filter(x => x.codigo === codigo);
+    let info = catTipoBien.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -384,7 +384,7 @@ class Index extends Component {
   };
 
   getFormaAdquision = codigo => {
-    let info = this.state.catFormaAdquision.filter(x => x.codigo === codigo);
+    let info = catFormaAdquision.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -392,7 +392,7 @@ class Index extends Component {
   };
 
   getTipoBienInmueble = codigo => {
-    let info = this.state.catTipoBienInmuebles.filter(
+    let info = catTipoBienInmuebles.filter(
       x => x.codigo === codigo
     );
     return {
@@ -402,7 +402,7 @@ class Index extends Component {
   };
 
   getRelacionDeclarante = codigo => {
-    let info = this.state.catRelacionDeclarante.filter(
+    let info = catRelacionDeclarante.filter(
       x => x.codigo === codigo
     );
     return {
@@ -412,7 +412,7 @@ class Index extends Component {
   };
 
   getTipoOperacion = codigo => {
-    let info = this.state.catTipoOperacion.filter(x => x.codigo === codigo);
+    let info = catTipoOperacion.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -420,7 +420,7 @@ class Index extends Component {
   };
 
   getTitularBien = codigo => {
-    let info = this.state.catTitularBien.filter(x => x.codigo === codigo);
+    let info = catTitularBien.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -428,7 +428,7 @@ class Index extends Component {
   };
 
   getTipoRepresentacion = codigo => {
-    let info = this.state.catTipoRepresentacion.filter(
+    let info = catTipoRepresentacion.filter(
       x => x.codigo === codigo
     );
 
@@ -447,7 +447,7 @@ class Index extends Component {
   };
 
   getTipoFideicomiso = codigo => {
-    let info = this.state.catTiposFideicomisos.filter(x => x.codigo === codigo);
+    let info = catTiposFideicomisos.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -455,7 +455,7 @@ class Index extends Component {
   };
 
   getNaturalezaMembresia = codigo => {
-    let info = this.state.catNaturalezaMembresias.filter(
+    let info = catNaturalezaMembresias.filter(
       x => x.codigo === codigo
     );
     return {
@@ -465,7 +465,7 @@ class Index extends Component {
   };
 
   getMoneda = codigo => {
-    let info = this.state.catTipoMoneda.filter(x => x.codigo === codigo);
+    let info = catTipoMoneda.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       moneda: info[0].moneda
@@ -473,7 +473,7 @@ class Index extends Component {
   };
 
   getMedidasPlazo = codigo => {
-    let info = this.state.catMedidaPlazo.filter(x => x.codigo === codigo);
+    let info = catMedidaPlazo.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -489,7 +489,7 @@ class Index extends Component {
   };
 
   getTipoRelacion = codigo => {
-    let info = this.state.catRelacionDeclarante.filter(x => x.codigo === codigo);
+    let info = catRelacionDeclarante.filter(x => x.codigo === codigo);
     return {
       codigo: info[0].codigo,
       valor: info[0].valor
@@ -497,14 +497,14 @@ class Index extends Component {
   };
 
   updateMunicipios = cve_agee => {
-    fetch(config.apiHost + "catMunicipios?cve_agee=" + cve_agee)
+    fetch(config.apiHost + "catMunicipios.cve_agem=" + cve_agee)
       .then(res => res.json())
       .then(catMunicipios => this.setState({ catMunicipios: catMunicipios }));
   };
 
-  updateLocalidades = (cve_agee, cve_mun) => {
+  updateLocalidades = (cve_agee, cve_agee) => {
     fetch(
-      config.apiHost + "catLocalidades?cve_agee=" + cve_agee + "&cve_mun=" + cve_mun
+      config.apiHost + "catLocalidades?cve_agee=" + cve_agee + "&cve_agee=" + cve_agee
     )
       .then(res => res.json())
       .then(catLocalidades => this.setState({ catLocalidades: catLocalidades }));
@@ -798,15 +798,15 @@ class Index extends Component {
 
   // handleChange = name => event => {
 
-  //   const valor = this.state.catMunicipios.filter(
-  //     x => x.cve_mun === event.target.value
+  //   const valor = catMunicipios.filter(
+  //     x => x.cve_agee === event.target.value
   //   );
   //
   //   fetch(
   //     config.apiHost +
   //       "catLocalidades?cve_agee=" +
   //       this.state.dom_entidad_federativa.cve_agee +
-  //       "&cve_mun=" +
+  //       "&cve_agee=" +
   //       event.target.value
   //   )
   //     .then(res => res.json())
@@ -814,15 +814,15 @@ class Index extends Component {
   //
   //   this.setState({
   //     [name]: {
-  //       nom_mun: valor[0].nom_mun,
-  //       cve_mun: valor[0].cve_mun
+  //       nom_agem: valor[0].nom_agem,
+  //       cve_agee: valor[0].cve_agee
   //     }
   //   });
   // };
 
   // handleChange = name => event => {
 
-  //   const valor = this.state.catLocalidades.filter(
+  //   const valor = catLocalidades.filter(
   //     x => x.cve_loc === event.target.value
   //   );
   //
@@ -840,7 +840,7 @@ class Index extends Component {
   // var nacionalidad = [];
   // for (var event in catPaises) {
   //   var ciudad = catPaises[event];
-  //   var valor = this.state.catPaises.filter(x => x.codigo === ciudad);
+  //   var valor = catPaises.filter(x => x.codigo === ciudad);
   //
   //   delete valor[0]._id;
   //   nacionalidad.push(valor);
@@ -1501,7 +1501,7 @@ class Index extends Component {
   };
 
   handleChange = name => event => {
-    const valor = this.state.catTipoVialidad.filter(
+    const valor = catTipoVialidad.filter(
       x => x.codigo === event.target.value
     );
 
@@ -4820,7 +4820,7 @@ class Index extends Component {
 
     this.updateLocalidades(
       this.state.informacion_general.domicilio.entidad_federativa.cve_agee,
-      this.state.informacion_general.domicilio.municipio.cve_mun
+      this.state.informacion_general.domicilio.municipio.cve_agem
     );
 
     fetch(config.apiHost + "catTipoVialidad")
