@@ -42,6 +42,47 @@ class DatosEncargoActual extends React.Component {
     };
   }
 
+  componentDidMount() {
+    let {
+      entidad_federativa,
+      municipio
+    } = this.state.datos_encargo_actual.direccion_encargo;
+
+    catPaises().then(data => {
+      this.setState({ catPaises: data });
+    });
+    catEntidadesFederativas().then(data => {
+      this.setState({ catEntidadesFederativas: data });
+    });
+
+    if (entidad_federativa.cve_agee !== "") {
+      catMunicipios(entidad_federativa.cve_agee).then(data => {
+        this.setState({ catMunicipios: data });
+      });
+
+      if (municipio.cve_agem !== "") {
+        catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
+          data => {
+            this.setState({ catLocalidades: data });
+          }
+        );
+      }
+    }
+
+    catTipoVialidad().then(data => {
+      this.setState({ catTipoVialidad: data });
+    });
+    catNivelGobierno().then(data => {
+      this.setState({ catNivelGobierno: data });
+    });
+    catPoderJuridico().then(data => {
+      this.setState({ catPoderJuridico: data });
+    });
+    catSectorIndustria().then(data => {
+      this.setState({ catSectorIndustria: data });
+    });
+  }
+
   setDataEncargoActual = field => event => {
     let valor = event.target.value;
     let data = this.state;
@@ -112,7 +153,6 @@ class DatosEncargoActual extends React.Component {
           valor
         );
 
-
         break;
       case "cp":
         data.datos_encargo_actual.direccion_encargo.cp = valor;
@@ -142,57 +182,6 @@ class DatosEncargoActual extends React.Component {
 
     this.setState(data);
   };
-
-  componentDidMount() {
-    let {
-      entidad_federativa,
-      municipio
-    } = this.state.datos_encargo_actual.direccion_encargo;
-
-    console.log(this.state.datos_encargo_actual.direccion_encargo);
-
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
-    });
-    catEntidadesFederativas().then(data => {
-      this.setState({ catEntidadesFederativas: data });
-    });
-
-    catMunicipios(entidad_federativa.cve_agee).then(data => {
-      this.setState({ catMunicipios: data });
-    });
-
-    catLocalidades(entidad_federativa.cve_agee, municipio.cve_mun).then(
-      data => {
-        this.setState({ catLocalidades: data });
-      }
-    );
-
-    catPaises().then(data => {
-      this.setState({ catPaises: data });
-    });
-    catEntidadesFederativas().then(data => {
-      this.setState({ catEntidadesFederativas: data });
-    });
-    catMunicipios().then(data => {
-      this.setState({ catMunicipios: data });
-    });
-    catLocalidades().then(data => {
-      this.setState({ catLocalidades: data });
-    });
-    catTipoVialidad().then(data => {
-      this.setState({ catTipoVialidad: data });
-    });
-    catNivelGobierno().then(data => {
-      this.setState({ catNivelGobierno: data });
-    });
-    catPoderJuridico().then(data => {
-      this.setState({ catPoderJuridico: data });
-    });
-    catSectorIndustria().then(data => {
-      this.setState({ catSectorIndustria: data });
-    });
-  }
 
   render() {
     return (

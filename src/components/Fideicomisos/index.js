@@ -44,18 +44,30 @@ class Fideicomisos extends React.Component {
   }
 
   componentDidMount() {
+    let {
+      entidad_federativa,
+      municipio
+    } = this.state.datos_fideicomisos.fideicomitente.domicilio;
+
     catPaises().then(data => {
       this.setState({ catPaises: data });
     });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catMunicipios().then(data => {
-      this.setState({ catMunicipios: data });
-    });
-    catLocalidades().then(data => {
-      this.setState({ catLocalidades: data });
-    });
+    if (entidad_federativa.cve_agee !== "") {
+      catMunicipios(entidad_federativa.cve_agee).then(data => {
+        this.setState({ catMunicipios: data });
+      });
+
+      if (municipio.cve_agem !== "") {
+        catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
+          data => {
+            this.setState({ catLocalidades: data });
+          }
+        );
+      }
+    }
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });
@@ -109,13 +121,19 @@ class Fideicomisos extends React.Component {
         data.datos_fideicomisos.vigencia = valor;
         break;
       case "residencia":
-        data.datos_fideicomisos.residencia = getData(this.state.catPaises, valor);
+        data.datos_fideicomisos.residencia = getData(
+          this.state.catPaises,
+          valor
+        );
         break;
       case "valor":
         data.datos_fideicomisos.valor = valor;
         break;
       case "moneda":
-        data.datos_fideicomisos.moneda = getData(this.state.catTipoMoneda, valor);
+        data.datos_fideicomisos.moneda = getData(
+          this.state.catTipoMoneda,
+          valor
+        );
         break;
       case "porcentaje_propiedad_derechos_fiduciarios":
         data.datos_fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;
@@ -222,7 +240,6 @@ class Fideicomisos extends React.Component {
           valor
         );
 
-
         break;
       case "cp":
         data.datos_fideicomisos.fideicomitente.domicilio.cp = valor;
@@ -276,7 +293,6 @@ class Fideicomisos extends React.Component {
           catMunicipios,
           valor
         );
-
 
         break;
       case "cp":

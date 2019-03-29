@@ -50,31 +50,29 @@ class InformacionGeneral extends React.Component {
       entidad_federativa,
       municipio
     } = this.state.informacion_general.domicilio;
-    console.log("mount ", entidad_federativa);
 
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catMunicipios(entidad_federativa.cve_agee).then(data => {
-      this.setState({ catMunicipios: data });
-    });
-    catLocalidades(entidad_federativa.cve_agee, municipio.cve_mun).then(
-      data => {
-        this.setState({ catLocalidades: data });
+    if (entidad_federativa.cve_agee !== "") {
+      catMunicipios(entidad_federativa.cve_agee).then(data => {
+        this.setState({ catMunicipios: data });
+      });
+
+      if (municipio.cve_agem !== "") {
+        catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
+          data => {
+            this.setState({ catLocalidades: data });
+          }
+        );
       }
-    );
+    }
     catPaises().then(data => {
       this.setState({ catPaises: data });
     });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
-    });
-    catMunicipios().then(data => {
-      this.setState({ catMunicipios: data });
-    });
-    catLocalidades().then(data => {
-      this.setState({ catLocalidades: data });
-    });
+    });    
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });

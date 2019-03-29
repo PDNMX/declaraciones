@@ -46,18 +46,27 @@ class Premios extends React.Component {
   }
 
   componentDidMount() {
+    let { entidad_federativa, municipio } = this.state.datos_premios.domicilio;
+
     catPaises().then(data => {
       this.setState({ catPaises: data });
     });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catMunicipios().then(data => {
-      this.setState({ catMunicipios: data });
-    });
-    catLocalidades().then(data => {
-      this.setState({ catLocalidades: data });
-    });
+    if (entidad_federativa.cve_agee !== "") {
+      catMunicipios(entidad_federativa.cve_agee).then(data => {
+        this.setState({ catMunicipios: data });
+      });
+
+      if (municipio.cve_agem !== "") {
+        catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
+          data => {
+            this.setState({ catLocalidades: data });
+          }
+        );
+      }
+    }
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });
@@ -134,7 +143,10 @@ class Premios extends React.Component {
 
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_premios.domicilio.pais = getData(this.state.catPaises, valor);
+        data.datos_premios.domicilio.pais = getData(
+          this.state.catPaises,
+          valor
+        );
         break;
       case "entidad_federativa":
         data.datos_premios.domicilio.entidad_federativa = getEntidadesFederativas(
@@ -147,7 +159,6 @@ class Premios extends React.Component {
           this.state.catMunicipios,
           valor
         );
-
 
         break;
       case "cp":
