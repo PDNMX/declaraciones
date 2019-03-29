@@ -48,8 +48,8 @@ export var example = {
           cve_agee: "15"
         },
         municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
+          nom_agem: "Ecatepec de Morelos",
+          cve_agem: "033"
         },
         cp: "55018",
         localidad: {
@@ -89,8 +89,8 @@ export var example = {
               cve_agee: "15"
             },
             municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+              nom_agem: "Ecatepec de Morelos",
+              cve_agem: "033"
             }
           },
           carrera: "Ing. en Sistemas Computacionales",
@@ -142,8 +142,8 @@ export var example = {
           cve_agee: "15"
         },
         municipio: {
-          nom_mun: "Ecatepec de Morelos",
-          cve_mun: "033"
+          nom_agem: "Ecatepec de Morelos",
+          cve_agem: "033"
         },
         cp: "55018",
         localidad: {
@@ -198,8 +198,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -261,8 +261,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -326,8 +326,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -372,8 +372,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -510,8 +510,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -624,8 +624,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -680,8 +680,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -736,8 +736,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -792,8 +792,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -848,8 +848,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -904,8 +904,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -960,8 +960,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1020,8 +1020,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1076,8 +1076,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1148,8 +1148,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1321,8 +1321,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1428,8 +1428,8 @@ export var example = {
               cve_agee: "15"
             },
             municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+              nom_agem: "Ecatepec de Morelos",
+              cve_agem: "033"
             },
             cp: "55018",
             localidad: {
@@ -1459,8 +1459,8 @@ export var example = {
               cve_agee: "15"
             },
             municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+              nom_agem: "Ecatepec de Morelos",
+              cve_agem: "033"
             },
             cp: "55018",
             localidad: {
@@ -1490,8 +1490,8 @@ export var example = {
               cve_agee: "15"
             },
             municipio: {
-              nom_mun: "Ecatepec de Morelos",
-              cve_mun: "033"
+              nom_agem: "Ecatepec de Morelos",
+              cve_agem: "033"
             },
             cp: "55018",
             localidad: {
@@ -1566,8 +1566,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1628,8 +1628,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1684,8 +1684,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
@@ -1759,8 +1759,8 @@ export var example = {
             cve_agee: "15"
           },
           municipio: {
-            nom_mun: "Ecatepec de Morelos",
-            cve_mun: "033"
+            nom_agem: "Ecatepec de Morelos",
+            cve_agem: "033"
           },
           cp: "55018",
           localidad: {
