@@ -106,7 +106,7 @@ class InversionesCuentasValores extends React.Component {
         break;
       case "forma_adquisicion":
         data.datos_inversiones_cuentas_valores.forma_adquisicion = getData(
-          catFormaAdquision,
+          this.state.catFormaAdquision,
           valor
         );
         break;
@@ -118,7 +118,7 @@ class InversionesCuentasValores extends React.Component {
         break;
       case "nacional_extranjero":
         data.datos_inversiones_cuentas_valores.nacional_extranjero = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
@@ -145,7 +145,7 @@ class InversionesCuentasValores extends React.Component {
         break;
       case "sector_industria":
         data.datos_inversiones_cuentas_valores.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -154,37 +154,37 @@ class InversionesCuentasValores extends React.Component {
         break;
       case "tipo_especifico_inversion":
         data.datos_inversiones_cuentas_valores.tipo_especifico_inversion = getData(
-          catTipoEspecificoInversion,
+          this.state.catTipoEspecificoInversion,
           valor
         );
         break;
       case "tipo_inversion":
         data.datos_inversiones_cuentas_valores.tipo_inversion = getData(
-          catTipoInversion,
+          this.state.catTipoInversion,
           valor
         );
         break;
       case "tipo_moneda":
         data.datos_inversiones_cuentas_valores.tipo_moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "tipo_operacion":
         data.datos_inversiones_cuentas_valores.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;
       case "titular_bien":
         data.datos_inversiones_cuentas_valores.titular_bien = getData(
-          catTitularBien,
+          this.state.catTitularBien,
           valor
         );
         break;
       case "unidad_medida_plazo":
         data.datos_inversiones_cuentas_valores.unidad_medida_plazo = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -192,19 +192,19 @@ class InversionesCuentasValores extends React.Component {
       /////////////////////////////  domicilio_institucion  /////////////////////////////////////
       case "pais":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -219,7 +219,7 @@ class InversionesCuentasValores extends React.Component {
         break;
       case "localidad":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

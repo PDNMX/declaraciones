@@ -85,13 +85,13 @@ class RepresantacionActiva extends React.Component {
         break;
       case "sector_industria":
         data.datos_representacion_activa.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_representacion":
         data.datos_representacion_activa.tipo_representacion = getData(
-          catTipoRepresentacion,
+          this.state.catTipoRepresentacion,
           valor
         );
         // data.datos_representacion_activa.tipo_representacion = valor;
@@ -103,6 +103,7 @@ class RepresantacionActiva extends React.Component {
 
     this.setState(data);
   };
+
   addClickRepresentacionActiva = () => {
     let data = Object.assign({}, this.state.datos_representacion_activa);
     let info = Object.assign({}, clean.intereses.representacion_activa[0]);

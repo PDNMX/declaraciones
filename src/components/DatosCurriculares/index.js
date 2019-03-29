@@ -59,18 +59,18 @@ class DatosCurriculares extends React.Component {
       case "grado_obtenido":
         data.datos_curriculares_grados_academicos.grado_obtenido = valor;
         break;
-      case "institucion_educativa":
-        data.datos_curriculares_grados_academicos.institucion_educativa = valor;
+      case "institucion_eduthis.state.cativa":
+        data.datos_curriculares_grados_academicos.institucion_eduthis.state.cativa = valor;
         break;
-      case "lugar_institucion_educativa.pais":
-        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.pais = getData(
-          this.state.catPaises,
+      case "lugar_institucion_eduthis.state.cativa.pais":
+        data.datos_curriculares_grados_academicos.lugar_institucion_eduthis.state.cativa.pais = getData(
+          this.state.this.state.catPaises,
           valor
         );
         break;
-      case "lugar_institucion_educativa.entidad_federativa":
-        data.datos_curriculares_grados_academicos.lugar_institucion_educativa.entidad_federativa = getEntidadesFederativas(
-          this.state.catEntidadesFederativas,
+      case "lugar_institucion_eduthis.state.cativa.entidad_federativa":
+        data.datos_curriculares_grados_academicos.lugar_institucion_eduthis.state.cativa.entidad_federativa = getEntidadesFederativas(
+          this.state.this.state.catEntidadesFederativas,
           valor
         );
         break;
@@ -79,7 +79,7 @@ class DatosCurriculares extends React.Component {
         break;
       case "estatus":
         data.datos_curriculares_grados_academicos.estatus = getData(
-          this.state.catEstatusEstudio,
+          this.state.this.state.catEstatusEstudio,
           valor
         );
         break;
@@ -88,7 +88,7 @@ class DatosCurriculares extends React.Component {
         break;
       case "documento_obtenido":
         data.datos_curriculares_grados_academicos.documento_obtenido = getData(
-          this.state.catDocumentoObtenido,
+          this.state.this.state.catDocumentoObtenido,
           valor
         );
         break;

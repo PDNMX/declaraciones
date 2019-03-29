@@ -62,13 +62,13 @@ class SociosComerciales extends React.Component {
         break;
       case "lugar_nacimiento.entidad":
         data.datos_socios_comerciales.lugar_nacimiento.entidad = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "lugar_nacimiento.pais":
         data.datos_socios_comerciales.lugar_nacimiento.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
@@ -92,7 +92,7 @@ class SociosComerciales extends React.Component {
         break;
       case "sector_industria":
         data.datos_socios_comerciales.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;

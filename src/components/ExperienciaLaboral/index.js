@@ -84,17 +84,17 @@ class ExperienciaLaboral extends React.Component {
 
     switch (field) {
       case "ambito":
-        data.datos_experiencia_laboral.ambito = getData(catAmbito, valor);
+        data.datos_experiencia_laboral.ambito = getData(this.state.catAmbito, valor);
         break;
       case "nivel_gobierno":
         data.datos_experiencia_laboral.nivel_gobierno = getData(
-          catNivelGobierno,
+          this.state.catNivelGobierno,
           valor
         );
         break;
       case "poder_ente":
         data.datos_experiencia_laboral.poder_ente = getData(
-          catPoderJuridico,
+          this.state.catPoderJuridico,
           valor
         );
         break;
@@ -106,7 +106,7 @@ class ExperienciaLaboral extends React.Component {
         break;
       case "sector_industria":
         data.datos_experiencia_laboral.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -129,19 +129,19 @@ class ExperienciaLaboral extends React.Component {
       /////////////////////////////  direccion  /////////////////////////////////////
       case "pais":
         data.datos_experiencia_laboral.direccion.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_experiencia_laboral.direccion.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_experiencia_laboral.direccion.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -156,7 +156,7 @@ class ExperienciaLaboral extends React.Component {
         break;
       case "localidad":
         data.datos_experiencia_laboral.direccion.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

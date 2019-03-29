@@ -59,7 +59,7 @@ class BeneficiosGratuitos extends React.Component {
         break;
       case "sector_industria":
         data.datos_beneficios_gratuitos.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;

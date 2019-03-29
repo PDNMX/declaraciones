@@ -97,13 +97,13 @@ class Intereses extends React.Component {
         break;
       case "ingreso_bruto_anual.moneda":
         data.datos_intereses.ingreso_bruto_anual.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
         data.datos_intereses.ingreso_bruto_anual.unidad_temporal = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -121,29 +121,29 @@ class Intereses extends React.Component {
         break;
       case "sector_industria":
         data.datos_intereses.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_actividad_servicio":
         data.datos_intereses.tipo_actividad_servicio = getData(
-          catTiposActividades,
+          this.state.catTiposActividades,
           valor
         );
         break;
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_intereses.domicilio.pais = getData(catPaises, valor);
+        data.datos_intereses.domicilio.pais = getData(this.state.catPaises, valor);
         break;
       case "entidad_federativa":
         data.datos_intereses.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_intereses.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -157,7 +157,7 @@ class Intereses extends React.Component {
         break;
       case "localidad":
         data.datos_intereses.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

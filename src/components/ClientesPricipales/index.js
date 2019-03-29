@@ -92,26 +92,26 @@ class ClientesPrincipales extends React.Component {
         break;
       case "sector_industria":
         data.datos_clientes_principales.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
         data.datos_clientes_principales.domicilio.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_clientes_principales.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_clientes_principales.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -126,7 +126,7 @@ class ClientesPrincipales extends React.Component {
         break;
       case "localidad":
         data.datos_clientes_principales.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

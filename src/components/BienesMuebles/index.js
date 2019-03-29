@@ -86,7 +86,7 @@ class BienesMuebles extends React.Component {
         break;
       case "forma_adquisicion":
         data.datos_bienes_muebles_registrables.forma_adquisicion = getData(
-          catFormaAdquision,
+          this.state.catFormaAdquision,
           valor
         );
         break;
@@ -95,13 +95,13 @@ class BienesMuebles extends React.Component {
         break;
       case "lugar_registro.entidad":
         data.datos_bienes_muebles_registrables.lugar_registro.entidad = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "lugar_registro.pais":
         data.datos_bienes_muebles_registrables.lugar_registro.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
@@ -131,7 +131,7 @@ class BienesMuebles extends React.Component {
         break;
       case "precio_adquisicion.moneda":
         data.datos_bienes_muebles_registrables.precio_adquisicion.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
@@ -140,7 +140,7 @@ class BienesMuebles extends React.Component {
         break;
       case "relacion_persona_quien_adquirio":
         data.datos_bienes_muebles_registrables.relacion_persona_quien_adquirio = getData(
-          catRelacionDeclarante,
+          this.state.catRelacionDeclarante,
           valor
         );
         break;
@@ -149,7 +149,7 @@ class BienesMuebles extends React.Component {
         break;
       case "sector_industria":
         data.datos_bienes_muebles_registrables.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -158,19 +158,19 @@ class BienesMuebles extends React.Component {
         break;
       case "tipo_bien_inmueble":
         data.datos_bienes_muebles_registrables.tipo_bien_mueble = getData(
-          catTipoBienInmueble,
+          this.state.catTipoBienInmueble,
           valor
         );
         break;
       case "tipo_operacion":
         data.datos_bienes_muebles_registrables.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;
       case "titular_bien":
         data.datos_bienes_muebles_registrables.titular_bien = getData(
-          catTitularBien,
+          this.state.catTitularBien,
           valor
         );
         break;

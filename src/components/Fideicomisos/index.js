@@ -83,7 +83,7 @@ class Fideicomisos extends React.Component {
         break;
       case "tipo_operacion":
         data.datos_fideicomisos.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;
@@ -92,7 +92,7 @@ class Fideicomisos extends React.Component {
         break;
       case "tipo_fideicomiso":
         data.datos_fideicomisos.tipo_fideicomiso = getData(
-          catTipoFideicomiso,
+          this.state.catTipoFideicomiso,
           valor
         );
         break;
@@ -109,13 +109,13 @@ class Fideicomisos extends React.Component {
         data.datos_fideicomisos.vigencia = valor;
         break;
       case "residencia":
-        data.datos_fideicomisos.residencia = getData(catPaises, valor);
+        data.datos_fideicomisos.residencia = getData(this.state.catPaises, valor);
         break;
       case "valor":
         data.datos_fideicomisos.valor = valor;
         break;
       case "moneda":
-        data.datos_fideicomisos.moneda = getData(catTipoMoneda, valor);
+        data.datos_fideicomisos.moneda = getData(this.state.catTipoMoneda, valor);
         break;
       case "porcentaje_propiedad_derechos_fiduciarios":
         data.datos_fideicomisos.porcentaje_propiedad_derechos_fiduciarios = valor;

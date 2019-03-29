@@ -103,13 +103,13 @@ class ActividadEconomicaMenor extends React.Component {
         break;
       case "ingreso_bruto_anual.moneda":
         data.datos_actividad_economica_menor.ingreso_bruto_anual.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
         data.datos_actividad_economica_menor.ingreso_bruto_anual.unidad_temporal = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -124,32 +124,32 @@ class ActividadEconomicaMenor extends React.Component {
         break;
       case "sector_industria":
         data.datos_actividad_economica_menor.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_actividad_servicio":
         data.datos_actividad_economica_menor.tipo_actividad_servicio = getData(
-          catTiposActividades,
+          this.state.catTiposActividades,
           valor
         );
         break;
       /////////////////////////////  domicilio_actividad  /////////////////////////////////////
       case "pais":
         data.datos_actividad_economica_menor.domicilio_actividad.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_actividad_economica_menor.domicilio_actividad.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_actividad_economica_menor.domicilio_actividad.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -164,7 +164,7 @@ class ActividadEconomicaMenor extends React.Component {
         break;
       case "localidad":
         data.datos_actividad_economica_menor.domicilio_actividad.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

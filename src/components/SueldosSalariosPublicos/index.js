@@ -63,7 +63,7 @@ class SueldosSalariosPublicos extends React.Component {
     switch (field) {
       case "ente_publico":
         data.datos_sueldos_salarios_publicos.ente_publico = getData(
-          catDependencia,
+          this.state.catDependencia,
           valor
         );
         break;
@@ -78,13 +78,13 @@ class SueldosSalariosPublicos extends React.Component {
         break;
       case "ingreso_bruto_anual.moneda":
         data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
         data.datos_sueldos_salarios_publicos.ingreso_bruto_anual.unidad_temporal = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;

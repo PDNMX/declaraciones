@@ -67,7 +67,7 @@ class EfectivoMetales extends React.Component {
     switch (field) {
       case "forma_adquisicion":
         data.datos_efectivo_metales.forma_adquisicion = getData(
-          catFormaAdquision,
+          this.state.catFormaAdquision,
           valor
         );
         break;
@@ -81,14 +81,14 @@ class EfectivoMetales extends React.Component {
         data.datos_efectivo_metales.observaciones_comentarios = valor;
         break;
       case "tipo_metal":
-        data.datos_efectivo_metales.tipo_metal = getData(catTipoMetal, valor);
+        data.datos_efectivo_metales.tipo_metal = getData(this.state.catTipoMetal, valor);
         break;
       case "tipo_moneda":
-        data.datos_efectivo_metales.tipo_moneda = getData(catTipoMoneda, valor);
+        data.datos_efectivo_metales.tipo_moneda = getData(this.state.catTipoMoneda, valor);
         break;
       case "tipo_operacion":
         data.datos_efectivo_metales.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;

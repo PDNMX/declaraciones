@@ -55,13 +55,13 @@ class DatosEncargoActual extends React.Component {
         break;
       case "nivel_gobierno":
         data.datos_encargo_actual.nivel_gobierno = getData(
-          catNivelGobierno,
+          this.state.catNivelGobierno,
           valor
         );
         break;
       case "poder_juridico":
         data.datos_encargo_actual.poder_juridico = getData(
-          catPoderJuridico,
+          this.state.catPoderJuridico,
           valor
         );
         break;
@@ -86,7 +86,7 @@ class DatosEncargoActual extends React.Component {
         break;
       case "sector_industria":
         data.datos_encargo_actual.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -96,19 +96,19 @@ class DatosEncargoActual extends React.Component {
       /////////////////////////////  direccion_encargo  /////////////////////////////////////
       case "pais":
         data.datos_encargo_actual.direccion_encargo.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_encargo_actual.direccion_encargo.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_encargo_actual.direccion_encargo.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -123,7 +123,7 @@ class DatosEncargoActual extends React.Component {
         break;
       case "localidad":
         data.datos_encargo_actual.direccion_encargo.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

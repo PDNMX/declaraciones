@@ -98,13 +98,13 @@ class Arrendamiento extends React.Component {
         break;
       case "ingreso_bruto_anual.moneda":
         data.datos_arrendamiento.ingreso_bruto_anual.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
         data.datos_arrendamiento.ingreso_bruto_anual.unidad_temporal = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -122,13 +122,13 @@ class Arrendamiento extends React.Component {
         break;
       case "sector_industria":
         data.datos_arrendamiento.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_actividad_servicio":
         data.datos_arrendamiento.tipo_actividad_servicio = getData(
-          catTiposActividades,
+          this.state.catTiposActividades,
           valor
         );
         break;
@@ -136,19 +136,19 @@ class Arrendamiento extends React.Component {
       /////////////////////////////  domicilio_actividad  /////////////////////////////////////
       case "pais":
         data.datos_arrendamiento.domicilio_actividad.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_arrendamiento.domicilio_actividad.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_arrendamiento.domicilio_actividad.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -163,7 +163,7 @@ class Arrendamiento extends React.Component {
         break;
       case "localidad":
         data.datos_arrendamiento.domicilio_actividad.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

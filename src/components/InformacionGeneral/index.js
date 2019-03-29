@@ -108,7 +108,7 @@ class InformacionGeneral extends React.Component {
         let nacionalidad = [];
         for (var index in nacionalidades) {
           nacionalidad.push(
-            getData(this.state.catPaises, nacionalidades[index])
+            getData(this.state.this.state.catPaises, nacionalidades[index])
           );
         }
 
@@ -116,13 +116,13 @@ class InformacionGeneral extends React.Component {
         break;
       case "pais_nacimiento":
         informacion_general.pais_nacimiento = getData(
-          this.state.catPaises,
+          this.state.this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa_nacimiento":
         informacion_general.entidad_federativa_nacimiento = getEntidadesFederativas(
-          this.state.catEntidadesFederativas,
+          this.state.this.state.catEntidadesFederativas,
           valor
         );
 
@@ -153,32 +153,32 @@ class InformacionGeneral extends React.Component {
         break;
       case "estado_civil":
         informacion_general.estado_civil = getData(
-          this.state.catEstadoCivil,
+          this.state.this.state.catEstadoCivil,
           valor
         );
         break;
       case "regimen_matrimonial":
         informacion_general.regimen_matrimonial = getData(
-          this.state.catRegimenMatrimonial,
+          this.state.this.state.catRegimenMatrimonial,
           valor
         );
         break;
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
         informacion_general.domicilio.pais = getData(
-          this.state.catPaises,
+          this.state.this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         informacion_general.domicilio.entidad_federativa = getEntidadesFederativas(
-          this.state.catEntidadesFederativas,
+          this.state.this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         informacion_general.domicilio.municipio = getMunicipios(
-          this.state.catMunicipios,
+          this.state.this.state.catMunicipios,
           valor
         );
 
@@ -192,7 +192,7 @@ class InformacionGeneral extends React.Component {
         break;
       case "localidad":
         informacion_general.domicilio.localidad = getLocalidades(
-          this.state.catLocalidades,
+          this.state.this.state.catLocalidades,
           valor
         );
         break;

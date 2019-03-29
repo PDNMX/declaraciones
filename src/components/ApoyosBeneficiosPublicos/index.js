@@ -72,7 +72,7 @@ class ApoyosBeneficiosPublicos extends React.Component {
         break;
       case "nivel_orden_gobierno":
         data.datos_apoyos_beneficios_publicos.nivel_orden_gobierno = getData(
-          catNivelGobierno,
+          this.state.catNivelGobierno,
           valor
         );
         break;
@@ -84,7 +84,7 @@ class ApoyosBeneficiosPublicos extends React.Component {
         break;
       case "tipo_apoyo":
         data.datos_apoyos_beneficios_publicos.tipo_apoyo = getData(
-          catTipoApoyo,
+          this.state.catTipoApoyo,
           valor
         );
         break;

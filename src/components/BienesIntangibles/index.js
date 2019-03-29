@@ -80,7 +80,7 @@ class BienesIntangibles extends React.Component {
         break;
       case "forma_adquisicion":
         data.datos_bienes_intangibles.forma_adquisicion = getData(
-          catFormaAdquision,
+          this.state.catFormaAdquision,
           valor
         );
         break;
@@ -104,7 +104,7 @@ class BienesIntangibles extends React.Component {
         break;
       case "precio_adquisicion.moneda":
         data.datos_bienes_intangibles.precio_adquisicion.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
@@ -113,7 +113,7 @@ class BienesIntangibles extends React.Component {
         break;
       case "precio_total_copropiedad.moneda":
         data.datos_bienes_intangibles.precio_total_copropiedad.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
@@ -125,13 +125,13 @@ class BienesIntangibles extends React.Component {
         break;
       case "sector_industria":
         data.datos_bienes_intangibles.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_operacion":
         data.datos_bienes_intangibles.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;

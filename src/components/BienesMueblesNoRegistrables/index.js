@@ -82,7 +82,7 @@ class BienesMueblesNoRegistrables extends React.Component {
         break;
       case "forma_adquisicion":
         data.datos_bienes_muebles_no_registrables.forma_adquisicion = getData(
-          catFormaAdquision,
+          this.state.catFormaAdquision,
           valor
         );
         break;
@@ -103,7 +103,7 @@ class BienesMueblesNoRegistrables extends React.Component {
         break;
       case "precio_adquisicion.moneda":
         data.datos_bienes_muebles_no_registrables.precio_adquisicion.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
@@ -112,25 +112,25 @@ class BienesMueblesNoRegistrables extends React.Component {
         break;
       case "relacion_quien_adquirio":
         data.datos_bienes_muebles_no_registrables.relacion_quien_adquirio = getData(
-          catRelacionDeclarante,
+          this.state.catRelacionDeclarante,
           valor
         );
         break;
       case "tipo_bien":
         data.datos_bienes_muebles_no_registrables.tipo_bien = getData(
-          catTipoBien,
+          this.state.catTipoBien,
           valor
         );
         break;
       case "tipo_operacion":
         data.datos_bienes_muebles_no_registrables.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;
       case "titular_bien":
         data.datos_bienes_muebles_no_registrables.titular_bien = getData(
-          catTitularBien,
+          this.state.catTitularBien,
           valor
         );
         break;

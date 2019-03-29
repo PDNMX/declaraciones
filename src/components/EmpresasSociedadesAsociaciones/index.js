@@ -84,7 +84,7 @@ class EmpresasSociedadesAsociaciones extends React.Component {
         break;
       case "pais_registro":
         data.datos_empresas_sociedades_asociaciones.pais_registro = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
@@ -99,26 +99,26 @@ class EmpresasSociedadesAsociaciones extends React.Component {
         break;
       case "sector_industria":
         data.datos_empresas_sociedades_asociaciones.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
         data.datos_empresas_sociedades_asociaciones.domicilio.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_empresas_sociedades_asociaciones.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_empresas_sociedades_asociaciones.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -133,7 +133,7 @@ class EmpresasSociedadesAsociaciones extends React.Component {
         break;
       case "localidad":
         data.datos_empresas_sociedades_asociaciones.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

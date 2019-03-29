@@ -82,7 +82,7 @@ class RepresentacionPasiva extends React.Component {
         break;
       case "sector_industria":
         data.datos_representacion_pasiva.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;

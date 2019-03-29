@@ -83,7 +83,7 @@ class Membresias extends React.Component {
         break;
       case "naturaleza_membresia":
         data.datos_membresias.naturaleza_membresia = getData(
-          catNaturalezaMembresia,
+          this.state.catNaturalezaMembresia,
           valor
         );
         break;
@@ -101,29 +101,29 @@ class Membresias extends React.Component {
         break;
       case "sector_industria":
         data.datos_membresias.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_institucion":
         data.datos_membresias.tipo_institucion = getData(
-          catTipoInstitucion,
+          this.state.catTipoInstitucion,
           valor
         );
         break;
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
-        data.datos_membresias.domicilio.pais = getData(catPaises, valor);
+        data.datos_membresias.domicilio.pais = getData(this.state.catPaises, valor);
         break;
       case "entidad_federativa":
         data.datos_membresias.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_membresias.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -137,7 +137,7 @@ class Membresias extends React.Component {
         break;
       case "localidad":
         data.datos_membresias.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

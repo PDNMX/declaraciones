@@ -104,7 +104,7 @@ class BienesInmuebles extends React.Component {
         break;
       case "forma_adquisicion":
         data.datos_bienes_inmuebles.forma_adquisicion = getData(
-          catFormaAdquision,
+          this.state.catFormaAdquision,
           valor
         );
         break;
@@ -149,7 +149,7 @@ class BienesInmuebles extends React.Component {
         break;
       case "precio_adquisicion.moneda":
         data.datos_bienes_inmuebles.precio_adquisicion.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
@@ -158,7 +158,7 @@ class BienesInmuebles extends React.Component {
         break;
       case "relacion_persona_adquirio":
         data.datos_bienes_inmuebles.relacion_persona_adquirio = getData(
-          catRelacionDeclarante,
+          this.state.catRelacionDeclarante,
           valor
         );
         break;
@@ -167,7 +167,7 @@ class BienesInmuebles extends React.Component {
         break;
       case "sector_industria":
         data.datos_bienes_inmuebles.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -178,38 +178,38 @@ class BienesInmuebles extends React.Component {
         data.datos_bienes_inmuebles.superficie_terreno = valor;
         break;
       case "tipo_bien":
-        data.datos_bienes_inmuebles.tipo_bien = getData(catTipoBien, valor);
+        data.datos_bienes_inmuebles.tipo_bien = getData(this.state.catTipoBien, valor);
         break;
       case "tipo_operacion":
         data.datos_bienes_inmuebles.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;
-      case "valor_catastral":
-        data.datos_bienes_inmuebles.valor_catastral = valor;
+      case "valor_this.state.catastral":
+        data.datos_bienes_inmuebles.valor_this.state.catastral = valor;
         break;
 
       case "titular":
-        data.datos_bienes_inmuebles.titular = getData(catTitularBien, valor);
+        data.datos_bienes_inmuebles.titular = getData(this.state.catTitularBien, valor);
         break;
 
       /////////////////////////////  domicilio_bien  /////////////////////////////////////
       case "pais":
         data.datos_bienes_inmuebles.domicilio_bien.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_bienes_inmuebles.domicilio_bien.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_bienes_inmuebles.domicilio_bien.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -224,7 +224,7 @@ class BienesInmuebles extends React.Component {
         break;
       case "localidad":
         data.datos_bienes_inmuebles.domicilio_bien.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

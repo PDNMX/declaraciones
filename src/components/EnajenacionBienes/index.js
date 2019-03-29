@@ -93,7 +93,7 @@ class EnajenacionBienes extends React.Component {
         break;
 
       case "tipo_bien":
-        data.datos_enajenacion_bienes.tipo_bien = getData(catTipoBien, valor);
+        data.datos_enajenacion_bienes.tipo_bien = getData(this.state.catTipoBien, valor);
         break;
       case "id":
         data.datos_enajenacion_bienes.id = valor;
@@ -106,13 +106,13 @@ class EnajenacionBienes extends React.Component {
         break;
       case "ingreso_bruto_anual.moneda":
         data.datos_enajenacion_bienes.ingreso_bruto_anual.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
         data.datos_enajenacion_bienes.ingreso_bruto_anual.unidad_temporal = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -130,13 +130,13 @@ class EnajenacionBienes extends React.Component {
         break;
       case "sector_industria":
         data.datos_enajenacion_bienes.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_actividad_servicio":
         data.datos_enajenacion_bienes.tipo_actividad_servicio = getData(
-          catTiposActividades,
+          this.state.catTiposActividades,
           valor
         );
         break;
@@ -144,19 +144,19 @@ class EnajenacionBienes extends React.Component {
       /////////////////////////////  domicilio_bien_enajenado  /////////////////////////////////////
       case "pais":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -171,7 +171,7 @@ class EnajenacionBienes extends React.Component {
         break;
       case "localidad":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

@@ -82,7 +82,7 @@ class OtrasPartesRelacionadas extends React.Component {
         break;
       case "sector_industria":
         data.datos_otras_partes.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -92,7 +92,7 @@ class OtrasPartesRelacionadas extends React.Component {
         break;
       case "tipo_relacion":
         data.datos_otras_partes.tipo_relacion = getData(
-          catRelacionDeclarante,
+          this.state.catRelacionDeclarante,
           valor
         );
         break;

@@ -76,7 +76,7 @@ class DependientesEconomicos extends React.Component {
     switch (field) {
       case "tipo_relacion":
         data.datos_dependientes_economicos.tipo_relacion = getData(
-          catRelacionDeclarante,
+          this.state.catRelacionDeclarante,
           valor
         );
         break;
@@ -95,7 +95,7 @@ class DependientesEconomicos extends React.Component {
         for (var index in data.dependientes_economicos_nacionlidades) {
           nacionalidad.push(
             getData(
-              catPaises,
+              this.state.catPaises,
               data.dependientes_economicos_nacionlidades[index]
             )
           );
@@ -132,7 +132,7 @@ class DependientesEconomicos extends React.Component {
         break;
       case "sector_industria":
         data.datos_dependientes_economicos.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -160,19 +160,19 @@ class DependientesEconomicos extends React.Component {
       /////////////////////////////  DOMICILIO  /////////////////////////////////////
       case "pais":
         data.datos_dependientes_economicos.domicilio.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_dependientes_economicos.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_dependientes_economicos.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -187,7 +187,7 @@ class DependientesEconomicos extends React.Component {
         break;
       case "localidad":
         data.datos_dependientes_economicos.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

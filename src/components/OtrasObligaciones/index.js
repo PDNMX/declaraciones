@@ -52,18 +52,33 @@ class OtrasObligaciones extends React.Component {
   }
 
   componentDidMount() {
+    let {
+      entidad_federativa,
+      municipio
+    } = this.state.datos_otras_obligaciones.domicilio_acreedor;
+
     catPaises().then(data => {
       this.setState({ catPaises: data });
     });
+
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
     });
-    catMunicipios().then(data => {
-      this.setState({ catMunicipios: data });
-    });
-    catLocalidades().then(data => {
-      this.setState({ catLocalidades: data });
-    });
+
+    if (entidad_federativa.cve_agee !== "") {
+      catMunicipios(entidad_federativa.cve_agee).then(data => {
+        this.setState({ catMunicipios: data });
+      });
+
+      if (municipio.cve_agem !== "") {
+        catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
+          data => {
+            this.setState({ catLocalidades: data });
+          }
+        );
+      }
+    }
+
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });
@@ -119,7 +134,7 @@ class OtrasObligaciones extends React.Component {
         break;
       case "nacional_extranjero":
         data.datos_otras_obligaciones.nacional_extranjero = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
@@ -143,7 +158,7 @@ class OtrasObligaciones extends React.Component {
         break;
       case "sector_industria":
         data.datos_otras_obligaciones.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -152,37 +167,37 @@ class OtrasObligaciones extends React.Component {
         break;
       case "tipo_acreedor":
         data.datos_otras_obligaciones.tipo_acreedor = getData(
-          catTipoAcreedor,
+          this.state.catTipoAcreedor,
           valor
         );
         break;
       case "tipo_moneda":
         data.datos_otras_obligaciones.tipo_moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "tipo_obligacion":
         data.datos_otras_obligaciones.tipo_obligacion = getData(
-          catTipoAdeudo,
+          this.state.catTipoAdeudo,
           valor
         );
         break;
       case "tipo_operacion":
         data.datos_otras_obligaciones.tipo_operacion = getData(
-          catTipoOperacion,
+          this.state.catTipoOperacion,
           valor
         );
         break;
       case "titularidad_obligacion":
         data.datos_otras_obligaciones.titularidad_obligacion = getData(
-          catTitularBien,
+          this.state.catTitularBien,
           valor
         );
         break;
       case "unidad_medida_plazo":
         data.datos_otras_obligaciones.unidad_medida_plazo = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -190,19 +205,19 @@ class OtrasObligaciones extends React.Component {
       /////////////////////////////  domicilio_acreedor  /////////////////////////////////////
       case "pais":
         data.datos_otras_obligaciones.domicilio_acreedor.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_otras_obligaciones.domicilio_acreedor.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_otras_obligaciones.domicilio_acreedor.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -217,7 +232,7 @@ class OtrasObligaciones extends React.Component {
         break;
       case "localidad":
         data.datos_otras_obligaciones.domicilio_acreedor.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;
@@ -238,6 +253,7 @@ class OtrasObligaciones extends React.Component {
         console.log(field);
     }
 
+    console.log(data.datos_otras_obligaciones.domicilio_acreedor);
     this.setState(data);
   };
 

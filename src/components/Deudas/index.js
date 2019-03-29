@@ -117,7 +117,7 @@ class Deudas extends React.Component {
         data.datos_deudas.montos_abonados = valor;
         break;
       case "nacional_extranjero":
-        data.datos_deudas.nacional_extranjero = getData(catPaises, valor);
+        data.datos_deudas.nacional_extranjero = getData(this.state.catPaises, valor);
         break;
       case "nombre_acreedor":
         data.datos_deudas.nombre_acreedor = valor;
@@ -141,43 +141,43 @@ class Deudas extends React.Component {
         data.datos_deudas.saldo_pendiente = valor;
         break;
       case "sector_industria":
-        data.datos_deudas.sector_industria = getData(catSectorIndustria, valor);
+        data.datos_deudas.sector_industria = getData(this.state.catSectorIndustria, valor);
         break;
       case "tasa_interes":
         data.datos_deudas.tasa_interes = valor;
         break;
       case "tipo_acreedor":
-        data.datos_deudas.tipo_acreedor = getData(catTipoAcreedor, valor);
+        data.datos_deudas.tipo_acreedor = getData(this.state.catTipoAcreedor, valor);
         break;
       case "tipo_adeudo":
-        data.datos_deudas.tipo_adeudo = getData(catTipoAdeudo, valor);
+        data.datos_deudas.tipo_adeudo = getData(this.state.catTipoAdeudo, valor);
         break;
       case "tipo_moneda":
-        data.datos_deudas.tipo_moneda = getData(catTipoMoneda, valor);
+        data.datos_deudas.tipo_moneda = getData(this.state.catTipoMoneda, valor);
         break;
       case "tipo_operacion":
-        data.datos_deudas.tipo_operacion = getData(catTipoOperacion, valor);
+        data.datos_deudas.tipo_operacion = getData(this.state.catTipoOperacion, valor);
         break;
       case "titularidad_deuda":
-        data.datos_deudas.titularidad_deuda = getData(catTitularBien, valor);
+        data.datos_deudas.titularidad_deuda = getData(this.state.catTitularBien, valor);
         break;
       case "unidad_medida_adeudo":
-        data.datos_deudas.unidad_medida_adeudo = getData(catMedidaPlazo, valor);
+        data.datos_deudas.unidad_medida_adeudo = getData(this.state.catMedidaPlazo, valor);
         break;
 
       /////////////////////////////  domicilio_acreedor  /////////////////////////////////////
       case "pais":
-        data.datos_deudas.domicilio_acreedor.pais = getData(catPaises, valor);
+        data.datos_deudas.domicilio_acreedor.pais = getData(this.state.catPaises, valor);
         break;
       case "entidad_federativa":
         data.datos_deudas.domicilio_acreedor.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_deudas.domicilio_acreedor.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -192,7 +192,7 @@ class Deudas extends React.Component {
         break;
       case "localidad":
         data.datos_deudas.domicilio_acreedor.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

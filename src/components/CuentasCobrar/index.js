@@ -97,7 +97,7 @@ class CuentasCobrar extends React.Component {
         break;
       case "sector_industria":
         data.datos_cuentas_por_cobrar.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -108,19 +108,19 @@ class CuentasCobrar extends React.Component {
       /////////////////////////////  domicilio_prestatarios  /////////////////////////////////////
       case "pais":
         data.datos_cuentas_por_cobrar.domicilio_prestatarios.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_cuentas_por_cobrar.domicilio_prestatarios.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -135,7 +135,7 @@ class CuentasCobrar extends React.Component {
         break;
       case "localidad":
         data.datos_cuentas_por_cobrar.domicilio_prestatarios.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

@@ -93,7 +93,7 @@ class UsoEspeciePropiedadTercero extends React.Component {
         break;
       case "relacion_persona":
         data.datos_uso_especie_propiedad_tercero.relacion_persona = getData(
-          catRelacionDeclarante,
+          this.state.catRelacionDeclarante,
           valor
         );
         break;
@@ -102,7 +102,7 @@ class UsoEspeciePropiedadTercero extends React.Component {
         break;
       case "sector_industria":
         data.datos_uso_especie_propiedad_tercero.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
@@ -111,7 +111,7 @@ class UsoEspeciePropiedadTercero extends React.Component {
         break;
       case "valor_mercado.moneda":
         data.datos_uso_especie_propiedad_tercero.valor_mercado.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
@@ -122,19 +122,19 @@ class UsoEspeciePropiedadTercero extends React.Component {
       /////////////////////////////  domicilio_persona  /////////////////////////////////////
       case "pais":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -149,7 +149,7 @@ class UsoEspeciePropiedadTercero extends React.Component {
         break;
       case "localidad":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

@@ -100,13 +100,13 @@ class ActividadEmpresarial extends React.Component {
         break;
       case "ingreso_bruto_anual.moneda":
         data.datos_actividad_empresarial.ingreso_bruto_anual.moneda = getData(
-          catTipoMoneda,
+          this.state.catTipoMoneda,
           valor
         );
         break;
       case "ingreso_bruto_anual.unidad_temporal":
         data.datos_actividad_empresarial.ingreso_bruto_anual.unidad_temporal = getData(
-          catMedidaPlazo,
+          this.state.catMedidaPlazo,
           valor
         );
         break;
@@ -124,32 +124,32 @@ class ActividadEmpresarial extends React.Component {
         break;
       case "sector_industria":
         data.datos_actividad_empresarial.sector_industria = getData(
-          catSectorIndustria,
+          this.state.catSectorIndustria,
           valor
         );
         break;
       case "tipo_actividad_servicio":
         data.datos_actividad_empresarial.tipo_actividad_servicio = getData(
-          catTiposActividades,
+          this.state.catTiposActividades,
           valor
         );
         break;
       /////////////////////////////  domicilio_actividad_empresarial  /////////////////////////////////////
       case "pais":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.pais = getData(
-          catPaises,
+          this.state.catPaises,
           valor
         );
         break;
       case "entidad_federativa":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
         break;
       case "municipio":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
 
@@ -164,7 +164,7 @@ class ActividadEmpresarial extends React.Component {
         break;
       case "localidad":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;
