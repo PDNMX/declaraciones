@@ -1,7 +1,7 @@
 var apiHost = process.env.REACT_APP_API || "https://localhost/captura/api/";
 
 export const catSectorIndustria = () => {
-  return fetch(apiHost + "catSectorIndustria")
+  return fetch(apiHost + "sectorIndustria")
     .then(res => res.json())
     .then(data => data);
 };
@@ -16,14 +16,15 @@ export const catEntidadesFederativas = () => {
 };
 
 export const catMunicipios = cve_agee => {
-  return fetch(apiHost + "catMunicipios?cve_agee=" + cve_agee)
+  // return fetch(apiHost + "catMunicipios?cve_agee=" + cve_agee)
+  return fetch("https://gaia.inegi.org.mx/wscatgeo/mgem/" + cve_agee)
     .then(res => res.json())
-    .then(data => data);
+    .then(data => data.datos);
 };
 
-export const catLocalidades = (cve_agee, cve_mun) => {
+export const catLocalidades = (cve_agee, cve_agem) => {
   return fetch(
-    apiHost + "catLocalidades?cve_agee=" + cve_agee + "&cve_mun=" + cve_mun
+    apiHost + "catLocalidades?cve_agee=" + cve_agee + "&cve_agem=" + cve_agem
   )
     .then(res => res.json())
     .then(data => data);
@@ -103,7 +104,7 @@ export const catTipoBienInmueble = () => {
 };
 
 export const catTipoOperacion = () => {
-  return fetch(apiHost + "catTipoOperacion")
+  return fetch(apiHost + "catTiposOperaciones")
     .then(res => res.json())
     .then(data => data);
 };
@@ -156,17 +157,17 @@ export const catRelacionDeclarante = () => {
 };
 
 export const catAmbito = () => {
-  return fetch(apiHost + "catAmbito")
+  return fetch(apiHost + "catAmbitos")
     .then(res => res.json())
     .then(data => data);
 };
 export const catTipoMetal = () => {
-  return fetch(apiHost + "catTipoMetal")
+  return fetch(apiHost + "catTiposMetales")
     .then(res => res.json())
     .then(data => data);
 };
 export const catTipoAcreedor = () => {
-  return fetch(apiHost + "catTipoAcreedor")
+  return fetch(apiHost + "catTiposAcredores")
     .then(res => res.json())
     .then(data => data);
 };
@@ -196,12 +197,12 @@ export const getEntidadesFederativas = (data, cve_agee) => {
     cve_agee: info[0].cve_agee
   };
 };
-export const getMunicipios = (data, cve_mun) => {
-  let info = data.filter(x => x.cve_mun === cve_mun);
+export const getMunicipios = (data, cve_agem) => {
+  let info = data.filter(x => x.cve_agem === cve_agem);
 
   return {
-    nom_mun: info[0].nom_mun,
-    cve_mun: info[0].cve_mun
+    nom_agem: info[0].nom_agem,
+    cve_agem: info[0].cve_agem
   };
 };
 export const getLocalidades = (data, cve_loc) => {
