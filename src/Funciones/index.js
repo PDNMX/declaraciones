@@ -23,11 +23,14 @@ export const catMunicipios = cve_agee => {
 };
 
 export const catLocalidades = (cve_agee, cve_agem) => {
+  // return fetch(
+  //   apiHost + "catLocalidades?cve_agee=" + cve_agee + "&cve_agem=" + cve_agem
+  // )
   return fetch(
-    apiHost + "catLocalidades?cve_agee=" + cve_agee + "&cve_agem=" + cve_agem
+    "https://gaia.inegi.org.mx/wscatgeo/localidades/" + cve_agee + cve_agem
   )
     .then(res => res.json())
-    .then(data => data);
+    .then(data => data.datos);
 };
 export const catTipoVialidad = () => {
   return fetch(apiHost + "catTiposVialidades")
