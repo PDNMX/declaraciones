@@ -28,19 +28,19 @@ export var data = {
   catNaturalezaMembresias: [],
   catTiposAdeudos: [],
   catTiposRepresentaciones: [],
-  relacionDeclarante: [],
+  catRelacionDeclarante: [],
   nivelGobierno: [],
   poderEjecutivo: [],
-  sectorIndustria: [],
+  catSectorIndustria: [],
   ambitos: [],
-  ciudades: [],
-  entidades: [],
-  municipios: [],
-  localidades: [],
-  tipovialidad: [],
-  estadosciviles: [],
-  documentoObtenido: [],
-  estatusEstudio: [],
+  catPaises: [],
+  catEntidadesFederativas: [],
+  catMunicipios: [],
+  catLocalidades: [],
+  catTipoVialidad: [],
+  catEstadoCivil: [],
+  catDocumentoObtenido: [],
+  catEstatusEstudio: [],
   regimen: [],
   startDate: moment(),
   informacion_general_nacionalidades: [],
@@ -54,8 +54,8 @@ export var data = {
       codigo: ""
     },
     entidad_federativa_nacimiento: {
-      nom_ent: "",
-      cve_ent: ""
+      nom_agee: "",
+      cve_agee: ""
     },
     curp: "",
     rfc: "",
@@ -75,12 +75,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -113,8 +113,8 @@ export var data = {
         codigo: ""
       },
       entidad: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       }
     },
     carrera: "",
@@ -155,8 +155,8 @@ export var data = {
         codigo: ""
       },
       entidad: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       }
     },
     direccion_encargo: {
@@ -165,12 +165,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -220,12 +220,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -278,12 +278,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -334,12 +334,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -379,12 +379,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -488,8 +488,8 @@ export var data = {
         codigo: ""
       },
       entidad: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       }
     },
     fecha_nacimiento: "",
@@ -514,12 +514,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -619,12 +619,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -674,12 +674,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -729,12 +729,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -784,12 +784,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -839,12 +839,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -894,12 +894,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -949,12 +949,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1005,12 +1005,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1060,12 +1060,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1129,12 +1129,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1195,8 +1195,8 @@ export var data = {
         codigo: ""
       },
       entidad: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       }
     },
     titular_bien: {
@@ -1299,12 +1299,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1403,12 +1403,12 @@ export var data = {
           codigo: ""
         },
         entidad_federativa: {
-          nom_ent: "",
-          cve_ent: ""
+          nom_agee: "",
+          cve_agee: ""
         },
         municipio: {
-          nom_mun: "",
-          cve_mun: ""
+          nom_agem: "",
+          cve_agem: ""
         },
         cp: "",
         localidad: {
@@ -1434,12 +1434,12 @@ export var data = {
           codigo: ""
         },
         entidad_federativa: {
-          nom_ent: "",
-          cve_ent: ""
+          nom_agee: "",
+          cve_agee: ""
         },
         municipio: {
-          nom_mun: "",
-          cve_mun: ""
+          nom_agem: "",
+          cve_agem: ""
         },
         cp: "",
         localidad: {
@@ -1465,12 +1465,12 @@ export var data = {
           codigo: ""
         },
         entidad_federativa: {
-          nom_ent: "",
-          cve_ent: ""
+          nom_agee: "",
+          cve_agee: ""
         },
         municipio: {
-          nom_mun: "",
-          cve_mun: ""
+          nom_agem: "",
+          cve_agem: ""
         },
         cp: "",
         localidad: {
@@ -1543,12 +1543,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1607,12 +1607,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1660,12 +1660,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
@@ -1731,12 +1731,12 @@ export var data = {
         codigo: ""
       },
       entidad_federativa: {
-        nom_ent: "",
-        cve_ent: ""
+        nom_agee: "",
+        cve_agee: ""
       },
       municipio: {
-        nom_mun: "",
-        cve_mun: ""
+        nom_agem: "",
+        cve_agem: ""
       },
       cp: "",
       localidad: {
