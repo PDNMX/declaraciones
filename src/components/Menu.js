@@ -28,18 +28,16 @@ const styles = theme => ({
 
 const padres = (ruta, match, handleClick, state) => {
   return (
-    <ListItem
-      button
-      onClick={handleClick(ruta.path)}
-      selected={match.path === ruta.path}
-    >
+    <ListItem button onClick={handleClick(ruta.path)}>
       <ListItemText primary={ruta.name} />
       {state.path === ruta.path ? <ExpandLess /> : <ExpandMore />}
     </ListItem>
   );
 };
 
-const hijos = (child, ruta, classes, state, handleClick) => {
+const hijos = (child, ruta, match, classes, state, handleClick) => {
+  let pathComplete = ruta.path + child.path;
+  // console.log(pathComplete, match.path);
   return (
     <Collapse
       in={state.path === ruta.path}
@@ -48,16 +46,20 @@ const hijos = (child, ruta, classes, state, handleClick) => {
       key={child.key}
     >
       <List component="div" disablePadding>
-        <ListItem button className={classes.nested}>
-          <Link
-            component={RouterLink}
-            underline="none"
-            to={ruta.path + child.path}
-            onClick={handleClick(ruta.path)}
+        <Link
+          component={RouterLink}
+          underline="none"
+          to={pathComplete}
+          onClick={handleClick(ruta.path)}
+        >
+          <ListItem
+            button
+            className={classes.nested}
+            selected={match.path === pathComplete}
           >
             <ListItemText primary={child.name} />
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
     </Collapse>
   );
@@ -100,6 +102,7 @@ class MenuListComposition extends React.Component {
                     return hijos(
                       child,
                       ruta,
+                      match,
                       classes,
                       this.state,
                       this.handleClick
