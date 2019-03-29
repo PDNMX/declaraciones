@@ -151,11 +151,7 @@ class ActividadProfesional extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_actividad_profesional.domicilio_persona_paga
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_actividad_profesional.domicilio_persona_paga.cp = valor;

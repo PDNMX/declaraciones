@@ -147,10 +147,7 @@ class Intereses extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_intereses.domicilio.entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_intereses.domicilio.cp = valor;

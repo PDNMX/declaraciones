@@ -153,11 +153,7 @@ class ActividadEmpresarial extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_actividad_empresarial.domicilio_actividad_empresarial
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.cp = valor;

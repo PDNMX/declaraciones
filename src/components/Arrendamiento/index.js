@@ -152,11 +152,7 @@ class Arrendamiento extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_arrendamiento.domicilio_actividad.entidad_federativa
-            .cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_arrendamiento.domicilio_actividad.cp = valor;

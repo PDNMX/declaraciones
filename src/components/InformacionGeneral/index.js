@@ -182,10 +182,7 @@ class InformacionGeneral extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.informacion_general.domicilio.entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         informacion_general.domicilio.cp = valor;

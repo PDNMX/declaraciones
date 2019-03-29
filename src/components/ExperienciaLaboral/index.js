@@ -145,11 +145,7 @@ class ExperienciaLaboral extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_experiencia_laboral.direccion.entidad_federativa
-            .cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_experiencia_laboral.direccion.cp = valor;

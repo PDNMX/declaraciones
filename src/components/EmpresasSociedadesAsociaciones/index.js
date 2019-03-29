@@ -122,11 +122,7 @@ class EmpresasSociedadesAsociaciones extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_empresas_sociedades_asociaciones.domicilio
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_empresas_sociedades_asociaciones.domicilio.cp = valor;

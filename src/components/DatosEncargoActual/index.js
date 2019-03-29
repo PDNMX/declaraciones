@@ -112,11 +112,7 @@ class DatosEncargoActual extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_encargo_actual.direccion_encargo.entidad_federativa
-            .cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_encargo_actual.direccion_encargo.cp = valor;

@@ -138,11 +138,6 @@ class UsoEspeciePropiedadTercero extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_uso_especie_propiedad_tercero.domicilio_persona
-            .entidad_federativa.cve_agee,
-          valor
-        );
         break;
       case "cp":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.cp = valor;

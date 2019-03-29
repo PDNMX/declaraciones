@@ -153,11 +153,6 @@ class ActividadEconomicaMenor extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_actividad_economica_menor.domicilio_actividad
-            .entidad_federativa.cve_agee,
-          valor
-        );
         break;
       case "cp":
         data.datos_actividad_economica_menor.domicilio_actividad.cp = valor;

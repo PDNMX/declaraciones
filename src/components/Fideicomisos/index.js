@@ -222,11 +222,7 @@ class Fideicomisos extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_fideicomisos.fideicomitente.domicilio
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_fideicomisos.fideicomitente.domicilio.cp = valor;
@@ -281,11 +277,7 @@ class Fideicomisos extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_fideicomisos.fideicomisario.domicilio
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_fideicomisos.fideicomisario.domicilio.cp = valor;
@@ -340,11 +332,6 @@ class Fideicomisos extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_fideicomisos.fiduciario.domicilio.entidad_federativa
-            .cve_agee,
-          valor
-        );
         break;
       case "cp":
         data.datos_fideicomisos.fiduciario.domicilio.cp = valor;

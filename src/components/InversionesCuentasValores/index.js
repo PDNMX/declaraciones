@@ -208,11 +208,7 @@ class InversionesCuentasValores extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_inversiones_cuentas_valores.domicilio_institucion
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.cp = valor;

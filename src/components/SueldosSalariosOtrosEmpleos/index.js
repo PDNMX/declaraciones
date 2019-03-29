@@ -151,11 +151,8 @@ class SueldosSalariosOtrosEmpleos extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
+
         break;
       case "cp":
         data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.cp = valor;

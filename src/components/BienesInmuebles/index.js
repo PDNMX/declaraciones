@@ -213,11 +213,7 @@ class BienesInmuebles extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_bienes_inmuebles.domicilio_bien.entidad_federativa
-            .cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_bienes_inmuebles.domicilio_bien.cp = valor;

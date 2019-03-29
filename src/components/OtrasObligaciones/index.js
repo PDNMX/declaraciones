@@ -221,11 +221,7 @@ class OtrasObligaciones extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_otras_obligaciones.domicilio_acreedor
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_otras_obligaciones.domicilio_acreedor.cp = valor;

@@ -176,11 +176,7 @@ class DependientesEconomicos extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_dependientes_economicos.domicilio.entidad_federativa
-            .cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_dependientes_economicos.domicilio.cp = valor;

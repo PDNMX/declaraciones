@@ -160,11 +160,7 @@ class EnajenacionBienes extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_enajenacion_bienes.domicilio_bien_enajenado
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.cp = valor;

@@ -135,15 +135,6 @@ class Index extends Component {
         this.setState({ regimen: regimenmatrimonial })
       );
 
-    // this.updateMunicipios(
-    //   this.state.informacion_general.domicilio.entidad_federativa.cve_agee
-    // );
-
-    // this.updateLocalidades(
-    //   this.state.informacion_general.domicilio.entidad_federativa.cve_agee,
-    //   this.state.informacion_general.domicilio.municipio.cve_agem
-    // );
-
     fetch(config.apiHost + "catTipoVialidad")
       .then(res => res.json())
       .then(catTipoVialidad =>

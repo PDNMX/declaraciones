@@ -124,11 +124,7 @@ class CuentasCobrar extends React.Component {
           valor
         );
 
-        this.updateLocalidades(
-          this.state.datos_cuentas_por_cobrar.domicilio_prestatarios
-            .entidad_federativa.cve_agee,
-          valor
-        );
+
         break;
       case "cp":
         data.datos_cuentas_por_cobrar.domicilio_prestatarios.cp = valor;
