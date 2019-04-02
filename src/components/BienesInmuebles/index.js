@@ -53,7 +53,6 @@ class BienesInmuebles extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
@@ -191,7 +190,10 @@ class BienesInmuebles extends React.Component {
         data.datos_bienes_inmuebles.superficie_terreno = valor;
         break;
       case "tipo_bien":
-        data.datos_bienes_inmuebles.tipo_bien = getData(this.state.catTipoBien, valor);
+        data.datos_bienes_inmuebles.tipo_bien = getData(
+          this.state.catTipoBien,
+          valor
+        );
         break;
       case "tipo_operacion":
         data.datos_bienes_inmuebles.tipo_operacion = getData(
@@ -204,21 +206,60 @@ class BienesInmuebles extends React.Component {
         break;
 
       case "titular":
-        data.datos_bienes_inmuebles.titular = getData(this.state.catTitularBien, valor);
-        break;
-
-      /////////////////////////////  domicilio_bien  /////////////////////////////////////
-      case "pais":
-        data.datos_bienes_inmuebles.domicilio_bien.pais = getData(
-          this.state.catPaises,
+        data.datos_bienes_inmuebles.titular = getData(
+          this.state.catTitularBien,
           valor
         );
+        break;
+
+      /////////////////////////////  domicilio  /////////////////////////////////////
+      case "pais":
+        data.datos_bienes_inmuebles.domicilio_bien = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_bienes_inmuebles.domicilio_bien.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_bienes_inmuebles.domicilio_bien.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_bienes_inmuebles.domicilio_bien.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_bienes_inmuebles.domicilio_bien.entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_bienes_inmuebles.domicilio_bien.municipio = getMunicipios(
@@ -226,6 +267,18 @@ class BienesInmuebles extends React.Component {
           valor
         );
 
+        data.datos_bienes_inmuebles.domicilio_bien.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_bienes_inmuebles.domicilio_bien.entidad_federativa
+            .cve_agee,
+          data.datos_bienes_inmuebles.domicilio_bien.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":

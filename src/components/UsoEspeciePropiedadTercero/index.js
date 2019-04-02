@@ -131,24 +131,75 @@ class UsoEspeciePropiedadTercero extends React.Component {
         data.datos_uso_especie_propiedad_tercero.valor_mercado.valor = valor;
         break;
 
-      /////////////////////////////  domicilio_persona  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_uso_especie_propiedad_tercero.domicilio_persona.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_uso_especie_propiedad_tercero.domicilio_persona
+            .entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_uso_especie_propiedad_tercero.domicilio_persona.municipio = getMunicipios(
           this.state.catMunicipios,
           valor
         );
+
+        data.datos_uso_especie_propiedad_tercero.domicilio_persona.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_uso_especie_propiedad_tercero.domicilio_persona
+            .entidad_federativa.cve_agee,
+          data.datos_uso_especie_propiedad_tercero.domicilio_persona.municipio
+            .cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":

@@ -48,7 +48,6 @@ class EnajenacionBienes extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
@@ -106,7 +105,10 @@ class EnajenacionBienes extends React.Component {
         break;
 
       case "tipo_bien":
-        data.datos_enajenacion_bienes.tipo_bien = getData(this.state.catTipoBien, valor);
+        data.datos_enajenacion_bienes.tipo_bien = getData(
+          this.state.catTipoBien,
+          valor
+        );
         break;
       case "id":
         data.datos_enajenacion_bienes.id = valor;
@@ -154,18 +156,55 @@ class EnajenacionBienes extends React.Component {
         );
         break;
 
-      /////////////////////////////  domicilio_bien_enajenado  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_enajenacion_bienes.domicilio_bien_enajenado.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_enajenacion_bienes.domicilio_bien_enajenado
+            .entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.municipio = getMunicipios(
@@ -173,6 +212,19 @@ class EnajenacionBienes extends React.Component {
           valor
         );
 
+        data.datos_enajenacion_bienes.domicilio_bien_enajenado.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_enajenacion_bienes.domicilio_bien_enajenado
+            .entidad_federativa.cve_agee,
+          data.datos_enajenacion_bienes.domicilio_bien_enajenado.municipio
+            .cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":
@@ -196,6 +248,7 @@ class EnajenacionBienes extends React.Component {
       case "numInt":
         data.datos_enajenacion_bienes.domicilio_bien_enajenado.numInt = valor;
         break;
+
       default:
         console.log(field);
     }

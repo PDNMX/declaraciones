@@ -46,13 +46,10 @@ class ActividadEmpresarial extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
     } = this.state.datos_actividad_empresarial.domicilio_actividad_empresarial;
-
-
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -62,19 +59,19 @@ class ActividadEmpresarial extends React.Component {
     });
 
     if (entidad_federativa.cve_agee !== "") {
-     catMunicipios(entidad_federativa.cve_agee).then(data => {
-       this.setState({ catMunicipios: data });
-     });
+      catMunicipios(entidad_federativa.cve_agee).then(data => {
+        this.setState({ catMunicipios: data });
+      });
 
-     if (municipio.cve_agem !== "") {
-       catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
-         data => {
-           this.setState({ catLocalidades: data });
-         }
-       );
-     }
-   }
-   
+      if (municipio.cve_agem !== "") {
+        catLocalidades(entidad_federativa.cve_agee, municipio.cve_agem).then(
+          data => {
+            this.setState({ catLocalidades: data });
+          }
+        );
+      }
+    }
+
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });
@@ -151,18 +148,55 @@ class ActividadEmpresarial extends React.Component {
           valor
         );
         break;
-      /////////////////////////////  domicilio_actividad_empresarial  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_actividad_empresarial.domicilio_actividad_empresarial.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_actividad_empresarial.domicilio_actividad_empresarial
+            .entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_actividad_empresarial.domicilio_actividad_empresarial.municipio = getMunicipios(
@@ -170,6 +204,19 @@ class ActividadEmpresarial extends React.Component {
           valor
         );
 
+        data.datos_actividad_empresarial.domicilio_actividad_empresarial.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_actividad_empresarial.domicilio_actividad_empresarial
+            .entidad_federativa.cve_agee,
+          data.datos_actividad_empresarial.domicilio_actividad_empresarial
+            .municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":

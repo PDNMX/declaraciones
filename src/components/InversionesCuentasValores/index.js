@@ -55,12 +55,10 @@ class InversionesCuentasValores extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
     } = this.state.datos_inversiones_cuentas_valores.domicilio_institucion;
-
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -203,18 +201,55 @@ class InversionesCuentasValores extends React.Component {
         );
         break;
 
-      /////////////////////////////  domicilio_institucion  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_inversiones_cuentas_valores.domicilio_institucion.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_inversiones_cuentas_valores.domicilio_institucion = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_inversiones_cuentas_valores.domicilio_institucion
+            .entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_inversiones_cuentas_valores.domicilio_institucion.municipio = getMunicipios(
@@ -222,6 +257,19 @@ class InversionesCuentasValores extends React.Component {
           valor
         );
 
+        data.datos_inversiones_cuentas_valores.domicilio_institucion.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_inversiones_cuentas_valores.domicilio_institucion
+            .entidad_federativa.cve_agee,
+          data.datos_inversiones_cuentas_valores.domicilio_institucion.municipio
+            .cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":

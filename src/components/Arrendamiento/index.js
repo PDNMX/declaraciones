@@ -47,12 +47,10 @@ class Arrendamiento extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
     } = this.state.datos_arrendamiento.domicilio_actividad;
-
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -147,18 +145,55 @@ class Arrendamiento extends React.Component {
         );
         break;
 
-      /////////////////////////////  domicilio_actividad  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_arrendamiento.domicilio_actividad.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_arrendamiento.domicilio_actividad = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_arrendamiento.domicilio_actividad.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_arrendamiento.domicilio_actividad.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_arrendamiento.domicilio_actividad.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_arrendamiento.domicilio_actividad.entidad_federativa
+            .cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_arrendamiento.domicilio_actividad.municipio = getMunicipios(
@@ -166,6 +201,18 @@ class Arrendamiento extends React.Component {
           valor
         );
 
+        data.datos_arrendamiento.domicilio_actividad.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_arrendamiento.domicilio_actividad.entidad_federativa
+            .cve_agee,
+          data.datos_arrendamiento.domicilio_actividad.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":

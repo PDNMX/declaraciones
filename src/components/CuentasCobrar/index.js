@@ -119,48 +119,96 @@ class CuentasCobrar extends React.Component {
         data.datos_cuentas_por_cobrar.tasa_interes = valor;
         break;
 
-      /////////////////////////////  domicilio_prestatarios  /////////////////////////////////////
-      case "pais":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.pais = getData(
-          this.state.catPaises,
-          valor
-        );
-        break;
-      case "entidad_federativa":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa = getEntidadesFederativas(
-          this.state.catEntidadesFederativas,
-          valor
-        );
-        break;
-      case "municipio":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.municipio = getMunicipios(
-          this.state.catMunicipios,
-          valor
-        );
+        /////////////////////////////  domicilio  /////////////////////////////////////
+        case "pais":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios = {
+            pais: getData(this.state.catPaises, valor),
+            entidad_federativa: {
+              nom_agee: "",
+              cve_agee: ""
+            },
+            municipio: {
+              nom_agem: "",
+              cve_agem: ""
+            },
+            cp: "",
+            localidad: {
+              nom_loc: "",
+              cve_loc: ""
+            },
+            vialidad: {
+              tipo_vial: "",
+              nom_vial: ""
+            },
+            numExt: "",
+            numInt: ""
+          };
 
+          break;
+        case "entidad_federativa":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa = getEntidadesFederativas(
+            this.state.catEntidadesFederativas,
+            valor
+          );
 
-        break;
-      case "cp":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.cp = valor;
-        break;
-      case "localidad":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.localidad = getLocalidades(
-          this.state.catLocalidades,
-          valor
-        );
-        break;
-      case "vialidad.tipo_vial":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.vialidad.tipo_vial = valor;
-        break;
-      case "vialidad.nom_vial":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.vialidad.nom_vial = valor;
-        break;
-      case "numExt":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.numExt = valor;
-        break;
-      case "numInt":
-        data.datos_cuentas_por_cobrar.domicilio_prestatarios.numInt = valor;
-        break;
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.municipio = {
+            nom_agem: "",
+            cve_agem: ""
+          };
+
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.localidad = {
+            nom_loc: "",
+            cve_loc: ""
+          };
+
+          catMunicipios(
+            data.datos_cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa
+              .cve_agee
+          ).then(data => {
+            this.setState({ catMunicipios: data, catLocalidades: [] });
+          });
+
+          break;
+        case "municipio":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.municipio = getMunicipios(
+            this.state.catMunicipios,
+            valor
+          );
+
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.localidad = {
+            nom_loc: "",
+            cve_loc: ""
+          };
+
+          catLocalidades(
+            data.datos_cuentas_por_cobrar.domicilio_prestatarios.entidad_federativa.cve_agee,
+            data.datos_cuentas_por_cobrar.domicilio_prestatarios.municipio.cve_agem
+          ).then(data => {
+            this.setState({ catLocalidades: data });
+          });
+
+          break;
+        case "cp":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.cp = valor;
+          break;
+        case "localidad":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.localidad = getLocalidades(
+            this.state.catLocalidades,
+            valor
+          );
+          break;
+        case "vialidad.tipo_vial":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.vialidad.tipo_vial = valor;
+          break;
+        case "vialidad.nom_vial":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.vialidad.nom_vial = valor;
+          break;
+        case "numExt":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.numExt = valor;
+          break;
+        case "numInt":
+          data.datos_cuentas_por_cobrar.domicilio_prestatarios.numInt = valor;
+          break;
 
       default:
         console.log(field);

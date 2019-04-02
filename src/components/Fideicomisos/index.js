@@ -223,22 +223,72 @@ class Fideicomisos extends React.Component {
     switch (field) {
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_fideicomisos.fideicomitente.domicilio.pais = getData(
-          catPaises,
-          valor
-        );
+        data.datos_fideicomisos.fideicomitente.domicilio = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_fideicomisos.fideicomitente.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_fideicomisos.fideicomitente.domicilio.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_fideicomisos.fideicomitente.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_fideicomisos.fideicomitente.domicilio.entidad_federativa
+            .cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_fideicomisos.fideicomitente.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
+
+        data.datos_fideicomisos.fideicomitente.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_fideicomisos.fideicomitente.domicilio.entidad_federativa
+            .cve_agee,
+          data.datos_fideicomisos.fideicomitente.domicilio.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":
@@ -246,7 +296,7 @@ class Fideicomisos extends React.Component {
         break;
       case "localidad":
         data.datos_fideicomisos.fideicomitente.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;
@@ -277,22 +327,72 @@ class Fideicomisos extends React.Component {
     switch (field) {
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_fideicomisos.fideicomisario.domicilio.pais = getData(
-          catPaises,
-          valor
-        );
+        data.datos_fideicomisos.fideicomisario.domicilio = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_fideicomisos.fideicomisario.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_fideicomisos.fideicomisario.domicilio.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_fideicomisos.fideicomisario.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_fideicomisos.fideicomisario.domicilio.entidad_federativa
+            .cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_fideicomisos.fideicomisario.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
+
+        data.datos_fideicomisos.fideicomisario.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_fideicomisos.fideicomisario.domicilio.entidad_federativa
+            .cve_agee,
+          data.datos_fideicomisos.fideicomisario.domicilio.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":
@@ -300,7 +400,7 @@ class Fideicomisos extends React.Component {
         break;
       case "localidad":
         data.datos_fideicomisos.fideicomisario.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;
@@ -331,22 +431,72 @@ class Fideicomisos extends React.Component {
     switch (field) {
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_fideicomisos.fiduciario.domicilio.pais = getData(
-          catPaises,
-          valor
-        );
+        data.datos_fideicomisos.fiduciario.domicilio = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_fideicomisos.fiduciario.domicilio.entidad_federativa = getEntidadesFederativas(
-          catEntidadesFederativas,
+          this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_fideicomisos.fiduciario.domicilio.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_fideicomisos.fiduciario.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_fideicomisos.fiduciario.domicilio.entidad_federativa
+            .cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_fideicomisos.fiduciario.domicilio.municipio = getMunicipios(
-          catMunicipios,
+          this.state.catMunicipios,
           valor
         );
+
+        data.datos_fideicomisos.fiduciario.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_fideicomisos.fiduciario.domicilio.entidad_federativa
+            .cve_agee,
+          data.datos_fideicomisos.fiduciario.domicilio.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":
@@ -354,7 +504,7 @@ class Fideicomisos extends React.Component {
         break;
       case "localidad":
         data.datos_fideicomisos.fiduciario.domicilio.localidad = getLocalidades(
-          catLocalidades,
+          this.state.catLocalidades,
           valor
         );
         break;

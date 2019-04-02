@@ -47,12 +47,10 @@ class SueldosSalariosOtrosEmpleos extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
     } = this.state.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga;
-
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -146,18 +144,55 @@ class SueldosSalariosOtrosEmpleos extends React.Component {
           valor
         );
         break;
-      /////////////////////////////  domicilio_persona_paga  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga
+            .entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.municipio = getMunicipios(
@@ -165,7 +200,19 @@ class SueldosSalariosOtrosEmpleos extends React.Component {
           valor
         );
 
+        data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
 
+        catLocalidades(
+          data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga
+            .entidad_federativa.cve_agee,
+          data.datos_sueldos_salarios_otros_empleos.domicilio_persona_paga
+            .municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":

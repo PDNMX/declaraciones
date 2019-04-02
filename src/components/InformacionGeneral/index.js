@@ -72,7 +72,7 @@ class InformacionGeneral extends React.Component {
     });
     catEntidadesFederativas().then(data => {
       this.setState({ catEntidadesFederativas: data });
-    });    
+    });
     catTipoVialidad().then(data => {
       this.setState({ catTipoVialidad: data });
     });
@@ -161,48 +161,96 @@ class InformacionGeneral extends React.Component {
           valor
         );
         break;
-      /////////////////////////////  DOMICILIO  /////////////////////////////////////
-      case "pais":
-        informacion_general.domicilio.pais = getData(
-          this.state.this.state.catPaises,
-          valor
-        );
-        break;
-      case "entidad_federativa":
-        informacion_general.domicilio.entidad_federativa = getEntidadesFederativas(
-          this.state.this.state.catEntidadesFederativas,
-          valor
-        );
-        break;
-      case "municipio":
-        informacion_general.domicilio.municipio = getMunicipios(
-          this.state.this.state.catMunicipios,
-          valor
-        );
+        /////////////////////////////  domicilio  /////////////////////////////////////
+        case "pais":
+          informacion_general.domicilio = {
+            pais: getData(this.state.catPaises, valor),
+            entidad_federativa: {
+              nom_agee: "",
+              cve_agee: ""
+            },
+            municipio: {
+              nom_agem: "",
+              cve_agem: ""
+            },
+            cp: "",
+            localidad: {
+              nom_loc: "",
+              cve_loc: ""
+            },
+            vialidad: {
+              tipo_vial: "",
+              nom_vial: ""
+            },
+            numExt: "",
+            numInt: ""
+          };
 
+          break;
+        case "entidad_federativa":
+          informacion_general.domicilio.entidad_federativa = getEntidadesFederativas(
+            this.state.catEntidadesFederativas,
+            valor
+          );
 
-        break;
-      case "cp":
-        informacion_general.domicilio.cp = valor;
-        break;
-      case "localidad":
-        informacion_general.domicilio.localidad = getLocalidades(
-          this.state.this.state.catLocalidades,
-          valor
-        );
-        break;
-      case "vialidad.tipo_vial":
-        informacion_general.domicilio.vialidad.tipo_vial = valor;
-        break;
-      case "vialidad.nom_vial":
-        informacion_general.domicilio.vialidad.nom_vial = valor;
-        break;
-      case "numExt":
-        informacion_general.domicilio.numExt = valor;
-        break;
-      case "numInt":
-        informacion_general.domicilio.numInt = valor;
-        break;
+          informacion_general.domicilio.municipio = {
+            nom_agem: "",
+            cve_agem: ""
+          };
+
+          informacion_general.domicilio.localidad = {
+            nom_loc: "",
+            cve_loc: ""
+          };
+
+          catMunicipios(
+            informacion_general.domicilio.entidad_federativa
+              .cve_agee
+          ).then(data => {
+            this.setState({ catMunicipios: data, catLocalidades: [] });
+          });
+
+          break;
+        case "municipio":
+          informacion_general.domicilio.municipio = getMunicipios(
+            this.state.catMunicipios,
+            valor
+          );
+
+          informacion_general.domicilio.localidad = {
+            nom_loc: "",
+            cve_loc: ""
+          };
+
+          catLocalidades(
+            informacion_general.domicilio.entidad_federativa.cve_agee,
+            informacion_general.domicilio.municipio.cve_agem
+          ).then(data => {
+            this.setState({ catLocalidades: data });
+          });
+
+          break;
+        case "cp":
+          informacion_general.domicilio.cp = valor;
+          break;
+        case "localidad":
+          informacion_general.domicilio.localidad = getLocalidades(
+            this.state.catLocalidades,
+            valor
+          );
+          break;
+        case "vialidad.tipo_vial":
+          informacion_general.domicilio.vialidad.tipo_vial = valor;
+          break;
+        case "vialidad.nom_vial":
+          informacion_general.domicilio.vialidad.nom_vial = valor;
+          break;
+        case "numExt":
+          informacion_general.domicilio.numExt = valor;
+          break;
+        case "numInt":
+          informacion_general.domicilio.numInt = valor;
+          break;
 
       default:
         console.log(field);

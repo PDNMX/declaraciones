@@ -46,12 +46,10 @@ class Intereses extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
     } = this.state.datos_intereses.domicilio;
-
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -147,13 +145,52 @@ class Intereses extends React.Component {
         break;
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_intereses.domicilio.pais = getData(this.state.catPaises, valor);
+        data.datos_intereses.domicilio = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_intereses.domicilio.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_intereses.domicilio.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_intereses.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_intereses.domicilio.entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_intereses.domicilio.municipio = getMunicipios(
@@ -161,6 +198,17 @@ class Intereses extends React.Component {
           valor
         );
 
+        data.datos_intereses.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_intereses.domicilio.entidad_federativa.cve_agee,
+          data.datos_intereses.domicilio.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":
