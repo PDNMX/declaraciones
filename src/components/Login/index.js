@@ -38,24 +38,30 @@ const styles = theme => ({
   }
 });
 
-// var loggedIn = sessionStorage.getItem("logged");
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
-    let authenticated = sessionStorage.getItem("authenticated");
-    if (authenticated === "undefined") {
-      sessionStorage.setItem("authenticated", false);
-    }
-
     this.state = {
+      email: "",
+      clave: "",
       email: "benito.perdomo.pdn@gmail.com",
       clave: "Raziel-87",
       mensaje: "",
       type: ""
     };
   }
+
+  componentDidMount = () => {
+    app.auth().onAuthStateChanged(user => {
+      console.log(user);
+      if (user) {
+        this.setState({ autenticated: true });
+      } else {
+        this.setState({ autenticated: false });
+      }
+    });
+  };
 
   handleChange = name => event => {
     this.setState({
@@ -85,7 +91,8 @@ class Login extends React.Component {
               "Su cuenta no ha sido verificada, por favor revise en su correo electronico y siga las instrucciones.",
             type: "info"
           };
-          self.setState({ mensaje: mensaje }, () => {
+
+          self.setState({ mensaje: mensaje, autenticated: false }, () => {
             res.user
               .sendEmailVerification()
               .then(function() {})
@@ -94,10 +101,9 @@ class Login extends React.Component {
               });
           });
 
-          sessionStorage.setItem("authenticated", false);
+          // this.setState({ autenticated: false });
         } else {
-          sessionStorage.setItem("authenticated", true);
-          window.location.reload();
+          this.setState({ autenticated: true });
         }
       })
       .catch(function(error) {
@@ -130,62 +136,8 @@ class Login extends React.Component {
           mensaje: message,
           type: "danger"
         };
-        self.setState({ mensaje: mensaje }, () => {
-          sessionStorage.setItem("authenticated", false);
-        });
+        self.setState({ mensaje: mensaje, autenticated: false });
       });
-
-    // const payload = {
-    //   email: this.state.email,
-    //   clave: this.state.clave
-    // };
-    //
-    // axios
-    //   .post(apiBaseUrl + "login", payload)
-    //   .then(response => {
-    //     switch (response.data.code) {
-    //       case 200:
-    //         mensaje = {
-    //           mensaje: "inicio correcto.",
-    //           type: "success"
-    //         };
-    //         this.setState({ mensaje: mensaje }, () => {
-    //           sessionStorage.setItem("logged", true);
-    //           window.location.reload();
-    //         });
-    //         break;
-    //       case 204:
-    //         mensaje = {
-    //           mensaje: "El email y/o contrasena son incorrectos.",
-    //           type: "danger"
-    //         };
-    //         this.setState({ mensaje: mensaje }, () => {
-    //           sessionStorage.setItem("logged", false);
-    //         });
-    //         break;
-    //       case 205:
-    //         mensaje = {
-    //           mensaje: "El email y/o contrasena son incorrectos.",
-    //           type: "danger"
-    //         };
-    //         this.setState({ mensaje: mensaje }, () => {
-    //           sessionStorage.setItem("logged", false);
-    //         });
-    //         break;
-    //       default:
-    //         mensaje = {
-    //           mensaje: "hubo un error en la consulta",
-    //           type: "danger"
-    //         };
-    //         this.setState({ mensaje: mensaje }, () => {
-    //           sessionStorage.setItem("logged", false);
-    //         });
-    //     }
-    //     console.log(this.state);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
   };
 
   render() {
@@ -193,7 +145,7 @@ class Login extends React.Component {
     const { email, clave } = this.state;
     const disabledButton = email === "" || clave === "";
 
-    if (sessionStorage.getItem("authenticated") === "true") {
+    if (this.state.autenticated) {
       return <Redirect to="/" />;
     }
     return (

@@ -5,6 +5,7 @@ import declaraciones from "./routes/declaraciones";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import P404 from "./components/P404";
 import PrivateRoute from "./PrivateRoute";
+
 const p404 = () => {
   return <P404 />;
 };
@@ -37,10 +38,7 @@ const getRoute = (prop, parent) => {
 class App extends Component {
   render() {
     const rutas = [...routes, ...declaraciones];
-    // console.log(rutas);
-    if (sessionStorage.getItem("authenticated") === null) {
-      sessionStorage.setItem("authenticated", false);
-    }
+
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>

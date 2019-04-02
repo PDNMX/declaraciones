@@ -10,7 +10,7 @@ import app from "./Firebase";
 
 const styles = {
   root: {
-    flexGrow: 1,    
+    flexGrow: 1
   },
   grow: {
     flexGrow: 1
@@ -26,8 +26,17 @@ class ButtonAppBar extends React.Component {
     super(props);
 
     this.state = {
-      redirect: false
+      redirect: false,
+      autenticated: false
     };
+
+    app.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ autenticated: true });
+      } else {
+        this.setState({ redirect: true });
+      }
+    });
   }
 
   handleClick = event => {
@@ -36,8 +45,7 @@ class ButtonAppBar extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        sessionStorage.clear();
-        sessionStorage.setItem("authenticated", false);
+        // window.location.reload();
         this.setState({
           redirect: true
         });
@@ -56,7 +64,7 @@ class ButtonAppBar extends React.Component {
               <Typography variant="h6" color="inherit" className={classes.grow}>
                 Declaracion
               </Typography>
-              {sessionStorage.getItem("authenticated") === "true" && (
+              {this.state.autenticated && (
                 <Button color="inherit" onClick={this.handleClick}>
                   Logout
                 </Button>
