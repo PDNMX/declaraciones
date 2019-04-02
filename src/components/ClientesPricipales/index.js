@@ -41,12 +41,10 @@ class ClientesPrincipales extends React.Component {
   }
 
   componentDidMount() {
-
     let {
       entidad_federativa,
       municipio
     } = this.state.datos_clientes_principales.domicilio;
-
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -110,24 +108,72 @@ class ClientesPrincipales extends React.Component {
           valor
         );
         break;
-      /////////////////////////////  DOMICILIO  /////////////////////////////////////
+      /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_clientes_principales.domicilio.pais = getData(
-          this.state.catPaises,
-          valor
-        );
+        data.datos_clientes_principales.domicilio = {
+          pais: getData(this.state.catPaises, valor),
+          entidad_federativa: {
+            nom_agee: "",
+            cve_agee: ""
+          },
+          municipio: {
+            nom_agem: "",
+            cve_agem: ""
+          },
+          cp: "",
+          localidad: {
+            nom_loc: "",
+            cve_loc: ""
+          },
+          vialidad: {
+            tipo_vial: "",
+            nom_vial: ""
+          },
+          numExt: "",
+          numInt: ""
+        };
+
         break;
       case "entidad_federativa":
         data.datos_clientes_principales.domicilio.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
+
+        data.datos_clientes_principales.domicilio.municipio = {
+          nom_agem: "",
+          cve_agem: ""
+        };
+
+        data.datos_clientes_principales.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catMunicipios(
+          data.datos_clientes_principales.domicilio.entidad_federativa.cve_agee
+        ).then(data => {
+          this.setState({ catMunicipios: data, catLocalidades: [] });
+        });
+
         break;
       case "municipio":
         data.datos_clientes_principales.domicilio.municipio = getMunicipios(
           this.state.catMunicipios,
           valor
         );
+
+        data.datos_clientes_principales.domicilio.localidad = {
+          nom_loc: "",
+          cve_loc: ""
+        };
+
+        catLocalidades(
+          data.datos_clientes_principales.domicilio.entidad_federativa.cve_agee,
+          data.datos_clientes_principales.domicilio.municipio.cve_agem
+        ).then(data => {
+          this.setState({ catLocalidades: data });
+        });
 
         break;
       case "cp":
@@ -151,6 +197,7 @@ class ClientesPrincipales extends React.Component {
       case "numInt":
         data.datos_clientes_principales.domicilio.numInt = valor;
         break;
+
       default:
         console.log(field);
     }
