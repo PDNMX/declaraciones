@@ -123,7 +123,7 @@ function SimpleCard(props) {
                   id: "tipo_fideicomiso"
                 }}
               >
-                {data.catTiposFideicomisos.map(tipoFideicomiso => (
+                {data.catTipoFideicomiso.map(tipoFideicomiso => (
                   <MenuItem
                     key={tipoFideicomiso.codigo}
                     value={tipoFideicomiso.codigo}

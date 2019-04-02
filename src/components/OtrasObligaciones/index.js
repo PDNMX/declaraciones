@@ -55,7 +55,7 @@ class OtrasObligaciones extends React.Component {
     let {
       entidad_federativa,
       municipio
-    } = this.state.datos_otras_obligaciones.domicilio;
+    } = this.state.datos_otras_obligaciones.domicilio_acreedor;
 
     catPaises().then(data => {
       this.setState({ catPaises: data });
@@ -204,7 +204,7 @@ class OtrasObligaciones extends React.Component {
 
       /////////////////////////////  domicilio  /////////////////////////////////////
       case "pais":
-        data.datos_otras_obligaciones.domicilio = {
+        data.datos_otras_obligaciones.domicilio_acreedor = {
           pais: getData(this.state.catPaises, valor),
           entidad_federativa: {
             nom_agee: "",
@@ -229,68 +229,67 @@ class OtrasObligaciones extends React.Component {
 
         break;
       case "entidad_federativa":
-        data.datos_otras_obligaciones.domicilio.entidad_federativa = getEntidadesFederativas(
+        data.datos_otras_obligaciones.domicilio_acreedor.entidad_federativa = getEntidadesFederativas(
           this.state.catEntidadesFederativas,
           valor
         );
 
-        data.datos_otras_obligaciones.domicilio.municipio = {
+        data.datos_otras_obligaciones.domicilio_acreedor.municipio = {
           nom_agem: "",
           cve_agem: ""
         };
 
-        data.datos_otras_obligaciones.domicilio.localidad = {
+        data.datos_otras_obligaciones.domicilio_acreedor.localidad = {
           nom_loc: "",
           cve_loc: ""
         };
 
         catMunicipios(
-          data.datos_otras_obligaciones.domicilio.entidad_federativa
-            .cve_agee
+          data.datos_otras_obligaciones.domicilio_acreedor.entidad_federativa.cve_agee
         ).then(data => {
           this.setState({ catMunicipios: data, catLocalidades: [] });
         });
 
         break;
       case "municipio":
-        data.datos_otras_obligaciones.domicilio.municipio = getMunicipios(
+        data.datos_otras_obligaciones.domicilio_acreedor.municipio = getMunicipios(
           this.state.catMunicipios,
           valor
         );
 
-        data.datos_otras_obligaciones.domicilio.localidad = {
+        data.datos_otras_obligaciones.domicilio_acreedor.localidad = {
           nom_loc: "",
           cve_loc: ""
         };
 
         catLocalidades(
-          data.datos_otras_obligaciones.domicilio.entidad_federativa.cve_agee,
-          data.datos_otras_obligaciones.domicilio.municipio.cve_agem
+          data.datos_otras_obligaciones.domicilio_acreedor.entidad_federativa.cve_agee,
+          data.datos_otras_obligaciones.domicilio_acreedor.municipio.cve_agem
         ).then(data => {
           this.setState({ catLocalidades: data });
         });
 
         break;
       case "cp":
-        data.datos_otras_obligaciones.domicilio.cp = valor;
+        data.datos_otras_obligaciones.domicilio_acreedor.cp = valor;
         break;
       case "localidad":
-        data.datos_otras_obligaciones.domicilio.localidad = getLocalidades(
+        data.datos_otras_obligaciones.domicilio_acreedor.localidad = getLocalidades(
           this.state.catLocalidades,
           valor
         );
         break;
       case "vialidad.tipo_vial":
-        data.datos_otras_obligaciones.domicilio.vialidad.tipo_vial = valor;
+        data.datos_otras_obligaciones.domicilio_acreedor.vialidad.tipo_vial = valor;
         break;
       case "vialidad.nom_vial":
-        data.datos_otras_obligaciones.domicilio.vialidad.nom_vial = valor;
+        data.datos_otras_obligaciones.domicilio_acreedor.vialidad.nom_vial = valor;
         break;
       case "numExt":
-        data.datos_otras_obligaciones.domicilio.numExt = valor;
+        data.datos_otras_obligaciones.domicilio_acreedor.numExt = valor;
         break;
       case "numInt":
-        data.datos_otras_obligaciones.domicilio.numInt = valor;
+        data.datos_otras_obligaciones.domicilio_acreedor.numInt = valor;
         break;
 
       default:
