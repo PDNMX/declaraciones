@@ -42,26 +42,26 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log("Login",this.props);
+
+    let unsuscribe = app.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.history.push("/");
+      }
+
+      unsuscribe();
+    });
+
     this.state = {
-      email: "",
-      clave: "",
+      // email: "",
+      // clave: "",
       email: "benito.perdomo.pdn@gmail.com",
       clave: "Raziel-87",
       mensaje: "",
       type: ""
+      // autenticated: false
     };
   }
-
-  componentDidMount = () => {
-    app.auth().onAuthStateChanged(user => {
-      console.log(user);
-      if (user) {
-        this.setState({ autenticated: true });
-      } else {
-        this.setState({ autenticated: false });
-      }
-    });
-  };
 
   handleChange = name => event => {
     this.setState({
@@ -93,17 +93,13 @@ class Login extends React.Component {
           };
 
           self.setState({ mensaje: mensaje, autenticated: false }, () => {
-            res.user
-              .sendEmailVerification()
-              .then(function() {})
-              .catch(function(err) {
-                console.log("Error: ", err);
-              });
+            res.user.sendEmailVerification().catch(function(err) {
+              console.log("Error: ", err);
+            });
           });
-
-          // this.setState({ autenticated: false });
         } else {
-          this.setState({ autenticated: true });
+          self.props.history.push("/");
+          // this.setState({ autenticated: true });
         }
       })
       .catch(function(error) {
@@ -145,9 +141,7 @@ class Login extends React.Component {
     const { email, clave } = this.state;
     const disabledButton = email === "" || clave === "";
 
-    if (this.state.autenticated) {
-      return <Redirect to="/" />;
-    }
+    // return this.state.autenticated ? (
     return (
       <div className={classes.root}>
         <Grid container spacing={0} justify="center">

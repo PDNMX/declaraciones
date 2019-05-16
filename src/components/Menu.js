@@ -36,7 +36,7 @@ const padres = (ruta, match, handleClick, state) => {
 };
 
 const hijos = (child, ruta, match, classes, state, handleClick) => {
-  let pathComplete = ruta.path + child.path;
+  let pathComplete = child.path;
   // console.log(pathComplete, match.path);
   return (
     <Collapse

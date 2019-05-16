@@ -25,18 +25,20 @@ class ButtonAppBar extends React.Component {
   constructor(props) {
     super(props);
 
+    let unsuscribe = app.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ autenticated: true });
+      } else {
+        this.setState({ autenticated: false });
+      }
+
+      unsuscribe();
+    });
+
     this.state = {
       redirect: false,
       autenticated: false
     };
-
-    app.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ autenticated: true });
-      } else {
-        this.setState({ redirect: true });
-      }
-    });
   }
 
   handleClick = event => {
@@ -45,10 +47,10 @@ class ButtonAppBar extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        // window.location.reload();
-        this.setState({
-          redirect: true
-        });
+        window.location.reload();
+        // this.setState({
+        //   redirect: true
+        // });
       });
   };
 
@@ -57,7 +59,7 @@ class ButtonAppBar extends React.Component {
 
     return (
       <div>
-        {this.state.redirect && <Redirect to="/" />}
+        {/*this.state.redirect && <Redirect to="/" />*/}
         <div className={classes.root}>
           <AppBar position="static">
             <Toolbar>

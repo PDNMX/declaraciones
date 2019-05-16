@@ -15,12 +15,13 @@ const routes = [
     private: true,
     key: 0
   },
-  {
-    path: "/login",
-    component: Login,
-    private: false,
-    key: 1
-  }
+  // {
+//   path: "/login",
+//   component: Login,
+//   private: false,
+//   key: 1
+// }
+
 ];
 
 export default routes;

@@ -18,18 +18,30 @@ const styles = theme => ({
   }
 });
 
-export default function PrivateRoute({ component: Component, ...rest }) {
-  let user = app.auth().currentUser;
+export default function PrivateRoute({
+  component: Component,
+  ...rest
+}) {
+  let unsuscribe = app.auth().onAuthStateChanged(user => {
+    if (!user) {
+      console.log("PrivateRoute", "No login");
+      // this.props.history.push("/login");
+    }
+
+    unsuscribe();
+  });
+
+  console.log("current",app.auth().currentUser?true:false);
 
   return (
     <Route
       {...rest}
       render={props => {
-        return user ? (
+        return (
           <div className={styles.root}>
             <Grid container spacing={0}>
               <Grid item xs={12}>
-                <AppBar />
+                <AppBar />                
               </Grid>
             </Grid>
             <Grid container spacing={0}>
@@ -54,35 +66,8 @@ export default function PrivateRoute({ component: Component, ...rest }) {
               </Grid>
             </Grid>
           </div>
-        ) : (
-          <Redirect to="/login" />
         );
       }}
     />
   );
-
-  // app.auth().onAuthStateChanged(user => {
-  //   console.log("PrivateRoute", user);
-  //   if (user) {
-  //     return (
-  //       <Route
-  //         {...rest}
-  //         render={props => {
-  //           return (
-  //
-  //           );
-  //         }}
-  //       />
-  //     );
-  //   } else {
-  //     return (
-  //       <Route
-  //         {...rest}
-  //         render={props => {
-  //           return ;
-  //         }}
-  //       />
-  //     );
-  //   }
-  // });
 }

@@ -48,34 +48,30 @@ class Home extends Component {
           <Typography className={classes.pos} color="textSecondary">
             Declaraciones presentadas o en proceso
           </Typography>
-          <Typography component="p">
-            <Table className={classes.table}>
-              <TableHead>
-                <TableRow>
-                  <CustomTableCell>ID</CustomTableCell>
-                  <CustomTableCell>Fecha de inicio</CustomTableCell>
-                  <CustomTableCell>Estatus</CustomTableCell>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <CustomTableCell>ID</CustomTableCell>
+                <CustomTableCell>Fecha de inicio</CustomTableCell>
+                <CustomTableCell>Estatus</CustomTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {[].map(row => (
+                <TableRow className={classes.row} key={row.id}>
+                  <CustomTableCell component="th" scope="row">
+                    {row.name}
+                  </CustomTableCell>
+                  <CustomTableCell align="right">
+                    {row.calories}
+                  </CustomTableCell>
+                  <CustomTableCell align="right">{row.fat}</CustomTableCell>
+                  <CustomTableCell align="right">{row.carbs}</CustomTableCell>
+                  <CustomTableCell align="right">{row.protein}</CustomTableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {[].map(row => (
-                  <TableRow className={classes.row} key={row.id}>
-                    <CustomTableCell component="th" scope="row">
-                      {row.name}
-                    </CustomTableCell>
-                    <CustomTableCell align="right">
-                      {row.calories}
-                    </CustomTableCell>
-                    <CustomTableCell align="right">{row.fat}</CustomTableCell>
-                    <CustomTableCell align="right">{row.carbs}</CustomTableCell>
-                    <CustomTableCell align="right">
-                      {row.protein}
-                    </CustomTableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Typography>
+              ))}
+            </TableBody>
+          </Table>
         </CardContent>
       </Card>
     );
